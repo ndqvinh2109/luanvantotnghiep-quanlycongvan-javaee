@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+
+<definition name="base.definition" template="/WEB-INF/jsp/layout/layout.jsp">
+<put-attribute name="title" value="" />
+<put-attribute name="leftbar" value="/WEB-INF/jsp/layout/leftbar.jsp" />
+<put-attribute name="navbar" value="/WEB-INF/jsp/layout/navbar.jsp" />
+<put-attribute name="banner" value="/WEB-INF/jsp/layout/banner.jsp" />
+<put-attribute name="body" value="" />
+</definition>
+
+<definition name="base.admin.definition" template="/WEB-INF/jsp/layout/admin/layout/layout.jsp">
+<put-attribute name="title" value="" />
+<put-attribute name="leftbar" value="/WEB-INF/jsp/layout/admin/layout/leftbar.jsp" />
+<put-attribute name="navbar" value="/WEB-INF/jsp/layout/admin/layout/navbar.jsp" />
+<put-attribute name="banner" value="/WEB-INF/jsp/layout/admin/layout/banner.jsp" />
+<put-attribute name="body" value="" />
+</definition>
+
+<definition name="welcomeadmin" extends="base.admin.definition">
+<put-attribute name="title" value="Chào mừng quản trị hệ thống" />
+<put-attribute name="body" value="/WEB-INF/jsp/layout/admin/WelcomeAdmin.jsp" />
+</definition>
+
+
+<definition name="danhmuccapdokhan" extends="base.admin.definition">
+<put-attribute name="title" value="Danh mục Cấp độ khẩn" />
+<put-attribute name="body" value="/WEB-INF/jsp/layout/admin/DanhMucCapDoKhan.jsp" />
+</definition>
+
+
+<definition name="nhapvanbanden" extends="base.definition">
+<put-attribute name="title" value="Nhập Văn Bản Đến" />
+<put-attribute name="body" value="/WEB-INF/jsp/NhapVanBanDen.jsp" />
+</definition>
+
+<definition name="nhaphosoluutru" extends="base.definition">
+<put-attribute name="title" value="Nhập Hồ Sơ Lưu Trữ" />
+<put-attribute name="body" value="/WEB-INF/jsp/NhapHoSoLuuTru.jsp" />
+</definition>
+
+<definition name="trangchu" extends="base.definition">
+<put-attribute name="title" value="Quản lý công văn" />
+<put-attribute name="body" value="/WEB-INF/jsp/Login.jsp" />
+</definition>
+
+<definition name="danhsachvanbanden" extends="base.definition">
+<put-attribute name="title" value="Danh sách văn bản đến" />
+<put-attribute name="body" value="/WEB-INF/jsp/DanhSachVanBanDen.jsp" />
+</definition>
+
+<definition name="danhsachvanbandi" extends="base.definition">
+<put-attribute name="title" value="Danh sách văn bản đi" />
+<put-attribute name="body" value="/WEB-INF/jsp/DanhSachVanBanDi.jsp" />
+</definition>
+
+<definition name="thembuocthuocquytrinh" extends="base.definition">
+<put-attribute name="title" value="Tạo phiếu giao việc" />
+<put-attribute name="body" value="/WEB-INF/jsp/ThemBuocThuocQuyTrinh.jsp" />
+</definition>
+
+
+<definition name="phanxulyvanban" extends="base.definition">
+<put-attribute name="title" value="Phân xử lý văn bản" />
+<put-attribute name="body" value="/WEB-INF/jsp/PhanXuLyVanBan.jsp" />
+</definition>
+
+
+<definition name="xulypheduyetvanban" extends="base.definition">
+<put-attribute name="title" value="Phê duyệt xử lý văn bản" />
+<put-attribute name="body" value="/WEB-INF/jsp/XuLyPheDuyetVanBan.jsp" />
+</definition>
+
+<definition name="nhapvanbandi" extends="base.definition">
+<put-attribute name="title" value="Nhập Văn Bản Đi" />
+<put-attribute name="body" value="/WEB-INF/jsp/NhapVanBanDi.jsp" />
+</definition>
+
+<definition name="tiepnhanvanban" extends="base.definition">
+<put-attribute name="title" value="Tiếp nhận văn bản đến" />
+<put-attribute name="body" value="/WEB-INF/jsp/TiepNhanVanBan.jsp" />
+</definition>
+
+<definition name="timkiemvanbanden" extends="base.definition">
+<put-attribute name="title" value="Tìm kiếm văn bản đến" />
+<put-attribute name="body" value="/WEB-INF/jsp/TimKiemVanBanDen.jsp" />
+</definition>
+</tiles-definitions>

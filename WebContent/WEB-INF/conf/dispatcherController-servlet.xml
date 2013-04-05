@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+		
+		<context:annotation-config />
+		<context:component-scan base-package="com.quangvinh"/>
+		
+		<mvc:annotation-driven/>
+		
+		<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+			<property name="order" value="1"/>
+			<property name="contentNegotiationManager">
+				 <bean class="org.springframework.web.accept.ContentNegotiationManager">
+				 	<constructor-arg>
+				 		<bean class="org.springframework.web.accept.PathExtensionContentNegotiationStrategy">
+				 			<constructor-arg>
+				 				<map>
+				 					<entry key="json" value="application/json"/>
+                               	    <entry key="xml" value="application/xml"/>
+				 				</map>
+				 			</constructor-arg>
+				 		</bean>
+				 	</constructor-arg>
+				 </bean>
+			</property>
+			<property name="defaultViews">
+				<list>
+					<!-- JSON View -->
+						<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />				
+					<!--  XML View -->
+						<bean class="org.springframework.web.servlet.view.xml.MarshallingView">
+							<constructor-arg>
+								<bean class="org.springframework.oxm.xstream.XStreamMarshaller" />
+							</constructor-arg>
+						</bean>	
+				</list>
+			</property>
+		</bean>
+		<!-- Configure the multipart resolver -->
+		<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+			<!-- one of the properties available; the maximum file size in bytes -->
+       		 <property name="maxUploadSize" value="10000000" />
+		</bean>
+		
+		
+		<!-- If no extension matched, use JSP view -->
+		<!-- <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+			<property name="order" value="2" />
+			<property name="prefix" value="/WEB-INF/jsp/" />
+			<property name="suffix" value=".jsp" />
+		</bean> -->
+		
+		<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+			<property name="viewClass">
+				<value>org.springframework.web.servlet.view.tiles2.TilesView</value>
+			</property>
+		</bean>	
+		
+		<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+			<property name="definitions">
+				<list>
+					<value>/WEB-INF/tiles/tiles.xml</value>
+				</list>
+			</property>
+		</bean>	
+			
+		 <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+   			<property name="driverClassName" value="org.postgresql.Driver"/>
+    		<property name="url" value="jdbc:postgresql://localhost:5432/luanvantotnghiep"/>
+    		<property name="username" value="postgres"/>
+    		<property name="password" value="postgres"/>
+ 		 </bean>
+ 		 
+ 		  
+ 		 
+ 		 <bean id="mySessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+ 		 <property name="dataSource" ref="myDataSource"/>
+ 		<property name="packagesToScan" value="com.quangvinh.model" />
+ 		 
+ 		 <property name="hibernateProperties">
+ 		 	<props>
+ 		 		<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+ 		 		<prop key="hibernate.show_sql">true</prop>
+ 		 		<prop key="hibernate.connection.SetBigStringTryClob">true</prop>
+                <prop key="hibernate.jdbc.batch_size">0</prop>
+ 		 		<!-- <prop key="hibernate.hbm2ddl.auto">update</prop>  -->
+ 		 		<prop key="hibernate.enable_lazy_load_no_trans">true</prop>
+ 		 	</props>
+ 		 </property>
+ 		 
+ 		 </bean>
+ 		 <tx:annotation-driven transaction-manager="transactionManager"/>
+ 		 <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+ 		 	<property name="sessionFactory" ref="mySessionFactory"/>
+ 		 </bean>
+ 		
+ 		
+ 		
+ 		
+</beans>

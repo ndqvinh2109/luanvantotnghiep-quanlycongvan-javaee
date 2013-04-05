@@ -1,0 +1,671 @@
+/*CSS Navigation bar*/
+
+* { margin: 0; padding: 0;}
+body { 
+font: 75%/120% Arial, Helvetica, sans-serif;
+
+}
+
+#container{
+width: 1024px;
+height: 100%;
+margin: 0 auto;
+position: relative;
+}
+
+#banner{
+width: 1024px;
+height: 100px;
+
+}
+
+#wrapper{
+padding:10px 0;
+width: 1024px;
+height: 100%;
+
+}
+
+#left{
+width:250px;
+float:left;
+
+}
+
+#navbar .menu {
+padding:2px 2px 5px 2px;
+
+}
+
+#navbar{
+width:240px;
+
+}
+
+#navbar .menu li a {
+    background: #fff;
+    border-bottom: 1px solid #efeff0;
+    width: 100%;
+    height: 2.75em;
+    line-height: 2.75em;
+    text-indent: 2.75em;
+    display: block;
+    position: relative;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.923em;
+    font-weight: 400;
+    color: #878d95;
+    text-decoration: none;
+}
+
+
+#navbar .menu > li > a:before {
+    content: '▶';
+    font-size: 8px;
+    color: #bcbcbf;
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    top: 0;
+    left: -2.7em;
+}
+#navbar .menu > li:hover a,
+#navbar .menu > li:hover a:before {
+    color: black;
+    background-color: #ededed;
+}
+
+
+
+#navbar h3{
+font: bold 110%/100% Arial, Helvetica, sans-serif;
+background: #e9e7e7 url(../images/arrow-square.gif) no-repeat right -51px;
+}
+#content{
+float: left;
+width: 774px;
+
+
+}
+
+
+/************************************************End Navigation Bar*******************************/
+
+
+/*CSS style Login form*/
+
+.txtinput{
+display: block;
+font-family: "Helvetica Neue", Arial, sans-serif;
+border-style: solid;
+border-width: 1px;
+border-color: #dedede;
+margin-bottom: 20px;
+font-size: 1.55em;
+padding: 11px 25px;
+padding-left: 55px;
+width: 70%;
+color: #777;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset; 
+transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-webkit-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-moz-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-o-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+	
+}
+
+.txtinput:focus { 
+color: #333;
+border-color: rgba(41, 92, 161, 0.4);
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
+outline: 0 none; 
+}
+
+input#tendangnhap {
+background: #fff url('/LuanVanTotNghiep/images/user.png') 5px 4px no-repeat;
+}
+
+input#password {
+background: #fff url('/LuanVanTotNghiep/images/speech.png') 5px 4px no-repeat;
+}
+
+.validateTips { border: 1px solid transparent; padding: 0.9em; }
+
+#dialog-form #huy {
+display: block;
+float: left;
+color: #515151;
+text-shadow: -1px 1px 0px #fff;
+margin-right: 20px;
+height: 2em;
+padding: 0 1em;
+outline: 0;
+font-weight: bold;
+font-size: 1.3em;
+white-space: nowrap;
+word-wrap: normal;
+vertical-align: middle;
+cursor: pointer;
+-moz-border-radius: 2px;
+-webkit-border-radius: 2px;
+border-radius: 2px;
+background-color: #fff;
+background-image: -moz-linear-gradient(top,  rgb(255,255,255) 2%, rgb(240,240,240) 2%, rgb(222,222,222) 100%);
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(2%,rgb(255,255,255)), color-stop(2%,rgb(240,240,240)), color-stop(100%,rgb(222,222,222)));
+background-image: -webkit-linear-gradient(top,  rgb(255,255,255) 2%,rgb(240,240,240) 2%,rgb(222,222,222) 100%);
+background-image: -o-linear-gradient(top,  rgb(255,255,255) 2%,rgb(240,240,240) 2%,rgb(222,222,222) 100%);    background-image: -ms-linear-gradient(top,  rgb(255,255,255) 2%,rgb(240,240,240) 2%,rgb(222,222,222) 100%);
+background-image: linear-gradient(top,  rgb(255,255,255) 2%,rgb(240,240,240) 2%,rgb(222,222,222) 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dedede',GradientType=0 );
+border: 1px solid #969696;
+box-shadow: 0 1px 2px rgba(144, 144, 144, 0.4);
+-moz-box-shadow: 0 1px 2px rgba(144, 144, 144, 0.4);
+-webkit-box-shadow: 0 1px 2px rgba(144, 144, 144, 0.4);
+text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+}
+
+#dialog-form #huy:hover {
+text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);	
+color: #818181;
+background-color: #fff;
+background-image: -moz-linear-gradient(top,  rgb(255,255,255) 2%, rgb(244,244,244) 2%, rgb(229,229,229) 100%);
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(2%,rgb(255,255,255)), color-stop(2%,rgb(244,244,244)), color-stop(100%,rgb(229,229,229)));
+background-image: -webkit-linear-gradient(top,  rgb(255,255,255) 2%,rgb(244,244,244) 2%,rgb(229,229,229) 100%);background-image: -o-linear-gradient(top,  rgb(255,255,255) 2%,rgb(244,244,244) 2%,rgb(229,229,229) 100%); background-image: -ms-linear-gradient(top,  rgb(255,255,255) 2%,rgb(244,244,244) 2%,rgb(229,229,229) 100%); background-image: linear-gradient(top,  rgb(255,255,255) 2%,rgb(244,244,244) 2%,rgb(229,229,229) 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 );
+border-color: #aeaeae;
+box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
+}
+
+#dialog-form #login {
+display: block;
+float: left;
+height: 2em;
+padding: 0 1em;
+border: 1px solid;
+outline: 0;
+font-weight: bold;
+font-size: 1.3em;
+color:  #fff;
+text-shadow: 0px 1px 0px #222;
+white-space: nowrap;
+word-wrap: normal;
+vertical-align: middle;
+cursor: pointer;
+-moz-border-radius: 2px;
+-webkit-border-radius: 2px;
+border-radius: 2px;
+border-color: #5e890a #5e890a #000;
+-moz-box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
+-ms-box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
+-webkit-box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
+box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
+background-color: rgb(226,238,175);
+background-image: -moz-linear-gradient(top, rgb(226,238,175) 3%, rgb(188,216,77) 3%, rgb(144,176,38) 100%);
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(3%,rgb(226,238,175)), color-stop(3%,rgb(188,216,77)), color-stop(100%,rgb(144,176,38))); 
+background-image: -webkit-linear-gradient(top, rgb(226,238,175) 3%,rgb(188,216,77) 3%,rgb(144,176,38) 100%);
+background-image: -o-linear-gradient(top, rgb(226,238,175) 3%,rgb(188,216,77) 3%,rgb(144,176,38) 100%);
+background-image: -ms-linear-gradient(top, rgb(226,238,175) 3%,rgb(188,216,77) 3%,rgb(144,176,38) 100%);
+background-image: linear-gradient(top, rgb(226,238,175) 3%,rgb(188,216,77) 3%,rgb(144,176,38) 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2eeaf', endColorstr='#90b026',GradientType=0 );
+}
+#dialog-form #login:hover, #dialog-form #login:active {
+border-color: #7c9826 #7c9826 #000;
+color: #fff;
+-moz-box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
+-ms-box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
+-webkit-box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
+box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
+background: rgb(228,237,189);
+background: -moz-linear-gradient(top, rgb(228,237,189) 2%, rgb(207,219,120) 3%, rgb(149,175,54) 100%); 
+background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,rgb(228,237,189)), color-stop(3%,rgb(207,219,120)), color-stop(100%,rgb(149,175,54))); 
+background: -webkit-linear-gradient(top, rgb(228,237,189) 2%,rgb(207,219,120) 3%,rgb(149,175,54) 100%); 
+background: -o-linear-gradient(top, rgb(228,237,189) 2%,rgb(207,219,120) 3%,rgb(149,175,54) 100%); background: -ms-linear-gradient(top, rgb(228,237,189) 2%,rgb(207,219,120) 3%,rgb(149,175,54) 100%); background: linear-gradient(top, rgb(228,237,189) 2%,rgb(207,219,120) 3%,rgb(149,175,54) 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4edbd', endColorstr='#95af36',GradientType=0 );
+}
+div#tonghoptinhhinhxuly h3{
+	background: url(/LuanVanTotNghiep/images/titlebg.jpg) center left repeat-x;
+	height: 14px;
+	color: white;
+	font-family: Arial,Verdana,Sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 10px 20px;
+	margin: 0px auto 0px;
+	
+}
+/*********************************************End Login Form**************************************/
+
+
+ 
+
+
+/*CSS style Leftbar*/
+ul#navigation {
+    position: fixed;
+    margin: 0px;
+    padding: 0px;
+    top: 110px;
+    left: 0px;
+    list-style: none;
+    z-index: 9999;
+}
+ul#navigation li a {
+    display: block;
+    margin-left: -2px;
+    width: 100px;
+    height: 70px;
+    background-color: #CFCFCF;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: 1px solid #AFAFAF;
+    -moz-border-radius: 0px 10px 10px 0px;
+    -webkit-border-bottom-right-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -khtml-border-bottom-right-radius: 10px;
+    -khtml-border-top-right-radius: 10px;
+    /*-moz-box-shadow: 0px 4px 3px #000;
+    -webkit-box-shadow: 0px 4px 3px #000;
+    */
+    opacity: 0.6;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=60);
+}
+
+ul#navigation .showmenu a{
+    background-image: url(/LuanVanTotNghiep/images/pin.png);
+}
+ul#navigation .printdata a{
+    background-image: url(/LuanVanTotNghiep/images/print.png);
+}
+
+ul#navigation .login a{
+    background-image: url(/LuanVanTotNghiep/images/logoutkey.png);
+}
+
+ul#navigation .admin a{
+    background-image: url(/LuanVanTotNghiep/images/administrator.png);
+}
+
+/*******************************End Leftbar************************************/
+
+
+
+
+/*CSS style NhapVanBanDen*/
+#nhapvanbanden{
+	background-color: #f7f7f7;
+	overflow: hidden;
+	border: 1px solid #c4c4c4;
+	
+}
+#nhapvanbanden textarea {
+display: block;
+font-family: "Helvetica Neue", Arial, sans-serif;
+border-style: solid;
+border-width: 1px;
+border-color: #dedede;
+margin-bottom: 15px;
+font-size: 1.5em;
+padding: 11px 25px;
+padding-left: 55px;
+width: 90%;
+height: 100px;
+color: #777;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset; 
+transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-webkit-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-moz-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-o-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+}
+
+#nhapvanbanden textarea:focus {
+color: #333;
+border-color: rgba(41, 92, 161, 0.4);
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
+outline: 0 none; 
+}
+
+#nhapvanbanden textarea#trichyeu {
+background: #fff url('/LuanVanTotNghiep/images/speech.png') 5px 4px no-repeat;
+}
+
+
+#nhapvanbanden textarea#tukhoa {
+background: #fff url('/LuanVanTotNghiep/images/speech.png') 5px 4px no-repeat;
+}
+
+#nhapvanbanden .txtinput { 
+display: block;
+font-family: "Helvetica Neue", Arial, sans-serif;
+border-style: solid;
+border-width: 1px;
+border-color: #dedede;
+margin-bottom: 20px;
+font-size: 1.1em;
+padding:11px 20px;
+padding-left: 55px;
+width: 70%;
+color: #777;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset; 
+transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-webkit-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-moz-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-o-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+}
+
+#nhapvanbanden .txtinput:focus { 
+color: #333;
+border-color: rgba(41, 92, 161, 0.4);
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
+outline: 0 none; 
+}
+
+#nhapvanbanden #aligned { 
+box-sizing: border-box; 
+float: left; 
+width: 400px; 
+margin-right: 50px;
+margin-top:5px;
+margin-bottom: 50px;
+}
+
+#nhapvanbanden #aside {
+	float: left;
+	width: 200px;
+	box-sizing: border-box;
+	margin-top:5px;
+	
+}
+
+#nhapvanbanden select.selmenu {
+font-size: 17px;
+color: #676767;
+padding: 6px !important;
+border: 1px solid #aaa;
+width: 200px;
+}
+
+#nhapvanbanden #aside h3{
+	padding:7px 0px 10px 0px;
+	color: #363636;
+	font-family: "Droid Serif", Georgia, serif; 
+	margin-top: 10px; 
+	margin-bottom: 10px;
+	padding: 12px 0; 
+ 
+}
+
+#nhapvanbanden #aligned h3{
+	padding:0px 0px 7px 0px;
+	color: #363636;
+	font-family: "Droid Serif", Georgia, serif; 
+	margin-top: 10px; 
+	margin-bottom: 10px;
+	width:90%;
+}
+
+#trangthaixuly .ttxl{
+	
+	display: block; margin-bottom: 8px;
+}
+
+#trangthaixuly .ttxl label{
+	
+	font-size: 1.2em; padding-bottom: 4px;
+}
+
+div#nhapvanbanden .title{
+  	background: url(/LuanVanTotNghiep/images/titlebg.jpg) center left repeat-x;
+	height: 14px;
+	color: white;
+	font-family: Arial,Verdana,Sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 10px 20px;
+	margin: 0px auto 0px;
+  }
+ 
+div#nhapvanbanden input#ngaybanhanh {
+background: #fff url('/LuanVanTotNghiep/images/calendar.png') 4px 5px no-repeat;
+}
+div#nhapvanbanden input#ngayden {
+background: #fff url('/LuanVanTotNghiep/images/calendar.png') 4px 5px no-repeat;
+}
+
+div#nhapvanbanden input#ngayhieuluc {
+background: #fff url('/LuanVanTotNghiep/images/calendar.png') 4px 5px no-repeat;
+}
+
+div#nhapvanbanden input#ngayketthuc {
+background: #fff url('/LuanVanTotNghiep/images/calendar.png') 4px 5px no-repeat;
+}
+
+div#nhapvanbanden input#ngaynhapmay {
+background: #fff url('/LuanVanTotNghiep/images/calendar.png') 4px 5px no-repeat;
+}
+
+div#nhapvanbanden input#nguoiky {
+background: #fff url('/LuanVanTotNghiep/images/user.png') 4px 5px no-repeat;
+}
+
+div#nhapvanbanden input#sotrang {
+background: #fff url('/LuanVanTotNghiep/images/pad.png') 4px 5px no-repeat;
+}
+
+div#nhapvanbanden input#soden {
+background: #fff url('/LuanVanTotNghiep/images/input-tablet.png') 4px 5px no-repeat;
+}
+
+div#nhapvanbanden input#sovakyhieu {
+background: #fff url('/LuanVanTotNghiep/images/input-tablet.png') 4px 5px no-repeat;
+}
+
+
+div#nhapvanbanden #buttons {  display: block; padding-top: 10px; overflow: hidden; clear:both; margin:0 0 20px 230px;}
+
+div#nhapvanbanden #buttons #themcongvan {
+display: block;
+float: left;
+height: 3em;
+padding: 0 1em;
+border: 1px solid;
+outline: 0;
+font-weight: bold;
+font-size: 1.3em;
+color:  #fff;
+text-shadow: 0px 1px 0px #222;
+white-space: nowrap;
+word-wrap: normal;
+vertical-align: middle;
+cursor: pointer;
+-moz-border-radius: 2px;
+-webkit-border-radius: 2px;
+border-radius: 2px;
+border-color: #5e890a #5e890a #000;
+-moz-box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
+-ms-box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
+-webkit-box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
+box-shadow: inset 0 1px 0 rgba(256,256,256, .35);
+background-color: rgb(226,238,175);
+background-image: -moz-linear-gradient(top, rgb(226,238,175) 3%, rgb(188,216,77) 3%, rgb(144,176,38) 100%);
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(3%,rgb(226,238,175)), color-stop(3%,rgb(188,216,77)), color-stop(100%,rgb(144,176,38))); 
+background-image: -webkit-linear-gradient(top, rgb(226,238,175) 3%,rgb(188,216,77) 3%,rgb(144,176,38) 100%);
+background-image: -o-linear-gradient(top, rgb(226,238,175) 3%,rgb(188,216,77) 3%,rgb(144,176,38) 100%);
+background-image: -ms-linear-gradient(top, rgb(226,238,175) 3%,rgb(188,216,77) 3%,rgb(144,176,38) 100%);
+background-image: linear-gradient(top, rgb(226,238,175) 3%,rgb(188,216,77) 3%,rgb(144,176,38) 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2eeaf', endColorstr='#90b026',GradientType=0 );
+}
+
+div#nhapvanbanden #buttons #themcongvan:hover, div#nhapvanbanden #buttons #themcongvan:active {
+border-color: #7c9826 #7c9826 #000;
+color: #fff;
+-moz-box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
+-ms-box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
+-webkit-box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
+box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
+background: rgb(228,237,189);
+background: -moz-linear-gradient(top, rgb(228,237,189) 2%, rgb(207,219,120) 3%, rgb(149,175,54) 100%); 
+background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,rgb(228,237,189)), color-stop(3%,rgb(207,219,120)), color-stop(100%,rgb(149,175,54))); 
+background: -webkit-linear-gradient(top, rgb(228,237,189) 2%,rgb(207,219,120) 3%,rgb(149,175,54) 100%); 
+background: -o-linear-gradient(top, rgb(228,237,189) 2%,rgb(207,219,120) 3%,rgb(149,175,54) 100%); background: -ms-linear-gradient(top, rgb(228,237,189) 2%,rgb(207,219,120) 3%,rgb(149,175,54) 100%); background: linear-gradient(top, rgb(228,237,189) 2%,rgb(207,219,120) 3%,rgb(149,175,54) 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4edbd', endColorstr='#95af36',GradientType=0 );
+}
+
+div#nhapvanbanden #buttons #huynhap{
+	display: block;
+float: left;
+color: #515151;
+text-shadow: -1px 1px 0px #fff;
+margin-right: 20px;
+height: 3em;
+padding: 0 1em;
+outline: 0;
+font-weight: bold;
+font-size: 1.3em;
+white-space: nowrap;
+word-wrap: normal;
+vertical-align: middle;
+cursor: pointer;
+-moz-border-radius: 2px;
+-webkit-border-radius: 2px;
+border-radius: 2px;
+background-color: #fff;
+background-image: -moz-linear-gradient(top,  rgb(255,255,255) 2%, rgb(240,240,240) 2%, rgb(222,222,222) 100%);
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(2%,rgb(255,255,255)), color-stop(2%,rgb(240,240,240)), color-stop(100%,rgb(222,222,222)));
+background-image: -webkit-linear-gradient(top,  rgb(255,255,255) 2%,rgb(240,240,240) 2%,rgb(222,222,222) 100%);
+background-image: -o-linear-gradient(top,  rgb(255,255,255) 2%,rgb(240,240,240) 2%,rgb(222,222,222) 100%);    background-image: -ms-linear-gradient(top,  rgb(255,255,255) 2%,rgb(240,240,240) 2%,rgb(222,222,222) 100%);
+background-image: linear-gradient(top,  rgb(255,255,255) 2%,rgb(240,240,240) 2%,rgb(222,222,222) 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dedede',GradientType=0 );
+border: 1px solid #969696;
+box-shadow: 0 1px 2px rgba(144, 144, 144, 0.4);
+-moz-box-shadow: 0 1px 2px rgba(144, 144, 144, 0.4);
+-webkit-box-shadow: 0 1px 2px rgba(144, 144, 144, 0.4);
+text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	
+}
+div#nhapvanbanden #buttons #huynhap:hover {
+text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);	
+color: #818181;
+background-color: #fff;
+background-image: -moz-linear-gradient(top,  rgb(255,255,255) 2%, rgb(244,244,244) 2%, rgb(229,229,229) 100%);
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(2%,rgb(255,255,255)), color-stop(2%,rgb(244,244,244)), color-stop(100%,rgb(229,229,229)));
+background-image: -webkit-linear-gradient(top,  rgb(255,255,255) 2%,rgb(244,244,244) 2%,rgb(229,229,229) 100%);background-image: -o-linear-gradient(top,  rgb(255,255,255) 2%,rgb(244,244,244) 2%,rgb(229,229,229) 100%); background-image: -ms-linear-gradient(top,  rgb(255,255,255) 2%,rgb(244,244,244) 2%,rgb(229,229,229) 100%); background-image: linear-gradient(top,  rgb(255,255,255) 2%,rgb(244,244,244) 2%,rgb(229,229,229) 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 );
+border-color: #aeaeae;
+box-shadow: inset 0 1px 0 rgba(256,256,256,0.4),0 1px 3px rgba(0,0,0,0.5);
+}
+/*******************************End Nhap Van Ban Den********************************/
+
+
+
+
+
+
+
+/******************************Style CSS Them buoc thuoc quy trinh*****************/
+
+div#thembuocthuocquytrinh h3{
+  	background: url(/LuanVanTotNghiep/images/titlebg.jpg) center left repeat-x;
+	height: 14px;
+	color: white;
+	font-family: Arial,Verdana,Sans-serif;	
+	font-size: 14px;
+	font-weight: bold;
+	padding: 10px 20px;
+	margin: 0px auto 0px;
+  }
+/********************************End Them buoc thuoc quy trinh*********************/
+
+
+
+
+
+/*******Style CSS Phan xu ly van ban******/
+div#phanxulyvanban > h3{
+  	background: url(/LuanVanTotNghiep/images/titlebg.jpg) center left repeat-x;
+	height: 14px;
+	color: white;
+	font-family: Arial,Verdana,Sans-serif;	
+	font-size: 14px;
+	font-weight: bold;
+	padding: 10px 20px;
+	margin: 0px auto 0px;
+  }
+  
+ 
+ 
+
+
+/************End Phan Xu Ly Van Ban***********************/
+
+/*CSS style DanhSachVanBanDen*/
+ div#accordion table{
+ margin: 1em 0; border-collapse: collapse; width: 100%; 
+ }
+ div#accordion table td, div#accordion table th{
+ border: 1px solid #eee;
+ padding: .6em 10px;
+ text-align: left;
+ }
+  div#accordion h3{
+  	background: url(/LuanVanTotNghiep/images/titlebg.jpg) center left repeat-x;
+	height: 14px;
+	color: white;
+	font-family: Arial,Verdana,Sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 10px 20px;
+	margin: 0px auto 0px;
+  }
+ 
+div#accordion table tr:nth-child(odd) {
+  background-color: #e8edff;
+}
+div#accordion table tr:nth-child(even) {
+  background-color: #fff;
+}
+
+div#accordion table tr:hover{
+	background-color: #cfddee;
+	cursor:pointer;
+	
+}
+
+div#accordion table tr.hilightclick{
+	background-color: #fdf7d9 !important;
+	
+}
+
+#accordion #toolbar{
+padding: 5px 5px 5px 5px;
+}
+
+
+ 
+ 
+ /***************************************End Style**************************/
+
+/*************Style Xu Ly Phe Duyet Van Ban*****************/
+div#xulypheduyetvanban h3{
+ background: url(/LuanVanTotNghiep/images/titlebg.jpg) center left repeat-x;
+	height: 14px;
+	color: white;
+	font-family: Arial,Verdana,Sans-serif;	
+	font-size: 14px;
+	font-weight: bold;
+	padding: 10px 20px;
+	margin: 0px auto 0px;
+ }
+
+
+/*******************End Xu Ly Phe Duyet Van Ban*******************************/
