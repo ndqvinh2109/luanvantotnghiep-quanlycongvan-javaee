@@ -250,6 +250,7 @@ $(document).ready(function(){
 	    			success: function(result){
 	    				if(result){
 	    					alert("Thêm thành công");
+	    					
 	    					location.reload(true);
 	    					
 	    				}
