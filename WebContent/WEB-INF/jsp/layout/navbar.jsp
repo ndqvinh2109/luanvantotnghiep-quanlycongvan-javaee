@@ -8,10 +8,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script>
-		/* $(function() {
-		    $( ".menu" ).menu();
-		});  */
-		
 		$(function() {
 		    $( "#navbar" ).accordion({
 		      collapsible: true,
@@ -27,12 +23,12 @@
 		<h3>Thanh nhắc việc</h3>
 			
 				<ul class="menu">
-					<li><a href="${pageContext.request.contextPath}/service/loadXuLyPheDuyetVanBan">Đang chờ xử lý</a></li>
-					<li><a href="${pageContext.request.contextPath}/service/tiepNhanVanBanDen">Văn bản đến qua mạng</a>
-					<li><a href="">Chưa xử lý</a></li>
-					<li><a href="">Đang xử lý</a></li>
+					<li><a href="${pageContext.request.contextPath}/service/loadXuLyPheDuyetVanBan">Đang chờ xử lý<span id="countdangchoxuly"></span></a></li>
+					<li><a href="${pageContext.request.contextPath}/service/tiepNhanVanBanDen">Văn bản đến qua mạng<span id="countvanbanchuatiepnhan"></span></a>
+					<li><a href="">Chưa xử lý<span id="countvanbanchuaxuly"></span></a></li>
+					<li><a href="">Đang xử lý<span id="countvanbandangxuly"></span></a></li>
 					<li><a href="">Quá hạn</a></li>
-					<li><a href="">Đã hoàn tất</a></li>
+					<li><a href="">Đã hoàn tất<span id="countvanbanhoanthanh"></span></a></li>
 					<li><a href="">Đã lưu</a></li>
 				</ul>
 				

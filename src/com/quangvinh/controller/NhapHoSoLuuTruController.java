@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.quangvinh.model.HoSoLuuTru;
+import com.quangvinh.model.VanBan;
 import com.quangvinh.service.IHoSoLuuTruService;
 import com.quangvinh.service.IVanBanService;
 
@@ -105,6 +106,22 @@ public class NhapHoSoLuuTruController {
 		hosoluutru.setThoiGianBaoQuan(thoihanbaoquan);
 		hosoluutru.setSoHoSo(sohoso);
 		hosoluutruService.updateHoSoLuuTru(hosoluutru);
+		return true;
+	}
+	
+	@RequestMapping(value="/addVanBanHoSo/{getsohoso}/{mavanban}",method=RequestMethod.POST)
+	public @ResponseBody boolean addVanBanHoSo(@PathVariable("getsohoso") int sohoso,
+			@PathVariable("mavanban") int mavanban){
+		
+		VanBan vanban = vanbanService.findVanBanID(mavanban);
+		
+		VanBan vanbanupdate = new VanBan(vanban.getCapdobaomat(), vanban.getLinhvuc(),
+				vanban.getLoaivanban(), vanban.getCapdokhan(),
+				vanban.getVitriluutru(), hosoluutruService.findHoSoLuuTruID(sohoso), mavanban,
+				vanban.getSoKyHieuVanBan(), vanban.getNgayBanHanh(), vanban.getNgayHieuLuc(), 
+				vanban.getNgayHetHieuLuc(), vanban.getTrichYeu(), vanban.getNguoiKy(), vanban.getSoTrang(),
+				vanban.getTuKhoa(), vanban.getNgayNhapMay(), vanban.getTrangThaiXuLy());
+		vanbanService.updateVanBan(vanbanupdate);
 		return true;
 	}
 	

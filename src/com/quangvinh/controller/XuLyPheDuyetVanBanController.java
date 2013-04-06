@@ -40,6 +40,9 @@ public class XuLyPheDuyetVanBanController {
 		int manguoidung = nguoidungService.getMaNguoiDungTheoUsername(name);
 		System.out.println(manguoidung);
 		map.put("buocxulyList", buocxulyService.getBuocXuLyTheoMaNguoiDung(manguoidung));
+		
+		System.out.println(vanbandenService.getVanBanDenChuaTiepNhan().size());
+		/*map.put("countbuocxulyList", buocxulyService.getBuocXuLyTheoMaNguoiDung(manguoidung).size());*/
 		map.put("vanbanListAll", vanbanService.getVanBan());
 		map.put("quytrinhListAll",quytrinhService.getQuyTrinh());
 		return "xulypheduyetvanban";
@@ -54,12 +57,22 @@ public class XuLyPheDuyetVanBanController {
 		String name = auth.getName();
 		int manguoidung = nguoidungService.getMaNguoiDungTheoUsername(name);
 		map.put("numberVanBanXuLy",buocxulyService.countBuocXuLyTheoMaNguoiDung(manguoidung, true, false));
+		map.put("ListVanBanChuaTiepNhan", vanbandenService.getVanBanDenChuaTiepNhan());
+		map.put("ListVanBanChuaXuLy",vanbandenService.getVanBanDenTheoTrangThai(1));
+		map.put("ListVanBanDangXuLy",vanbandenService.getVanBanDenTheoTrangThai(2));
+		map.put("ListVanBanHoanThanh",vanbandenService.getVanBanDenTheoTrangThai(3));
 		map.put("listRoles", nguoidungService.getRolesByUserName(name));
 		map.put("listVanBanDenChuaXuLy", vanbandenService.getVanBanDenChuaTiepNhan());
 		System.out.println("vanbanchuatiepnhan " + vanbandenService.getVanBanDenChuaTiepNhan());
 		return map;
 	}
 	
+	@RequestMapping("/showListVanBanTheoTTXL/{trangthaixuly}")
+	public @ResponseBody Map<String,Object> showListVanBanTheoTTXL(){
+		Map<String,Object> map = new HashMap<String,Object>();
+		return map;
+		
+	}
 	
 	@RequestMapping(value="/showcapnhatxuly/{mavanban}/{buoc}/{maquytrinh}",method=RequestMethod.GET)
 	public @ResponseBody Map<String, Object> updateNoiDungXuLy(

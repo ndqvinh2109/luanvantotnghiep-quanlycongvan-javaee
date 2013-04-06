@@ -25,6 +25,7 @@
 			$(this).addClass("hilightclick").siblings().removeClass("hilightclick"); 
 		});
 		
+		//$('#countdangchoxuly').text();
 		$( "#dialog_capnhatxulypheduyet").dialog({
 			  autoOpen: false,
 		      resizable: true,
@@ -102,6 +103,9 @@
 			
 			return false;
 		}); */
+		
+		/* var countdangchoxuly = '${countbuocxulyList}';
+		$('#countdangchoxuly').text(countdangchoxuly); */
 		
 	});
 </script>
