@@ -22,7 +22,12 @@
 			success: function(data){
 				console.log(data);
 				//alert(data.numberVanBanXuLy);
-				  if(data.numberVanBanXuLy != 0){
+				$('#countdangchoxuly').text(data.numberVanBanXuLy);
+				$('#countvanbanchuatiepnhan').text(data.ListVanBanChuaTiepNhan.length);
+				$('#countvanbanchuaxuly').text(data.ListVanBanChuaXuLy.length);
+				$('#countvanbandangxuly').text(data.ListVanBanDangXuLy.length);
+				$('#countvanbanhoanthanh').text(data.ListVanBanHoanThanh.length);
+				if(data.numberVanBanXuLy != 0){
 						
 				
 				var htmlPrepare = '<table>';

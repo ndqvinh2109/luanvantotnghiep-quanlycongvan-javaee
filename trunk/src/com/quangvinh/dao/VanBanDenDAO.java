@@ -196,6 +196,18 @@ public class VanBanDenDAO implements IVanBanDenDAO {
 		
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<VanBanDen> getVanBanDenTheoTrangThai(int trangthai) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from VanBanDen a where a.trangThaiXuLy = :trangthai";
+		Query query = session.createQuery(hql);
+		query.setInteger("trangthai", trangthai);
+		List<VanBanDen> list = query.list();
+		return list;
+	}
+
 	
 
 }

@@ -107,4 +107,11 @@ public class VanBanDenService implements IVanBanDenService{
 		return vanbandenDao.timKiemCoBanVanBanDen(textInput);
 	}
 
+	@Override
+	@Transactional
+	public List<VanBanDen> getVanBanDenTheoTrangThai(int trangthai) {
+		
+		return vanbandenDao.getVanBanDenTheoTrangThai(trangthai);
+	}
+
 }

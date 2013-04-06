@@ -102,7 +102,7 @@ div#dialog_themvanbanvaohoso table tr:hover{
 	font-family: Arial,Verdana,Sans-serif;
 	border: 1px solid #ffb053;
 }
-div#table_inner table tr.hilightclick{
+div#table_nhapHoSo table tr.hilightclick{
 	background-color: #fdf7d9 !important;
 	
 }
@@ -187,6 +187,10 @@ outline: 0 none;
 height: 30px;
 width:240px;
 padding:0
+}
+#getMaHoSo{
+
+padding:10px 190px;
 }
 </style>
 <script>
@@ -347,12 +351,7 @@ $(document).ready(function(){
 		});
 		return false;
 	});
-	var sohosodialog = null;
-	$('#dialog_themvanbanvaohoso tr').not(':first').bind('click',function(){
-		sohosodialog = $(this).attr('id');
-		alert(sohosodialog);
-		
-	});
+	
 	$( "#dialog_themvanbanvaohoso").dialog({
 		  autoOpen: false,
 	      resizable: true,
@@ -361,13 +360,12 @@ $(document).ready(function(){
 	      modal: true,
 	      buttons: {
 	       	'Thêm': function(){
-	       		
-	       		/*  var maVanBan = $('.sokyhieuvanban').val();
-				$('.donvidoclap').each(function(index,element){
-					if($(element).find('.madonvidoclap').is(':checked')){
-					var madonvi = $(element).find('.madonvidoclap').val();
+	       		$('.hoso').each(function(index,element){
+					if($(element).find('.sohoso').is(':checked')){
+					var mavanban = $(element).find('.sohoso').val();
+					var getsohoso = $('#getsohoso').val();
 					$.ajax({
-						url: '/LuanVanTotNghiep/service/addVanBanGuiDonVi/' + maVanBan + '/' + madonvi,
+						url: '/LuanVanTotNghiep/service/addVanBanHoSo/' + getsohoso + '/' + mavanban,
 						type: 'POST',
 						data: null,
 						success:function(result){
@@ -377,8 +375,9 @@ $(document).ready(function(){
 							
 						}
 					});
+					
 				}
-    	 	  }); */
+    	 	  });
 	       		
 	       		
 	       	},      
@@ -388,7 +387,10 @@ $(document).ready(function(){
 	      },
 	      
 	    });
+	
 	$('#themvanban').button().click(function(){
+		
+		$('#getsohoso').val(sohoso);
 		$( "#dialog_themvanbanvaohoso").dialog('open');
 		return false;
 	});
@@ -484,6 +486,10 @@ $(document).ready(function(){
 		</div>
 		
 		<div id="dialog_themvanbanvaohoso" title="Thêm văn bản vào hồ sơ">
+			<div id="getMaHoSo">
+				<label>Mã hồ sơ</label>
+				<input type="text" id="getsohoso" value=""/>		
+			</div>	
 			<table class="ui-widget ui-widget-content">
 				<tr class="ui-widget-header">
 					<th>Trích yếu</th>
@@ -493,7 +499,7 @@ $(document).ready(function(){
 					<th>Chọn</th>
 				</tr>
 				<c:forEach var="vanban" items="${vanbanList}">
-				<tr id="${vanban.maVanBan}">
+				<tr class="hoso">
 					<td>${vanban.trichYeu}</td>
 					<td>${vanban.soKyHieuVanBan}</td>
 					<td>${vanban.loaivanban.tenLoaiVanBan}</td>
@@ -506,7 +512,7 @@ $(document).ready(function(){
 					<c:if test="${vanban.trangThaiXuLy == 3}">
 						<td>Hoàn thành</td>
 					</c:if>
-					<td><input type="checkbox" value="${vanban.maVanBan}" /></td>
+					<td><input type="checkbox" value="${vanban.maVanBan}" class="sohoso"/></td>
 				</tr>
 			</c:forEach>
 			</table>
