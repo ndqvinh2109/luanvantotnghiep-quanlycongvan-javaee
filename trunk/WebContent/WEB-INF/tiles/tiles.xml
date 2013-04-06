@@ -88,4 +88,11 @@
 <put-attribute name="title" value="Tìm kiếm văn bản đến" />
 <put-attribute name="body" value="/WEB-INF/jsp/TimKiemVanBanDen.jsp" />
 </definition>
+
+<definition name="DanhSachVanBanTheoTTXL" extends="base.definition">
+<put-attribute name="title" value="Danh sách văn bản" />
+<put-attribute name="body" value="/WEB-INF/jsp/DanhSachVanBanTheoTTXL.jsp" />
+</definition>
+
+
 </tiles-definitions>
