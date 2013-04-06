@@ -213,6 +213,7 @@ $(document).ready(function(){
 	});
 	    
 	$('#xoadokhan').button().click(function(){
+		if(confirm('Bạn có chắc xóa Cấp Độ Khẩn này không?')){
 		$.ajax({
 			url: '/LuanVanTotNghiep/service/xoaCapDoKhan/' + madokhan,
    			type: 'POST',
@@ -220,16 +221,16 @@ $(document).ready(function(){
 			data: null,
 			success: function(result){
 				if(result){
-					alert("Xóa thành công");
+					
 					location.reload(true);
 					
 				}
 				
 			}
 			
-			
-		});
 		
+		});
+		}
 		return false;
 			
 	});
