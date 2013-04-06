@@ -73,6 +73,29 @@ div#table_nhapHoSo table tr:hover{
 	cursor:pointer;
 	
 }
+
+
+div#dialog_themvanbanvaohoso table{
+ margin: 0; border-collapse: collapse; width: 100%; 
+ }
+ div#dialog_themvanbanvaohoso table td,div#dialog_themvanbanvaohoso table th{
+ border: 1px solid #eee;
+ padding: .6em 10px;
+ text-align: left;
+ }
+ 
+ div#dialog_themvanbanvaohoso table tr:nth-child(odd) {
+  background-color: #e8edff;
+}
+div#dialog_themvanbanvaohoso table tr:nth-child(even) {
+  background-color: #f7f7f7;
+}
+
+div#dialog_themvanbanvaohoso table tr:hover{
+	background-color: #cfddee;
+	cursor:pointer;
+	
+}
 .ui-dialog-titlebar {
 	background: url(/LuanVanTotNghiep/images/dialog.png) center left repeat-x;
 	color: #ffffff;
@@ -274,15 +297,101 @@ $(document).ready(function(){
 		
 	});
 	
+	
 	$('#xoahoso').button().click(function(){
-		
+		if(confirm('Bạn có chắc xóa hồ sơ lưu trữ này không?')){
+			$.ajax({
+				url: '/LuanVanTotNghiep/service/xoaHoSoLuuTru/' + sohoso,
+	   			type: 'POST',
+	   			contentType: 'text/html; charset=UTF-8',
+				data: null,
+				success: function(result){
+					if(result){
+						
+						location.reload(true);
+						
+					}
+					
+				}
+				
+			});
+			
+		}
+		return false;
 		
 	});
+	
+	
 	$('#suahoso').button().click(function(){
-	
-	
+		var mahoso = $('#mahoso').val();
+		var tieudehoso = $('#tieudehoso').val();
+		var thoigianbatdau = $('#thoigianbatdau').val();
+		var thoigianketthuc = $('#thoigianketthuc').val();
+		var thoihanbaoquan = $('#thoihanbaoquan').val();
+		$.ajax({
+			url: '/LuanVanTotNghiep/service/updateHoSoLuuTru/' + sohoso + '/'+ mahoso + '/' + tieudehoso + '/' +
+			thoigianbatdau + '/' + thoigianketthuc + '/' + thoihanbaoquan,
+			type: 'POST',
+			contentType: 'text/html; charset=UTF-8',
+			data: null,
+			success: function(result){
+				if(result){
+					alert("Sửa thành công");
+					
+					location.reload(true);
+					
+				}
+				
+			}
+			
+		});
+		return false;
 	});
-	
+	var sohosodialog = null;
+	$('#dialog_themvanbanvaohoso tr').not(':first').bind('click',function(){
+		sohosodialog = $(this).attr('id');
+		alert(sohosodialog);
+		
+	});
+	$( "#dialog_themvanbanvaohoso").dialog({
+		  autoOpen: false,
+	      resizable: true,
+	      height:'auto',
+	      width:'auto',
+	      modal: true,
+	      buttons: {
+	       	'Thêm': function(){
+	       		
+	       		/*  var maVanBan = $('.sokyhieuvanban').val();
+				$('.donvidoclap').each(function(index,element){
+					if($(element).find('.madonvidoclap').is(':checked')){
+					var madonvi = $(element).find('.madonvidoclap').val();
+					$.ajax({
+						url: '/LuanVanTotNghiep/service/addVanBanGuiDonVi/' + maVanBan + '/' + madonvi,
+						type: 'POST',
+						data: null,
+						success:function(result){
+							if(result){
+								alert("Thành công");
+							}
+							
+						}
+					});
+				}
+    	 	  }); */
+	       		
+	       		
+	       	},      
+	        Cancel: function() {
+	          $( this ).dialog( "close" );
+	        }
+	      },
+	      
+	    });
+	$('#themvanban').button().click(function(){
+		$( "#dialog_themvanbanvaohoso").dialog('open');
+		return false;
+	});
 	
 });
 </script>
@@ -323,6 +432,7 @@ $(document).ready(function(){
 			<button id="themhoso"><img src="/LuanVanTotNghiep/images/edit_add.png"/><span>Thêm</span></button>
 			<button id="xoahoso"><img src="/LuanVanTotNghiep/images/edit_remove.png"/><span>Xóa</span></button>
 			<button id="suahoso"><img src="/LuanVanTotNghiep/images/pencil.png"/><span>Sửa</span></button>
+			<button id="themvanban"><img src="/LuanVanTotNghiep/images/pencil.png"/><span>Thêm văn bản vào hồ sơ</span></button>
 		</div>
 		<div id="table_nhapHoSo">
 			<table class="ui-widget ui-widget-content">
@@ -371,6 +481,35 @@ $(document).ready(function(){
 					</tr>
 				</table>
 			</form>
+		</div>
+		
+		<div id="dialog_themvanbanvaohoso" title="Thêm văn bản vào hồ sơ">
+			<table class="ui-widget ui-widget-content">
+				<tr class="ui-widget-header">
+					<th>Trích yếu</th>
+					<th>Ký hiệu</th>
+					<th>Loại văn bản</th>
+					<th>Trạng thái xử lý</th>
+					<th>Chọn</th>
+				</tr>
+				<c:forEach var="vanban" items="${vanbanList}">
+				<tr id="${vanban.maVanBan}">
+					<td>${vanban.trichYeu}</td>
+					<td>${vanban.soKyHieuVanBan}</td>
+					<td>${vanban.loaivanban.tenLoaiVanBan}</td>
+					<c:if test="${vanban.trangThaiXuLy == 1}">
+						<td>Chưa xử lý</td>
+					</c:if>
+					<c:if test="${vanban.trangThaiXuLy == 2}">
+						<td>Đang xử lý</td>
+					</c:if>
+					<c:if test="${vanban.trangThaiXuLy == 3}">
+						<td>Hoàn thành</td>
+					</c:if>
+					<td><input type="checkbox" value="${vanban.maVanBan}" /></td>
+				</tr>
+			</c:forEach>
+			</table>
 		</div>
 	</div>
 </body>
