@@ -67,12 +67,7 @@ public class XuLyPheDuyetVanBanController {
 		return map;
 	}
 	
-	@RequestMapping("/showListVanBanTheoTTXL/{trangthaixuly}")
-	public @ResponseBody Map<String,Object> showListVanBanTheoTTXL(){
-		Map<String,Object> map = new HashMap<String,Object>();
-		return map;
-		
-	}
+	
 	
 	@RequestMapping(value="/showcapnhatxuly/{mavanban}/{buoc}/{maquytrinh}",method=RequestMethod.GET)
 	public @ResponseBody Map<String, Object> updateNoiDungXuLy(
