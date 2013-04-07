@@ -13,7 +13,7 @@
 </head>
 <body>
 <div id="banner">
-	<a href="login.do"><img alt="Hệ thống quản lý công văn" src="/LuanVanTotNghiep/images/banner.png"/></a>
+	<a href="${pageContext.request.contextPath}/service/login.do"><img alt="Hệ thống quản lý công văn" src="/LuanVanTotNghiep/images/banner.png"/></a>
 </div>
 </body>
 </html>
