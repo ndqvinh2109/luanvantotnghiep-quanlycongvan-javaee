@@ -123,6 +123,7 @@ padding:5px 5px 5px 5px;
 <script>
 
 $(document).ready(function(){
+	
 	var madokhan = null;
 	$('#table_inner tr').not(':first').bind('click',function(){
 		madokhan = $(this).attr('id');
@@ -131,7 +132,8 @@ $(document).ready(function(){
 		var giatridokhan = $(this).find("td").eq(1).html();
 		$('#tendokhan').val(tendokhan);
 		$('#giatricapdo').val(giatridokhan);
-	});
+	});    
+	
 	
 	
 	/* var getDoKhanList = function(){
@@ -159,6 +161,7 @@ $(document).ready(function(){
 	};
 	getDoKhanList(); */
 	
+	
 	$( "#dialog_them").dialog({
 		  autoOpen: false,
 	      resizable: true,
@@ -178,6 +181,7 @@ $(document).ready(function(){
 							if(result){
 								alert("Thêm thành công");
 								location.reload(true);
+								/* getDoKhanList(); */
 								
 							}
 							

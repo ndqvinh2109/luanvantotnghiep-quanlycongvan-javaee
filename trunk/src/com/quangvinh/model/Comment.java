@@ -82,8 +82,6 @@ public class Comment {
 		this.tacGia = tacGia;
 	}
 	@Temporal(TemporalType.DATE)
-	
-	
 	public Date getNgayGui() {
 		return ngayGui;
 	}

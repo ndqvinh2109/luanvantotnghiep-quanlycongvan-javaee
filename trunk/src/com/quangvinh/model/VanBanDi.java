@@ -41,6 +41,7 @@ public class VanBanDi extends VanBan{
 	@Temporal(TemporalType.DATE)
 	@Column(name="NGAY_DI")
 	private Date NgayDi;
+	
 	public VanBanDi(){}
 	
 	public VanBanDi(CapDoBaoMat capdobaomat, LinhVuc linhvuc,

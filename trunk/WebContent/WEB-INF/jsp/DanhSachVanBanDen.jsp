@@ -641,11 +641,12 @@ $('#phanxuly').button().click(function(){
 
 <div id="dialog-update" title="Chỉnh sửa công văn đến">
 	<form action="" method="post">
+		<input type="hidden" id="mavanban" value = "" readonly/>
 		<table>
-			<tr>
+			<!-- <tr>
 				<td>Mã văn bản</td>
 				<td><input type="text" id="mavanban" value = "" readonly/></td>
-			</tr>
+			</tr> -->
 			<tr>
 				<td>Số đến</td>
 				<td><input type="text" id="soden" value = "" readonly/></td>
@@ -817,11 +818,12 @@ $('#phanxuly').button().click(function(){
 </div>
 
 <div id="dialog_chitietvanban" title="Chi tiết văn bản">
+	<input type="hidden" id="mavanban1" value = "" readonly/>
 	<table>
-			<tr>
+			<!-- <tr>
 				<td>Mã văn bản</td>
 				<td><input type="text" id="mavanban1" value = "" readonly/></td>
-			</tr>
+			</tr> -->
 			<tr>
 				<td>Số đến</td>
 				<td><input type="text" id="soden1" value = "" readonly/></td>

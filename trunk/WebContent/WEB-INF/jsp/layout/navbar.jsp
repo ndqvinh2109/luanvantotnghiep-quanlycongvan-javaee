@@ -69,6 +69,10 @@
 					<li><a href="">Văn bản đến</a></li>
 					<li><a href="">Văn bản đi</a></li>
 				</ul>
+		<h3>Tiện ích</h3>
+				<ul class="menu">
+					<li><a href="${pageContext.request.contextPath}/service/guiTinNhanNoiBo">Phòng gửi tin nhắn nội bộ</a></li>
+				</ul>
 	</div>	
 </div>
 </body>

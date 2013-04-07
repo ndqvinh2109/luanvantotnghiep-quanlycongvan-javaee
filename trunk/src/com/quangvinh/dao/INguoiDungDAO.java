@@ -15,6 +15,7 @@ public interface INguoiDungDAO {
 	public NguoiDung getNguoiDungByUserName(String userName);
 	List<Roles> getRolesByUserName(String userName);
 	int getMaNguoiDungTheoUsername(String userName);
+	String getTenNguoiDungTheoUsername(String userName);
 	int getMaDonViTheoMaNguoiDung(int manguoidung);
 }
 

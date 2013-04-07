@@ -29,6 +29,17 @@ div#danhsachvanbantheottxl table tr:hover{
 	cursor:pointer;
 	
 }
+div#danhsachvanbantheottxl h3{
+	background: url(/LuanVanTotNghiep/images/titlebg.jpg) center left repeat-x;
+	height: 14px;
+	color: white;
+	font-family: Arial,Verdana,Sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 10px 20px;
+	margin: 0px auto 0px;
+	
+}
 
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
