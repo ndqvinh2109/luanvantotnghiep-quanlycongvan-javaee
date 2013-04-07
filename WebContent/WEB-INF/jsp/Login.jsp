@@ -21,12 +21,7 @@
 			contentType: "application/json",
 			success: function(data){
 				console.log(data);
-				//alert(data.numberVanBanXuLy);
-				$('#countdangchoxuly').text(data.numberVanBanXuLy);
-				$('#countvanbanchuatiepnhan').text(data.ListVanBanChuaTiepNhan.length);
-				$('#countvanbanchuaxuly').text(data.ListVanBanChuaXuLy.length);
-				$('#countvanbandangxuly').text(data.ListVanBanDangXuLy.length);
-				$('#countvanbanhoanthanh').text(data.ListVanBanHoanThanh.length);
+								
 				if(data.numberVanBanXuLy != 0){
 						
 				

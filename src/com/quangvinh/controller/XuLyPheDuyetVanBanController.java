@@ -67,7 +67,21 @@ public class XuLyPheDuyetVanBanController {
 		return map;
 	}
 	
-	
+	@RequestMapping("/showCount")
+	public @ResponseBody Map<String,Object> showCount(){
+		Map<String,Object> map = new HashMap<String,Object>();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String name = auth.getName();
+		int manguoidung = nguoidungService.getMaNguoiDungTheoUsername(name);
+		map.put("numberVanBanXuLy",buocxulyService.countBuocXuLyTheoMaNguoiDung(manguoidung, true, false));
+		map.put("ListVanBanChuaTiepNhan", vanbandenService.getVanBanDenChuaTiepNhan());
+		map.put("ListVanBanChuaXuLy",vanbandenService.getVanBanDenTheoTrangThai(1));
+		map.put("ListVanBanDangXuLy",vanbandenService.getVanBanDenTheoTrangThai(2));
+		map.put("ListVanBanHoanThanh",vanbandenService.getVanBanDenTheoTrangThai(3));
+		map.put("listRoles", nguoidungService.getRolesByUserName(name));
+		map.put("listVanBanDenChuaXuLy", vanbandenService.getVanBanDenChuaTiepNhan());
+		return map;
+	}
 	
 	@RequestMapping(value="/showcapnhatxuly/{mavanban}/{buoc}/{maquytrinh}",method=RequestMethod.GET)
 	public @ResponseBody Map<String, Object> updateNoiDungXuLy(

@@ -93,6 +93,7 @@ outline: 0 none;
 		$('tr').bind('click',function(){
 			$(this).addClass("hilightclick").siblings().removeClass("hilightclick"); 
 			$('#content_message').empty();
+			$('#manguoidung').val($(this).attr('id'));
 			$( "#dialog_guitinnhannoibo").dialog('open');
 			
 			return false;
@@ -102,17 +103,34 @@ outline: 0 none;
 		$( "#dialog_guitinnhannoibo").dialog({
 			  autoOpen: false,
 		      resizable: true,
-		      height:320,
+		      height:350,
 		      width:560,
 		      modal: true,
 		      buttons: {
 		    	  
 		       	'Gửi' : function(){
-		       		var nameNguoiDung = '${nameNguoiDung}';
+		       		var manguoidung = $('#manguoidung').val();
 		       		var noidung = $('#input_message').val();
-		       		$('#content_message').append(
-		            	'<tr><td style="color: red"><b>'+nameNguoiDung+'</b></td><td style="word-wrap: break-word;-ms-word-wrap: break-word;max-width: 440px;">'+noidung +'</td></tr>'
-		          	);
+		       		$.ajax({
+		       			url: '/LuanVanTotNghiep/service/addMessage/' + manguoidung + '/' + noidung,
+		       			type: 'POST',
+		       			contentType: 'text/html; charset=UTF-8',
+						data: null,
+						success: function(result){
+							if(result){
+								var nameNguoiDung = '${nameNguoiDung}';
+					       		
+					       		$('#content_message').prepend(
+					            	'<tr><td style="color: red"><b>'+nameNguoiDung+'</b></td><td style="word-wrap: break-word;-ms-word-wrap: break-word;max-width: 440px;">'+noidung +'</td></tr>'
+					          	);
+								
+							}
+							
+						}
+		       			
+		       		});
+		       		
+		       		
 		       		
 		       		
 		       		
@@ -146,12 +164,13 @@ outline: 0 none;
 		</table>
 		
 		<div id="dialog_guitinnhannoibo" title="Gửi tin nhắn">
-		
+		<input type="hidden" id="manguoidung" value="" />
+		<textarea id="input_message" placeholder="Nhập nội dung cần gửi"></textarea>
 			<table id="content_message">
 			
 			
 			</table>
-			<textarea id="input_message" placeholder="Nhập nội dung cần gửi"></textarea>
+			
 		</div>		
 	</div>
 	
