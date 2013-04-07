@@ -1,10 +1,15 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
+<link rel="stylesheet" type="text/css" href="/LuanVanTotNghiep/css/jquery-ui.css">
+<script src="/LuanVanTotNghiep/js/jquery-1.9.0.js"></script>
+<script src="/LuanVanTotNghiep/js/jquery-ui.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script>
@@ -13,6 +18,26 @@
 		      collapsible: true,
 		      heightStyle: "content"
 		    });
+		    
+		    $.ajax({
+				url:'/LuanVanTotNghiep/service/showCount',
+				type: 'GET',
+				dataType: "json",
+				contentType: "application/json",
+				success: function(data){
+					console.log(data);
+					
+					$('#countdangchoxuly').text(data.numberVanBanXuLy);
+					$('#countvanbanchuatiepnhan').text(data.ListVanBanChuaTiepNhan.length);
+					$('#countvanbanchuaxuly').text(data.ListVanBanChuaXuLy.length);
+					$('#countvanbandangxuly').text(data.ListVanBanDangXuLy.length);
+					$('#countvanbanhoanthanh').text(data.ListVanBanHoanThanh.length);
+					
+			}
+				
+			});
+		    
+		   
 		  });
 </script>
 

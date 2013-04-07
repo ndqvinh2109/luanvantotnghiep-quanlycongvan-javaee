@@ -8,7 +8,7 @@
 
             <http auto-config="true">
                         <intercept-url pattern="/index.jsp" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-                        <intercept-url pattern="/**" access="ROLE_XU_LY,ROLE_QUAN_TRI_HE_THONG,ROLE_VAN_THU" />
+                        <intercept-url pattern="/**" access="ROLE_XU_LY,ROLE_QUAN_TRI_HE_THONG,ROLE_VAN_THU,ROLE_LANH_DAO" />
                         
                         <intercept-url pattern="/admin/editUser.do" access="ROLE_ADMIN"  />
       					<intercept-url pattern="/admin/searchUsers.do" access="ROLE_ADMIN"  />
