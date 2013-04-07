@@ -188,10 +188,7 @@ height: 30px;
 width:240px;
 padding:0
 }
-#getMaHoSo{
 
-padding:10px 190px;
-}
 </style>
 <script>
 $(document).ready(function(){
@@ -486,10 +483,8 @@ $(document).ready(function(){
 		</div>
 		
 		<div id="dialog_themvanbanvaohoso" title="Thêm văn bản vào hồ sơ">
-			<div id="getMaHoSo">
-				<label>Mã hồ sơ</label>
-				<input type="text" id="getsohoso" value=""/>		
-			</div>	
+			<input type="hidden" id="getsohoso" value=""/>		
+			
 			<table class="ui-widget ui-widget-content">
 				<tr class="ui-widget-header">
 					<th>Trích yếu</th>

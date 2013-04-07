@@ -126,4 +126,15 @@ public class NguoiDungDAO implements INguoiDungDAO{
 		return madonvi;
 	}
 
+	@Override
+	public String getTenNguoiDungTheoUsername(String userName) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "select a.tenNguoiDung from NguoiDung a where a.userName = :userName";
+		Query query = session.createQuery(hql);
+		query.setString("userName", userName);
+		String tennguoidung = (String)query.uniqueResult();
+		return tennguoidung;
+	}
+
 }

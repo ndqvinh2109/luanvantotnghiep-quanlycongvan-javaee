@@ -18,6 +18,7 @@ import javax.persistence.Table;
 @Table(name="NGUOIDUNG")
 public class NguoiDung {
 	/*---------------------Relational Mapping----------------------------*/
+	
 	@OneToMany(mappedBy="nguoidung",fetch=FetchType.LAZY)
 	private List<Roles> roles = new ArrayList<Roles>(0);
 	
@@ -51,6 +52,18 @@ public class NguoiDung {
 		this.buoc = buoc;
 	}
 	
+	@OneToMany(mappedBy="nguoidung",fetch=FetchType.LAZY)
+	private List<Message> message = new ArrayList<Message>(0);
+		
+	public List<Message> getMessage() {
+		return message;
+	}
+
+	public void setMessage(List<Message> message) {
+		this.message = message;
+	}
+
+
 	@OneToMany(mappedBy="nguoidung",fetch=FetchType.LAZY)
 	private List<ChucVu> chucvu = new ArrayList<ChucVu>(0);
 	

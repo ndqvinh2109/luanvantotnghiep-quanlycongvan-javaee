@@ -309,11 +309,12 @@ width: 200px;
 
 	<div id="dialog_capnhatsodenngayden" title="Cập nhật thông tin văn bản đến qua mạng">
 		<form method="post" action="">
+			<input type="hidden" id="mavanban" value="" readonly/>
 			<table>
-				<tr>
+				<!-- <tr>
 					<td>Mã văn bản</td>
 					<td><input type="text" id="mavanban" value="" readonly/></td>
-				</tr>
+				</tr> -->
 				<tr>
 					<td>Số Đến</td>
 					<td><input type="text" id="soden" value="${maxsoden + 1}" readonly/></td>

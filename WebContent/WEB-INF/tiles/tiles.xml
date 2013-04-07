@@ -94,5 +94,9 @@
 <put-attribute name="body" value="/WEB-INF/jsp/DanhSachVanBanTheoTTXL.jsp" />
 </definition>
 
+<definition name="guitinnhannoibo" extends="base.definition">
+<put-attribute name="title" value="Phòng thảo luận nội bộ" />
+<put-attribute name="body" value="/WEB-INF/jsp/GuiTinNhanNoiBo.jsp"/>
+</definition>
 
 </tiles-definitions>

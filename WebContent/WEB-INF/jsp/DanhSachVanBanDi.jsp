@@ -237,8 +237,9 @@ border-collapse: collapse;
  }
 
 #dialog_capnhatnoinhan span{
-color:red;
+color:white;
 }
+
 #dialog_capnhatnoinhan table{
 border-collapse: collapse;
  }
@@ -621,7 +622,7 @@ $("#chitietvanbandi").button().click(function(){
 						});
 					}
 	    	 	  }); */
-	    	 	 var mavanban = $('.sokyhieuvanban').text();
+	    	 	 var mavanban = $('.sokyhieuvanban').val();
 	    	 	  
 	    	 	 
 	    	 	 $.ajax({
@@ -650,7 +651,7 @@ $("#chitietvanbandi").button().click(function(){
 	 }
 	 
 	 else{
-		$('.sokyhieuvanban').text(mavanban);
+		$('.sokyhieuvanban').val(mavanban);
 	 	$( "#dialog_capnhatnoinhan" ).dialog("open");
 	 }
 	 
@@ -713,11 +714,12 @@ $("#chitietvanbandi").button().click(function(){
 
 <div id="dialog-update" title="Chỉnh sửa công văn đi">
 	<form action="" method="post">
+		<input type="hidden" id="mavanban" value = "" readonly/>
 		<table>
-			<tr>
+			<!-- <tr>
 				<td>Mã văn bản</td>
 				<td><input type="text" id="mavanban" value = "" readonly/></td>
-			</tr>
+			</tr> -->
 			<tr>
 				<td>Số đi</td>
 				<td><input type="text" id="sodi" value = ""/></td>
@@ -855,11 +857,13 @@ $("#chitietvanbandi").button().click(function(){
 
 <div id="dialog-dinhkem" title="Đính kèm tập tin" >
 	<form:form method="post" action="savevanbandi.html" commandName="filedinhkem" enctype="multipart/form-data">
+    
+    <input type="hidden" name="mavanban" id="mavanbandinhkem" readonly/>
     <table>
-    	<tr>
+    	<!-- <tr>
     		<td>Mã văn bản</td>
     		<td><input type="text" name="mavanban" id="mavanbandinhkem" readonly/></td>
-    	</tr>
+    	</tr> -->
 	    <tr>
 	        <td><form:label path="tenFile">Tên tập tin</form:label></td>
 	        <td><form:input path="tenFile" /></td> 
@@ -889,11 +893,13 @@ $("#chitietvanbandi").button().click(function(){
 </div>
 
 <div id="dialog_chitietvanban" title="Chi tiết văn bản">
+	<input type="hidden" id="mavanban1" value = "" readonly/>
 	<table>
-			<tr>
+			
+			<!-- <tr>
 				<td>Mã văn bản</td>
 				<td><input type="text" id="mavanban1" value = "" readonly/></td>
-			</tr>
+			</tr> -->
 			<tr>
 				<td>Số đi</td>
 				<td><input type="text" id="sodi1" value = "" readonly/></td>
@@ -1032,7 +1038,7 @@ $("#chitietvanbandi").button().click(function(){
 </div>
 <div id="dialog_capnhatnoinhan" title="Cập nhật nơi nhận">
 	<ul>
-	    <li><a href="#tabs-1">Phòng Ban Trực Thuộc <span class="sokyhieuvanban" ></span></a></li>
+	    <li><a href="#tabs-1">Phòng Ban Trực Thuộc <span></span></a></li>
 	    <li><a href="#tabs-2">Đơn Vị Độc Lập</a></li>
 	</ul>
 	
@@ -1057,6 +1063,7 @@ $("#chitietvanbandi").button().click(function(){
 	
 	<div id="tabs-2">
 		<form action="" method="post">
+			<input type="hidden" class="sokyhieuvanban" value=""/>
 			<table>
 				<tr>
 					<th>Chọn</th>
