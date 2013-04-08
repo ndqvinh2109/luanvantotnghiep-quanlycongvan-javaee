@@ -52,12 +52,12 @@ public class GuiTinNhanNoiBoController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String name = auth.getName();
 		Message message = new Message();
-		
+		String tentacgia = nguoidungService.getTenNguoiDungTheoUsername(name);
 		message.setNguoidung(nguoidungService.findNguoiDungID(manguoidung));
 		message.setNoiDung(noidung);
 		message.setTacGia(name);
 		message.setThoiDiemGui(dateFormatted);
-		
+		message.setTenTacGia(tentacgia);
 		messageService.saveMessage(message);
 		
 		
@@ -65,4 +65,38 @@ public class GuiTinNhanNoiBoController {
 		
 		return true;
 	}
+	
+	@RequestMapping(value="/addMessageReply/{userName}/{noidung}",method=RequestMethod.POST)
+	public @ResponseBody boolean addMessageReply(@PathVariable("userName") String userName,
+			@PathVariable("noidung") String noidung){
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
+		Date date = new Date();
+		String dateString= dateFormat.format(date);
+		Date dateFormatted = null;
+		try {
+			dateFormatted = dateFormat.parse(dateString);
+		} catch (ParseException e) {
+			
+			e.printStackTrace();
+		}
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String name = auth.getName();
+		Message message = new Message();
+		String tentacgia = nguoidungService.getTenNguoiDungTheoUsername(name);
+		int manguoidung = nguoidungService.getMaNguoiDungTheoUsername(userName);
+		message.setNguoidung(nguoidungService.findNguoiDungID(manguoidung));
+		message.setNoiDung(noidung);
+		message.setTacGia(name);
+		message.setThoiDiemGui(dateFormatted);
+		message.setTenTacGia(tentacgia);
+		messageService.saveMessage(message);
+		
+		
+		System.out.println(dateString);
+		
+		return true;
+	}
+	
+	
 }

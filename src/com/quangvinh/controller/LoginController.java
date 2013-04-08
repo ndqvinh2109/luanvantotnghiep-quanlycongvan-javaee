@@ -24,6 +24,8 @@ public class LoginController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String name = auth.getName(); 
 		int manguoidung = nguoidungService.getMaNguoiDungTheoUsername(name);
+		String tennguoidung = nguoidungService.getTenNguoiDungTheoUsername(name);
+		map.put("nameNguoiDung",tennguoidung);
 		map.put("MessageListReadYet", messageService.getMessagesReadYet(false,manguoidung));
 		
 		return "trangchu";
