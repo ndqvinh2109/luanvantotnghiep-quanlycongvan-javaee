@@ -179,7 +179,7 @@ outline: 0 none;
 			return false;
 		});
 		
-	});
+		});
 	
 </script>
 </head>
