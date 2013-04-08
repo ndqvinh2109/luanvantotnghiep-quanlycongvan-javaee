@@ -114,13 +114,14 @@ public class BuocXuLyDAO implements IBuocXuLyDAO{
 	}
 
 	@Override
-	public long countBuocXuLyTheoMaQuyTrinh(int maquytrinh) {
+	public long countBuocXuLyTheoMaQuyTrinh(int maquytrinh,int mavanban) {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "select count(*) as countBuoc " +
 				"from BuocXuLyPheDuyetVanBan a " +
-				"where a.pkBuocXuLy.maQuyTrinh = :maquytrinh";
+				"where a.pkBuocXuLy.maQuyTrinh = :maquytrinh and a.pkBuocXuLy.maVanBan = :mavanban";
 		Query query = session.createQuery(hql);
 		query.setInteger("maquytrinh",maquytrinh);
+		query.setInteger("mavanban",mavanban);
 		long countbuoc = 0;
 		if(query.uniqueResult() != null)
 		countbuoc = (long) query.uniqueResult();

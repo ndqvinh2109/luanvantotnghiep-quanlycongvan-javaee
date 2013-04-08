@@ -46,7 +46,7 @@
 						success: function(data){
 							if(data != 0){
 								
-								alert("Thanh cong roi");
+								location.reload('true');
 							}
 							
 						}
@@ -231,8 +231,8 @@ width: 275px;
 		</div>
 		<table class="ui-widget ui-widget-content">
 				<tr class="ui-widget-header">
+					<th>Số Đến</th>
 					<th>Ngày Đến</th>
-				    <th>Số Đến</th>
 				    <th>Ngày Ban Hành</th>
 				    <th>Trích Yếu Nội Dung</th>
 				    <th>Mã Văn Bản</th>
@@ -240,8 +240,8 @@ width: 275px;
 		<c:forEach var="buocxuly" items="${buocxulyList}">
 			<c:if test="${buocxuly.valueChuyen == true && buocxuly.valueXuLy == false}">
 				<tr id="${buocxuly.buoc.pkQuyTrinh.soThuTu}" class="${buocxuly.buoc.pkQuyTrinh.maQuyTrinh}">
-					<td>${buocxuly.vanban.ngayDen}</td>
 					<td>${buocxuly.vanban.soDen}</td>
+					<td>${buocxuly.vanban.ngayDen}</td>
 					<td>${buocxuly.vanban.ngayBanHanh}</td>
 					<td>${buocxuly.vanban.trichYeu}</td>
 					<td>${buocxuly.vanban.maVanBan}</td>

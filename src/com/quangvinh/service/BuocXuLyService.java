@@ -69,9 +69,9 @@ public class BuocXuLyService implements IBuocXuLyService{
 
 	@Override
 	@Transactional
-	public long countBuocXuLyTheoMaQuyTrinh(int maquytrinh) {
+	public long countBuocXuLyTheoMaQuyTrinh(int maquytrinh,int mavanban) {
 		
-		return buocxulyDao.countBuocXuLyTheoMaQuyTrinh(maquytrinh);
+		return buocxulyDao.countBuocXuLyTheoMaQuyTrinh(maquytrinh,mavanban);
 	}
 
 	@Override
