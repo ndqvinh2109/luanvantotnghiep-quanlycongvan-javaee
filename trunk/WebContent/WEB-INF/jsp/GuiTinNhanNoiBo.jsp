@@ -13,6 +13,12 @@
 <script src="/LuanVanTotNghiep/js/jquery-ui.js"></script>
 </head>
 <style>
+.ui-dialog-titlebar {
+	background: url(/LuanVanTotNghiep/images/dialog.png) center left repeat-x;
+	color: #ffffff;
+	font-family: Arial,Verdana,Sans-serif;
+	border: 1px solid #ffb053;
+}
 	div#guiTinNhanNoiBo h3{
 	background: url(/LuanVanTotNghiep/images/titlebg.jpg) center left repeat-x;
 	height: 14px;
@@ -105,7 +111,7 @@ outline: 0 none;
 		      resizable: true,
 		      height:350,
 		      width:560,
-		      modal: true,
+		      modal: false,
 		      buttons: {
 		    	  
 		       	'Gửi' : function(){

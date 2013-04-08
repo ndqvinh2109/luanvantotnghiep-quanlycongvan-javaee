@@ -10,4 +10,5 @@ public interface IMessageDAO {
 	List<Message> getMessages();
 	Message findMessageID(int id);
 	List<Message> getMessagesReadYet(boolean isRead,int manguoidung);
+	
 }

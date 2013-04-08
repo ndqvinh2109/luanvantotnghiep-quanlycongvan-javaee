@@ -39,6 +39,8 @@ public class Message {
 	private String noiDung;
 	@Column(name="TAC_GIA")
 	private String tacGia;
+	@Column(name="TEN_TAC_GIA")
+	private String tenTacGia;
 	@Column(name="NGAY_GUI")
 	private Date thoiDiemGui;
 	@Column(name="IS_READ",columnDefinition="boolean default false")
@@ -47,13 +49,16 @@ public class Message {
 	public Message(){}
 
 	
+	
+
 	public Message(NguoiDung nguoidung, int maMessage, String noiDung,
-			String tacGia, Date thoiDiemGui, boolean isRead) {
+			String tacGia, String tenTacGia, Date thoiDiemGui, boolean isRead) {
 		super();
 		this.nguoidung = nguoidung;
 		this.maMessage = maMessage;
 		this.noiDung = noiDung;
 		this.tacGia = tacGia;
+		this.tenTacGia = tenTacGia;
 		this.thoiDiemGui = thoiDiemGui;
 		this.isRead = isRead;
 	}
@@ -96,6 +101,14 @@ public class Message {
 
 	public void setThoiDiemGui(Date thoiDiemGui) {
 		this.thoiDiemGui = thoiDiemGui;
+	}
+
+	public String getTenTacGia() {
+		return tenTacGia;
+	}
+
+	public void setTenTacGia(String tenTacGia) {
+		this.tenTacGia = tenTacGia;
 	}
 	
 	
