@@ -33,11 +33,23 @@ public class Roles {
 	private int maRoles;
 	@Column(name="TEN_ROLES")
 	private String tenRoles;
+	@Column(name="TEN_ROLES_CHI_TIET")
+	private String tenRolesChiTiet;
+	
+	
 	public Roles(){}
 	
 	
-
 	
+	
+	public Roles(NguoiDung nguoidung, int maRoles, String tenRoles,
+			String tenRolesChiTiet) {
+		super();
+		this.nguoidung = nguoidung;
+		this.maRoles = maRoles;
+		this.tenRoles = tenRoles;
+		this.tenRolesChiTiet = tenRolesChiTiet;
+	}
 	public int getMaRoles() {
 		return maRoles;
 	}
@@ -50,6 +62,12 @@ public class Roles {
 	}
 	public void setTenRoles(String tenRoles) {
 		this.tenRoles = tenRoles;
+	}
+	public String getTenRolesChiTiet() {
+		return tenRolesChiTiet;
+	}
+	public void setTenRolesChiTiet(String tenRolesChiTiet) {
+		this.tenRolesChiTiet = tenRolesChiTiet;
 	}
 	
 }

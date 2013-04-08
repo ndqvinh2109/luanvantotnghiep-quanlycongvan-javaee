@@ -10,10 +10,46 @@
 <script src="/LuanVanTotNghiep/js/jquery-ui.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+div#login-info {
+	color: #eee;
+	font-weight: bold;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	padding: 5px 10px;
+}
+
+span.username_banner {
+	color: #FF0019;
+}
+
+}
+</style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$.ajax({
+			url: '/LuanVanTotNghiep/service/showUsername',
+			type: 'GET',
+			data:null,
+			success: function(data){
+				console.log(data.userName);
+				$('.username_banner').text(data.userName);
+			}
+		});
+		
+		
+		
+	});
+
+</script>
 </head>
 <body>
 <div id="banner">
 	<a href="${pageContext.request.contextPath}/service/login.do"><img alt="Hệ thống quản lý công văn" src="/LuanVanTotNghiep/images/banner.png"/></a>
+	<div id="login-info">
+	<span>Xin chào <span class="username_banner"></span></span>
+	</div>
 </div>
 </body>
 </html>
