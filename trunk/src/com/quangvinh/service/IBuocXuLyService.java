@@ -13,7 +13,7 @@ public interface IBuocXuLyService {
 	List<Buoc> getBuocXuLyPheDuyetTrongQuyTrinh(int MaQuyTrinh);
 	List<BuocXuLyPheDuyetVanBan> getBuocXuLyTheoMaNguoiDung(int manguoidung);
 	BuocXuLyPheDuyetVanBan getBuocXuLyTheoVbanBuoc(int mavanban,int buoc);
-	long countBuocXuLyTheoMaQuyTrinh(int maquytrinh);
+	long countBuocXuLyTheoMaQuyTrinh(int maquytrinh,int mavanban);
 	int updateNoiDungAndValueXuLy(int mavanban,int sothutu, String noidungxuly,boolean valueXuLy);
 	int updateNoiDungAndValueChuyen(int mavanban,int sothutu,boolean valueChuyen);
 	boolean checkExistVanBanTrongBuocXuLy(int mavanban);

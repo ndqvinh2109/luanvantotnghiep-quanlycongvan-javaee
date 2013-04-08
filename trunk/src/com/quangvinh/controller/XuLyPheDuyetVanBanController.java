@@ -96,12 +96,15 @@ public class XuLyPheDuyetVanBanController {
 			map.put("mavanban", buocxuly.getVanban().getMaVanBan());
 			map.put("maquytrinh", buocxuly.getPkBuocXuLy().getMaQuyTrinh());
 			int buocxlchu = buocxuly.getPkBuocXuLy().getSoThuTu();
-			if(buocxlchu == buocxulyService.countBuocXuLyTheoMaQuyTrinh(maquytrinh)){
+			System.out.println("fff " + buocxlchu);
+			System.out.println("fffrr " + buocxulyService.countBuocXuLyTheoMaQuyTrinh(maquytrinh,mavanban));
+			if(buocxlchu == buocxulyService.countBuocXuLyTheoMaQuyTrinh(maquytrinh,mavanban)){
 				map.put("trangthaixuly",3);
 			}
 			else
 			{
-			map.put("trangthaixuly", 2);
+				
+				map.put("trangthaixuly", 2);
 			}
 			
 		
@@ -120,7 +123,7 @@ public class XuLyPheDuyetVanBanController {
 		int result = buocxulyService.updateNoiDungAndValueXuLy(mavanban, buoc, noidungxuly, true);
 		int ttxl;
 		int capnhatvaluechuyen = 0;
-		if(buoc == buocxulyService.countBuocXuLyTheoMaQuyTrinh(maquytrinh)){
+		if(buoc == buocxulyService.countBuocXuLyTheoMaQuyTrinh(maquytrinh,mavanban)){
 			ttxl = 3;
 			
 		}
