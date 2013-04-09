@@ -261,24 +261,50 @@ border-collapse: collapse;
 }
 
 
-ul.pageNav{
-height: 20px;
-overflow: hidden;
-padding: 0px;
-margin: 12px 0px 5px 0px;
-}
+
 
 ul.pageNav li{
-display: inline;
-float: left;
-margin: 0px 5px 0px 0px;
-padding: 5px 5px;
-background: #8AB1FE;
+list-style: none; 
+float: left; 
+margin-right: 5px; 
+border:solid 1px #dddddd;
+color:#0063DC; 
+}
+ul.pageNav li a{
+	text-decoration: none;
+	display: block;
+	padding: 3px 8px;
+}
+
+ul.pageNav li:hover{
+color:#FF0084; 
+cursor: pointer; 
+
+}
+
+ul.pageNav {
+	height: 20px;
+	padding: 0px;
+	margin: 12px 0px 5px 0px;
 }
 </style>
 
 <script type="text/javascript">
 $(document).ready(function(){
+		
+	$("#accordion li").click(function(){
+		
+		$("#accordion li")
+		.css({'border' : 'solid #dddddd 1px'})
+		.css({'color' : '#0063DC'});
+
+		$(this)
+		.css({'color' : '#FF0084'})
+		.css({'border' : 'none'});
+		
+	});
+		
+	
 	$( "#navbar").accordion({
 	      collapsible: true,
 	      heightStyle: "content",

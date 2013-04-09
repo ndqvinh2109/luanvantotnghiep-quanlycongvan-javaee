@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.quangvinh.model.CapDoKhan;
+
 import com.quangvinh.service.ICapDoKhanService;
 
 @Controller
@@ -45,6 +46,9 @@ public class DanhMucCapDoKhanController {
 		return (oldSize < capdokhanService.getCapDoKhan().size());	
 		
 	}
+	
+	
+	
 	
 	@RequestMapping("/suaCapDoKhan/{madokhan}/{tendokhanthem}/{giatricapdothem}")
 	public @ResponseBody boolean suaCapDoKhan(@PathVariable("madokhan") int madokhan,

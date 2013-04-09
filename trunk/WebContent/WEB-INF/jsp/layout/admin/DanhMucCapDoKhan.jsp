@@ -162,6 +162,9 @@ $(document).ready(function(){
 	getDoKhanList(); */
 	
 	
+	
+	
+	
 	$( "#dialog_them").dialog({
 		  autoOpen: false,
 	      resizable: true,
@@ -187,6 +190,7 @@ $(document).ready(function(){
 							
 						}
 		       		});
+		       		
 		   	},
 	        Cancel: function() {
 	          $( this ).dialog( "close" );
@@ -194,6 +198,10 @@ $(document).ready(function(){
 	      }
 	      
 	    });
+	
+	
+	
+	
 	
 	/* $( "#dialog_sua").dialog({
 		  autoOpen: false,
