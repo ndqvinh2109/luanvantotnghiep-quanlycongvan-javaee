@@ -81,4 +81,16 @@ public class FileDinhKemDAO implements IFileDinhKemDAO{
 		return list;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<FileDinhKem> getFileDinhKemTheoSoKyHieu(String sokyhieu) {
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from FileDinhKem a where a.vanban.soKyHieuVanBan = :sokyhieu";
+		Query query = session.createQuery(hql);
+		query.setString("sokyhieu", sokyhieu);
+		List<FileDinhKem> list = query.list();
+		return list;
+		
+	}
+
 }

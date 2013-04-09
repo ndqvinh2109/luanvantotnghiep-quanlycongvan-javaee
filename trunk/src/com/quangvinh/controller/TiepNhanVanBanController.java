@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.quangvinh.model.CapDoBaoMat;
 import com.quangvinh.model.CapDoKhan;
 import com.quangvinh.model.DonVi;
+import com.quangvinh.model.FileDinhKem;
 import com.quangvinh.model.HoSoLuuTru;
 import com.quangvinh.model.LinhVuc;
 import com.quangvinh.model.LoaiVanBan;
+import com.quangvinh.model.VanBan;
 import com.quangvinh.model.VanBanDen;
+import com.quangvinh.model.VanBanDi;
 import com.quangvinh.model.ViTriLuuTru;
 import com.quangvinh.service.IBuocXuLyService;
 import com.quangvinh.service.ICapDoBaoMatService;
@@ -206,14 +210,29 @@ public class TiepNhanVanBanController {
 			/**
 			 * Save VanBanDen with contructor function many parameters
 			 */
-			
+			List<FileDinhKem> filedinhkemList = filedinhkemService.getFileDinhKemTheoSoKyHieu(sovakyhieu);
 			VanBanDen vanbanden= new VanBanDen(ocapdobaomat, olinhvuc, oloaivanban,
-					ocapdokhan, ovitriluutru, ohosoluutru, mavanban, sovakyhieu, dngaybanhanh,
-					dngayhieuluc, dngayketthuc, trichyeu, nguoiky, sotrang,
-					tukhoa, dngaynhapmay, trangthaixuly, odonvi, soden, dngayden);
+					ocapdokhan, ovitriluutru, ohosoluutru, mavanban, sovakyhieu,
+					dngaybanhanh, dngayhieuluc, dngayketthuc, trichyeu, nguoiky,
+					sotrang, tukhoa, dngaynhapmay, trangthaixuly, odonvi, soden, dngayden);
 			vanbandenService.updateVanBanDen(vanbanden);
+			
+			VanBan vanban =  vanbanService.findVanBanID(vanbanden.getMaVanBan());
+			for (FileDinhKem filedinhkem: filedinhkemList){
+				FileDinhKem filedinhkemtemp= new FileDinhKem();
+				filedinhkemtemp.setKieuTapTin(filedinhkem.getKieuTapTin());
+				filedinhkemtemp.setMoTa(filedinhkem.getMoTa());
+				filedinhkemtemp.setNoiDung(filedinhkem.getNoiDung());
+				filedinhkemtemp.setTenFile(filedinhkem.getTenFile());
+				filedinhkemtemp.setVanban(vanban);
+				filedinhkemService.addFileDinhKem(filedinhkemtemp);
+			}
 			int result1 = vanbanService.capNhatBooleanTiepNhan(true, mavanban);
 			System.out.println(result1);
+			
+			
+			
+			
 			return true;
 			
 						

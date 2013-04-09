@@ -278,6 +278,35 @@ public class VanBan {
 		this.ngayNhapMay = ngayNhapMay;
 		this.trangThaiXuLy = trangThaiXuLy;
 	}
+	
+	
+	public VanBan(CapDoBaoMat capdobaomat, LinhVuc linhvuc,
+			LoaiVanBan loaivanban, CapDoKhan capdokhan,
+			ViTriLuuTru vitriluutru, HoSoLuuTru hosoluutru,
+			List<FileDinhKem> filedinhkem, int maVanBan, String soKyHieuVanBan,
+			Date ngayBanHanh, Date ngayHieuLuc, Date ngayHetHieuLuc,
+			String trichYeu, String nguoiKy, int soTrang, String tuKhoa,
+			Date ngayNhapMay, int trangThaiXuLy) {
+		super();
+		this.capdobaomat = capdobaomat;
+		this.linhvuc = linhvuc;
+		this.loaivanban = loaivanban;
+		this.capdokhan = capdokhan;
+		this.vitriluutru = vitriluutru;
+		this.hosoluutru = hosoluutru;
+		this.filedinhkem = filedinhkem;
+		this.maVanBan = maVanBan;
+		this.soKyHieuVanBan = soKyHieuVanBan;
+		this.ngayBanHanh = ngayBanHanh;
+		this.ngayHieuLuc = ngayHieuLuc;
+		this.ngayHetHieuLuc = ngayHetHieuLuc;
+		this.trichYeu = trichYeu;
+		this.nguoiKy = nguoiKy;
+		this.soTrang = soTrang;
+		this.tuKhoa = tuKhoa;
+		this.ngayNhapMay = ngayNhapMay;
+		this.trangThaiXuLy = trangThaiXuLy;
+	}
 	public int getMaVanBan() {
 		return maVanBan;
 	}
