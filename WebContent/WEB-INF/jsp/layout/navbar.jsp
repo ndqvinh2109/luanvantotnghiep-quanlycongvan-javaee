@@ -16,7 +16,7 @@
 		$(function() {
 		    $( "#navbar" ).accordion({
 		      collapsible: true,
-		      heightStyle: "content"
+		      active:0
 		    });
 		    
 		    $.ajax({
@@ -47,7 +47,7 @@
 	<div id ="navbar">
 		<h3>Thanh nhắc việc</h3>
 			
-				<ul class="menu">
+				<ul class="menu" id="thanhnhacviecnavbar">
 					<li><a href="${pageContext.request.contextPath}/service/loadXuLyPheDuyetVanBan">Đang chờ xử lý<span id="countdangchoxuly"></span></a></li>
 					<li><a href="${pageContext.request.contextPath}/service/tiepNhanVanBanDen">Văn bản đến qua mạng<span id="countvanbanchuatiepnhan"></span></a>
 					<li><a href="${pageContext.request.contextPath}/service/DanhSachVanBanTheoTTXL/1">Chưa xử lý<span id="countvanbanchuaxuly"></span></a></li>
@@ -58,44 +58,44 @@
 				</ul>
 				
 			
-		<h3>Văn bản đến</h3>	
+		<h3 id="tt">Văn bản đến</h3>	
 			
-				<ul class="menu">
+				<ul class="menu" id="vanbandennavbar">
 					<li><a href="${pageContext.request.contextPath}/service/nhapvanbanden">Nhập công văn đến</a></li>
-					<li><a href="${pageContext.request.contextPath}/service/showvanbanden">Danh mục công văn đến</a></li>
+					<li><a href="${pageContext.request.contextPath}/service/showvanbanden/1">Danh mục công văn đến</a></li>
 					<li><a href="${pageContext.request.contextPath}/service/nhapbuocthuocquytrinh">Nhập các bước trong quy trình</a></li>
 					<li><a href="${pageContext.request.contextPath}/service/timKiemVanBanDen">Tra cứu công văn đến</a></li>
 				</ul>
 			
 		<h3>Văn bản đi</h3>
 			
-				<ul class="menu">
+				<ul class="menu" id="vanbandinavbar">
 					<li><a href="${pageContext.request.contextPath}/service/nhapvanbandi">Nhập công văn đi</a></li>
 					<li><a href="${pageContext.request.contextPath}/service/showvanbandi">Danh mục công văn đi</a></li>
 					<li><a href="">Tra cứu công văn đi</a></li>
 				</ul>
 		
 		<h3>Văn bản nội bộ</h3>	
-				<ul class="menu">
+				<ul class="menu" id="vanbannoibonavbar">
 					<li><a href="">Nhập văn bản nội bộ</a></li>
 					<li><a href="">Danh mục văn bản nội bộ</a></li>
 					<li><a href="">Tra cứu văn bản nội bộ</a></li>
 				</ul>
 		<h3>Hồ sơ lưu trữ</h3>
 			
-				<ul class="menu">
+				<ul class="menu" id="hosoluutrunavbar">
 					<li><a href="${pageContext.request.contextPath}/service/nhapHoSoLuuTru">Nhập hồ sơ lưu trữ</a></li>
 					<li><a href="">Xem hồ sơ lưu trữ</a></li>
 					<li><a href="">Nhập hồ sơ kết thúc</a></li>
 					
 				</ul>
 		<h3>Báo cáo</h3>
-				<ul class="menu">
+				<ul class="menu" id="baocaonavbar">
 					<li><a href="">Văn bản đến</a></li>
 					<li><a href="">Văn bản đi</a></li>
 				</ul>
 		<h3>Tiện ích</h3>
-				<ul class="menu">
+				<ul class="menu" id="tienichnavbar">
 					<li><a href="${pageContext.request.contextPath}/service/guiTinNhanNoiBo">Phòng gửi tin nhắn nội bộ</a></li>
 				</ul>
 	</div>	

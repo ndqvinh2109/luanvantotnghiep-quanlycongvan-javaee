@@ -87,7 +87,7 @@
 						contentType: 'text/html; charset=UTF-8',
 						success: function(result){
 							if(result){
-								alert("Thành công");
+								
 								
 							}
 							
@@ -95,6 +95,8 @@
 					}); 
 					
 				});
+			  alert("Phân xử lý thành công");
+			  location.reload(true);
 			  return false;
 		  });
 		  

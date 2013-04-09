@@ -73,10 +73,18 @@ public class DanhSachVanBanDenController {
 	@Autowired
 	private IVanBanDiService vanbandiService;
 	
-	@RequestMapping("/showvanbanden")
-	public String showVanBanDen(Map<String,Object> map){
+	@RequestMapping("/showvanbanden/{page}")
+	public String showVanBanDen(Map<String,Object> map,@PathVariable("page") int page){
 		List<VanBanDen> vanbandens = vanbandenService.getVanBanDen();
-		map.put("vanbandenList",vanbandens);
+		int per_page = 3;
+		int count = vanbandens.size();
+		int pages = Math.round(count/per_page);
+		if((count%per_page)!= 0){
+			pages ++;
+			
+		}
+		
+		map.put("vanbandenList",vanbandenService.getVanBanDenPaging(page));
 		map.put("donViList",donviService.getDonVi());
 		map.put("loaiVanBanList", loaivanbanService.getLoaiVanBan());
 		map.put("viTriLuuTruList", vitriluutruService.getViTriLuuTru());
@@ -85,6 +93,8 @@ public class DanhSachVanBanDenController {
 		map.put("capDoBaoMatList", capdobaomatService.getCapDoBaoMat());
 		map.put("hoSoLuuTruList", hosoluutruService.getHoSoLuuTru());
 		map.put("filedinhkem",new FileDinhKem());
+		map.put("pages", pages);
+		/*System.out.println(pages);*/
 		return "danhsachvanbanden";
 	}
 	

@@ -299,6 +299,11 @@ margin: 5px 0 0 50px;
 </style>
 <script type="text/javascript">
 		$(document).ready(function(){
+			$( "#navbar" ).accordion({
+			      collapsible: true,
+			      heightStyle: "content",
+			      active: 2
+			    });
 			$('#themcongvan').click(function(){
 				/* var sodi = $('#sodi').val();
 				var ngaydi=$('#ngaydi').val(); */

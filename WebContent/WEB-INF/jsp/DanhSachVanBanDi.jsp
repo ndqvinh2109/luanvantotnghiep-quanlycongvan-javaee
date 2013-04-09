@@ -275,6 +275,11 @@ border-collapse: collapse;
 <script type="text/javascript">
 $(document).ready(function(){
 	
+	$( "#navbar" ).accordion({
+	      collapsible: true,
+	      heightStyle: "content",
+	      active: 2
+	 });
 	var mavanban = null;
 	var sodi = null;
 	$('tr').not(':first').bind('click',function(){

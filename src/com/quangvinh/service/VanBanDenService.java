@@ -114,4 +114,11 @@ public class VanBanDenService implements IVanBanDenService{
 		return vanbandenDao.getVanBanDenTheoTrangThai(trangthai);
 	}
 
+	@Override
+	@Transactional
+	public List<VanBanDen> getVanBanDenPaging(int page) {
+	
+		return vanbandenDao.getVanBanDenPaging(page);
+	}
+
 }

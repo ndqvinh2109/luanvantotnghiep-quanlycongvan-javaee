@@ -96,11 +96,19 @@ outline: 0 none;
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
+		$( "#navbar" ).accordion({
+		      collapsible: true,
+		      heightStyle: "content",
+		      active: 6
+		    });
 		$('tr').bind('click',function(){
 			$(this).addClass("hilightclick").siblings().removeClass("hilightclick"); 
 			$('#content_message').empty();
+			
+			var htmlPrepare = '<input type="hidden" id="manguoidung" value="" /><textarea id="input_message" placeholder="Nhập nội dung cần gửi"></textarea><table id="content_message"></table></div>';
+			$("#dialog_guitinnhannoibo").html(htmlPrepare);
 			$('#manguoidung').val($(this).attr('id'));
-			$( "#dialog_guitinnhannoibo").dialog('open');
+			$(	"#dialog_guitinnhannoibo").dialog('open');
 			
 			return false;
 		});
@@ -145,7 +153,20 @@ outline: 0 none;
 		        Cancel: function() {
 		          $( this ).dialog( "close" );
 		        }
+		        
 		      },
+		      show: {
+		          effect: "clip",
+		          duration: 300
+		        },
+		      hide: {
+			          effect: "clip",
+			          duration: 300
+			        },
+			        position: {
+		                my: "left+110 bottom+300",
+		                of: window
+		            }
 		      
 		    });
 	});
@@ -161,21 +182,23 @@ outline: 0 none;
 			    <th>Người dùng</th>
 			</tr>
 			<c:forEach items="${nguoidungList}" var="nguoidung">
-			    <tr id = "${nguoidung.maNguoiDung}">
-			    	<td>${nguoidung.getTenNguoiDung()}</td>
-			   </tr>
+				<c:if test="${nguoidung.getUserName() != userName}">
+				    <tr id = "${nguoidung.maNguoiDung}">
+				    	<td>${nguoidung.getTenNguoiDung()}</td>
+				   </tr>
+			   </c:if>
 			   
 			</c:forEach>
 			
 		</table>
 		
 		<div id="dialog_guitinnhannoibo" title="Gửi tin nhắn">
-		<input type="hidden" id="manguoidung" value="" />
+		<!-- <input type="hidden" id="manguoidung" value="" />
 		<textarea id="input_message" placeholder="Nhập nội dung cần gửi"></textarea>
 			<table id="content_message">
 			
 			
-			</table>
+			</table> -->
 			
 		</div>		
 	</div>

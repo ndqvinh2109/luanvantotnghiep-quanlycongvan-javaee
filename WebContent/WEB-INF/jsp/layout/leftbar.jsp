@@ -12,6 +12,7 @@
 <script src="/LuanVanTotNghiep/js/jquery-1.9.0.js"></script>
 <script src="/LuanVanTotNghiep/js/jquery-ui.js"></script>
 <style>
+
 .ui-dialog-titlebar {
 	background: url(/LuanVanTotNghiep/images/dialog.png) center left repeat-x;
 	color: #ffffff;
@@ -173,7 +174,8 @@ outline: 0 none;
 		      
 		    });
 		$('#evtMessage').click(function(){
-			
+			var htmlPrepare = '<input type="hidden" id="userName_leftbar" value="" /><textarea id="input_message_leftbar" placeholder="Nhập nội dung cần gửi"></textarea><table id="content_message_leftbar"></table>';
+			$('#dialog_guitinnhannoiboleftbar').html(htmlPrepare);
 			$( "#nav_dialog_message_leftbar").dialog('open');
 			
 			return false;
@@ -204,14 +206,7 @@ outline: 0 none;
 		
 		
 		<div id="dialog_guitinnhannoiboleftbar" title="Gửi tin nhắn">
-		<input type="hidden" id="userName_leftbar" value="" />
-		<textarea id="input_message_leftbar" placeholder="Nhập nội dung cần gửi"></textarea>
 		
-			
-			<table id="content_message_leftbar">
-			
-			
-			</table>
 			
 		</div>		
 	</div>
