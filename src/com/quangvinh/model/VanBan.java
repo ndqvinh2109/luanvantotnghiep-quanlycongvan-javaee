@@ -358,6 +358,13 @@ public class VanBan {
 	public void setTrangThaiXuLy(int trangThaiXuLy) {
 		this.trangThaiXuLy = trangThaiXuLy;
 	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	
 	
 	
 }

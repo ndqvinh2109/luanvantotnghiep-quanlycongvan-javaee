@@ -217,10 +217,14 @@ public class VanBanDenDAO implements IVanBanDenDAO {
 		String hql = "from VanBanDen";
 		Query query = session.createQuery(hql);
 		/*String hql = "from VanBanDen a where a.enabled = true";
-		Query query = session.createQuery(hql);
-		List<VanBanDen> list = query.list();*/
+		Query query = session.createQuery(hql);*/
+		
 		query.setFirstResult(start);
 		query.setMaxResults(per_page);
+		
+		/*String hql = "from VanBanDen a where a.enabled = true";
+		Query query = session.createQuery(hql);
+		*/
 		List<VanBanDen> list = query.list();
 		return list;
 		

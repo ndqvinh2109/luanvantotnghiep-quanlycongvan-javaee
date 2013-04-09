@@ -637,6 +637,7 @@ $("#chitietvanbandi").button().click(function(){
 						success:function(result){
 							if(result){
 								alert("Cập nhật nơi nhận thành công");	
+								location.reload(true);
 							}
 							
 						}

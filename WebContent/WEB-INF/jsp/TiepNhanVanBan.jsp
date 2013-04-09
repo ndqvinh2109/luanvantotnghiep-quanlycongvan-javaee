@@ -245,6 +245,10 @@ width: 200px;
 					$('#capdokhan1').val(data.capdokhan);
 					$('#capdobaomat1').val(data.capdobaomat);
 					$('#sohoso1').val(data.sohoso);
+					
+					$('#soden').val(data.vanbandenupdate.soDen);
+					$('#ngayden').val(data.vanbandenupdate.ngayDen);
+					
 					var ttxl = data.trangthaixuly;
 					if(ttxl == 1){
 						$('#radio11').attr('checked', true);
@@ -317,7 +321,7 @@ width: 200px;
 				</tr> -->
 				<tr>
 					<td>Số Đến</td>
-					<td><input type="text" id="soden" value="${maxsoden + 1}" readonly/></td>
+					<td><input type="text" id="soden" value="" readonly/></td>
 				</tr>
 				<tr>
 					<td>Ngày Đến</td>

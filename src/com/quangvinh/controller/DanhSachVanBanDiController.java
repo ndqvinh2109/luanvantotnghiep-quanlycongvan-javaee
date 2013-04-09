@@ -353,7 +353,8 @@ public class DanhSachVanBanDiController {
 				vanban.getTrangThaiXuLy(), donvi);
 		vanbandenService.saveVanBanDen(vanbanden);
 		
-		
+		VanBanDi vanbandi = new VanBanDi();
+		System.out.println(vanbandi.getSoDi());
 		return true;
 	
 	}
