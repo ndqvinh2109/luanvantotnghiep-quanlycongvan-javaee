@@ -192,6 +192,11 @@ padding:0
 </style>
 <script>
 $(document).ready(function(){
+	$( "#navbar" ).accordion({
+	      collapsible: true,
+	      heightStyle: "content",
+	      active: 4
+	    });
 	var sohoso = null;
 		$('#table_nhapHoSo tr').not(':first').bind('click',function(){
 		sohoso = $(this).attr('id');

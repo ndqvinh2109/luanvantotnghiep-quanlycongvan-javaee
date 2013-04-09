@@ -17,9 +17,9 @@
 		var maquytrinh = null;
 		var mavanban = null;
 		$('tr').bind('click',function(){
-			buoc = $(this).attr('id');
+			mavanban = $(this).attr('id');
 			maquytrinh = $(this).attr('class');
-			mavanban = $(this).find("td").eq(4).html();
+			buoc = $(this).find("td").eq(0).html();
 			/* alert($(this).attr('id'));
 			alert($(this).attr('class')); */
 			$(this).addClass("hilightclick").siblings().removeClass("hilightclick"); 
@@ -45,7 +45,7 @@
 						data: null,
 						success: function(data){
 							if(data != 0){
-								
+								alert("Xử lý thành công");
 								location.reload('true');
 							}
 							
@@ -231,20 +231,21 @@ width: 275px;
 		</div>
 		<table class="ui-widget ui-widget-content">
 				<tr class="ui-widget-header">
+					<th>Bước</th>
 					<th>Số Đến</th>
-					<th>Ngày Đến</th>
+				    <th>Ngày Đến</th>
 				    <th>Ngày Ban Hành</th>
-				    <th>Trích Yếu Nội Dung</th>
-				    <th>Mã Văn Bản</th>
+				    <th>Trích Yếu</th>
 	   		    </tr>
 		<c:forEach var="buocxuly" items="${buocxulyList}">
 			<c:if test="${buocxuly.valueChuyen == true && buocxuly.valueXuLy == false}">
-				<tr id="${buocxuly.buoc.pkQuyTrinh.soThuTu}" class="${buocxuly.buoc.pkQuyTrinh.maQuyTrinh}">
+				<tr id="${buocxuly.vanban.maVanBan}" class="${buocxuly.buoc.pkQuyTrinh.maQuyTrinh}">
+					<td>${buocxuly.buoc.pkQuyTrinh.soThuTu}</td>
 					<td>${buocxuly.vanban.soDen}</td>
 					<td>${buocxuly.vanban.ngayDen}</td>
 					<td>${buocxuly.vanban.ngayBanHanh}</td>
 					<td>${buocxuly.vanban.trichYeu}</td>
-					<td>${buocxuly.vanban.maVanBan}</td>
+					<%-- <td>${buocxuly.vanban.maVanBan}</td> --%>
 				</tr>
 			</c:if>
 		</c:forEach>
@@ -275,7 +276,7 @@ width: 275px;
 			</td>
 		</tr>
 		<tr>
-			<td>Mã văn bản</td>
+			<td>Ký hiệu văn bản</td>
 			<td>
 			
 				<select id="mvbtest">

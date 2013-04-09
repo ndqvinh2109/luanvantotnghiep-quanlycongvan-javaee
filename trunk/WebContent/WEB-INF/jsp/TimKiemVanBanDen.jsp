@@ -120,6 +120,11 @@ div#dialog_timkiemcoban table{
 
 <script>
 	$(document).ready(function(){
+		$( "#navbar" ).accordion({
+		      collapsible: true,
+		      heightStyle: "content",
+		      active: 1
+		    });
 		$("#ngayden").datepicker({
 			 showAnim: 'drop',
 		     dateFormat: 'yy-mm-dd'

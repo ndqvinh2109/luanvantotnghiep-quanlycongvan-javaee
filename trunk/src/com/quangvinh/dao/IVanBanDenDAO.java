@@ -11,6 +11,7 @@ public interface IVanBanDenDAO {
 	void deleteVanBanDen(int id);
 	void updateVanBanDen(VanBanDen vanbanden);
 	List<VanBanDen> getVanBanDen();
+	List<VanBanDen> getVanBanDenPaging(int page);
 	List<VanBanDen> getVanBanDenChuaTiepNhan();
 	int getMaxSoDen();
 	int findQuyTrinh(int maVanBan);	

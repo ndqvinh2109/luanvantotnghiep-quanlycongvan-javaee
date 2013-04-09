@@ -208,6 +208,24 @@ public class VanBanDenDAO implements IVanBanDenDAO {
 		return list;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<VanBanDen> getVanBanDenPaging(int page) {
+		int per_page = 3;
+		int start = (page-1)*per_page;
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from VanBanDen";
+		Query query = session.createQuery(hql);
+		/*String hql = "from VanBanDen a where a.enabled = true";
+		Query query = session.createQuery(hql);
+		List<VanBanDen> list = query.list();*/
+		query.setFirstResult(start);
+		query.setMaxResults(per_page);
+		List<VanBanDen> list = query.list();
+		return list;
+		
+	}
+
 	
 
 }

@@ -6,6 +6,7 @@ font: 75%/120% Arial, Helvetica, sans-serif;
 
 }
 
+
 #container{
 width: 1024px;
 height: 100%;
@@ -101,6 +102,7 @@ width:240px;
 font: bold 110%/100% Arial, Helvetica, sans-serif;
 background: #e9e7e7 url(../images/arrow-square.gif) no-repeat right -51px;
 }
+
 #content{
 float: left;
 width: 774px;

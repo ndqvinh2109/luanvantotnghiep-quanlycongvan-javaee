@@ -260,10 +260,30 @@ border-collapse: collapse;
  text-align: left;
 }
 
+
+ul.pageNav{
+height: 20px;
+overflow: hidden;
+padding: 0px;
+margin: 12px 0px 5px 0px;
+}
+
+ul.pageNav li{
+display: inline;
+float: left;
+margin: 0px 5px 0px 0px;
+padding: 5px 5px;
+background: #8AB1FE;
+}
 </style>
 
 <script type="text/javascript">
 $(document).ready(function(){
+	$( "#navbar").accordion({
+	      collapsible: true,
+	      heightStyle: "content",
+	      active: 1
+	    });
 	
 	var mavanban = null;
 	$('tr').not(':first').bind('click',function(){
@@ -612,6 +632,11 @@ $('#phanxuly').button().click(function(){
 	
  </div>
  
+ <ul class="pageNav">
+ <c:forEach var="i" begin="1" end="${pages}">
+   <li><a href="${pageContext.request.contextPath}/service/showvanbanden/${i}"><c:out value="${i}"/></a></li> 
+</c:forEach>
+</ul>
 <table class="ui-widget ui-widget-content">
 	<tr class="ui-widget-header">
 	    <th>Ngày Đến</th>

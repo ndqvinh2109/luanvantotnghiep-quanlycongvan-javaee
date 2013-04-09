@@ -171,6 +171,11 @@ padding:0
 </style>
 <script>
 	$(document).ready(function(){
+		$( "#navbar" ).accordion({
+		      collapsible: true,
+		      heightStyle: "content",
+		      active: 1
+		    });
 		var maquytrinhpub = null;
 		$('tr').not(':first').bind('click',function(){
 			maquytrinhpub = $(this).attr('id');

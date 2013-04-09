@@ -28,6 +28,11 @@ margin: 5px 0 0 50px;
 </style>
 <script type="text/javascript">
 	$(function(){
+		$( "#navbar" ).accordion({
+		      collapsible: true,
+		      heightStyle: "content",
+		      active: 1
+		    });
 		$("#ngaybanhanh").datepicker({
 			  showAnim: 'clip',
 		      dateFormat: 'yy-mm-dd'

@@ -32,6 +32,7 @@ public class GuiTinNhanNoiBoController {
 		String name = auth.getName(); 
 		String tennguoidung = nguoidungService.getTenNguoiDungTheoUsername(name);
 		map.put("nameNguoiDung",tennguoidung);
+		map.put("userName", name);
 		map.put("nguoidungList", nguoidungService.getNguoiDung());
 		return "guitinnhannoibo";
 	}
