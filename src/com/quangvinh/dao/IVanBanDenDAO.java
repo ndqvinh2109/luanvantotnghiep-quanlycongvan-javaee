@@ -21,4 +21,5 @@ public interface IVanBanDenDAO {
 	List<VanBanDen> timKiemNangCaoVanBanDen(String trichyeu,Date ngayden,int soden,String sokyhieu,int coquanbanhanh,int loaivanban,int linhvuc,int sohoso);
 	List<VanBanDen> timKiemCoBanVanBanDen(String textInput);
 	List<VanBanDen> getVanBanDenTheoTrangThai(int trangthai);
+	
 }

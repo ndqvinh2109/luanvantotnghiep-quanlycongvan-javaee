@@ -50,4 +50,11 @@ public class FileDinhKemService implements IFileDinhKemService{
 		return filedinhkemDao.getFileDinhKemVanBan(mavanban);
 	}
 
+	@Override
+	@Transactional
+	public List<FileDinhKem> getFileDinhKemTheoSoKyHieu(String sokyhieu) {
+		
+		return filedinhkemDao.getFileDinhKemTheoSoKyHieu(sokyhieu);
+	}
+
 }

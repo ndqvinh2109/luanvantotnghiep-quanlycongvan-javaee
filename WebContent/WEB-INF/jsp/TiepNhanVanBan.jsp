@@ -321,7 +321,7 @@ width: 200px;
 				</tr> -->
 				<tr>
 					<td>Số Đến</td>
-					<td><input type="text" id="soden" value="" readonly/></td>
+					<td><input type="text" id="soden" value=""/></td>
 				</tr>
 				<tr>
 					<td>Ngày Đến</td>

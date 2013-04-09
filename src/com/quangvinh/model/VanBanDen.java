@@ -83,6 +83,21 @@ public class VanBanDen extends VanBan{
 		
 	}
 	
+	public VanBanDen(CapDoBaoMat capdobaomat, LinhVuc linhvuc,
+			LoaiVanBan loaivanban, CapDoKhan capdokhan,
+			ViTriLuuTru vitriluutru, HoSoLuuTru hosoluutru,
+			List<FileDinhKem> filedinhkem,int maVanBan, String soKyHieuVanBan,
+			Date ngayBanHanh, Date ngayHieuLuc, Date ngayHetHieuLuc,
+			String trichYeu, String nguoiKy, int soTrang, String tuKhoa,
+			Date ngayNhapMay, int trangThaiXuLy,DonVi donvi,int soDen, Date ngayDen) {
+		super(capdobaomat, linhvuc,loaivanban, capdokhan, vitriluutru, hosoluutru,
+				filedinhkem,maVanBan, soKyHieuVanBan, ngayBanHanh, ngayHieuLuc, ngayHetHieuLuc,
+				trichYeu, nguoiKy, soTrang, tuKhoa, ngayNhapMay, trangThaiXuLy);
+		this.donvi = donvi;
+		SoDen = soDen;
+		NgayDen = ngayDen;
+	}
+	
 	
 	
 	
