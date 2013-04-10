@@ -76,6 +76,21 @@ public class VanBanDiDAO implements IVanBanDiDAO{
 		return vanbandi;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<VanBanDi> getVanBanDiPaging(int page) {
+		
+		int per_page = 3;
+		int start = (page-1)*per_page;
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from VanBanDi";
+		Query query = session.createQuery(hql);
+		query.setFirstResult(start);
+		query.setMaxResults(per_page);
+		List<VanBanDi> list = query.list();
+		return list;
+	}
+
 	
 
 }

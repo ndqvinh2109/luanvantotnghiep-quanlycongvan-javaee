@@ -23,7 +23,6 @@ import com.quangvinh.model.LinhVuc;
 import com.quangvinh.model.LoaiVanBan;
 import com.quangvinh.model.VanBan;
 import com.quangvinh.model.VanBanDen;
-import com.quangvinh.model.VanBanDi;
 import com.quangvinh.model.ViTriLuuTru;
 import com.quangvinh.service.IBuocXuLyService;
 import com.quangvinh.service.ICapDoBaoMatService;

@@ -37,6 +37,8 @@
 				
 			});
 		    
+		    
+		    
 		   
 		  });
 </script>
@@ -58,7 +60,7 @@
 				</ul>
 				
 			
-		<h3 id="tt">Văn bản đến</h3>	
+		<h3>Văn bản đến</h3>	
 			
 				<ul class="menu" id="vanbandennavbar">
 					<li><a href="${pageContext.request.contextPath}/service/nhapvanbanden">Nhập công văn đến</a></li>
@@ -71,7 +73,7 @@
 			
 				<ul class="menu" id="vanbandinavbar">
 					<li><a href="${pageContext.request.contextPath}/service/nhapvanbandi">Nhập công văn đi</a></li>
-					<li><a href="${pageContext.request.contextPath}/service/showvanbandi">Danh mục công văn đi</a></li>
+					<li><a href="${pageContext.request.contextPath}/service/showvanbandi/1">Danh mục công văn đi</a></li>
 					<li><a href="">Tra cứu công văn đi</a></li>
 				</ul>
 		

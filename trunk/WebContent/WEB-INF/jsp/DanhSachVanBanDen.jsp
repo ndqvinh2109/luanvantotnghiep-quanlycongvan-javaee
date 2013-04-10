@@ -684,7 +684,7 @@ $('#phanxuly').button().click(function(){
 	
 </table>
 
-</div>
+
 
 <div id="dialog-confirm" title="Bạn có muốn xóa công văn đến này không?">
   <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Những dữ liệu liên quan đến công văn này như: Tập tin đính kèm, Quy trình xử lý, Ý kiến đóng góp, sẽ xóa cùng với công văn đó. Bạn có chắc không?</p>
@@ -1014,6 +1014,10 @@ $('#phanxuly').button().click(function(){
 		
 		</div>
 </div>
+
+</div>
+
+
 
 </body>
 </html>

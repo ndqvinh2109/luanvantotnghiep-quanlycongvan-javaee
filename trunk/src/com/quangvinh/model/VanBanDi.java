@@ -5,17 +5,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.JoinColumn;
+
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 @Entity
@@ -24,17 +22,16 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 public class VanBanDi extends VanBan{
 	/*******************************************/
 	@JsonIgnore
-	@ManyToMany(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
-	@JoinTable(name="vanbandi_donvi",joinColumns={@JoinColumn(name="MA_VAN_BAN")},inverseJoinColumns={@JoinColumn(name="MA_DON_VI")})
-	private List<DonVi> donvi = new ArrayList<DonVi>(0);
-	
-	public List<DonVi> getDonvi() {
-		return donvi;
+	@OneToMany(mappedBy="vanbandi",fetch=FetchType.LAZY)
+	private List<VanBanDi_DonVi> vanbandi_donvi = new ArrayList<VanBanDi_DonVi>(0);
+		
+	public List<VanBanDi_DonVi> getVanbandi_donvi() {
+		return vanbandi_donvi;
 	}
-	public void setDonvi(List<DonVi> donvi) {
-		this.donvi = donvi;
+
+	public void setVanbandi_donvi(List<VanBanDi_DonVi> vanbandi_donvi) {
+		this.vanbandi_donvi = vanbandi_donvi;
 	}
-	
 	/*******************************************/
 	@Column(name="SO_DI")
 	private int SoDi;

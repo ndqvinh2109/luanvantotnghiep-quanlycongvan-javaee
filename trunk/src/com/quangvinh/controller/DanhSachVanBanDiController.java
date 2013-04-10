@@ -77,10 +77,17 @@ public class DanhSachVanBanDiController {
 	@Autowired
 	private INguoiDungService nguoidungService;
 	
-	@RequestMapping("/showvanbandi")
-	public String showVanBandi(Map<String,Object> map){
+	@RequestMapping("/showvanbandi/{page}")
+	public String showVanBandi(Map<String,Object> map,@PathVariable("page") int page){
 		List<VanBanDi> vanbandis = vanbandiService.getVanBanDi();
-		map.put("vanbandiList",vanbandis);
+		int per_page = 3;
+		int count = vanbandis.size();
+		int pages = Math.round(count/per_page);
+		if((count%per_page)!= 0){
+			pages ++;
+			
+		}
+		map.put("vanbandiList",vanbandiService.getVanBanDiPaging(page));
 		map.put("donViList",donviService.getDonVi());
 		map.put("loaiVanBanList", loaivanbanService.getLoaiVanBan());
 		map.put("viTriLuuTruList", vitriluutruService.getViTriLuuTru());
@@ -91,6 +98,7 @@ public class DanhSachVanBanDiController {
 		map.put("filedinhkem",new FileDinhKem());
 		map.put("donvidoclapList", donviService.getDonViDocLap(2));
 		map.put("donviphuthuocList", donviService.getDonViDocLap(3));
+		map.put("pages", pages);
 		return "danhsachvanbandi";
 	}
 	
@@ -353,8 +361,9 @@ public class DanhSachVanBanDiController {
 				vanban.getTrangThaiXuLy(), donvi);
 		vanbandenService.saveVanBanDen(vanbanden);
 		
-		VanBanDi vanbandi = new VanBanDi();
-		System.out.println(vanbandi.getSoDi());
+		
+		
+		
 		return true;
 	
 	}

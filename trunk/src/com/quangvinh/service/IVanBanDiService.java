@@ -11,4 +11,5 @@ public interface IVanBanDiService {
 	List<VanBanDi> getVanBanDi();
 	int getMaxSoDi();
 	VanBanDi findVanBanDiID(int id);
+	List<VanBanDi> getVanBanDiPaging(int page);
 }
