@@ -14,7 +14,12 @@
 <script src="/LuanVanTotNghiep/js/jquery-ui.js"></script>
 
 <style type="text/css">
-
+#accordion{
+	background-color: #f7f7f7;
+	overflow: hidden;
+	border: 1px solid #c4c4c4;
+	
+}	
 .ui-dialog-titlebar {
 	background: url(/LuanVanTotNghiep/images/dialog.png) center left repeat-x;
 	color: #ffffff;
@@ -286,6 +291,26 @@ ul.pageNav {
 	height: 20px;
 	padding: 0px;
 	margin: 12px 0px 5px 0px;
+}
+
+#toolbar{
+padding:5px 5px 5px 5px;
+}
+#toolbar img {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 2px;
+  top: 50%;
+  margin-top: -8px;
+  
+  	
+}
+#toolbar span{
+  height: 20px;
+  line-height: 20px;
+  float: left;
+  padding-left: 11px;
 }
 </style>
 
@@ -650,11 +675,11 @@ $('#phanxuly').button().click(function(){
 <div id="accordion">
  <h3>Danh sách công văn đến</h3>
  <div id = "toolbar" class="ui-widget-header ui-corner-all">
-	<button id="delete">Xóa</button>
-	<button id="update">Sửa</button>
-	<button id="filedinhkem">Đính kèm tập tin</button>
-	<button id="chitietvanbanden">Xem chi tiết</button>
-	<button id="phanxuly">Phân xử lý</button>
+	<button id="delete"><img src="/LuanVanTotNghiep/images/button_cancel.png"/><span>Xóa</span></button>
+	<button id="update"><img src="/LuanVanTotNghiep/images/form_edit.png"/><span>Sửa</span></button>
+	<button id="filedinhkem"><img src="/LuanVanTotNghiep/images/attachment (2).png"/><span>Đính kèm tập tin</span></button>
+	<button id="chitietvanbanden"><img src="/LuanVanTotNghiep/images/view_detail.png"/><span>Xem chi tiết</span></button>
+	<button id="phanxuly"><img src="/LuanVanTotNghiep/images/process.png"/><span>Phân xử lý</span></button>
 	
  </div>
  

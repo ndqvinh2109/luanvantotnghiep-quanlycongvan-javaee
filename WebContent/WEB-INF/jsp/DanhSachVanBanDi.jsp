@@ -12,7 +12,12 @@
 <script src="/LuanVanTotNghiep/js/jquery-1.9.0.js"></script>
 <script src="/LuanVanTotNghiep/js/jquery-ui.js"></script>
 <style type="text/css">
-
+#accordion{
+	background-color: #f7f7f7;
+	overflow: hidden;
+	border: 1px solid #c4c4c4;
+	
+}	
 .ui-dialog-titlebar {
 	background: url(/LuanVanTotNghiep/images/dialog.png) center left repeat-x;
 	color: #ffffff;
@@ -292,6 +297,25 @@ ul.pageNav {
 	height: 20px;
 	padding: 0px;
 	margin: 12px 0px 5px 0px;
+}
+#toolbar{
+padding:5px 5px 5px 5px;
+}
+#toolbar img {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 2px;
+  top: 50%;
+  margin-top: -8px;
+  
+  	
+}
+#toolbar span{
+  height: 20px;
+  line-height: 20px;
+  float: left;
+  padding-left: 11px;
 }
  </style>
 
@@ -633,28 +657,27 @@ $("#chitietvanbandi").button().click(function(){
 	      modal: true,
 	      buttons: {
 	    	  "Cập nhật": function() {
-	    		  /*  var maVanBan = $('.sokyhieuvanban').val();
+	    		   var mavanban = $('.sokyhieuvanban').val();
+	    		   
 					$('.donvidoclap').each(function(index,element){
 						if($(element).find('.madonvidoclap').is(':checked')){
 						var madonvi = $(element).find('.madonvidoclap').val();
 						$.ajax({
-							url: '/LuanVanTotNghiep/service/addVanBanGuiDonVi/' + maVanBan + '/' + madonvi,
+							url: '/LuanVanTotNghiep/service/addVanBanGuiDonVi/' + mavanban + '/' + madonvi,
 							type: 'POST',
 							data: null,
 							success:function(result){
 								if(result){
-									alert("Thành công");
+									
 								}
 								
 							}
 						});
 					}
-	    	 	  }); */
+	    	 	  });
 	    	 	  
-	    	 	 var mavanban = $('.sokyhieuvanban').val();
-	    	 	  
-	    	 	 
-	    	 	 $.ajax({
+	    	 	
+	    	 	$.ajax({
 						url: '/LuanVanTotNghiep/service/BanHanhVanBanDi/' + mavanban,
 						type: 'GET',
 						data: null,
@@ -709,11 +732,11 @@ $("#chitietvanbandi").button().click(function(){
 <div id="accordion">
  <h3>Danh sách công văn đi</h3>
  <div id = "toolbar" class="ui-widget-header ui-corner-all">
-	<button id="delete">Xóa</button>
-	<button id="update">Chỉnh sửa</button>
-	<button id="filedinhkem">Tập tin đính kèm</button>
-	<button id="chitietvanbandi">Xem chi tiết</button>
-	<button id="banhanhvanban">Ban hành</button>
+	<button id="delete"><img src="/LuanVanTotNghiep/images/button_cancel.png"/><span>Xóa</span></button>
+	<button id="update"><img src="/LuanVanTotNghiep/images/form_edit.png"/><span>Chỉnh sửa</span></button>
+	<button id="filedinhkem"><img src="/LuanVanTotNghiep/images/attachment (2).png"/><span>Tập tin đính kèm</span></button>
+	<button id="chitietvanbandi"><img src="/LuanVanTotNghiep/images/view_detail.png"/><span>Xem chi tiết</span></button>
+	<button id="banhanhvanban"><img src="/LuanVanTotNghiep/images/process.png"/><span>Ban hành</span></button>
  </div>
  
 <ul class="pageNav">
@@ -1079,15 +1102,13 @@ $("#chitietvanbandi").button().click(function(){
 	</ul>
 	
 	<div id="tabs-1">
+	<!-- <input type="hidden" class="sokyhieuvanban" value=""/> -->
 		<table>
 			<tr>
 				<th>Chọn</th>
 				<th>Phòng ban trực thuộc</th>
 			</tr>
-			<tr>
-				<td>Mã văn bản</td>
-				<td><input type="text" class="sokyhieuvanban" value=""/></td>
-			</tr>
+			
 			<c:forEach var="donviphuthuoc" items="${donviphuthuocList}">
 				<tr>
 					<td><input type="checkbox" value="${donviphuthuoc.maDonVi}" /></td>
@@ -1098,8 +1119,9 @@ $("#chitietvanbandi").button().click(function(){
 	</div>
 	
 	<div id="tabs-2">
+	<input type="hidden" class="sokyhieuvanban" value=""/>
 		<form action="" method="post">
-			<input type="hidden" class="sokyhieuvanban" value=""/>
+			
 			<table>
 				<tr>
 					<th>Chọn</th>

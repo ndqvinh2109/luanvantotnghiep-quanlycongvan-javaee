@@ -12,7 +12,12 @@
 <script src="/LuanVanTotNghiep/js/jquery-1.9.0.js"></script>
 <script src="/LuanVanTotNghiep/js/jquery-ui.js"></script>
 <style type="text/css">
-
+#thembuocthuocquytrinh{
+	background-color: #f7f7f7;
+	overflow: hidden;
+	border: 1px solid #c4c4c4;
+	
+}	
 .ui-dialog-titlebar {
 	background: url(/LuanVanTotNghiep/images/dialog.png) center left repeat-x;
 	color: #ffffff;

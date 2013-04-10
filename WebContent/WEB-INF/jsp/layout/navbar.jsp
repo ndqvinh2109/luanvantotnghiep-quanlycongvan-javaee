@@ -93,7 +93,7 @@
 				</ul>
 		<h3>Báo cáo</h3>
 				<ul class="menu" id="baocaonavbar">
-					<li><a href="">Văn bản đến</a></li>
+					<li><a href="${pageContext.request.contextPath}/service/baoCaoVanBanDen">Văn bản đến</a></li>
 					<li><a href="">Văn bản đi</a></li>
 				</ul>
 		<h3>Tiện ích</h3>

@@ -33,6 +33,7 @@ import com.quangvinh.model.LoaiVanBan;
 import com.quangvinh.model.VanBan;
 import com.quangvinh.model.VanBanDen;
 import com.quangvinh.model.VanBanDi;
+import com.quangvinh.model.VanBanDi_DonVi;
 import com.quangvinh.model.ViTriLuuTru;
 import com.quangvinh.service.IBuocXuLyService;
 import com.quangvinh.service.ICapDoBaoMatService;
@@ -45,6 +46,7 @@ import com.quangvinh.service.ILoaiVanBanService;
 import com.quangvinh.service.INguoiDungService;
 import com.quangvinh.service.IVanBanDenService;
 import com.quangvinh.service.IVanBanDiService;
+import com.quangvinh.service.IVanBanDi_DonViService;
 import com.quangvinh.service.IVanBanService;
 import com.quangvinh.service.IViTriLuuTruService;
 
@@ -76,6 +78,8 @@ public class DanhSachVanBanDiController {
 	private IVanBanDenService vanbandenService;
 	@Autowired
 	private INguoiDungService nguoidungService;
+	@Autowired
+	private IVanBanDi_DonViService vanbandi_donviService;
 	
 	@RequestMapping("/showvanbandi/{page}")
 	public String showVanBandi(Map<String,Object> map,@PathVariable("page") int page){
@@ -326,23 +330,22 @@ public class DanhSachVanBanDiController {
 	 * @param madonvi
 	 * @return
 	 */
-	/*@RequestMapping(value="/addVanBanGuiDonVi/{mavanban}/{madonvi}",method=RequestMethod.POST)
+	@RequestMapping(value="/addVanBanGuiDonVi/{mavanban}/{madonvi}",method=RequestMethod.POST)
 	public @ResponseBody boolean addVanBanGuiDonVi(@PathVariable("mavanban") int mavanban,
 			@PathVariable("madonvi") int madonvi){
 		
-	
 	DonVi donvi = donviService.findDonViID(madonvi);
 	VanBanDi vanbandi = vanbandiService.findVanBanDiID(mavanban);
 	
-	//donvi.getVanbandi().add(vanbandi);
-	vanbandi.getDonvi().add(donvi);
-	vanbandiService.saveVanBanDi(vanbandi);
+	VanBanDi_DonVi vanbandi_donvi = new VanBanDi_DonVi();
 	
-	//donviService.saveDonVi(donvi);
-		
-		
-		return true;
-	}*/
+	vanbandi_donvi.setDonvi(donvi);
+	vanbandi_donvi.setVanbandi(vanbandi);
+	vanbandi_donviService.saveVanBanDi_DonVi(vanbandi_donvi);
+	
+	return true;
+	
+	}
 	
 	@RequestMapping(value="/BanHanhVanBanDi/{mavanban}",method=RequestMethod.GET)
 	public @ResponseBody boolean addVanBanGuiDonVi(@PathVariable("mavanban") int mavanban){
