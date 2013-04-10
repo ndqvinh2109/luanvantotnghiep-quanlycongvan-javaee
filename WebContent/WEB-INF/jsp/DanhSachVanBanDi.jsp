@@ -269,7 +269,30 @@ border-collapse: collapse;
  text-align: left;
 }
 
+ul.pageNav li{
+list-style: none; 
+float: left; 
+margin-right: 5px; 
+border:solid 1px #dddddd;
+color:#0063DC; 
+}
+ul.pageNav li a{
+	text-decoration: none;
+	display: block;
+	padding: 3px 8px;
+}
 
+ul.pageNav li:hover{
+color:#FF0084; 
+cursor: pointer; 
+
+}
+
+ul.pageNav {
+	height: 20px;
+	padding: 0px;
+	margin: 12px 0px 5px 0px;
+}
  </style>
 
 <script type="text/javascript">
@@ -627,6 +650,7 @@ $("#chitietvanbandi").button().click(function(){
 						});
 					}
 	    	 	  }); */
+	    	 	  
 	    	 	 var mavanban = $('.sokyhieuvanban').val();
 	    	 	  
 	    	 	 
@@ -692,6 +716,12 @@ $("#chitietvanbandi").button().click(function(){
 	<button id="banhanhvanban">Ban hành</button>
  </div>
  
+<ul class="pageNav">
+ <c:forEach var="i" begin="1" end="${pages}">
+   <li><a href="${pageContext.request.contextPath}/service/showvanbandi/${i}"><c:out value="${i}"/></a></li> 
+</c:forEach>
+</ul>
+
 <table class="ui-widget ui-widget-content">
 	<tr class="ui-widget-header">
 	    <th>Ngày Đi</th>
@@ -1044,7 +1074,7 @@ $("#chitietvanbandi").button().click(function(){
 </div>
 <div id="dialog_capnhatnoinhan" title="Cập nhật nơi nhận">
 	<ul>
-	    <li><a href="#tabs-1">Phòng Ban Trực Thuộc <span></span></a></li>
+	    <li><a href="#tabs-1">Phòng Ban Trực Thuộc</a></li>
 	    <li><a href="#tabs-2">Đơn Vị Độc Lập</a></li>
 	</ul>
 	
@@ -1054,10 +1084,10 @@ $("#chitietvanbandi").button().click(function(){
 				<th>Chọn</th>
 				<th>Phòng ban trực thuộc</th>
 			</tr>
-			<!-- <tr>
+			<tr>
 				<td>Mã văn bản</td>
 				<td><input type="text" class="sokyhieuvanban" value=""/></td>
-			</tr> -->
+			</tr>
 			<c:forEach var="donviphuthuoc" items="${donviphuthuocList}">
 				<tr>
 					<td><input type="checkbox" value="${donviphuthuoc.maDonVi}" /></td>

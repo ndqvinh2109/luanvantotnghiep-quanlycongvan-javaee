@@ -9,6 +9,7 @@ public interface IVanBanDiDAO {
 	void deleteVanBanDi(int id);
 	void updateVanBanDi(VanBanDi vanbandi);
 	List<VanBanDi> getVanBanDi();
+	List<VanBanDi> getVanBanDiPaging(int page);
 	int getMaxSoDi();
 	VanBanDi findVanBanDiID(int id);
 	

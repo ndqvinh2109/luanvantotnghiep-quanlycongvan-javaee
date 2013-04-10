@@ -57,4 +57,11 @@ public class VanBanDiService implements IVanBanDiService{
 		return vanbandiDao.findVanBanDiID(id);
 	}
 
+	@Override
+	@Transactional
+	public List<VanBanDi> getVanBanDiPaging(int page) {
+		
+		return vanbandiDao.getVanBanDiPaging(page);
+	}
+
 }

@@ -9,7 +9,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -37,16 +36,16 @@ public class DonVi {
 		this.vanbanden = vanbanden;
 	}
 	
-	@ManyToMany(mappedBy="donvi",fetch = FetchType.EAGER)
-	private List<VanBanDi> vanbandi = new ArrayList<VanBanDi>(0);
+	@OneToMany(mappedBy="donvi",fetch=FetchType.LAZY)
+	private List<VanBanDi_DonVi> vanbandi_donvi = new ArrayList<VanBanDi_DonVi>(0);
 	
-	public List<VanBanDi> getVanbandi() {
-		return vanbandi;
+	public List<VanBanDi_DonVi> getVanbandi_donvi() {
+		return vanbandi_donvi;
 	}
-	public void setVanbandi(List<VanBanDi> vanbandi) {
-		this.vanbandi = vanbandi;
-	}
-	
+
+	public void setVanbandi_donvi(List<VanBanDi_DonVi> vanbandi_donvi) {
+		this.vanbandi_donvi = vanbandi_donvi;
+	}	
 	
 	
 	/*****************************************/
@@ -61,18 +60,21 @@ public class DonVi {
 	
 	public DonVi(){}
 	
+	
+	
+	
+	
 	public DonVi(List<NguoiDung> nguoidung, List<VanBanDen> vanbanden,
-			List<VanBanDi> vanbandi, int maDonVi, String tenDonVi) {
+			List<VanBanDi_DonVi> vanbandi_donvi, int maDonVi, String tenDonVi,
+			int kieuDonVi) {
 		super();
 		this.nguoidung = nguoidung;
 		this.vanbanden = vanbanden;
-		this.vanbandi = vanbandi;
+		this.vanbandi_donvi = vanbandi_donvi;
 		this.maDonVi = maDonVi;
 		this.tenDonVi = tenDonVi;
+		this.kieuDonVi = kieuDonVi;
 	}
-	
-	
-	
 	public int getMaDonVi() {
 		return maDonVi;
 	}

@@ -191,7 +191,7 @@ public class VanBanDenController {
 				dngayden = dateFormat.parse(ngayden);
 				dngaynhapmay = dateFormat.parse(ngaynhapmay);
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			} 
 			
@@ -202,7 +202,7 @@ public class VanBanDenController {
 					ocapdokhan, ovitriluutru, ohosoluutru, sovakyhieu, dngaybanhanh,
 					dngayhieuluc, dngayketthuc,dngaynhapmay, trichyeu, nguoiky, sotrang,
 					tukhoa, trangthaixuly, odonvi,soden, dngayden);
-		
+			vanbanDen.setEnabled(true);
 			vanbandenService.saveVanBanDen(vanbanDen);
 			return (oldSize < vanbandenService.getVanBanDen().size());
 						
