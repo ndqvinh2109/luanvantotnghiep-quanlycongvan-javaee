@@ -99,5 +99,11 @@
 <put-attribute name="body" value="/WEB-INF/jsp/GuiTinNhanNoiBo.jsp"/>
 </definition>
 
+<definition name="baocaovanbanden" extends="base.definition">
+<put-attribute name="title" value="Báo cáo văn bản đến" />
+<put-attribute name="body" value="/WEB-INF/jsp/BaoCaoVanBanDen.jsp"/>
+</definition>
+
+
 
 </tiles-definitions>

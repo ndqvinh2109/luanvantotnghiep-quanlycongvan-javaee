@@ -142,9 +142,10 @@ width: 200px;
 			 showAnim: 'drop',
 		     dateFormat: 'yy-mm-dd'
 		});
-		$("#ngayden").focus(function(){
+		/* $("#ngayden").focus(function(){
 			   $("#ngayden").datepicker('setDate', new Date());
-		});
+		}); */
+		
 		var kyhieuvanban = null;
 		var mavanban = null;
 		$('#tiepnhanvanban tr').bind('click',function(){
@@ -163,6 +164,7 @@ width: 200px;
 		      modal: true,
 		      buttons: {
 		        "Lưu": function(){
+		        	
 		        	var soden = $('#soden').val();
 					var ngayden=$('#ngayden').val();
 					var coquanbanhanh=$('#coquanbanhanh1').val();
@@ -245,9 +247,10 @@ width: 200px;
 					$('#capdokhan1').val(data.capdokhan);
 					$('#capdobaomat1').val(data.capdobaomat);
 					$('#sohoso1').val(data.sohoso);
+					 $("#ngayden").datepicker('setDate', new Date());
+					 var maxdoden = "${maxsoden}";
+					 $('#soden').val(maxdoden + 1);
 					
-					$('#soden').val(data.vanbandenupdate.soDen);
-					$('#ngayden').val(data.vanbandenupdate.ngayDen);
 					
 					var ttxl = data.trangthaixuly;
 					if(ttxl == 1){
@@ -260,17 +263,7 @@ width: 200px;
 						$('#radio31').attr('checked', true);
 					}
 					
-					var htmlPrepare = '<table class="data"><tr><th>Tên tập tin</th><th>Mô tả tập tin</th><th>Tải về máy</th><th>Xem</th></tr>';
-					for(var i = 0 ; i < data.fileDinhKemList.length;i++){
-						htmlPrepare += '<tr><td>';
-						htmlPrepare += data.fileDinhKemList[i].tenFile + '</td><td>';
-						htmlPrepare += data.fileDinhKemList[i].moTa + '</td><td>';
-						htmlPrepare += '<a href="${pageContext.request.contextPath}/service/download/' + data.fileDinhKemList[i].maFile + '">Download</a>' + '</td><td>';
-						htmlPrepare += '<a href="${pageContext.request.contextPath}/service/xemtructuyen/' + data.fileDinhKemList[i].maFile + '">Xem</a>' + '</td></tr>';
-					}
-				
-						htmlPrepare += '</table>';
-						$('#show_filedinhkemList').html(htmlPrepare);
+					
 					console.log(data);
 				}
 			});
@@ -290,16 +283,17 @@ width: 200px;
  
 		<table class="ui-widget ui-widget-content">
 			<tr class="ui-widget-header">
-			    <th>Ngày Đến</th>
+			    
 			    <th>Số Đến</th>
+			    <th>Ngày Đến</th>
 			   	<th>Số Hiệu Văn Bản</th>
 			   	<th>Ngày Ban Hành</th>
 			   	<th>Trích yếu Nội Dung</th>
 		  	</tr>
 			<c:forEach items="${ListVanBanChuaTiepNhan}" var="vanbanden">
 			    <tr id = "${vanbanden.maVanBan}">
-			    	<td>${vanbanden.getNgayDen()}</td>
-			    	<td>${vanbanden.getSoDen()}</td>
+			    	<td style="color: red">Chưa có số đến</td>
+			    	<td style="color: red">Chưa có ngày đến</td>
 			    	<td>${vanbanden.soKyHieuVanBan}</td>
 			        <td>${vanbanden.ngayBanHanh}</td>
 			      	<td>${vanbanden.trichYeu}</td>
@@ -321,7 +315,7 @@ width: 200px;
 				</tr> -->
 				<tr>
 					<td>Số Đến</td>
-					<td><input type="text" id="soden" value=""/></td>
+					<td><input type="text" id="soden" value="" readonly/></td>
 				</tr>
 				<tr>
 					<td>Ngày Đến</td>
@@ -454,9 +448,7 @@ width: 200px;
 			</table>	
 		</form>
 		
-		<div id="show_filedinhkemList">
 		
-		</div>
 	</div>
 
 </body>

@@ -22,4 +22,5 @@ public interface IVanBanDenDAO {
 	List<VanBanDen> timKiemCoBanVanBanDen(String textInput);
 	List<VanBanDen> getVanBanDenTheoTrangThai(int trangthai);
 	
+	
 }
