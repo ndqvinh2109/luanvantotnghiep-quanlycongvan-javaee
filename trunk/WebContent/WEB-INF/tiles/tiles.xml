@@ -104,6 +104,11 @@
 <put-attribute name="body" value="/WEB-INF/jsp/BaoCaoVanBanDen.jsp"/>
 </definition>
 
+<definition name="pdfvanbanden" extends="base.definition">
+<put-attribute name="title" value="Trang in" />
+<put-attribute name="body" value="/WEB-INF/jsp/PdfSummary.jsp"/>
+</definition>
+
 
 
 </tiles-definitions>

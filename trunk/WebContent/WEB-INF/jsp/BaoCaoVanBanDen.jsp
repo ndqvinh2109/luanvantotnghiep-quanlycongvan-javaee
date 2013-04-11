@@ -99,6 +99,7 @@ padding:5px 5px 5px 5px;
   padding-left: 11px;
 }
 	
+	
 </style>
 <script>
 	
@@ -110,18 +111,44 @@ padding:5px 5px 5px 5px;
 		  });
 		
 		
-	$('#themdokhan').button().click(function(){
+		 $( "#report_content" ).accordion({
+		     collapsible: true,
+		      heightStyle: "content"
+		    });
+		
+		 $("#tungay").datepicker({
+			  showAnim: 'clip',
+		      dateFormat: 'yy-mm-dd'
+		});
+		
+		$("#denngay").datepicker({
+			 showAnim: 'clip',
+		      dateFormat: 'yy-mm-dd'
+		}); 
+	$('#taotrangin').button().click(function(){
+			/* var tungay = $('#tungay').val();
+			var denngay = $('#denngay').val();
+			var danhmuc = $('#danhmuc').val();
+			$.ajax({
+				url: '/LuanVanTotNghiep/service/PdfVanBanDen/' + danhmuc + '/' + tungay + '/' + denngay,
+				type: 'POST',
+				data: null
+			});
+		return false; */
+	});	
+	
+	$('#excel').button().click(function(){
 		
 		
 	});	
-	$('#xoadokhan').button().click(function(){
-		
-		
-	});	
-	$('#suadokhan').button().click(function(){
+	$('#pdf').button().click(function(){
 	
 	
 	});	
+	
+	
+
+	
 	});
 </script>
 </head>
@@ -154,12 +181,13 @@ padding:5px 5px 5px 5px;
 			</table>
 		</div>
 		<div id="toolbar" class="ui-widget-header ui-corner-all">
-			<button id="themdokhan"><img src="/LuanVanTotNghiep/images/edit_add.png"/><span>Thống kê</span></button>
-			<button id="xoadokhan"><img src="/LuanVanTotNghiep/images/edit_remove.png"/><span>Xuất Excel</span></button>
-			<button id="suadokhan"><img src="/LuanVanTotNghiep/images/pencil.png"/><span>Xuất PDF</span></button>
+			<button id="taotrangin"><img src="/LuanVanTotNghiep/images/edit_add.png"/><span>Tạo trang in</span></button>
+			<button id="excel"><img src="/LuanVanTotNghiep/images/edit_remove.png"/><span>Xuất Excel</span></button>
+			<button id="pdf"><img src="/LuanVanTotNghiep/images/pencil.png"/><span>Xuất PDF</span></button>
+			
 		</div>
 		<div id="report_content">
-		
+			
 		
 		</div>
 	</div>
