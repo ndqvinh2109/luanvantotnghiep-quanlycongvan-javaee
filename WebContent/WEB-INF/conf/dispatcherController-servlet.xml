@@ -50,17 +50,26 @@
 		
 		
 		<!-- If no extension matched, use JSP view -->
-		<!-- <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-			<property name="order" value="2" />
+		<!-- <bean id="viewResolverInternal" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+			<property name="order" value="3" />
 			<property name="prefix" value="/WEB-INF/jsp/" />
 			<property name="suffix" value=".jsp" />
 		</bean> -->
 		
 		<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+			<property name="order" value="2" />
 			<property name="viewClass">
 				<value>org.springframework.web.servlet.view.tiles2.TilesView</value>
 			</property>
 		</bean>	
+		
+		<bean class="org.springframework.web.servlet.view.XmlViewResolver">
+			<property name="location">
+				<value>/WEB-INF/conf/spring-excel-views.xml</value>
+			</property>
+			<property name="order" value="0"/>
+		</bean>
+		
 		
 		<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 			<property name="definitions">
