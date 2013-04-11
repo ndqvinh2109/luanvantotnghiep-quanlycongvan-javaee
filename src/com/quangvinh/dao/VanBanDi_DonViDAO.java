@@ -8,7 +8,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.quangvinh.model.Buoc;
 import com.quangvinh.model.VanBanDi_DonVi;
 
 @Repository
