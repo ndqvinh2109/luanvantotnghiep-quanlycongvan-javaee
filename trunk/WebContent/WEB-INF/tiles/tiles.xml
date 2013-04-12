@@ -104,5 +104,10 @@
 <put-attribute name="body" value="/WEB-INF/jsp/BaoCaoVanBanDen.jsp"/>
 </definition>
 
+<definition name="showpiechart" extends="base.definition">
+<put-attribute name="title" value="Biểu đồ hiệu suất xử lý chuyên viên" />
+<put-attribute name="body" value="/WEB-INF/jsp/showPieChart.jsp"/>
+</definition>
+
 
 </tiles-definitions>

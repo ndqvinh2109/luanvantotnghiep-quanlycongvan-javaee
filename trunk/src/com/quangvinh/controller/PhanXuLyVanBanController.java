@@ -70,7 +70,7 @@ public class PhanXuLyVanBanController {
 		buocxuly.setBuoc(buoc);
 		buocxuly.setNguoidung(nguoidung);
 		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yy-mm-dd"); 
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd"); 
 			Date dthoigianbatdau = null;
 			Date dthoigianhoanthanh = null;
 		try {

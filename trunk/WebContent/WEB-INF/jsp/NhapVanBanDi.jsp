@@ -330,30 +330,39 @@ margin: 5px 0 0 50px;
 				} */
 				if($('#sovakyhieu').val().length===0){
 					alert("Bạn phải nhập số và ký hiệu của văn bản");
+					$('#sovakyhieu').focus();
 				}
 				else if($('#ngaybanhanh').val().length===0){
 					alert("Bạn phải nhập ngày ban hành văn bản");
+					$('#ngaybanhanh').focus();
 				}
 				else if($('#ngayhieuluc').val().length===0){
 					alert("Bạn phải nhập ngày văn bản có hiệu lực");
+					$('#ngayhieuluc').focus();
 				}
 				else if($('#ngayketthuc').val().length===0){
 					alert("Bạn phải nhập ngày văn bản hết hiệu lực");
+					$('#ngayketthuc').focus();
 				}
 				else if($('#ngaynhapmay').val().length===0){
 					alert("Bạn phải nhập ngày văn bản được lưu trữ vào cơ sở dữ liệu");
+					$('#ngaynhapmay').focus();
 				}
 				else if($('#trichyeu').val().length===0){
 					alert("Bạn phải nhập ngày trích yếu văn bản");
+					$('#trichyeu').focus();
 				}
 				else if($('#tukhoa').val().length===0){
 					alert("Bạn phải nhập từ khóa của văn bản");
+					$('#tukhoa').focus();
 				}
 				else if($('#nguoiky').val().length===0){
 					alert("Bạn phải nhập người ký văn bản");
+					$('#nguoiky').focus();
 				}
 				else if($('#sotrang').val().length===0){
 					alert("Bạn phải nhập số trang của văn bản");
+					$('#sotrang').focus();
 				}
 				else{
 					 $.ajax({

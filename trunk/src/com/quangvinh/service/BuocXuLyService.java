@@ -1,5 +1,6 @@
 package com.quangvinh.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,9 +78,9 @@ public class BuocXuLyService implements IBuocXuLyService{
 	@Override
 	@Transactional
 	public int updateNoiDungAndValueXuLy(int mavanban, int sothutu,
-			String noidungxuly, boolean valueXuLy) {
+			String noidungxuly, boolean valueXuLy,Date thoigianxuly) {
 		
-		return buocxulyDao.updateNoiDungAndValueXuLy(mavanban, sothutu, noidungxuly, valueXuLy);
+		return buocxulyDao.updateNoiDungAndValueXuLy(mavanban, sothutu, noidungxuly, valueXuLy,thoigianxuly);
 	}
 
 	@Override

@@ -25,6 +25,13 @@
 			$(this).addClass("hilightclick").siblings().removeClass("hilightclick"); 
 		});
 		
+		
+		 $("#thoigianxuly").datepicker({
+			  showAnim: 'clip',
+		      dateFormat: 'yy-mm-dd'
+		});
+		 $("#thoigianxuly").datepicker('setDate', new Date());
+		
 		//$('#countdangchoxuly').text();
 		$( "#dialog_capnhatxulypheduyet").dialog({
 			  autoOpen: false,
@@ -38,20 +45,21 @@
 		        	var mavanbandia = $('#mvbtest').val();
 		        	var buocdia = $('#bxltest').val();
 		        	var maquytrinhdia = $('#qttest').val();
+		        	var thoigianxuly = $('#thoigianxuly').val();
 		        	$.ajax({
-		        		url: '/LuanVanTotNghiep/service/capnhatnoidungxuly/' + mavanbandia + '/' + buocdia + '/' + noidungxuly + '/' + maquytrinhdia,
+		        		url: '/LuanVanTotNghiep/service/capnhatnoidungxuly/' + mavanbandia + '/' + buocdia + '/' + noidungxuly + '/' + maquytrinhdia + '/' + thoigianxuly,
 		        		type: 'POST',
 		        		contentType: 'text/html; charset=UTF-8',
 						data: null,
 						success: function(data){
 							if(data != 0){
-								alert("Xử lý thành công");
-								location.reload('true');
+								
 							}
 							
 						}
 		        	});
-		        	 
+		        	alert("Xử lý thành công");
+					location.reload('true');
 		        	 $( this ).dialog( "close" );
 		        	
 		        },
@@ -88,7 +96,7 @@
 						
 					}
 				});
-				
+								
 				$("#dialog_capnhatxulypheduyet").dialog("open");
 				return false;
 			});
@@ -256,12 +264,13 @@ width: 275px;
 		
 		<div id="dialog_capnhatxulypheduyet" title="Xử lý văn bản">
 		<form action="" method="post">
-		
+		<input type="hidden" id="bxltest"/>
+		<input type="hidden" id="thoigianxuly" />
 		<table border="1">
-		<tr>
+		<!-- <tr>
 			<td>Bước xử lý</td>
 			<td><input type="text" id="bxltest" readonly/></td>
-		</tr>
+		</tr> -->
 		<tr>
 			<td>Quy trình</td>
 			<td>
