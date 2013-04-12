@@ -230,6 +230,22 @@ public class VanBanDenDAO implements IVanBanDenDAO {
 		
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean checkExistVanBanDen(String sokyhieuvanban) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "from VanbanDen a where a.soKyHieuVanBan = :sokyhieuvanban";
+		Query query = session.createQuery(hql);
+		query.setString("sokyhieuvanban", sokyhieuvanban);
+		List<VanBanDen> list = query.list();
+		if(list == null){
+			return true;
+			
+		}
+		return false;
+	}
+
 	
 
 }

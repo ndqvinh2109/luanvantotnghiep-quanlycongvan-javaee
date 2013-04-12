@@ -1,5 +1,8 @@
 package com.quangvinh.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.security.core.Authentication;
@@ -112,15 +115,26 @@ public class XuLyPheDuyetVanBanController {
 			
 		return map;
 	}
-	@RequestMapping(value="/capnhatnoidungxuly/{mavanban}/{buoc}/{noidungxuly}/{maquytrinh}",method=RequestMethod.POST)
+	@RequestMapping(value="/capnhatnoidungxuly/{mavanban}/{buoc}/{noidungxuly}/{maquytrinh}/{thoigianxuly}",method=RequestMethod.POST)
 	public @ResponseBody int capNhatNoiDungXuLy(
 			@PathVariable("mavanban") int mavanban,
 			@PathVariable("buoc") int buoc,
 			@PathVariable("noidungxuly") String noidungxuly,
-			@PathVariable("maquytrinh") int maquytrinh
+			@PathVariable("maquytrinh") int maquytrinh,
+			@PathVariable("thoigianxuly") String thoigianxuly
 			){
 		
-		int result = buocxulyService.updateNoiDungAndValueXuLy(mavanban, buoc, noidungxuly, true);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd"); 
+		Date dthoigianxuly = null;
+		
+		try {
+			dthoigianxuly = dateFormat.parse(thoigianxuly);
+			
+		} catch (ParseException e) {
+			
+			e.printStackTrace();
+		} 
+		int result = buocxulyService.updateNoiDungAndValueXuLy(mavanban, buoc, noidungxuly, true, dthoigianxuly);
 		int ttxl;
 		int capnhatvaluechuyen = 0;
 		if(buoc == buocxulyService.countBuocXuLyTheoMaQuyTrinh(maquytrinh,mavanban)){

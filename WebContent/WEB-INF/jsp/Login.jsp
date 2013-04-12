@@ -11,9 +11,95 @@
 <link rel="stylesheet" type="text/css" href="/LuanVanTotNghiep/css/main.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+#tonghoptinhhinhxuly{
+	background-color: #f7f7f7;
+	overflow: hidden;
+	border: 1px solid #c4c4c4;
 
+}	
+
+#form_luachon{
+margin: 15px 0 15px 230px;
+}
+
+#form_luachon table tr td input{
+display: block;
+font-family: "Helvetica Neue", Arial, sans-serif;
+border-style: solid;
+border-width: 1px;
+border-color: #dedede;
+padding: 3px 2px;
+width: 90%;
+color: #777;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset; 
+transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-webkit-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-moz-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-o-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+}
+
+#form_luachon table tr td input:focus{
+color: #333;
+border-color: rgba(41, 92, 161, 0.4);
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
+outline: 0 none; 
+}
+
+#form_luachon table tr td select{
+
+color: #676767;
+padding: 6px !important;
+border: 1px solid #aaa;
+width: 200px;
+}
+div#form_luachon table{
+border-collapse: collapse;
+ }
+ div#form_luachon table td{
+ border: 1px solid #eee;
+ padding: .6em 10px;
+ text-align: left;
+ }
+ 
+ #toolbar{
+padding:5px 5px 5px 5px;
+}
+
+
+#toolbar img {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 2px;
+  top: 50%;
+  margin-top: -8px;
+  
+  	
+}
+#toolbar span{
+  height: 20px;
+  line-height: 20px;
+  float: left;
+  padding-left: 11px;
+}
+
+</style>
 <script type="text/javascript">
 	$(document).ready(function(){
+		 $("#tungay").datepicker({
+			  showAnim: 'clip',
+		      dateFormat: 'yy-mm-dd'
+		});
+		
+		$("#denngay").datepicker({
+			 showAnim: 'clip',
+		     dateFormat: 'yy-mm-dd'
+		}); 
 		$.ajax({
 			url:'/LuanVanTotNghiep/service/showNhacViec',
 			type: 'GET',
@@ -35,6 +121,7 @@
 					  htmlPrepare += '<tr><td>Thông báo xử lý: </td>';
 					  htmlPrepare += '<td>Hiện tại bạn có văn bản cần xử lý.</td></tr>';
 				  }
+				  
 				 /* if(data.listRoles[i].tenRoles == 'ROLE_VAN_THU'){
 					  var countVanBanDen = data.listVanBanDenChuaXuLy.length;
 					  	if(countVanBanDen != 0){
@@ -59,6 +146,36 @@
 		}
 			
 		});
+			$('#taotrangin').button().click(function(){
+				var tungay = $('#tungay').val();
+				var denngay = $('#denngay').val();
+				var nguoidung = $('#nguoidung').val();
+				if($('#tungay').val().length == 0){
+					alert("Bạn chưa nhập thời gian để thống kê hiệu suất xử lý của chuyên viên");
+					$('#tungay').focus();
+					
+				}
+				else if($('#denngay').val().length == 0){
+					alert("Bạn chưa nhập thời gian để thống kê hiệu suất xử lý của chuyên viên");
+					$('#denngay').focus();
+					
+				}
+				else{
+					
+				window.location = '${pageContext.request.contextPath}/service/thongKeHieuSuatVanBan/' + nguoidung + '/' + tungay + '/' + denngay;
+				}
+				return false;
+				
+			});	
+	
+			$('#excel').button().click(function(){
+				
+				
+			});	
+			$('#pdf').button().click(function(){
+			
+			
+			});	
 					
 	});
 </script>
@@ -66,25 +183,53 @@
 <body>
 	<div id="tonghoptinhhinhxuly">
 		<h3>Tổng hợp xử lý Công văn đến theo chuyên viên</h3>
+		<!-- <table class="ui-widget ui-widget-content">
+			<tr class="ui-widget-header">
+				<th>Tên người dùng</th>
+			</tr>
+			
+		</table> -->
+		<div id = "form_luachon">
+		<table>
+				<tr>
+					<td>Từ ngày:</td>
+					<td><input type="text" id="tungay" /></td>
+				</tr>
+				<tr>
+					<td>Đến ngày:</td>
+					<td><input type="text" id="denngay" /></td>
+				</tr>
+				<tr>
+					<td>Tên người dùng</td>
+					<td>
+						<select id="nguoidung">
+			    			<c:forEach var="nguoidung" items="${nguoidungList}">
+			    					<option value='<c:out value="${nguoidung.getMaNguoiDung()}"/>'><c:out value="${nguoidung.getTenNguoiDung()}"/></option>
+			    			</c:forEach>
+	    				 </select>
+					</td>
+				</tr>		
+				
+			</table>
+		</div>
+		<div id="toolbar" class="ui-widget-header ui-corner-all">
+			<button id="taotrangin"><img src="/LuanVanTotNghiep/images/edit_add.png"/><span>Tạo trang in</span></button>
+			<button id="excel"><img src="/LuanVanTotNghiep/images/edit_remove.png"/><span>Xuất Excel</span></button>
+			<button id="pdf"><img src="/LuanVanTotNghiep/images/pencil.png"/><span>Xuất PDF</span></button>
+			
+		</div>
+		<div id="content_thongke">
+			
+		
+		</div>
 	</div>
+	
+	
 	<div id="message_nhacviec" title="Nhắc việc">
-	
+		
 	</div>
 	
-	<%-- <div id="dialog-form" title="Đăng nhập vào hệ thống">
-		 <p class="validateTips">Vui lòng nhập thông tin đăng nhập.</p>
-		<form method="post" action="">
-			<input type="text" id="tendangnhap" placeholder="Tên đăng nhập" class="txtinput"/>
-			<input type="password" id="password" placeholder="Mật khẩu" class="txtinput"/>
-			<input type="submit" id="login" value="Đăng nhập"/>
-			<input type="reset" id="huy" value="Hủy" />
-		</form>
-		
-		
-		
-		
-	</div> --%>
-	<!-- <button id="login">Đăng nhập</button> -->
+	
 	
 	
 </body>

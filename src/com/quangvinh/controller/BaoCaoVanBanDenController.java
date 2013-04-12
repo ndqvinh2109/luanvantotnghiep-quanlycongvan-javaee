@@ -11,10 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-import sun.org.mozilla.javascript.internal.ObjArray;
-
 import com.quangvinh.model.CapDoBaoMat;
 import com.quangvinh.model.CapDoKhan;
 import com.quangvinh.model.LinhVuc;
@@ -25,7 +21,6 @@ import com.quangvinh.service.ICapDoKhanService;
 import com.quangvinh.service.ILinhVucService;
 import com.quangvinh.service.ILoaiVanBanService;
 import com.quangvinh.service.IVanBanDenService;
-import com.quangvinh.service.LinhVucService;
 
 @Controller
 public class BaoCaoVanBanDenController {
@@ -53,7 +48,7 @@ public class BaoCaoVanBanDenController {
 				@PathVariable("tungay") String tungay,
 				@PathVariable("denngay") String denngay){
 			
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yy-mm-dd"); 
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd"); 
 			Date dtungay = null;
 			Date ddenngay = null;
 			
@@ -80,7 +75,6 @@ public class BaoCaoVanBanDenController {
 				}
 				map.put("printDataVanBanDen", mapTempVanban);
 				map.put("printData", mapTemp);
-				map.put("madanhmuc", madanhmuc);
 				map.put("tungay", dtungay);
 				map.put("denngay", ddenngay);
 				
@@ -88,13 +82,18 @@ public class BaoCaoVanBanDenController {
 				}
 				
 				if(madanhmuc == 2){
+					
 					List<CapDoBaoMat> capdobaomatList = capdobaomatSerice.getCapDoBaoMat();
 					for(CapDoBaoMat capdobaomat: capdobaomatList){
 						mapTemp.put(capdobaomat.getMaDoMat(), capdobaomat.getTenDoMat());
 						
 					}
+					List<VanBanDen> vanbandenList = vanbandenService.getVanBanDen();
+					for(VanBanDen vanbanden : vanbandenList){
+						mapTempVanban.put(vanbanden.getMaVanBan(), new Object [] {vanbanden.getSoDen(),vanbanden.getNgayDen(),vanbanden.getSoKyHieuVanBan(),vanbanden.getNgayNhapMay(),vanbanden.getTrichYeu(),vanbanden.getCapdobaomat().getMaDoMat()});
+					}
+					map.put("printDataVanBanDen", mapTempVanban);
 					map.put("printData", mapTemp);
-					map.put("madanhmuc", madanhmuc);
 					map.put("tungay", dtungay);
 					map.put("denngay", ddenngay);
 				}
@@ -104,8 +103,12 @@ public class BaoCaoVanBanDenController {
 					for(CapDoKhan capdokhan: capdokhanList){
 						mapTemp.put(capdokhan.getMaDoKhan(), capdokhan.getTenDoKhan());
 					}
+					List<VanBanDen> vanbandenList = vanbandenService.getVanBanDen();
+					for(VanBanDen vanbanden : vanbandenList){
+						mapTempVanban.put(vanbanden.getMaVanBan(), new Object [] {vanbanden.getSoDen(),vanbanden.getNgayDen(),vanbanden.getSoKyHieuVanBan(),vanbanden.getNgayNhapMay(),vanbanden.getTrichYeu(),vanbanden.getCapdokhan().getMaDoKhan()});
+					}
+					map.put("printDataVanBanDen", mapTempVanban);
 					map.put("printData", mapTemp);
-					map.put("madanhmuc", madanhmuc);
 					map.put("tungay", dtungay);
 					map.put("denngay", ddenngay);
 					
@@ -117,8 +120,12 @@ public class BaoCaoVanBanDenController {
 						mapTemp.put(linhvuc.getMaLinhVuc(),linhvuc.getTenLinhVuc());
 						
 					}
+					List<VanBanDen> vanbandenList = vanbandenService.getVanBanDen();
+					for(VanBanDen vanbanden : vanbandenList){
+						mapTempVanban.put(vanbanden.getMaVanBan(), new Object [] {vanbanden.getSoDen(),vanbanden.getNgayDen(),vanbanden.getSoKyHieuVanBan(),vanbanden.getNgayNhapMay(),vanbanden.getTrichYeu(),vanbanden.getLinhvuc().getMaLinhVuc()});
+					}
+					map.put("printDataVanBanDen", mapTempVanban);
 					map.put("printData", mapTemp);
-					map.put("madanhmuc", madanhmuc);
 					map.put("tungay", dtungay);
 					map.put("denngay", ddenngay);
 				}

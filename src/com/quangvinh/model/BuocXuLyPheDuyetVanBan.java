@@ -106,6 +106,10 @@ public class BuocXuLyPheDuyetVanBan {
 	private boolean valueXuLy;
 	@Column(name="VALUE_CHUYEN",columnDefinition="boolean default false")
 	private boolean valueChuyen;
+	@Temporal(TemporalType.DATE)
+	@Column(name="THOI_GIAN_XU_LY")
+	private Date thoiGianXuLy;
+	
 	public BuocXuLyPheDuyetVanBan(){}
 	
 	
@@ -159,5 +163,12 @@ public class BuocXuLyPheDuyetVanBan {
 	public void setThoiGianHoanThanh(Date thoiGianHoanThanh) {
 		this.thoiGianHoanThanh = thoiGianHoanThanh;
 	}
+	public Date getThoiGianXuLy() {
+		return thoiGianXuLy;
+	}
+	public void setThoiGianXuLy(Date thoiGianXuLy) {
+		this.thoiGianXuLy = thoiGianXuLy;
+	}
+	
 	
 }

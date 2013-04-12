@@ -1,5 +1,6 @@
 package com.quangvinh.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -130,18 +131,20 @@ public class BuocXuLyDAO implements IBuocXuLyDAO{
 	}
 
 	@Override
-	public int updateNoiDungAndValueXuLy(int mavanban,int sothutu,String noidungxuly,boolean valueXuLy) {
+	public int updateNoiDungAndValueXuLy(int mavanban,int sothutu,String noidungxuly,boolean valueXuLy,Date thoigianxuly) {
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "update BuocXuLyPheDuyetVanBan a " +
-				"set a.noiDungXLPD = :noidungxuly,a.valueXuLy = :valueXuLy " +
+				"set a.noiDungXLPD = :noidungxuly,a.valueXuLy = :valueXuLy,a.thoiGianXuLy = :thoigianxuly " +
 				"where a.pkBuocXuLy.soThuTu = :sothutu " +
-				"and a.pkBuocXuLy.maVanBan = :mavanban";
+				"and a.pkBuocXuLy.maVanBan = :mavanban ";
+				
 		Query query = session.createQuery(hql);
 		
 		query.setParameter("mavanban", mavanban);
 		query.setParameter("sothutu", sothutu);
 		query.setParameter("noidungxuly", noidungxuly);
 		query.setParameter("valueXuLy", valueXuLy);
+		query.setParameter("thoigianxuly", thoigianxuly);
 		
 		int result = query.executeUpdate();
 		

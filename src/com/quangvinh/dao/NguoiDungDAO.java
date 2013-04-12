@@ -2,6 +2,7 @@ package com.quangvinh.dao;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -75,7 +76,7 @@ public class NguoiDungDAO implements INguoiDungDAO{
 	 */
 	@Override
 	public NguoiDung findNguoiDungID(int id) {
-		
+		Hibernate.initialize(getNguoiDung());
 		NguoiDung nguoiDung = (NguoiDung) sessionFactory.getCurrentSession().load(NguoiDung.class,id);
 		return nguoiDung;
 	}

@@ -130,7 +130,20 @@ padding:5px 5px 5px 5px;
 			var tungay = $('#tungay').val();
 			var denngay = $('#denngay').val();
 			var danhmuc = $('#danhmuc').val();
+			if($('#tungay').val().length == 0){
+				alert("Bạn chưa nhập thời gian để thống kê công văn đến");
+				$('#tungay').focus();
+				
+			}
+			else if($('#denngay').val().length == 0){
+				alert("Bạn chưa nhập thời gian để thống kê công văn đến");
+				$('#denngay').focus();
+				
+			}
+			else{
+				
 			window.location = '${pageContext.request.contextPath}/service/PdfVanBanDen/' + danhmuc + '/' + tungay + '/' + denngay;
+			}
 			return false;
 	});	
 	

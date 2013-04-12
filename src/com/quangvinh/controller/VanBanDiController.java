@@ -154,7 +154,7 @@ public class VanBanDiController {
 			 * Convert String to Date,
 			 * Because jquery.$ajax funtion is not parsed Date type, so must set type Date to String.
 			 */
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yy-mm-dd"); 
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd"); 
 			Date dngaybanhanh = null;
 			Date dngayketthuc = null;
 			Date dngayhieuluc = null;

@@ -1,26 +1,24 @@
 package com.quangvinh.report;
 
 import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.view.document.AbstractPdfView;
 
-import com.lowagie.text.Cell;
 import com.lowagie.text.Document;
 import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.Paragraph;
-import com.lowagie.text.Table;
 import com.lowagie.text.pdf.BaseFont;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
-import com.quangvinh.service.IVanBanDenService;
 
 public class PdfVanBanDenReportView extends AbstractPdfView{
 
@@ -31,119 +29,137 @@ public class PdfVanBanDenReportView extends AbstractPdfView{
 	protected void buildPdfDocument(Map model, Document document,
 			PdfWriter writer, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		/*response.setHeader("Content-Type", "application/octet-stream");
-		response.setHeader("Content-Disposition", "inline; filename=yourExcelFile.pdf");*/
-		 request.setCharacterEncoding("UTF-8");
-		 response.setCharacterEncoding("UTF-8");
-		 response.setContentType ("application/pdf;charset=UTF-8");
+		/**
+		 * Template Export Van Ban Den
+		 */
+		response.setHeader("Content-Type", "application/octet-stream");
+		response.setHeader("Content-Disposition", "inline; filename=yourExcelFile.pdf");
 		Map<Integer,String> printData = (Map<Integer,String>) model.get("printData");
 		Map<Integer,Object[]> printDataVanBanDen = (Map<Integer,Object[]>) model.get("printDataVanBanDen");
-		int madanhmuc = (int) model.get("madanhmuc");
+		
+		
 		Date tungay = (Date) model.get("tungay");
 		Date denngay = (Date) model.get("denngay");
 		
-		/**
-		 * Loai Van Ban
-		 * 
-		 */
-			
-	    Font f1;
-	    BaseFont baseFont = BaseFont.createFont("c:\\WINDOWS\\fonts\\times.ttf", BaseFont.IDENTITY_H, true); 
-	    f1 = new Font(baseFont, 10);
+		Date date = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		int year = cal.get(Calendar.YEAR);
+	    int month = cal.get(Calendar.MONTH) + 1;
+	    int day = cal.get(Calendar.DAY_OF_MONTH);
 	    
-	   /* PdfPTable table = new PdfPTable(2);
-	    PdfPCell cell = new PdfPCell (new Paragraph ("Nguyễn",f1));
-	    table.addCell(cell);
-	    cell = new PdfPCell (new Paragraph ("Đạt",f1));
-	    table.addCell (cell);
-
-        document.add(table);   	*/
-			
+		Font f1;
+		Font f2;
+		Font f3;
+		Font f4;
+		Font f5;
+	    BaseFont baseFont = BaseFont.createFont("c:\\WINDOWS\\fonts\\times.ttf", BaseFont.IDENTITY_H, true);
+	    
+	    f1 = new Font(baseFont, 10);
+	    f2 = new Font(baseFont,12);
+	    f3 = new Font(baseFont,16);
+	    f4 = new Font(baseFont,13,Font.NORMAL,new Color(66, 66, 255));
+	    f5 = new Font(baseFont,10,Font.ITALIC);
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd");
+	    
+	    String text = "CHI CỤC THUẾ THÀNH PHỐ CẦN THƠ                  CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM";
+	    Paragraph p = new Paragraph(text,f2);
+	    p.setAlignment(Element.ALIGN_CENTER);
+	    document.add(p);
+	    
+	    text = "                                                                                           	Độc lập - Tự do - Hạnh phúc";
+	    p = new Paragraph(text,f2);
+	    p.setAlignment(Element.ALIGN_CENTER);
+	    document.add(p);
+	    
+	    text = "Cần Thơ, ngày " + day + " tháng " + month + " năm " + year;
+	    p = new Paragraph(text,f1);
+	    p.setAlignment(Element.ALIGN_RIGHT);
+	    p.setSpacingBefore(10);
+	    p.setSpacingAfter(35);
+	    document.add(p);
+	    
+	    text = "BÁO CÁO DANH MỤC VĂN BẢN ĐẾN";
+	    p = new Paragraph(text,f3);
+	    p.setAlignment(Element.ALIGN_CENTER);
+	    p.setSpacingAfter(25);	
+	    document.add(p);
+	       	
 			for (Map.Entry<Integer, String> entry : printData.entrySet()) {
-				
-				
-				/*Cell cell = new Cell(entry.getValue());
-				cell.setBackgroundColor(new Color(255,0,0));
+				Paragraph cTitle = new Paragraph(entry.getKey() + ". " +  entry.getValue(), f4);
+			
+				PdfPTable table = new PdfPTable(5);
+			    table.setSpacingBefore(20);
+			    table.setSpacingAfter(30);
+			    table.setWidthPercentage(100);
+			    PdfPCell cell = new PdfPCell(new Paragraph("Số Đến",f1));
+			    
+			    cell.setGrayFill(0.75f);
 			    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-				cell.setHeader(true);
-			    cell.setColspan(5);*/
-			    
-				
-			    PdfPCell cell = new PdfPCell (new Paragraph(entry.getValue(),f1));
-			    cell.setColspan(5);
-			    
-			    PdfPTable table = new PdfPTable(5);
+			    cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+			    cell.setPadding(8);
 			    table.addCell(cell);
-			    table.addCell(new PdfPCell(new Paragraph("Số Đến",f1)));
-			    table.addCell(new PdfPCell(new Paragraph("Ngày Đến",f1)));
-			    table.addCell(new PdfPCell(new Paragraph("Số Hiệu Văn Bản",f1)));
-			    table.addCell(new PdfPCell(new Paragraph("Ngày Ban Hành",f1)));
-			    table.addCell(new PdfPCell(new Paragraph("Trích Yếu Nội Dung",f1)));
+			    
+			    cell = new PdfPCell(new Paragraph("Ngày Đến",f1));
+			    cell.setGrayFill(0.75f);
+			    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+			    cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+			    cell.setPadding(8);
+			    
+			    table.addCell(cell);
+			    
+			    cell = new PdfPCell(new Paragraph("Số Hiệu Văn Bản",f1));
+			    
+			    cell.setGrayFill(0.75f);
+			    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+			    cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+			    cell.setPadding(8);
+			    table.addCell(cell);
+			    
+			    cell = new PdfPCell(new Paragraph("Ngày Ban Hành",f1));
+			   
+			    cell.setGrayFill(0.75f);
+			    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+			    cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+			    cell.setPadding(8);
+			    table.addCell(cell);
+			   
+			    cell = new PdfPCell(new Paragraph("Trích Yếu Nội Dung",f1));
+			    
+			    cell.setGrayFill(0.75f);
+			    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+			    cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+			    cell.setPadding(8);
+			    table.addCell(cell);
+			    
+			  
 			    for (Map.Entry<Integer, Object[]> entryVanBan : printDataVanBanDen.entrySet()) {
-					/*for(Object obj: entryVanBan.getValue()){
-						table.addCell(new PdfPCell(new Paragraph(obj.toString(),f1)));
-					}*/
+			    	  
 					 int count = entryVanBan.getValue().length;
 					 Object[] tt = entryVanBan.getValue();
 					 for(int i=0;i < count-1;i++){
-						 if(entry.getKey() == tt[5] )
-						 table.addCell(new PdfPCell(new Paragraph(tt[i].toString(),f1)));
+						 Date temp = dateFormat.parse(tt[1].toString());
+						 
+						 if((entry.getKey() == tt[5]) && (temp.after(tungay) || temp.equals(tungay)) && (temp.before(denngay) || temp.equals(denngay)))
+							table.addCell(new PdfPCell(new Paragraph(tt[i].toString(),f1)));
 						 
 					 }
-					
-					
 		        }
 			    
-			    
-				/*Table table = new Table(5);
-				table.setBorderWidth(1);
-			    table.setPadding(10);
-				table.addCell(cell);
-				table.addCell("Số Đến");
-				table.addCell("Ngày Đến");
-				table.addCell("Số Hiệu Văn Bản");
-				table.addCell("Ngày Ban Hành");
-				table.addCell("Trích Yếu Nội Dung");
-				for (Map.Entry<Integer, Object[]> entryVanBan : printDataVanBanDen.entrySet()) {
-					for(Object obj: entryVanBan.getValue()){
-						table.addCell(obj.toString());
-					}
-		        }*/
-				
-				
+			    document.add(cTitle);
 				document.add(table);
 	        }
-			
-			
-		
-		
-			
-	
-		
-		/*Cell cell = new Cell("header");
-		cell.setBackgroundColor(new Color(255,0,0));
-	    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
-		cell.setHeader(true);
-	    cell.setColspan(2);
-		Table table = new Table(2);
-		table.setBorderWidth(1);
-	    table.setPadding(10);
-		table.addCell(cell);
-		table.addCell("Ma");
-		table.addCell("Ten");	
-		for (Map.Entry<Integer, String> entry : printData.entrySet()) {
-			table.addCell(entry.getKey().toString());
-			table.addCell(entry.getValue());
-        }
-		
-		
-		document.add(table);*/
-		
-		
-		
-		
+			text = "Thủ trưởng đơn vị";
+	  	    p = new Paragraph(text,f1);
+	  	    p.setAlignment(Element.ALIGN_RIGHT);
+	  	    p.setSpacingAfter(25);	
+	  	    document.add(p);
+	  	    
+	  	    text = "(Ký tên, đóng dấu)";
+	  	    p = new Paragraph(text,f5);
+	  	    p.setAlignment(Element.ALIGN_RIGHT);
+	  	    p.setSpacingAfter(25);	
+	  	    document.add(p);
 	}
 
-		
-		
 }

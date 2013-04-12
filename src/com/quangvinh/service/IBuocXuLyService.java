@@ -1,5 +1,6 @@
 package com.quangvinh.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.quangvinh.model.Buoc;
@@ -14,7 +15,7 @@ public interface IBuocXuLyService {
 	List<BuocXuLyPheDuyetVanBan> getBuocXuLyTheoMaNguoiDung(int manguoidung);
 	BuocXuLyPheDuyetVanBan getBuocXuLyTheoVbanBuoc(int mavanban,int buoc);
 	long countBuocXuLyTheoMaQuyTrinh(int maquytrinh,int mavanban);
-	int updateNoiDungAndValueXuLy(int mavanban,int sothutu, String noidungxuly,boolean valueXuLy);
+	int updateNoiDungAndValueXuLy(int mavanban,int sothutu, String noidungxuly,boolean valueXuLy,Date thoigianxuly);
 	int updateNoiDungAndValueChuyen(int mavanban,int sothutu,boolean valueChuyen);
 	boolean checkExistVanBanTrongBuocXuLy(int mavanban);
 	long countBuocXuLyTheoMaNguoiDung(int manguoidung,boolean valuechuyen, boolean valuexuly);

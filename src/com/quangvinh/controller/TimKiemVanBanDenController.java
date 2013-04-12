@@ -57,7 +57,7 @@ public class TimKiemVanBanDenController {
 			@PathVariable("linhvuc") int linhvuc,
 			@PathVariable("sohoso") int sohoso){
 		Map<String,Object> map = new HashMap<String,Object>();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yy-mm-dd"); 
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yy-MM-dd"); 
 		Date dngayden = null;
 		try {
 			dngayden = dateFormat.parse(ngayden);

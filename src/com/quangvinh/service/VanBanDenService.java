@@ -121,4 +121,11 @@ public class VanBanDenService implements IVanBanDenService{
 		return vanbandenDao.getVanBanDenPaging(page);
 	}
 
+	@Override
+	@Transactional
+	public boolean checkExistVanBanDen(String sokyhieuvanban) {
+		
+		return vanbandenDao.checkExistVanBanDen(sokyhieuvanban);
+	}
+
 }
