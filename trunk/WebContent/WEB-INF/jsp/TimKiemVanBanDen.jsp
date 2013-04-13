@@ -137,10 +137,10 @@ div#dialog_timkiemcoban table{
 		      modal: false,
 		      buttons: {
 		    	  'Tìm kiếm':function(){
-			        	var trichyeu = $('#trichyeu').val();
-			        	var ngayden = $('#ngayden').val();
-			        	var soden = $('#soden').val();
-			        	var sokyhieu = $('#sokyhieu').val();
+			        	var trichyeu = $('#trichyeu').val() || "@";
+			        	var ngayden = $('#ngayden').val() || "@";
+			        	var soden = $('#soden').val() || 0;
+			        	var sokyhieu = $('#sokyhieu').val() || "@";
 			        	var coquanbanhanh = $('#coquanbanhanh').val();
 			        	var loaivanban = $('#loaivanban').val();
 			        	var linhvuc = $('#linhvuc').val();

@@ -74,7 +74,9 @@ public class CapDoKhanDAO implements ICapDoKhanDAO{
 
 	@Override
 	public CapDoKhan findCapDoKhanID(int id) {
-		CapDoKhan capDoKhan = (CapDoKhan) sessionFactory.getCurrentSession().load(CapDoKhan.class,id);
+		CapDoKhan capDoKhan = (CapDoKhan) sessionFactory
+				.getCurrentSession()
+				.load(CapDoKhan.class,id);
 		return capDoKhan;
 	}
 

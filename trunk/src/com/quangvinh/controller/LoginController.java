@@ -1,11 +1,7 @@
 package com.quangvinh.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -76,10 +72,10 @@ public class LoginController {
 		int t1 = (int)(perdunghan*100);
 		int t2 = (int)(perquahan*100);
 		System.out.println(t1 + "ddf" + t2 + "ffd");
-		Slice s1 = Slice.newSlice(t1, Color.newColor("CACACA"),perdunghan*100 + "%","Đúng hạn");
-		Slice s2 = Slice.newSlice(t2, Color.newColor("DF7417"),perquahan*100 + "%","Quá hạn");
+		Slice s1 = Slice.newSlice(t1, Color.newColor("EF8223"),(Math.round(perdunghan*100.0)/100.0)*100  + "%","Đúng hạn (" + dunghan +")");
+		Slice s2 = Slice.newSlice(t2, Color.newColor("E9E7E8"),(Math.round(perquahan*100.0)/100.0)*100 + "%","Quá hạn (" + quahan + ")");
 		PieChart piechart = GCharts.newPieChart(s1,s2);
-		piechart.setTitle("Biểu đồ thống kê tình hình xử lý công văn của chuyên viên " + hoten,Color.BLUE,15);
+		piechart.setTitle("Biểu đồ thống kê tình hình xử lý công văn của chuyên viên " + hoten,Color.BLACK,16);
 		piechart.setSize(720,360);
 		piechart.setThreeD(true);
 		model.addAttribute("barUrl",piechart.toURLString());
