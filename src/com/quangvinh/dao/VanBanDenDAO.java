@@ -3,10 +3,12 @@ package com.quangvinh.dao;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -154,11 +156,10 @@ public class VanBanDenDAO implements IVanBanDenDAO {
 	public List<VanBanDen> timKiemNangCaoVanBanDen(String trichyeu,
 			Date ngayden, int soden, String sokyhieu, int coquanbanhanh,
 			int loaivanban, int linhvuc, int sohoso) {
-		Session session = sessionFactory.getCurrentSession();
+		/*Session session = sessionFactory.getCurrentSession();
 		String hql = "select a " +
 				"from VanBanDen a inner join a.linhvuc b " +
 				"inner join a.loaivanban c " +
-				"inner join a.linhvuc d " +
 				"inner join a.hosoluutru e " +
 				"inner join a.donvi f " +
 				"where a.trichYeu like :trichyeu and " +
@@ -167,7 +168,7 @@ public class VanBanDenDAO implements IVanBanDenDAO {
 				"a.soKyHieuVanBan like :sokyhieu and " +
 				"f.maDonVi = :coquanbanhanh and " +
 				"c.maLoaiVanBan = :loaivanban and " +
-				"d.maLinhVuc = :linhvuc and " +
+				"b.maLinhVuc = :linhvuc and " +
 				"e.soHoSo = :sohoso";
 		Query query = session.createQuery(hql);
 		query.setString("trichyeu", "%" +trichyeu+ "%");
@@ -179,20 +180,51 @@ public class VanBanDenDAO implements IVanBanDenDAO {
 		query.setInteger("linhvuc", linhvuc);
 		query.setInteger("sohoso", sohoso);
 		List<VanBanDen> list = query.list();
+		return list;*/
+		
+		Session session = sessionFactory.getCurrentSession();
+		Criteria cr = session.createCriteria(VanBanDen.class,"vanbandenAlias");
+		List<VanBanDen> list = cr.createAlias("vanbandenAlias.linhvuc", "linhvucAlias")
+			.createAlias("vanbandenAlias.loaivanban", "loaivanbanAlias")
+			.createAlias("vanbandenAlias.hosoluutru", "hosoluutruAlias")
+			.createAlias("vanbandenAlias.donvi", "donviAlias")
+			.add(Restrictions.like("vanbandenAlias.trichYeu", "%"+trichyeu+"%"))
+			.add(Restrictions.eq("vanbandenAlias.NgayDen", ngayden))
+			.add(Restrictions.eq("vanbandenAlias.SoDen", soden))
+			.add(Restrictions.like("vanbandenAlias.soKyHieuVanBan","%"+sokyhieu+"%"))
+			.add(Restrictions.eq("donviAlias.maDonVi", coquanbanhanh))
+			.add(Restrictions.eq("loaivanbanAlias.maLoaiVanBan", loaivanban))
+			.add(Restrictions.eq("linhvucAlias.maLinhVuc", linhvuc))
+			.add(Restrictions.eq("hosoluutruAlias.soHoSo", sohoso))
+			.list();
+		
+		
 		return list;
+		
+		
+		
+		
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<VanBanDen> timKiemCoBanVanBanDen(String textInput) {
-		Session session = sessionFactory.getCurrentSession();
+		/*Session session = sessionFactory.getCurrentSession();
 		String hql = "select a " +
 				"from VanBanDen a " +
 				"where a.tuKhoa like :textInput";
 		Query query = session.createQuery(hql);
 		query.setString("textInput", "%" +textInput+ "%");
 		List<VanBanDen> list = query.list();
-		return list;		
+		return list;	*/	
+		
+		
+		
+		Session session = sessionFactory.getCurrentSession();
+		Criteria cr = session.createCriteria(VanBanDen.class)
+			.add(Restrictions.like("tuKhoa", "%"+textInput+"%"));
+		List<VanBanDen> list = cr.list();
+		return list;
 		
 	}
 

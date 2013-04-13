@@ -11,8 +11,24 @@
 <script src="/LuanVanTotNghiep/js/jquery-1.9.0.js"></script>
 <script src="/LuanVanTotNghiep/js/jquery-ui.js"></script>
 <title>Insert title here</title>
+<style>
+	#showPieChart{
+		overflow: hidden;
+		border: 1px solid #c4c4c4;
+	}
+	#showPieChart img{
+	margin: 10px 0  10px 40px;
+	
+	}
+</style>
+<script type="text/javascript">
+	
+</script>
 </head>
 <body>
+	<div id="showPieChart">
 	<img alt ="Biểu đồ thống kê tình hình xử lý công văn của chuyên viên" src="${barUrl}"/>
+	</div>
+	
 </body>
 </html>
