@@ -32,7 +32,7 @@ public class LoginController {
 	@Autowired
 	private IBuocXuLyService buocxulyService;
 	
-	@RequestMapping("/login.do")
+	@RequestMapping("/login.action")
 	public String pageLogin(Map<String, Object> map){
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String name = auth.getName(); 
