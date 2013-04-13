@@ -690,6 +690,7 @@ $('#phanxuly').button().click(function(){
 </ul>
 <table class="ui-widget ui-widget-content">
 	<tr class="ui-widget-header">
+		<th></th>
 	    <th>Ngày Đến</th>
 	    <th>Số Đến</th>
 	   	<th>Số Hiệu Văn Bản</th>
@@ -698,6 +699,17 @@ $('#phanxuly').button().click(function(){
   	</tr>
 	<c:forEach items="${vanbandenList}" var="vanbanden">
 	    <tr id = "${vanbanden.maVanBan}">
+	    
+	    	<td>
+	    	
+	       	<c:forEach items="${fileDinhKemListAll}" var="fileDinhKem">
+	       	  	<c:if test="${fileDinhKem.vanban.getMaVanBan() ==  vanbanden.getMaVanBan()}">
+	       	  		
+	       	  			<img alt="Đính kèm" src="/LuanVanTotNghiep/images/attachmentblue.png"/>
+	           	</c:if>
+		  	</c:forEach>
+	       	</td>
+	    	
 	    	<td>${vanbanden.getNgayDen()}</td>
 	    	<td>${vanbanden.getSoDen()}</td>
 	    	<td>${vanbanden.soKyHieuVanBan}</td>

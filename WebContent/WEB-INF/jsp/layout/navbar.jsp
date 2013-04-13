@@ -54,12 +54,10 @@
 					<li><a href="${pageContext.request.contextPath}/service/tiepNhanVanBanDen">Văn bản đến qua mạng<span id="countvanbanchuatiepnhan"></span></a>
 					<li><a href="${pageContext.request.contextPath}/service/DanhSachVanBanTheoTTXL/1">Chưa xử lý<span id="countvanbanchuaxuly"></span></a></li>
 					<li><a href="${pageContext.request.contextPath}/service/DanhSachVanBanTheoTTXL/2">Đang xử lý<span id="countvanbandangxuly"></span></a></li>
-					<li><a href="">Quá hạn</a></li>
 					<li><a href="${pageContext.request.contextPath}/service/DanhSachVanBanTheoTTXL/3">Đã hoàn tất<span id="countvanbanhoanthanh"></span></a></li>
-					<li><a href="">Đã lưu</a></li>
+					
 				</ul>
 				
-			
 		<h3>Văn bản đến</h3>	
 			
 				<ul class="menu" id="vanbandennavbar">
