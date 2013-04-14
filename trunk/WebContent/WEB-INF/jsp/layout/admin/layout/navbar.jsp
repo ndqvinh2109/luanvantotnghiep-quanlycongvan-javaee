@@ -24,8 +24,8 @@
 		<h3>Quản trị người dùng</h3>
 			
 				<ul class="menu">
-					<li><a href="">Thêm người dùng mới</a></li>
-					<li><a href="">Cập nhật, phân quyền người dùng</a></li>
+					<li><a href="${pageContext.request.contextPath}/service/themNguoiDung">Thêm người dùng mới</a></li>
+					<li><a href="">Phân quyền người dùng</a></li>
 					<li><a href="">Thêm quyền</a></li>
 					<li><a href="">Cập nhật quyền</a></li>
 				</ul>
