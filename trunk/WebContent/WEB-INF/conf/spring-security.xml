@@ -12,9 +12,21 @@
                                   
                         
                         <intercept-url pattern="/service/welcomeAdmin" access="ROLE_QUAN_TRI_HE_THONG"  />
-      					
-      				        			
-      				           				
+      					<intercept-url pattern="/service/loadXuLyPheDuyetVanBan" access="ROLE_XU_LY,ROLE_VAN_THU,ROLE_LANH_DAO"  />
+      				    <intercept-url pattern="/service/tiepNhanVanBanDen" access="ROLE_VAN_THU"  />   
+      				    <intercept-url pattern="/service/showvanbanden/{1}" access="ROLE_XU_LY,ROLE_QUAN_TRI_HE_THONG,ROLE_VAN_THU,ROLE_LANH_DAO"  />   			
+      				 	<intercept-url pattern="/service/nhapvanbanden" access="ROLE_VAN_THU"  />   	
+                        <intercept-url pattern="/service/nhapbuocthuocquytrinh" access="ROLE_LANH_DAO"  />   
+                        <intercept-url pattern="/service/phanxuly/{1}.action" access="ROLE_VAN_THU"  />   
+                     	<intercept-url pattern="/service/timKiemVanBanDen" access="ROLE_XU_LY,ROLE_QUAN_TRI_HE_THONG,ROLE_VAN_THU,ROLE_LANH_DAO"  />
+                     	<intercept-url pattern="/service/nhapvanbandi" access="ROLE_VAN_THU"  />
+                     	<intercept-url pattern="/service/showvanbandi/{1}" access="ROLE_VAN_THU"  />
+						<intercept-url pattern="/service/nhapHoSoLuuTru" access="ROLE_VAN_THU"  />
+						<intercept-url pattern="/service/baoCaoVanBanDen" access="ROLE_VAN_THU,ROLE_LANH_DAO"/>
+						<intercept-url pattern="/service/guiTinNhanNoiBo" access="ROLE_XU_LY,ROLE_QUAN_TRI_HE_THONG,ROLE_VAN_THU,ROLE_LANH_DAO"/>
+						
+						 
+						                        
                         <form-login login-page="/index.jsp" 
                           default-target-url="/service/login.action" always-use-default-target="true"  
                           authentication-failure-url="/index.jsp?login_error=1" />

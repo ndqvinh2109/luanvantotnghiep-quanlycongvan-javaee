@@ -660,7 +660,7 @@ $("#chitietvanbanden").button().click(function(){
 /*----------------------------------------End Chi tiet van ban---------------------------------*/		
 
 $('#phanxuly').button().click(function(){
-	window.location = '${pageContext.request.contextPath}/service/' + mavanban;
+	window.location = '${pageContext.request.contextPath}/service/phanxuly/' + mavanban + ".action";
 	
 });
 

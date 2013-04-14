@@ -81,8 +81,8 @@ public class DanhSachVanBanDenController {
 		int pages = Math.round(count/per_page);
 		if((count%per_page)!= 0){
 			pages ++;
-			
 		}
+		
 		map.put("vanbandenList",vanbandenService.getVanBanDenPaging(page));
 		map.put("donViList",donviService.getDonVi());
 		map.put("loaiVanBanList", loaivanbanService.getLoaiVanBan());
@@ -93,6 +93,7 @@ public class DanhSachVanBanDenController {
 		map.put("hoSoLuuTruList", hosoluutruService.getHoSoLuuTru());
 		map.put("filedinhkem",new FileDinhKem());
 		map.put("fileDinhKemListAll", filedinhkemService.getFileDinhKem());
+		
 		map.put("pages", pages);
 		/*System.out.println(pages);*/
 		return "danhsachvanbanden";

@@ -38,7 +38,7 @@ public class PhanXuLyVanBanController {
 	private IVanBanService vanbanService;
 	
 	
-	@RequestMapping("/{mavanban}")
+	@RequestMapping("/phanxuly/{mavanban}.action")
 	public String pagePhanXuLy(Map<String,Object> map,@PathVariable("mavanban") int mavanban){
 		System.out.println(mavanban);
 		int maquytrinh = vanbandenService.findQuyTrinh(mavanban);

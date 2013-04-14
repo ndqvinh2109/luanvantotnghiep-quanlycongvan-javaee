@@ -46,7 +46,7 @@ span.username_banner {
 </head>
 <body>
 <div id="banner">
-	<a href="${pageContext.request.contextPath}/service/login.do"><img alt="Hệ thống quản lý công văn" src="/LuanVanTotNghiep/images/banner.png"/></a>
+	<a href="${pageContext.request.contextPath}/service/login.action"><img alt="Hệ thống quản lý công văn" src="/LuanVanTotNghiep/images/banner.png"/></a>
 	<div id="login-info">
 	<span>Xin chào <span class="username_banner"></span></span>
 	</div>
