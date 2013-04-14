@@ -25,6 +25,15 @@
 <put-attribute name="body" value="/WEB-INF/jsp/layout/admin/WelcomeAdmin.jsp" />
 </definition>
 
+<definition name="themnguoidung" extends="base.admin.definition">
+<put-attribute name="title" value="Thêm, cập nhật người dùng" />
+<put-attribute name="body" value="/WEB-INF/jsp/layout/admin/ThemNguoiDung.jsp" />
+</definition>
+
+<definition name="phanquyennguoidung" extends="base.admin.definition">
+<put-attribute name="title" value="Phân quyền người dùng" />
+<put-attribute name="body" value="/WEB-INF/jsp/layout/admin/PhanQuyenNguoiDung.jsp" />
+</definition>
 
 <definition name="danhmuccapdokhan" extends="base.admin.definition">
 <put-attribute name="title" value="Danh mục Cấp độ khẩn" />

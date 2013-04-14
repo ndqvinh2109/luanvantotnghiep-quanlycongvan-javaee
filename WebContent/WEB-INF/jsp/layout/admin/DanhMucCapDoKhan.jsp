@@ -56,7 +56,7 @@ div#table_inner table{
  text-align: left;
  }
  
-  div#dialog_them table{
+ div#dialog_them table{
  margin: 1em; border-collapse: collapse; width: 95%; 
  }
  div#dialog_them table td{
@@ -74,7 +74,7 @@ div#table_inner table{
  text-align: left;
  }
  
- div#table_inner table tr:nth-child(odd) {
+div#table_inner table tr:nth-child(odd) {
   background-color: #e8edff;
 }
 div#table_inner table tr:nth-child(even) {
@@ -292,9 +292,9 @@ $(document).ready(function(){
 		</div>
 		
 		<div id="toolbar" class="ui-widget-header ui-corner-all">
-			<button id="themdokhan"><img src="/LuanVanTotNghiep/images/edit_add.png"/><span>Thêm</span></button>
-			<button id="xoadokhan"><img src="/LuanVanTotNghiep/images/edit_remove.png"/><span>Xóa</span></button>
-			<button id="suadokhan"><img src="/LuanVanTotNghiep/images/pencil.png"/><span>Sửa</span></button>
+			<button id="themdokhan"><img src="/LuanVanTotNghiep/images/add1.png"/><span>Thêm</span></button>
+			<button id="xoadokhan"><img src="/LuanVanTotNghiep/images/button_cancel.png"/><span>Xóa</span></button>
+			<button id="suadokhan"><img src="/LuanVanTotNghiep/images/form_edit.png"/><span>Sửa</span></button>
 		</div>
 		<div id="table_inner">
 		<table class="ui-widget ui-widget-content">

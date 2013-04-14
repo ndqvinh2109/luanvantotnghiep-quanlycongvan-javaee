@@ -48,4 +48,11 @@ public class RoleService implements IRoleService{
 		return rolesDao.findRoleID(id);
 	}
 
+	@Override
+	@Transactional
+	public List<Roles> getRolesListTheoNguoiDung(int manguoidung) {
+		
+		return rolesDao.getRolesListTheoNguoiDung(manguoidung);
+	}
+
 }

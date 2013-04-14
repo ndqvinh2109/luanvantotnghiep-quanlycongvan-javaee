@@ -2,8 +2,10 @@ package com.quangvinh.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -67,7 +69,6 @@ public class RolesDAO implements IRolesDAO{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Roles> getRoles() {
-		
 		Session session = sessionFactory.getCurrentSession();
 		List<Roles> list = session.createQuery("from Roles").list();
 		return list;
@@ -78,6 +79,17 @@ public class RolesDAO implements IRolesDAO{
 		
 		Roles role = (Roles) sessionFactory.getCurrentSession().load(Roles.class,id);
 		return role;
+	}
+
+	@SuppressWarnings({ "unchecked" })
+	@Override
+	public List<Roles> getRolesListTheoNguoiDung(int manguoidung) {
+		Session session = sessionFactory.getCurrentSession();
+		Criteria cr = session.createCriteria(Roles.class,"roleAlias");
+		List<Roles> list = cr.createAlias("roleAlias.nguoidung", "nguoidungAlias")
+				.add(Restrictions.eq("nguoidungAlias.maNguoiDung", manguoidung)).list();
+		
+		return list;
 	}
 
 }

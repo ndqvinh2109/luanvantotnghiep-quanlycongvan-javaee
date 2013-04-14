@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//WebContent/WEB-INF/jsp/DanhSachVanBanDi.jsp=UTF-8
 encoding//WebContent/WEB-INF/jsp/NhapVanBanDen.jsp=UTF-8
+encoding//WebContent/WEB-INF/jsp/layout/admin/ThemNguoiDung.jsp=UTF-8
 encoding//WebContent/WEB-INF/jsp/layout/admin/WelcomeAdmin.jsp=UTF-8
 encoding//WebContent/WEB-INF/jsp/layout/banner.jsp=UTF-8
 encoding//WebContent/WEB-INF/jsp/layout/leftbar.jsp=UTF-8

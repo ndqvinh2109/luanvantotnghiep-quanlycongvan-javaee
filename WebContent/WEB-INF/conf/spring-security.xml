@@ -33,6 +33,9 @@
                         <logout logout-success-url="/index.jsp" />
             </http>
 
+			<beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder"/>
+			
+			
             <authentication-manager>
                   <authentication-provider>
                               <!-- <user-service>
@@ -52,7 +55,7 @@
 
 					  />
 					  
-					  
+					  <password-encoder ref="passwordEncoder" />
                   </authentication-provider>
             </authentication-manager>
             

@@ -10,4 +10,5 @@ public interface IRolesDAO {
 	void deleteRoles(int id);
 	List<Roles> getRoles();
 	Roles findRoleID(int id);
+	List<Roles> getRolesListTheoNguoiDung(int manguoidung);
 }
