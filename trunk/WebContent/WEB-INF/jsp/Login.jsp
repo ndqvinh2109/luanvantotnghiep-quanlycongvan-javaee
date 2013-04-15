@@ -12,6 +12,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
+
+
 #tonghoptinhhinhxuly{
 	background-color: #f7f7f7;
 	overflow: hidden;
@@ -98,6 +100,22 @@ padding:5px 5px 5px 5px;
 	font-family: Arial,Verdana,Sans-serif;
 	border: 1px solid #ffb053;
 }
+table#message{
+	/*font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 45px;*/
+	width: 700px;
+	margin: 5px auto;
+	text-align: left;
+	border-collapse: collapse;
+
+}
+
+table#message td {
+	padding: 8px;
+	color: #669;
+}
+
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -121,23 +139,23 @@ padding:5px 5px 5px 5px;
 				if(data.numberVanBanXuLy != 0){
 						
 				
-				var htmlPrepare = '<table>';
+				var htmlPrepare = '<table id="message">';
 				for(var i = 0;i<data.listRoles.length;i++){
 				  if(data.listRoles[i].tenRoles == 'ROLE_LANH_DAO'){
-					  htmlPrepare += '<tr style="padding: 5px 5px"><td style="color:red">Thông báo phê duyệt:</td>';
+					  htmlPrepare += '<tr><td style="color:red">Thông báo phê duyệt:</td>';
 					  htmlPrepare += '<td>Hiện tại bạn có văn bản cần phê duyệt.</td></tr>';
 				  }
 				  
 				  if(data.listRoles[i].tenRoles == 'ROLE_XU_LY'){
-					  htmlPrepare += '<tr><td>Thông báo xử lý: </td>';
+					  htmlPrepare += '<tr><td style="color:red">Thông báo xử lý: </td>';
 					  htmlPrepare += '<td>Hiện tại bạn có văn bản cần xử lý.</td></tr>';
 				  }
 				  
 				 if(data.listRoles[i].tenRoles == 'ROLE_VAN_THU'){
 					  var countVanBanDen = data.listVanBanDenChuaXuLy.length;
 					  	if(countVanBanDen != 0){
-							  htmlPrepare += '<tr><td>Thông báo văn bản đến qua mạng: </td>';
-							  htmlPrepare += '<td>Hiên tại có ' + countVanBanDen + ' văn bản đến qua mạng chưa được tiếp nhận.</td></tr>';
+							  htmlPrepare += '<tr><td style="color:red">Thông báo văn bản đến qua mạng: </td>';
+							  htmlPrepare += '<td>Hiên tại có <b>' + countVanBanDen + ' </b>văn bản đến qua mạng chưa được tiếp nhận.</td></tr>';
 					  	}
 				  }
 				  
@@ -145,7 +163,7 @@ padding:5px 5px 5px 5px;
 				}
 				
 				
-				htmlPrepare += '<tr><td colspan="2">' + 'Tổng số lượng văn bản đến đang chờ giải quyết: ' + data.numberVanBanXuLy + '</td></tr>' ;
+				htmlPrepare += '<tr><td colspan="2">' + 'Tổng số lượng văn bản đến đang chờ giải quyết: <b style="color: red">' + data.numberVanBanXuLy + '</b></td></tr>' ;
 				htmlPrepare += '</table>';
 				$('#message_nhacviec').html(htmlPrepare);
 				$( "#message_nhacviec" ).dialog({
