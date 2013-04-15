@@ -68,6 +68,19 @@ div#phanquyenguoidung h3{
 	text-decoration: underline;
 }
 
+#hienthiquyennguoidungthuocve h2 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	letter-spacing: .10em;
+	font-size: 24px;
+	font-weight: 100;
+	border-bottom: groove 2px #CCC;
+	width: auto;
+	line-height: 24px;
+	font-variant: small-caps;
+	text-transform: none;
+	text-align: center;
+	padding: 15px 0 0 0;
+}	
 
 
 
@@ -82,24 +95,24 @@ div#phanquyenguoidung h3{
 <body>
 
 	<div id="phanquyenguoidung">
-		<h3>Phân quyền người dùng: <span style="color: red;">${tennguoidung}</span></h3>
+		<h3>Phân quyền người dùng</h3>
 			
 		<div id="hienthiquyennguoidungthuocve">
-			
+			<h2>Thông tin quyền của <span style="color: red;">${tennguoidung}</span></h2>
 			<ul>
-				<li> Người dùng thuộc nhóm: (<a href="">Quản lý nhóm</a>)
+				<li> Người dùng thuộc nhóm quyền: (<a href="${pageContext.request.contextPath}/service/phanNhomQuyen/${manguoidung}">Quản lý nhóm quyền</a>)
 			<ul>
 				<c:forEach var="role" items="${roleList}">
-					<li>${ role.getTenRolesChiTiet()}</li>
+					<li>${ role.roles.getTenRolesChiTiet()}</li>
 				</c:forEach>
 				
 			</ul>
 			</li>
-			<li>Người dùng có quyền:
+			<li>Người dùng có các chức năng:
 				<ul>
 					<c:forEach var="role" items="${roleList}">
 						<c:choose>
-							<c:when test="${ role.getTenRoles() eq 'ROLE_VAN_THU' }">
+							<c:when test="${ role.roles.getTenRoles() eq 'ROLE_VAN_THU' }">
 								<li>Lập công văn đến, công văn đi, văn bản nội bộ</li>
 								<li>Tiếp nhận công văn đến qua mạng</li>
 								<li>Cập nhật công văn đến, công văn đi, văn bản nội bộ</li>
@@ -110,24 +123,25 @@ div#phanquyenguoidung h3{
 								<li>Cập nhật hồ sơ lưu trữ, Thêm văn bản vào hồ sơ</li>
 								<li>Thống kê báo cáo công văn đến, công văn đi</li>
 							</c:when>
-							<c:when test="${ role.getTenRoles() eq 'ROLE_LANH_DAO' }">
+							<c:when test="${ role.roles.getTenRoles() eq 'ROLE_LANH_DAO' }">
 								<li>Nhập các bước trong quy trình</li>
 								<li>Tìm kiếm công văn đến, công văn đi, văn bản nội bộ</li>
 								<li>Phê duyệt văn bản</li>
 								<li>Thống kê báo cáo công văn đến, công văn đi</li>
 								<li>Thống kê hiệu suất xử lý công văn của chuyên viên</li>
 							</c:when>
-							<c:when test="${ role.getTenRoles() eq 'ROLE_QUAN_TRI_HE_THONG' }">
+							<c:when test="${ role.roles.getTenRoles() eq 'ROLE_QUAN_TRI_HE_THONG'}">
 								<li>Cập nhật danh mục công văn</li>
 								<li>Cập nhật thông tin người dùng</li>
 								<li>Phân quyền cho người dùng</li>
 								
 							</c:when>
-							<c:when test="${ role.getTenRoles() eq 'ROLE_XU_LY' }">
+							<c:when test="${role.roles.getTenRoles() eq 'ROLE_XU_LY'}">
 								<li>Xử lý công văn</li>
 								<li>Tìm kiếm công văn đến, công văn đi, văn bản nội bộ</li>
 								
 							</c:when>
+							
 							<c:otherwise>
 								<li>Người dùng này chưa cấp quyền</li>
 							</c:otherwise>

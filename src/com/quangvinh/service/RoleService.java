@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.quangvinh.dao.IRolesDAO;
+import com.quangvinh.model.NguoiDung_Roles;
 import com.quangvinh.model.Roles;
 
 @Service
@@ -50,7 +51,7 @@ public class RoleService implements IRoleService{
 
 	@Override
 	@Transactional
-	public List<Roles> getRolesListTheoNguoiDung(int manguoidung) {
+	public List<NguoiDung_Roles> getRolesListTheoNguoiDung(int manguoidung) {
 		
 		return rolesDao.getRolesListTheoNguoiDung(manguoidung);
 	}

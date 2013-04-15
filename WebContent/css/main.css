@@ -305,10 +305,14 @@ ul#navigation .printdata a{
 ul#navigation .login a{
     background-image: url(/LuanVanTotNghiep/images/logoutkey.png);
 }
+ul#navigation .showMessage a{
+    background-image: url(/LuanVanTotNghiep/images/email2.png);
+}
 
 ul#navigation .admin a{
     background-image: url(/LuanVanTotNghiep/images/administrator.png);
 }
+
 
 /*******************************End Leftbar************************************/
 

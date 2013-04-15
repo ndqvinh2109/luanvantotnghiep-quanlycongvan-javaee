@@ -12,7 +12,11 @@
 <script src="/LuanVanTotNghiep/js/jquery-1.9.0.js"></script>
 <script src="/LuanVanTotNghiep/js/jquery-ui.js"></script>
 <style>
-
+.ui-tooltip{
+ border: 2px solid orange;
+ padding: 15px 15px;
+ }
+ 
 .ui-dialog-titlebar {
 	background: url(/LuanVanTotNghiep/images/dialog.png) center left repeat-x;
 	color: #ffffff;
@@ -74,8 +78,9 @@ outline: 0 none;
 </style>
 <script type="text/javascript">
 	$(function(){
-		
-		
+				
+	        $( document ).tooltip({ track:true });
+	     
 		$('#nav_dialog_message_leftbar tr').bind('click',function(){
 			$('#content_message_leftbar').empty();
 			

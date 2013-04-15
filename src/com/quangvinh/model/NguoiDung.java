@@ -14,20 +14,23 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 @Table(name="NGUOIDUNG")
 public class NguoiDung {
 	/*---------------------Relational Mapping----------------------------*/
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="nguoidung",fetch=FetchType.LAZY)
-	private List<Roles> roles = new ArrayList<Roles>(0);
+	private List<NguoiDung_Roles> nguoidungroles = new ArrayList<NguoiDung_Roles>(0);
 	
-	public List<Roles> getRoles() {
-		return roles;
+	public List<NguoiDung_Roles> getNguoidungroles() {
+		return nguoidungroles;
 	}
 
-	public void setRoles(List<Roles> roles) {
-		this.roles = roles;
+	public void setNguoidungroles(List<NguoiDung_Roles> nguoidungroles) {
+		this.nguoidungroles = nguoidungroles;
 	}
 	
 	
