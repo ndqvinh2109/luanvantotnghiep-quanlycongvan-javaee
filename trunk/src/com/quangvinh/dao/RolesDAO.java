@@ -9,6 +9,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.quangvinh.model.NguoiDung_Roles;
 import com.quangvinh.model.Roles;
 
 @Repository
@@ -83,12 +84,12 @@ public class RolesDAO implements IRolesDAO{
 
 	@SuppressWarnings({ "unchecked" })
 	@Override
-	public List<Roles> getRolesListTheoNguoiDung(int manguoidung) {
+	public List<NguoiDung_Roles> getRolesListTheoNguoiDung(int manguoidung) {
 		Session session = sessionFactory.getCurrentSession();
-		Criteria cr = session.createCriteria(Roles.class,"roleAlias");
-		List<Roles> list = cr.createAlias("roleAlias.nguoidung", "nguoidungAlias")
+		Criteria cr = session.createCriteria(NguoiDung_Roles.class,"nguoidungroleAlias");
+		List<NguoiDung_Roles> list = cr.createAlias("nguoidungroleAlias.nguoidung", "nguoidungAlias")
 				.add(Restrictions.eq("nguoidungAlias.maNguoiDung", manguoidung)).list();
-		
+				
 		return list;
 	}
 

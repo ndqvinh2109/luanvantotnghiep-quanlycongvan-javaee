@@ -95,9 +95,10 @@ public class NguoiDungDAO implements INguoiDungDAO{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Roles> getRolesByUserName(String userName) {
-		
 		Session session = sessionFactory.getCurrentSession();
-		String hql = "select a from Roles a inner join a.nguoidung b where a.nguoidung.userName = :userName";
+		String hql = "select c from NguoiDung_Roles a inner join a.nguoidung b " +
+				"inner join a.roles c " +
+				"where b.userName = :userName";
 		Query query = session.createQuery(hql);
 		query.setString("userName", userName);
 		List<Roles> roles = query.list();

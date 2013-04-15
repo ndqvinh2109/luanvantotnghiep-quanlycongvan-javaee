@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.quangvinh.model.NguoiDung;
-import com.quangvinh.model.Roles;
+import com.quangvinh.model.NguoiDung_Roles;
 import com.quangvinh.service.INguoiDungService;
 import com.quangvinh.service.IRoleService;
 
@@ -24,12 +24,11 @@ public class PhanQuyenNguoiDungController {
 	@RequestMapping("/phanQuyenNguoiDung/{manguoidung}")
 	public String loadPagePhanQuyenNguoiDung(@PathVariable("manguoidung") int manguoidung, Map<String, Object> map){
 		
-		List<Roles> roles = roleService.getRolesListTheoNguoiDung(manguoidung);
+		List<NguoiDung_Roles> roles = roleService.getRolesListTheoNguoiDung(manguoidung);
 		NguoiDung nguoidung = nguoidungService.findNguoiDungID(manguoidung);
 		map.put("roleList", roles);
 		map.put("tennguoidung", nguoidung.getTenNguoiDung());
 		map.put("manguoidung", nguoidung.getMaNguoiDung());
-		
 		return "phanquyennguoidung";
 		
 	}

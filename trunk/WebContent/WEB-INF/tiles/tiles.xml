@@ -30,15 +30,23 @@
 <put-attribute name="body" value="/WEB-INF/jsp/layout/admin/ThemNguoiDung.jsp" />
 </definition>
 
+
 <definition name="phanquyennguoidung" extends="base.admin.definition">
 <put-attribute name="title" value="Phân quyền người dùng" />
 <put-attribute name="body" value="/WEB-INF/jsp/layout/admin/PhanQuyenNguoiDung.jsp" />
 </definition>
 
+<definition name="phannhomquyennguoidung" extends="base.admin.definition">
+<put-attribute name="title" value="Phân nhóm quyền người dùng" />
+<put-attribute name="body" value="/WEB-INF/jsp/layout/admin/PhanNhomQuyenNguoiDung.jsp" />
+</definition>
+
+
 <definition name="danhmuccapdokhan" extends="base.admin.definition">
 <put-attribute name="title" value="Danh mục Cấp độ khẩn" />
 <put-attribute name="body" value="/WEB-INF/jsp/layout/admin/DanhMucCapDoKhan.jsp" />
 </definition>
+
 
 
 <definition name="nhapvanbanden" extends="base.definition">

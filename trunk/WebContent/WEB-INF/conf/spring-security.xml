@@ -50,8 +50,8 @@
 						      from nguoidung where username=?" 
 			
 						   authorities-by-username-query="
-						      select a.username, b.ten_roles from nguoidung a, roles b 
-						      where a.ma_nguoi_dung = b.ma_nguoi_dung and a.username =? " 
+						      select a.username, b.ten_roles from nguoidung a, roles b, nguoidung_roles c
+						      where a.ma_nguoi_dung = c.ma_nguoi_dung and b.ma_roles = c.ma_roles and a.username =? " 
 
 					  />
 					  

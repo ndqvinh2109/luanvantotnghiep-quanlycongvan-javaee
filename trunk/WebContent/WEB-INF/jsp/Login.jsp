@@ -87,7 +87,17 @@ padding:5px 5px 5px 5px;
   float: left;
   padding-left: 11px;
 }
-
+.ui-tooltip{
+ border: 2px solid orange;
+ padding: 15px 15px;
+ }
+ 
+.ui-dialog-titlebar {
+	background: url(/LuanVanTotNghiep/images/dialog.png) center left repeat-x;
+	color: #ffffff;
+	font-family: Arial,Verdana,Sans-serif;
+	border: 1px solid #ffb053;
+}
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -114,21 +124,22 @@ padding:5px 5px 5px 5px;
 				var htmlPrepare = '<table>';
 				for(var i = 0;i<data.listRoles.length;i++){
 				  if(data.listRoles[i].tenRoles == 'ROLE_LANH_DAO'){
-					  htmlPrepare += '<tr><td>Thông báo phê duyệt: </td>';
+					  htmlPrepare += '<tr style="padding: 5px 5px"><td style="color:red">Thông báo phê duyệt:</td>';
 					  htmlPrepare += '<td>Hiện tại bạn có văn bản cần phê duyệt.</td></tr>';
 				  }
+				  
 				  if(data.listRoles[i].tenRoles == 'ROLE_XU_LY'){
 					  htmlPrepare += '<tr><td>Thông báo xử lý: </td>';
 					  htmlPrepare += '<td>Hiện tại bạn có văn bản cần xử lý.</td></tr>';
 				  }
 				  
-				 /* if(data.listRoles[i].tenRoles == 'ROLE_VAN_THU'){
+				 if(data.listRoles[i].tenRoles == 'ROLE_VAN_THU'){
 					  var countVanBanDen = data.listVanBanDenChuaXuLy.length;
 					  	if(countVanBanDen != 0){
 							  htmlPrepare += '<tr><td>Thông báo văn bản đến qua mạng: </td>';
 							  htmlPrepare += '<td>Hiên tại có ' + countVanBanDen + ' văn bản đến qua mạng chưa được tiếp nhận.</td></tr>';
 					  	}
-				  } */
+				  }
 				  
 				  console.log(data.listRoles[i].tenRoles);
 				}

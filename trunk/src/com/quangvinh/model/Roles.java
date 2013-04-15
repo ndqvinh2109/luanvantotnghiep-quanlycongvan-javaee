@@ -1,12 +1,15 @@
 package com.quangvinh.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -15,7 +18,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Table(name="ROLES")
 public class Roles {
 	/****************************************/
-	@JsonIgnore
+	/*@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="MA_NGUOI_DUNG")
 	private NguoiDung nguoidung;
@@ -25,7 +28,20 @@ public class Roles {
 	}
 	public void setNguoidung(NguoiDung nguoidung) {
 		this.nguoidung = nguoidung;
+	}*/
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="roles",fetch=FetchType.LAZY)
+	private List<NguoiDung_Roles> nguoidungroles = new ArrayList<NguoiDung_Roles>(0);
+	
+	public List<NguoiDung_Roles> getNguoidungroles() {
+		return nguoidungroles;
 	}
+
+	public void setNguoidungroles(List<NguoiDung_Roles> nguoidungroles) {
+		this.nguoidungroles = nguoidungroles;
+	}
+	
 	/****************************************/
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -42,14 +58,7 @@ public class Roles {
 	
 	
 	
-	public Roles(NguoiDung nguoidung, int maRoles, String tenRoles,
-			String tenRolesChiTiet) {
-		super();
-		this.nguoidung = nguoidung;
-		this.maRoles = maRoles;
-		this.tenRoles = tenRoles;
-		this.tenRolesChiTiet = tenRolesChiTiet;
-	}
+	
 	public int getMaRoles() {
 		return maRoles;
 	}

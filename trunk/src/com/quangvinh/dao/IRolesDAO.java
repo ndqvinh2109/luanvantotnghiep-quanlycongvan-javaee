@@ -2,6 +2,7 @@ package com.quangvinh.dao;
 
 import java.util.List;
 
+import com.quangvinh.model.NguoiDung_Roles;
 import com.quangvinh.model.Roles;
 
 public interface IRolesDAO {
@@ -10,5 +11,5 @@ public interface IRolesDAO {
 	void deleteRoles(int id);
 	List<Roles> getRoles();
 	Roles findRoleID(int id);
-	List<Roles> getRolesListTheoNguoiDung(int manguoidung);
+	List<NguoiDung_Roles> getRolesListTheoNguoiDung(int manguoidung);
 }
