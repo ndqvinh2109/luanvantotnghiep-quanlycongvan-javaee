@@ -7,6 +7,7 @@ encoding//WebContent/WEB-INF/jsp/layout/banner.jsp=UTF-8
 encoding//WebContent/WEB-INF/jsp/layout/leftbar.jsp=UTF-8
 encoding//WebContent/WEB-INF/jsp/layout/navbar.jsp=UTF-8
 encoding//WebContent/WEB-INF/jsp/showPieChart.jsp=UTF-8
+encoding//WebContent/accessDenied.jsp=UTF-8
 encoding//WebContent/css/main.css=UTF-8
 encoding//WebContent/index.jsp=UTF-8
 encoding//src/com/quangvinh/controller/LoginController.java=UTF-8
