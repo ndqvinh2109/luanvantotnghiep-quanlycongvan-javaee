@@ -14,6 +14,41 @@
 <script src="/LuanVanTotNghiep/js/jquery-ui.js"></script>
 
 <style type="text/css">
+div#dialog_gopy textarea{
+display: block;
+font-family: "Helvetica Neue", Arial, sans-serif;
+border-style: solid;
+border-width: 1px;
+border-color: #dedede;
+padding:5px 5px;
+width: 500px;
+height:100px;
+color: #777;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset; 
+transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-webkit-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-moz-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+-o-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
+}
+div#dialog_gopy textarea:focus{
+color: #333;
+border-color: rgba(41, 92, 161, 0.4);
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
+outline: 0 none; 
+}
+#dialog_gopy table{
+margin: 1em 0; border-collapse: collapse; width: 100%; 
+}
+
+#dialog_gopy table td{
+border-bottom: 1px solid #eee;
+padding: .6em 1px;
+text-align: left;
+}
 #accordion{
 	background-color: #f7f7f7;
 	overflow: hidden;
@@ -101,74 +136,7 @@ border-collapse: collapse;
  padding: .6em 10px;
  text-align: left;
  }
- 
-
-div#dialog-dinhkem table{
-border-collapse: collapse;
-}
-div#dialog-dinhkem table td{
- border: 1px solid #eee;
- padding: .6em 10px;
- text-align: left;
-}
-
-div#dialog-dinhkem table tr td input{
-display: block;
-font-family: "Helvetica Neue", Arial, sans-serif;
-border-style: solid;
-border-width: 1px;
-border-color: #dedede;
-padding: 3px 2px;
-width: 70%;
-color: #777;
-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
--moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
--webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset; 
-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
--webkit-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
--moz-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
--o-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
-}
-
-div#dialog-dinhkem table tr td input:focus{
-color: #333;
-border-color: rgba(41, 92, 161, 0.4);
-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
--moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
--webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(41, 92, 161, 0.6);
-outline: 0 none; 
-}
-
-div#dialog-dinhkem table tr td textarea{
-display: block;
-font-family: "Helvetica Neue", Arial, sans-serif;
-border-style: solid;
-border-width: 1px;
-border-color: #dedede;
-padding:5px 5px;
-width: 300px;
-height:100px;
-color: #777;
-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
--moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
--webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset; 
-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
--webkit-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
--moz-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
--o-transition: border 0.15s linear 0s, box-shadow 0.15s linear 0s, color 0.15s linear 0s;
-}
-div#dialog-dinhkem table tr td textarea:focus{
-color: #333;
-border-color: rgba(41, 92, 161, 0.4);
-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
--moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
--webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset, 0 0 8px rgba(40, 90, 160, 0.6);
-outline: 0 none; 
-}
-
-
-
-#dialog_chitietvanban table tr td textarea{
+ #dialog_chitietvanban table tr td textarea{
 display: block;
 font-family: "Helvetica Neue", Arial, sans-serif;
 border-style: solid;
@@ -312,6 +280,9 @@ padding:5px 5px 5px 5px;
   float: left;
   padding-left: 11px;
 }
+
+
+
 </style>
 
 <script type="text/javascript">
@@ -341,8 +312,10 @@ $(document).ready(function(){
 		mavanban = $(this).attr('id');
 		/* var customerId = $(this).find("td").eq(2).html();    
 		alert(customerId); */
+		
 		$(this).addClass("hilightclick").siblings().removeClass("hilightclick"); 
 		//$('#toolbar a').attr('href','${pageContext.request.contextPath}/service/' + mavanban);
+		
 	});
 
 	/*--------------------Delete VanBanDen------------------------------*/
@@ -536,22 +509,19 @@ $(document).ready(function(){
 
 /*-----------------------------------File Dinh Kem----------------------------------------*/
  
-    $( "#dialog-dinhkem" ).dialog({
+    /* $( "#dialog-dinhkem" ).dialog({
 		  autoOpen: false,
 	      resizable: true,
 	      height:'auto',
 	      width:'auto',
 	      modal: true,
 	      buttons: {
-	    	'Thêm tập tin': function(){
-	    		
-	    			    		
-	    		},
+	    	
 	        Cancel: function() {
 	          $( this ).dialog( "close" );
 	        }
 	      }
-	    });
+	    }); */
 		
  
  
@@ -560,8 +530,10 @@ $('#filedinhkem').button().click(function(){
 				$("#dialog_error").dialog("open");
 			}
 			else{
-				$('#mavanbandinhkem').val(mavanban);
-				$("#dialog-dinhkem").dialog("open");
+				/* $('#mavanbandinhkem').val(mavanban);
+				$("#dialog-dinhkem").dialog("open"); */
+				window.location = '${pageContext.request.contextPath}/service/showFileDinhKem/' + mavanban + ".action";
+				
 			}
 });
  
@@ -584,7 +556,7 @@ $( "#dialog_chitietvanban" ).dialog({
 	      }
 	    });
 		
-
+//////////////////////////////////////////////////////////////
 $("#chitietvanbanden").button().click(function(){
 	$('#coquanbanhanh1').attr("disabled", "disabled");
 	$('#loaivanban1').attr("disabled", "disabled");
@@ -663,6 +635,115 @@ $('#phanxuly').button().click(function(){
 	window.location = '${pageContext.request.contextPath}/service/phanxuly/' + mavanban + ".action";
 	
 });
+$( "#dialog_gopy").dialog({
+	  autoOpen: false,
+    resizable: true,
+    height:600,
+    width:560,
+    modal: false,
+    buttons: {
+  	  	'Gửi' : function(){
+  	  	var mavanban = $('#mavanbancomment').val();
+   		var noidung = $('#input_message').val();
+   		$.ajax({
+   			url: '/LuanVanTotNghiep/service/addComment/' + mavanban + '/' + noidung,
+   			type: 'POST',
+   			contentType: 'text/html; charset=UTF-8',
+			data: null,
+			success: function(result){
+				if(result){
+					
+					commentList();
+				}
+				
+			}
+   			
+   		});
+   		
+   		
+   		
+   		
+   		
+   		$('#input_message').val('');
+     	},     
+      Cancel: function() {
+        $( this ).dialog( "close" );
+      }
+      
+    },
+    show: {
+        effect: "clip",
+        duration: 300
+      },
+    hide: {
+	          effect: "clip",
+	          duration: 300
+	        },
+	        position: {
+              my: "left+110 bottom+300",
+              of: window
+          }
+    
+  });
+  
+	/* $(document).on("click", ".testdelegate", function(){
+   			 alert( 'Success!' );
+	}); */
+	/* $("body").delegate(".testdelegate", "click", function(){
+		 alert( 'Successs!' );
+	}); */
+	
+	 var commentList = function(){
+		  
+		  $.ajax({
+				url : '/LuanVanTotNghiep/service/showAllComment/' + mavanban,
+				type: 'GET',
+				dataType: "json",
+				contentType: "application/json",
+				success: function(data){
+					console.log(data);
+					
+					
+					var htmlPrepare = '<input type="hidden" id="mavanbancomment" value="" /><textarea id="input_message" placeholder="Nhập nội dung cần góp ý"></textarea>';
+					htmlPrepare += '<table id="content_message">';	
+					htmlPrepare += '<tr><td colspan = "2" style="text-align: center;background-color: #f7f7f7"><b>Ý kiến chỉ đạo</b></td></tr>';
+					for(var i = 0 ; i < data.commentList.length;i++){
+							if(data.commentList[i].userName == 'pnquyen'){
+							var parseDate = new Date(data.commentList[i].ngayGui);
+							htmlPrepare += '<tr><td style="color:#00aaff;"><b>';
+							htmlPrepare += data.commentList[i].tacGia + '</b></td><td>';
+							htmlPrepare += data.commentList[i].noiDung + '</br></br><span style="color: #888888;">Lúc: ' +parseDate.toLocaleDateString()+'</span></td></tr>';
+							}
+					}
+					htmlPrepare += '<tr><td colspan = "2" style="text-align: center; background-color: #f7f7f7"><b>Ý kiến xử lý</b></td><td></td></tr>';
+					for(var i = 0 ; i < data.commentList.length;i++){
+						if(data.commentList[i].userName != 'pnquyen'){
+						var parseDate = new Date(data.commentList[i].ngayGui);
+						htmlPrepare += '<tr><td style="color:#00aaff;"><b>';
+						htmlPrepare += data.commentList[i].tacGia + '</b></td><td>';
+						htmlPrepare += data.commentList[i].noiDung + '</br></br><span style="color: #888888;">Lúc: ' +parseDate.toLocaleDateString()+'</span></td></tr>';
+						}
+				}
+					
+					
+					htmlPrepare += '</table>';
+					
+					$('#dialog_gopy').html(htmlPrepare);
+					$('#mavanbancomment').val(mavanban);
+					
+				}
+				
+			});
+		  
+  };
+  
+ 
+$('#themgopy').button().click(function(){
+	
+	commentList();
+	$( "#dialog_gopy").dialog('open');
+		return false;
+});
 
 });
 
@@ -680,7 +761,7 @@ $('#phanxuly').button().click(function(){
 	<button id="filedinhkem"><img src="/LuanVanTotNghiep/images/attachment (2).png"/><span>Đính kèm tập tin</span></button>
 	<button id="chitietvanbanden"><img src="/LuanVanTotNghiep/images/view_detail.png"/><span>Xem chi tiết</span></button>
 	<button id="phanxuly"><img src="/LuanVanTotNghiep/images/process.png"/><span>Phân xử lý</span></button>
-	
+	<button id="themgopy"><img src="/LuanVanTotNghiep/images/friend_finder.png"/><span>Góp ý</span></button>
  </div>
  
  <ul class="pageNav">
@@ -691,30 +772,52 @@ $('#phanxuly').button().click(function(){
 <table class="ui-widget ui-widget-content">
 	<tr class="ui-widget-header">
 		<th></th>
+		<th></th>
+		<th>Số Đến</th>
 	    <th>Ngày Đến</th>
-	    <th>Số Đến</th>
-	   	<th>Số Hiệu Văn Bản</th>
+	    <th>Số Hiệu Văn Bản</th>
 	   	<th>Ngày Ban Hành</th>
 	   	<th>Trích yếu Nội Dung</th>
+	   	<th>Trạng thái</th>
   	</tr>
 	<c:forEach items="${vanbandenList}" var="vanbanden">
 	    <tr id = "${vanbanden.maVanBan}">
-	    
-	    	<td>
 	    	
+	    	<td>
+	    		<c:if test="${vanbanden.capdokhan.maDoKhan == 4}">
+	    			<img alt="Độ khẩn" src="/LuanVanTotNghiep/images/software-update-urgent.png"/>
+	    		</c:if>
+	    	</td>
+	    	<td>
+	    	<c:set var="breaks" value="${true}"/>
 	       	<c:forEach items="${fileDinhKemListAll}" var="fileDinhKem">
-	       	  	<c:if test="${fileDinhKem.vanban.getMaVanBan() ==  vanbanden.getMaVanBan()}">
-	       	  		
-	       	  			<img alt="Đính kèm" src="/LuanVanTotNghiep/images/attachmentblue.png"/>
-	           	</c:if>
+	       	
+	       	  	<c:if test="${fileDinhKem.vanban.getMaVanBan() ==  vanbanden.getMaVanBan() && breaks == true}">
+	       	   		<a href="${pageContext.request.contextPath}/service/showFileDinhKem/${vanbanden.maVanBan}.action"><img alt="Đính kèm" src="/LuanVanTotNghiep/images/attachmentblue.png"/></a>
+	       	  		<c:set var="breaks" value="${false}"/>
+	       	   	</c:if>
 		  	</c:forEach>
 	       	</td>
-	    	
-	    	<td>${vanbanden.getNgayDen()}</td>
+	       	
 	    	<td>${vanbanden.getSoDen()}</td>
+	    	<td>${vanbanden.getNgayDen()}</td>
 	    	<td>${vanbanden.soKyHieuVanBan}</td>
 	        <td>${vanbanden.ngayBanHanh}</td>
 	      	<td>${vanbanden.trichYeu}</td>
+	      	      	
+	      	<c:choose>
+	      		<c:when test="${vanbanden.trangThaiXuLy == 1}">
+	      		  	<td>Chưa xử lý</td>
+	      		</c:when>
+	      		<c:when test="${vanbanden.trangThaiXuLy == 2}">
+	      		  	<td>Đang xử lý</td>
+	      		</c:when>
+	      		<c:otherwise>
+	      			<td>Hoàn thành</td>
+	      		</c:otherwise>
+	      	</c:choose>
+	      	
+	   		
 	   </tr>
 	   
 	</c:forEach>
@@ -870,34 +973,11 @@ $('#phanxuly').button().click(function(){
 	</form>
 </div>
 
-<div id="dialog-dinhkem" title="Đính kèm tập tin" >
-	<form:form method="post" action="save.html" commandName="filedinhkem" enctype="multipart/form-data">
-    <table>
-    	<tr>
-    		<td>Mã văn bản</td>
-    		<td><input type="text" name="mavanban" id="mavanbandinhkem" readonly/></td>
-    	</tr>
-	    <tr>
-	        <td><form:label path="tenFile">Tên tập tin</form:label></td>
-	        <td><form:input path="tenFile" /></td> 
-	    </tr>
-	    <tr>
-	        <td><form:label path="moTa">Mô tả tập tin</form:label></td>
-	        <td><form:textarea path="moTa" /></td>
-	    </tr>
-	    <tr>
-	        <td><form:label path="noiDung">Upload tâp tin</form:label></td>
-	        <td><input type="file" name="file" id="file"></input></td>
-	    </tr>
-	    <tr>
-	    	<td><input type="submit" value="Lưu"/></td>
-	        <td>
-	            
-	        </td>
-	    </tr>
-	</table>  
-</form:form>
 
+
+<div id="dialog_gopy" title="Góp ý văn bản">
+	
+	
 </div>
 
 <div id="dialog_error" title="Bạn chưa chọn văn bản cần xử lý">

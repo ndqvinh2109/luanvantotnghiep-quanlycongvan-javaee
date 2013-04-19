@@ -20,7 +20,7 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 
-public class PdfVanBanDenReportView extends AbstractPdfView{
+public class VanBanDenTrangInView extends AbstractPdfView{
 
 	
 	
@@ -33,7 +33,7 @@ public class PdfVanBanDenReportView extends AbstractPdfView{
 		 * Template Export Van Ban Den
 		 */
 		response.setHeader("Content-Type", "application/octet-stream");
-		/*response.setHeader("Content-Disposition", "inline; filename=yourExcelFile.pdf");*/
+		response.setHeader("Content-Disposition", "inline; filename=yourExcelFile.pdf");
 		Map<Integer,String> printData = (Map<Integer,String>) model.get("printData");
 		Map<Integer,Object[]> printDataVanBanDen = (Map<Integer,Object[]>) model.get("printDataVanBanDen");
 		

@@ -106,4 +106,12 @@ public class BuocXuLyService implements IBuocXuLyService{
 		return buocxulyDao.countBuocXuLyTheoMaNguoiDung(manguoidung, valuechuyen, valuexuly);
 	}
 
+	@Override
+	@Transactional
+	public List<BuocXuLyPheDuyetVanBan> thongKeTinhHinhXuLy(int manguoidung,
+			Date tungay, Date denngay) {
+		
+		return buocxulyDao.thongKeTinhHinhXuLy(manguoidung, tungay, denngay);
+	}
+
 }

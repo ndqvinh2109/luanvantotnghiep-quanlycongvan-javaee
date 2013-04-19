@@ -12,4 +12,5 @@ public interface IFileDinhKemDAO {
 	void deleteFileDinhKem(int id);
 	List<FileDinhKem> getFileDinhKemVanBan(int mavanban);
 	List<FileDinhKem> getFileDinhKemTheoSoKyHieu(String sokyhieu);
+	
 }
