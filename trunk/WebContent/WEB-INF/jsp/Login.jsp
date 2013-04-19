@@ -116,6 +116,30 @@ table#message td {
 	color: #669;
 }
 
+div#content_thongke{
+padding: 0 0 15px 0;
+}
+div#content_thongke table{
+ margin: 0; border-collapse: collapse; width: 100%; 
+ }
+ div#content_thongke table td, div#content_thongke table th{
+ border: 1px solid #eee;
+ padding: .6em 10px;
+ text-align: left;
+ }
+
+div#content_thongke table tr:nth-child(odd) {
+  background-color: #e8edff;
+}
+div#content_thongke table tr:nth-child(even) {
+  background-color: #f7f7f7;
+}
+
+div#content_thongke	 table tr:hover{
+	background-color: #cfddee;
+	cursor:pointer;
+	
+}
 </style>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -190,19 +214,69 @@ table#message td {
 					
 				}
 				else{
-					
 				window.location = '${pageContext.request.contextPath}/service/thongKeHieuSuatVanBan/' + nguoidung + '/' + tungay + '/' + denngay;
 				}
 				return false;
 				
 			});	
 	
-			$('#excel').button().click(function(){
-				
-				
-			});	
-			$('#pdf').button().click(function(){
-			
+			$('#thongketinhhinhxuly').button().click(function(){
+				var tungay = $('#tungay').val();
+				var denngay = $('#denngay').val();
+				var nguoidung = $('#nguoidung').val();
+				if($('#tungay').val().length == 0){
+					alert("Bạn chưa nhập thời gian để thống kê hiệu suất xử lý của chuyên viên");
+					$('#tungay').focus();
+					
+				}
+				else if($('#denngay').val().length == 0){
+					alert("Bạn chưa nhập thời gian để thống kê hiệu suất xử lý của chuyên viên");
+					$('#denngay').focus();
+					
+				}
+				else{
+					$.ajax({
+						url: '/LuanVanTotNghiep/service/thongKeTinhHinhXuLy/' + nguoidung + '/' + tungay + '/' + denngay,
+						type: 'GET',
+						dataType: "json",
+						contentType: "application/json",
+						success:  function(data){
+							
+							var htmlPrepare = "<table class='ui-widget ui-widget-content'>";
+							htmlPrepare += '<tr class="ui-widget-header"><th>Số đến</th><th>Ngày đến</th><th>Số ký hiệu</th><th>Ngày ban hành</th><th>Trích yếu</th><th>Trạng thái</th><th>Xử lý</th></tr>'
+							for(var i = 0; i < data.length ; i++){
+								htmlPrepare += '<tr><td>';
+								htmlPrepare += data[i].vanban.soDen + '</td><td>';
+								htmlPrepare += data[i].vanban.ngayDen + '</td><td>';
+								htmlPrepare += data[i].vanban.soKyHieuVanBan + '</td><td>';
+								htmlPrepare += data[i].vanban.ngayBanHanh + '</td><td>';
+								htmlPrepare += data[i].vanban.trichYeu + '</td><td>';
+								if(data[i].vanban.trangThaiXuLy == 1){
+									htmlPrepare += 'Chưa xử lý</td><td>';							
+								}
+								else if(data[i].vanban.trangThaiXuLy == 2){
+									htmlPrepare += 'Đang xử lý</td><td>';
+								}
+								else{
+									htmlPrepare += 'Hoàn thành</td><td>';
+									
+								}
+								if(new Date(data[i].thoiGianXuLy) < new Date(data[i].thoiGianHoanThanh)){
+									htmlPrepare +='Đúng hạn</td></tr>';
+								}
+								else{
+									htmlPrepare +='Quá hạn</td></tr>';
+									
+								}
+							}
+							htmlPrepare += '</table>';
+							console.log(data);
+							$('#content_thongke').html(htmlPrepare);
+						}
+				});
+				}
+							
+				return false;
 			
 			});	
 					
@@ -242,9 +316,8 @@ table#message td {
 			</table>
 		</div>
 		<div id="toolbar" class="ui-widget-header ui-corner-all">
-			<button id="taotrangin"><img src="/LuanVanTotNghiep/images/edit_add.png"/><span>Tạo trang in</span></button>
-			<button id="excel"><img src="/LuanVanTotNghiep/images/edit_remove.png"/><span>Xuất Excel</span></button>
-			<button id="pdf"><img src="/LuanVanTotNghiep/images/pencil.png"/><span>Xuất PDF</span></button>
+			<button id="taotrangin"><img src="/LuanVanTotNghiep/images/statistics.png"/><span>Biểu đồ</span></button>
+			<button id="thongketinhhinhxuly"><img src="/LuanVanTotNghiep/images/1366293005_view_detailed.png"/><span>Thống kê</span></button>
 			
 		</div>
 		<div id="content_thongke">

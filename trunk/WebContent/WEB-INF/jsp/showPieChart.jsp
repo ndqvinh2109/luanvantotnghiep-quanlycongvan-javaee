@@ -15,11 +15,23 @@
 	#showPieChart{
 		overflow: hidden;
 		border: 1px solid #c4c4c4;
+		height:412	px;
 	}
 	#showPieChart img{
-	margin: 10px 0  10px 40px;
+	margin: 0 0  40px 40px;
 	
 	}
+	div#showPieChart h3{
+	background: url(/LuanVanTotNghiep/images/titlebg.jpg) center left repeat-x;
+	height: 14px;
+	color: white;
+	font-family: Arial,Verdana,Sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 10px 20px;
+	margin: 0px auto 0px;
+	
+}
 </style>
 <script type="text/javascript">
 	
@@ -27,6 +39,8 @@
 </head>
 <body>
 	<div id="showPieChart">
+	<h3>Biểu đồ thống kê tình hình xử lý công văn của chuyên viên <span style="color: #00aaff; text-shadow: 1px 1px 1px #fffff;"><c:out value="${tennguoidungPieChart}"/></span> </h3>
+	
 	<img alt ="Biểu đồ thống kê tình hình xử lý công văn của chuyên viên" src="${barUrl}"/>
 	</div>
 	

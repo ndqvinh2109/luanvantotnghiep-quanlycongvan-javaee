@@ -243,7 +243,7 @@ public class VanBanDenDAO implements IVanBanDenDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<VanBanDen> getVanBanDenPaging(int page) {
-		int per_page = 3;
+		int per_page = 9;
 		int start = (page-1)*per_page;
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "from VanBanDen";

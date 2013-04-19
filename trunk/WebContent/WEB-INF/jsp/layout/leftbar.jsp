@@ -78,8 +78,9 @@ outline: 0 none;
 </style>
 <script type="text/javascript">
 	$(function(){
-				
-	        $( document ).tooltip({ track:true });
+			
+			
+	        $(document).tooltip({ track:true });
 	     
 		$('#nav_dialog_message_leftbar tr').bind('click',function(){
 			$('#content_message_leftbar').empty();
@@ -178,6 +179,7 @@ outline: 0 none;
 	            }
 		      
 		    });
+		
 		$('#evtMessage').click(function(){
 			var htmlPrepare = '<input type="hidden" id="userName_leftbar" value="" /><textarea id="input_message_leftbar" placeholder="Nhập nội dung cần gửi"></textarea><table id="content_message_leftbar"></table>';
 			$('#dialog_guitinnhannoiboleftbar').html(htmlPrepare);

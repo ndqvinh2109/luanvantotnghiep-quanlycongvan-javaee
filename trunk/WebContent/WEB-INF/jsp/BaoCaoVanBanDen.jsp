@@ -152,7 +152,24 @@ padding:5px 5px 5px 5px;
 		
 	});	
 	$('#pdf').button().click(function(){
-	
+		var tungay = $('#tungay').val();
+		var denngay = $('#denngay').val();
+		var danhmuc = $('#danhmuc').val();
+		if($('#tungay').val().length == 0){
+			alert("Bạn chưa nhập thời gian để thống kê công văn đến");
+			$('#tungay').focus();
+			
+		}
+		else if($('#denngay').val().length == 0){
+			alert("Bạn chưa nhập thời gian để thống kê công văn đến");
+			$('#denngay').focus();
+			
+		}
+		else{
+			
+		window.location = '${pageContext.request.contextPath}/service/exportPDF/' + danhmuc + '/' + tungay + '/' + denngay;
+		}
+		return false;
 	
 	});	
 	
@@ -191,9 +208,8 @@ padding:5px 5px 5px 5px;
 			</table>
 		</div>
 		<div id="toolbar" class="ui-widget-header ui-corner-all">
-			<button id="taotrangin"><img src="/LuanVanTotNghiep/images/edit_add.png"/><span>Tạo trang in</span></button>
-			<button id="excel"><img src="/LuanVanTotNghiep/images/edit_remove.png"/><span>Xuất Excel</span></button>
-			<button id="pdf"><img src="/LuanVanTotNghiep/images/pencil.png"/><span>Xuất PDF</span></button>
+			<button id="taotrangin"><img src="/LuanVanTotNghiep/images/print_16.png"/><span>Tạo trang in</span></button>
+			<button id="pdf"><img src="/LuanVanTotNghiep/images/file_extension_pdf.png"/><span>Xuất PDF</span></button>
 			
 		</div>
 		<div id="report_content">

@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 @Table(name="BUOCXULYPHEDUYETVANBAN")
 public class BuocXuLyPheDuyetVanBan {
@@ -63,6 +65,7 @@ public class BuocXuLyPheDuyetVanBan {
 	public void setPkBuocXuLy(Pk_BuocXuLyVanBan pkBuocXuLy) {
 		this.pkBuocXuLy = pkBuocXuLy;
 	}
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumns({@JoinColumn(name="MA_QUY_TRINH",updatable=false,insertable=false),@JoinColumn(name="SO_THU_TU",updatable=false,insertable=false)})
 	private Buoc buoc;
@@ -83,6 +86,7 @@ public class BuocXuLyPheDuyetVanBan {
 	public void setVanban(VanBan vanban) {
 		this.vanban = vanban;
 	}
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="MA_NGUOI_DUNG")
 	private NguoiDung nguoidung;

@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -199,6 +200,17 @@ public class BuocXuLyDAO implements IBuocXuLyDAO{
 		countbuoc = (long) query.uniqueResult();
 		return countbuoc;
 		
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<BuocXuLyPheDuyetVanBan> thongKeTinhHinhXuLy(int manguoidung,
+			Date tungay, Date denngay) {
+		Session session = sessionFactory.getCurrentSession();
+		List<BuocXuLyPheDuyetVanBan> list = session.createCriteria(BuocXuLyPheDuyetVanBan.class,"buocxulyAlias")
+				.add(Restrictions.between("buocxulyAlias.thoiGianXuLy", tungay, denngay))
+				.add(Restrictions.eq("buocxulyAlias.nguoidung.maNguoiDung", manguoidung)).list();
+		return list;
 	}
 
 }

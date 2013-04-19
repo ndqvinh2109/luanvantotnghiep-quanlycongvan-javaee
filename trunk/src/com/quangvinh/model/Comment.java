@@ -33,27 +33,37 @@ public class Comment {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="MA_COMMENT")
 	private int maComment;
-	@Column(name="TIEU_DE")
-	private String tieuDe;
 	@Column(name="NOI_DUNG")
 	private String noiDung;
 	@Column(name="TAC_GIA")
 	private String tacGia;
 	@Column(name="NGAY_GUI")
 	private Date ngayGui;
+	
+	@Column(name="USERNAME")
+	private String userName;
+	
 	public Comment(){}
 	
-	public Comment(VanBan vanban, int maComment, String tieuDe, String noiDung,
-			String tacGia, Date ngayGui) {
+	
+	
+	
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public Comment(VanBan vanban, int maComment, String noiDung, String tacGia,
+			Date ngayGui, String userName) {
 		super();
 		this.vanban = vanban;
 		this.maComment = maComment;
-		this.tieuDe = tieuDe;
 		this.noiDung = noiDung;
 		this.tacGia = tacGia;
 		this.ngayGui = ngayGui;
+		this.userName = userName;
 	}
-	
 	public int getMaComment() {
 		return maComment;
 	}
@@ -61,12 +71,7 @@ public class Comment {
 		this.maComment = maComment;
 	}
 	
-	public String getTieuDe() {
-		return tieuDe;
-	}
-	public void setTieuDe(String tieuDe) {
-		this.tieuDe = tieuDe;
-	}
+	
 	
 	public String getNoiDung() {
 		return noiDung;

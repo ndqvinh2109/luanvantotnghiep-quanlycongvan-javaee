@@ -12,6 +12,8 @@
 <put-attribute name="body" value="" />
 </definition>
 
+
+
 <definition name="base.admin.definition" template="/WEB-INF/jsp/layout/admin/layout/layout.jsp">
 <put-attribute name="title" value="" />
 <put-attribute name="leftbar" value="/WEB-INF/jsp/layout/admin/layout/leftbar.jsp" />
@@ -31,6 +33,7 @@
 </definition>
 
 
+
 <definition name="phanquyennguoidung" extends="base.admin.definition">
 <put-attribute name="title" value="Phân quyền người dùng" />
 <put-attribute name="body" value="/WEB-INF/jsp/layout/admin/PhanQuyenNguoiDung.jsp" />
@@ -47,6 +50,11 @@
 <put-attribute name="body" value="/WEB-INF/jsp/layout/admin/DanhMucCapDoKhan.jsp" />
 </definition>
 
+<definition name="redirectdinhkem" extends="base.definition">
+<put-attribute name="title" value="Danh sách tập tin đính kèm" />
+<put-attribute name="body" value="/WEB-INF/jsp/redirectDinhKem.jsp" />
+</definition>
+
 
 
 <definition name="nhapvanbanden" extends="base.definition">
@@ -58,6 +66,13 @@
 <put-attribute name="title" value="Nhập Hồ Sơ Lưu Trữ" />
 <put-attribute name="body" value="/WEB-INF/jsp/NhapHoSoLuuTru.jsp" />
 </definition>
+
+
+<!-- <definition name="nhaphosoluutru" extends="base.definition">
+<put-attribute name="title" value="Nhập Hồ Sơ Lưu Trữ" />
+<put-attribute name="body" value="/WEB-INF/jsp/NhapHoSoLuuTru.jsp" />
+</definition> -->
+
 
 <definition name="trangchu" extends="base.definition">
 <put-attribute name="title" value="Quản lý công văn" />

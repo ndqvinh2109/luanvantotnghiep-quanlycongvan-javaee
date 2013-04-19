@@ -11,18 +11,17 @@ import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-
 import com.quangvinh.model.CapDoBaoMat;
 import com.quangvinh.model.CapDoKhan;
+import com.quangvinh.model.Comment;
 import com.quangvinh.model.DonVi;
 import com.quangvinh.model.FileDinhKem;
 import com.quangvinh.model.HoSoLuuTru;
@@ -34,11 +33,13 @@ import com.quangvinh.model.ViTriLuuTru;
 import com.quangvinh.service.IBuocXuLyService;
 import com.quangvinh.service.ICapDoBaoMatService;
 import com.quangvinh.service.ICapDoKhanService;
+import com.quangvinh.service.ICommentService;
 import com.quangvinh.service.IDonViService;
 import com.quangvinh.service.IFileDinhKemService;
 import com.quangvinh.service.IHoSoLuuTruService;
 import com.quangvinh.service.ILinhVucService;
 import com.quangvinh.service.ILoaiVanBanService;
+import com.quangvinh.service.INguoiDungService;
 import com.quangvinh.service.IVanBanDenService;
 import com.quangvinh.service.IVanBanDiService;
 import com.quangvinh.service.IVanBanService;
@@ -72,11 +73,15 @@ public class DanhSachVanBanDenController {
 	private IFileDinhKemService filedinhkemService;
 	@Autowired
 	private IVanBanDiService vanbandiService;
+	@Autowired
+	private ICommentService commentService;
+	@Autowired
+	private INguoiDungService nguoidungService;
 	
 	@RequestMapping("/showvanbanden/{page}")
 	public String showVanBanDen(Map<String,Object> map,@PathVariable("page") int page){
 		List<VanBanDen> vanbandens = vanbandenService.getVanBanDen();
-		int per_page = 3;
+		int per_page = 9;
 		int count = vanbandens.size();
 		int pages = Math.round(count/per_page);
 		if((count%per_page)!= 0){
@@ -91,11 +96,9 @@ public class DanhSachVanBanDenController {
 		map.put("capDoKhanList", capdokhanService.getCapDoKhan());
 		map.put("capDoBaoMatList", capdobaomatService.getCapDoBaoMat());
 		map.put("hoSoLuuTruList", hosoluutruService.getHoSoLuuTru());
-		map.put("filedinhkem",new FileDinhKem());
 		map.put("fileDinhKemListAll", filedinhkemService.getFileDinhKem());
-		
 		map.put("pages", pages);
-		/*System.out.println(pages);*/
+		
 		return "danhsachvanbanden";
 	}
 	
@@ -135,48 +138,8 @@ public class DanhSachVanBanDenController {
         return null;
     }
 	
-	/*@RequestMapping(value="/getFileDinhKemJsons/{mavanban}",method = RequestMethod.GET)
-	public @ResponseBody List<FileDinhKem> getFileDinhKemJsons(@PathVariable("mavanban") int mavanban){
-		return filedinhkemService.getFileDinhKemVanBan(mavanban);
-	}*/
 	
-	
-	@RequestMapping(value="/save", method = RequestMethod.POST)
-    public String save(
-            @ModelAttribute("filedinhkem") FileDinhKem filedinhkem,
-            @RequestParam("file") MultipartFile file,
-            @RequestParam("mavanban") int mavanban
-          ) {
-        System.out.println("Name:" + filedinhkem.getTenFile());
-        System.out.println("Desc:" + filedinhkem.getMoTa());
-        System.out.println("File:" + file.getOriginalFilename());
-        System.out.println("ContentType:" + file.getContentType());
-        System.out.println(mavanban);
-        
-        VanBan vanban = vanbanService.findVanBanID(mavanban);
-        FileDinhKem fileDinhKem = new FileDinhKem();	
-        fileDinhKem.setTenFile(file.getOriginalFilename());
-        fileDinhKem.setMoTa(filedinhkem.getMoTa());
-        fileDinhKem.setKieuTapTin(file.getContentType());
-        fileDinhKem.setVanban(vanban);
-        try {
-			fileDinhKem.setNoiDung(file.getBytes());
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
-        filedinhkemService.addFileDinhKem(fileDinhKem);        
-        
-        return "redirect:showvanbanden.html";
-    }
-	
-	/*@RequestMapping(value="/getmavanban/{mavanban}",method=RequestMethod.GET)
-	public @ResponseBody VanBanDen getmavanban(@PathVariable("mavanban") int maVanBan){
-		VanBanDen vanbanden = new VanBanDen();
-		vanbanden = vanbandenService.findVanBanDenID(maVanBan);
-		return vanbanden;
-	}*/
-	
+
 	@RequestMapping(value="/getmavanban/{mavanban}",method=RequestMethod.GET)
 	public @ResponseBody Map<String, Object> getmavanban(@PathVariable("mavanban") int maVanBan){
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -323,6 +286,48 @@ public class DanhSachVanBanDenController {
 			return true;
 			
 						
+	}
+	
+	@RequestMapping(value= "/showAllComment/{mavanban}",method=RequestMethod.GET)
+	public @ResponseBody Map<String,Object> getAllComment(@PathVariable("mavanban") int mavanban){
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("commentList", commentService.getListCommentTheoMaVanBan(mavanban));
+		return map;
+		
+		
+	}
+	@RequestMapping(value="/addComment/{mavanban}/{noidung}",method=RequestMethod.POST)
+	public @ResponseBody boolean addComment(@PathVariable("mavanban") int mavanban,
+			@PathVariable("noidung") String	noidung){
+		int oldSize = commentService.getComment().size();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
+		Date date = new Date();
+		String dateString= dateFormat.format(date);
+		Date dateFormatted = null;
+		try {
+			dateFormatted = dateFormat.parse(dateString);
+		} catch (ParseException e) {
+			
+			e.printStackTrace();
+		}
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String name = auth.getName(); 
+		String hoten = nguoidungService.getTenNguoiDungTheoUsername(name);
+		VanBan vanban = vanbanService.findVanBanID(mavanban);
+		
+		Comment comment = new Comment();
+		
+		comment.setNgayGui(dateFormatted);
+		comment.setVanban(vanban);
+		comment.setNoiDung(noidung);
+		comment.setTacGia(hoten);
+		comment.setUserName(name);
+		commentService.saveComment(comment);
+		
+		
+		
+		return (oldSize < commentService.getComment().size());
+		
 	}
 	
 }

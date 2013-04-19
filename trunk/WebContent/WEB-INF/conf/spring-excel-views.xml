@@ -7,6 +7,10 @@
  		<bean id="virtualVanban" 
  			class="com.quangvinh.report.PdfVanBanDenReportView">
  	   </bean>
+ 	   
+ 	   <bean id="virtualVanbanPDF" 
+ 			class="com.quangvinh.report.VanBanDenTrangInView">
+ 	   </bean>
 	
  
 </beans>
