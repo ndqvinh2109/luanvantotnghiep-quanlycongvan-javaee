@@ -14,4 +14,6 @@ public interface IDonViDAO {
 	DonVi findDonViID(int id);
 	List<DonVi> getDonViDocLap(int val);
 	int insertDonViVanBan(int mavanban,int madonvi);
+	List<DonVi> getDonViTheoMaDonViPhuThuoc(int madonvi);
+	
 }

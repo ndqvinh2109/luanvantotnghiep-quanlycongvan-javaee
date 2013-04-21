@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.quangvinh.model.NguoiDung;
 import com.quangvinh.model.NguoiDung_Roles;
 import com.quangvinh.model.Roles;
+import com.quangvinh.service.IDonViService;
 import com.quangvinh.service.INguoiDungRolesService;
 import com.quangvinh.service.INguoiDungService;
 import com.quangvinh.service.IRoleService;
@@ -25,8 +26,9 @@ public class PhanNhomQuyenNguoiDungController {
 	private INguoiDungRolesService nguoidungroleService;
 	@Autowired
 	private INguoiDungService nguoidungService;
-	
-	
+	@Autowired
+	private IDonViService donviService;
+		
 	
 	@RequestMapping("/phanNhomQuyen/{manguoidung}")
 	public String loadPagePhanNhomQuyen(@PathVariable("manguoidung") int manguoidung,Map<String, Object> map){
@@ -70,5 +72,7 @@ public class PhanNhomQuyenNguoiDungController {
 		
 		return true;
 	}
+	
+	
 		
 }

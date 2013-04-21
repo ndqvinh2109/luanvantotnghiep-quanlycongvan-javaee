@@ -57,6 +57,13 @@ public class DonViService implements IDonViService{
 		return donviDao.getDonViDocLap(val);
 	}
 
+	@Override
+	@Transactional
+	public List<DonVi> getDonViTheoMaDonViPhuThuoc(int madonvi) {
+		
+		return donviDao.getDonViTheoMaDonViPhuThuoc(madonvi);
+	}
+
 	
 
 }

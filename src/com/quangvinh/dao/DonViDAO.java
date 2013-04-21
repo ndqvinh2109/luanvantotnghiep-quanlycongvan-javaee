@@ -2,10 +2,12 @@ package com.quangvinh.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -100,6 +102,17 @@ public class DonViDAO implements IDonViDAO{
 		//Session session = sessionFactory.getCurrentSession();
 		//String hql = "insert into vanbandi_donvi()";
 		return 0;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<DonVi> getDonViTheoMaDonViPhuThuoc(int madonvi) {
+		Session session = sessionFactory.getCurrentSession();
+		Criteria cr = session.createCriteria(DonVi.class,"donviAlias")
+				.add(Restrictions.ne("donviAlias.maDonVi", madonvi))
+				.add(Restrictions.eq("donviAlias.donvi.maDonVi", madonvi));
+		List<DonVi> list = cr.list();
+		return list;
 	}
 
 }

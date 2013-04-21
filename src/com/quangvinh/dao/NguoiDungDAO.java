@@ -2,10 +2,12 @@ package com.quangvinh.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -137,6 +139,16 @@ public class NguoiDungDAO implements INguoiDungDAO{
 		query.setString("userName", userName);
 		String tennguoidung = (String)query.uniqueResult();
 		return tennguoidung;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<NguoiDung> getNguoiDungTheoMaDonVi(int madonvi) {
+		Session session = sessionFactory.getCurrentSession();
+		Criteria cr = session.createCriteria(NguoiDung.class,"nguoidung")
+				.add(Restrictions.eq("nguoidung.donvi.maDonVi", madonvi));
+		List<NguoiDung> list = cr.list();
+		return list;
 	}
 
 }

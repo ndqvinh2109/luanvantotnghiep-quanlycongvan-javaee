@@ -33,7 +33,7 @@ public class NguoiDung {
 		this.nguoidungroles = nguoidungroles;
 	}
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy="nguoidung",fetch=FetchType.LAZY)
 	private List<BuocXuLyPheDuyetVanBan> buocXuLy = new ArrayList<BuocXuLyPheDuyetVanBan>(0);
 	
@@ -44,6 +44,7 @@ public class NguoiDung {
 	public void setBuocXuLy(List<BuocXuLyPheDuyetVanBan> buocXuLy) {
 		this.buocXuLy = buocXuLy;
 	}
+	@JsonIgnore
 	@OneToMany(mappedBy="nguoidung",fetch=FetchType.LAZY)
 	private List<Buoc> buoc = new ArrayList<Buoc>(0);
 	
@@ -54,7 +55,7 @@ public class NguoiDung {
 	public void setBuoc(List<Buoc> buoc) {
 		this.buoc = buoc;
 	}
-	
+	@JsonIgnore
 	@OneToMany(mappedBy="nguoidung",fetch=FetchType.LAZY)
 	private List<Message> message = new ArrayList<Message>(0);
 		
@@ -66,7 +67,7 @@ public class NguoiDung {
 		this.message = message;
 	}
 
-
+	@JsonIgnore
 	@OneToMany(mappedBy="nguoidung",fetch=FetchType.LAZY)
 	private List<ChucVu> chucvu = new ArrayList<ChucVu>(0);
 	
@@ -78,6 +79,7 @@ public class NguoiDung {
 	public void setChucvu(List<ChucVu> chucvu) {
 		this.chucvu = chucvu;
 	}
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="MA_DON_VI")
 	private DonVi donvi;

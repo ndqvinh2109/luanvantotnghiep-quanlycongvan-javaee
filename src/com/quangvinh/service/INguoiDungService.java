@@ -17,4 +17,5 @@ public interface INguoiDungService {
 	int getMaNguoiDungTheoUsername(String userName);
 	int getMaDonViTheoMaNguoiDung(int manguoidung);
 	String getTenNguoiDungTheoUsername(String userName);
+	List<NguoiDung> getNguoiDungTheoMaDonVi(int madonvi);
 }
