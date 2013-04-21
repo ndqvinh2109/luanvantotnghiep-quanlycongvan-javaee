@@ -60,6 +60,10 @@
 <put-attribute name="body" value="/WEB-INF/jsp/BanHanhVanBan.jsp" />
 </definition>
 
+<definition name="phancapnguoidung" extends="base.admin.definition">
+<put-attribute name="title" value="Quản lý phân cấp người dùng trong đơn vị" />
+<put-attribute name="body" value="/WEB-INF/jsp/layout/admin/PhanCapNguoiDung.jsp" />
+</definition>
 
 <definition name="nhapvanbanden" extends="base.definition">
 <put-attribute name="title" value="Nhập Văn Bản Đến" />

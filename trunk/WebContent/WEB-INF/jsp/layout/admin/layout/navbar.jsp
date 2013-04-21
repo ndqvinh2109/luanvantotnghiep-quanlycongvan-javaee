@@ -25,7 +25,7 @@
 			
 				<ul class="menu">
 					<li><a href="${pageContext.request.contextPath}/service/themNguoiDung">Thêm người dùng mới</a></li>
-					<li><a href="">Phân quyền người dùng</a></li>
+					<li><a href="${pageContext.request.contextPath}/service/phanCapNguoiDung">Phân quyền người dùng</a></li>
 					<li><a href="">Thêm quyền</a></li>
 					<li><a href="">Cập nhật quyền</a></li>
 				</ul>

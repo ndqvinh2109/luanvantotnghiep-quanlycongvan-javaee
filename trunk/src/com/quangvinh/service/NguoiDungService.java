@@ -86,4 +86,11 @@ public class NguoiDungService implements INguoiDungService{
 		return nguoidungDao.getTenNguoiDungTheoUsername(userName);
 	}
 
+	@Override
+	@Transactional
+	public List<NguoiDung> getNguoiDungTheoMaDonVi(int madonvi) {
+		
+		return nguoidungDao.getNguoiDungTheoMaDonVi(madonvi);
+	}
+
 }

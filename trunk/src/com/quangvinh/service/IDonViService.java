@@ -11,4 +11,5 @@ public interface IDonViService {
 	List<DonVi> getDonVi();
 	DonVi findDonViID(int id);
 	List<DonVi> getDonViDocLap(int val);
+	List<DonVi> getDonViTheoMaDonViPhuThuoc(int madonvi);
 }	
