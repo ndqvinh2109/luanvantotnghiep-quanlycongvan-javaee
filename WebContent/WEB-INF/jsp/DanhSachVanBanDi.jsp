@@ -11,6 +11,13 @@
 <link rel="stylesheet" type="text/css" href="/LuanVanTotNghiep/css/jquery-ui.css">
 <script src="/LuanVanTotNghiep/js/jquery-1.9.0.js"></script>
 <script src="/LuanVanTotNghiep/js/jquery-ui.js"></script>
+<script src="/LuanVanTotNghiep/js/jqwidgets/jqxbuttons.js"></script>
+<script src="/LuanVanTotNghiep/js/jqwidgets/jqxcore.js"></script>
+<script src="/LuanVanTotNghiep/js/jqwidgets/jqxexpander.js"></script>
+<script src="/LuanVanTotNghiep/js/jqwidgets/jqxpanel.js"></script>
+<script src="/LuanVanTotNghiep/js/jqwidgets/jqxscrollbar.js"></script>
+<script src="/LuanVanTotNghiep/js/jqwidgets/jqxtree.js"></script>
+<script src="/LuanVanTotNghiep/js/jqwidgets/gettheme.js"></script>
 <style type="text/css">
 #accordion{
 	background-color: #f7f7f7;
@@ -649,7 +656,7 @@ $("#chitietvanbandi").button().click(function(){
 
 
 /*-----------------------------Ban hành văn bản------------------------*/
- $( "#dialog_capnhatnoinhan" ).dialog({
+  /* $( "#dialog_capnhatnoinhan" ).dialog({
 	 	  autoOpen: false,
 	      resizable: true,
 	      height:600,
@@ -696,9 +703,9 @@ $("#chitietvanbandi").button().click(function(){
 	          $( this ).dialog( "close" );
 	        }
 	      }
-	    });
+	    }); 
 
- $('#banhanhvanban').button().click(function(){
+  $('#banhanhvanban').button().click(function(){
 	 if(mavanban == null){
 		$("#dialog_error").dialog("open");
 	 }
@@ -714,12 +721,15 @@ $("#chitietvanbandi").button().click(function(){
 		
  $(function() {
 	    $( "#dialog_capnhatnoinhan" ).tabs();
-	  });
+	  });  */
+	  
  
  /*-------------------------End Ban hành văn bản------------------------------*/
+$('#banhanhvanban').button().click(function(){
+	window.location = '${pageContext.request.contextPath}/service/banHanhVanBan';
+	return false;
+});
  
-
-
 });
 
 
@@ -1095,8 +1105,9 @@ $("#chitietvanbandi").button().click(function(){
 		
 		</div>
 </div>
-<div id="dialog_capnhatnoinhan" title="Cập nhật nơi nhận">
-	<ul>
+<!-- <div id="dialog_capnhatnoinhan" title="Cập nhật nơi nhận"> -->
+
+	<%-- <ul>
 	    <li><a href="#tabs-1">Phòng Ban Trực Thuộc</a></li>
 	    <li><a href="#tabs-2">Đơn Vị Độc Lập</a></li>
 	</ul>
@@ -1136,9 +1147,10 @@ $("#chitietvanbandi").button().click(function(){
 				</c:forEach>
 			</table>
 		</form>
-	</div>
+	</div> --%>
 	
-</div>
+	
+<!-- </div> -->
 	
 
 

@@ -55,6 +55,10 @@
 <put-attribute name="body" value="/WEB-INF/jsp/redirectDinhKem.jsp" />
 </definition>
 
+<definition name="banhanhvanban" extends="base.definition">
+<put-attribute name="title" value="Ban hành văn bản" />
+<put-attribute name="body" value="/WEB-INF/jsp/BanHanhVanBan.jsp" />
+</definition>
 
 
 <definition name="nhapvanbanden" extends="base.definition">
