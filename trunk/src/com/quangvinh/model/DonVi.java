@@ -3,12 +3,15 @@ package com.quangvinh.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -47,7 +50,33 @@ public class DonVi {
 		this.vanbandi_donvi = vanbandi_donvi;
 	}	
 	
-	
+	@ManyToOne(cascade={CascadeType.ALL})
+	@JoinColumn(name="donvitructhuoc")
+	private DonVi donvi;
+		
+	public DonVi getDonvi() {
+		return donvi;
+	}
+	public void setDonvi(DonVi donvi) {
+		this.donvi = donvi;
+	}
+
+	@OneToMany(mappedBy="donvi",fetch=FetchType.LAZY)
+	private List<DonVi> donvitructhuocs = new ArrayList<DonVi>(0);
+		
+	public List<DonVi> getDonvitructhuocs() {
+		return donvitructhuocs;
+	}
+	public void setDonvitructhuocs(List<DonVi> donvitructhuocs) {
+		this.donvitructhuocs = donvitructhuocs;
+	}
+	public int getKieuDonVi() {
+		return kieuDonVi;
+	}
+	public void setKieuDonVi(int kieuDonVi) {
+		this.kieuDonVi = kieuDonVi;
+	}
+
 	/*****************************************/
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
