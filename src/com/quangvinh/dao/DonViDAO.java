@@ -97,12 +97,7 @@ public class DonViDAO implements IDonViDAO{
 		return dv;
 	}
 	
-	@Override
-	public int insertDonViVanBan(int mavanban, int madonvi) {
-		//Session session = sessionFactory.getCurrentSession();
-		//String hql = "insert into vanbandi_donvi()";
-		return 0;
-	}
+	
 
 	@SuppressWarnings("unchecked")
 	@Override

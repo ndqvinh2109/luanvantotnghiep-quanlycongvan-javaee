@@ -48,7 +48,7 @@ div#treephancapnguoidung a{
 }
 div#tablephancapnguoidug{
 	overflow:hidden;
-	margin: 5px 5px 0 5px;
+	margin: 5px 0 0 5px;
 	border: 1px solid #aaaaaa;
 	
 }
@@ -132,10 +132,17 @@ $(document).ready(function(){
 			<div class="treeheader">&nbsp;</div>
 			<div id="sidetreecontrol"> <a href="?#">Collapse All</a> | <a href="?#">Expand All</a> </div>
 					<ul class="treeview" id="tree">
-							<li class="expandable"><div class="hitarea expandable-hitarea"></div><img src="/LuanVanTotNghiep/css/images/1366565700_folderopen1.png" /> <a href="#" class="tendonvi" id="${donvi.maDonVi}">${donvi.tenDonVi}</a>
+							<li class="expandable"><div class="hitarea expandable-hitarea"></div><img src="/LuanVanTotNghiep/css/images/1366575805_224320-folder-image-people.png" /> <a href="#" class="tendonvi" id="${donvi.maDonVi}">${donvi.tenDonVi}</a>
 									<ul> <!-- style="display: none;" -->
 										<c:forEach var="donvipt" items="${donviptList}">
-											<li><img src="/LuanVanTotNghiep/css/images/1366565700_folderopen1.png" /> <a href="#" class="tendonvi" id="${donvipt.maDonVi}">${donvipt.tenDonVi}</a></li>
+											<c:if test="${donvipt.kieuDonVi == 3 }">
+												<li><img src="/LuanVanTotNghiep/css/images/1366576381_user-home.png" /> <a href="#" class="tendonvi" id="${donvipt.maDonVi}">${donvipt.tenDonVi}</a></li>
+											</c:if>
+											<c:if test="${donvipt.kieuDonVi == 2 }">
+												<li><img src="/LuanVanTotNghiep/css/images/1366576630_folder_add.png" /> <a href="#" class="tendonvi" id="${donvipt.maDonVi}">${donvipt.tenDonVi}</a></li>
+											</c:if>
+											
+										
 										</c:forEach>
 									</ul>
 							</li>

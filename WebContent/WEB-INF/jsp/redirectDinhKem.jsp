@@ -8,11 +8,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="/LuanVanTotNghiep/css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="/LuanVanTotNghiep/css/dropzone.css">
 <script src="/LuanVanTotNghiep/js/jquery-1.9.0.js"></script>
 <script src="/LuanVanTotNghiep/js/jquery-ui.js"></script>
+<script src="/LuanVanTotNghiep/js/dropzone.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
-	div#formThemFileDinhKem table{
+div#formThemFileDinhKem form{
+margin: 5px 140px 0 0;
+}
+
+div#formThemFileDinhKem table{
 border-collapse: collapse;
 }
 div#formThemFileDinhKem table td{
@@ -28,7 +34,7 @@ border-style: solid;
 border-width: 1px;
 border-color: #dedede;
 padding: 3px 2px;
-width: 70%;
+width: 80%;
 color: #777;
 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
 -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
@@ -197,6 +203,10 @@ div#danhsachfileDinhKem table tr.hilightclick{
 		if(mavanban2 != ''){
 			window.location = '${pageContext.request.contextPath}/service/showFileDinhKem/' + mavanban2 + ".action";
 		}
+		$('#luulai').button().click(function(){
+			location.reload(true);
+			return false;
+		});
 		});
 </script>
 </head>
@@ -206,9 +216,10 @@ div#danhsachfileDinhKem table tr.hilightclick{
 <div id="quanlyfiledinhkem">
 	<h3>Danh sách tập tin đính kèm</h3>
 	<div id="formThemFileDinhKem">
-		<form:form method="post" action="${pageContext.request.contextPath}/service/save/${mavanbanDinhKem}" commandName="filedinhkem" enctype="multipart/form-data">
+		<form:form method="post" class="dropzone" action="${pageContext.request.contextPath}/service/save/${mavanbanDinhKem}" commandName="filedinhkem" enctype="multipart/form-data">
 		   <input type="hidden" name="mavanban" id="mavanbandinhkem" />
-		    <table>
+		  
+		   <%--  <table>
 		    	<tr>
 			        <td><form:label path="tenFile">Tên tập tin</form:label></td>
 			        <td><form:input path="tenFile" /></td> 
@@ -221,9 +232,9 @@ div#danhsachfileDinhKem table tr.hilightclick{
 			        <td><form:label path="noiDung">Upload tâp tin</form:label></td>
 			        <td><input type="file" name="file" id="file"></input></td>
 			    </tr>
-			  </table>  
-			<input type="submit"  value="Lưu" class="submitpq"/><br>
-			<input type="reset" value="Huỷ" class="submitpq"/><br>
+			    
+			  </table>   --%>
+			
 			
 		</form:form>
 	
@@ -232,6 +243,7 @@ div#danhsachfileDinhKem table tr.hilightclick{
 			<button id="Xemtt"><img src="/LuanVanTotNghiep/images/add1.png"/><span>Xem</span></button>
 			<button id="Xoatt"><img src="/LuanVanTotNghiep/images/button_cancel.png"/><span>Xóa</span></button>
 			<button id="Downloadtt"><img src="/LuanVanTotNghiep/images/1366355835_Download.png"/><span>Tải về</span></button>
+			<button id="luulai"><img src="/LuanVanTotNghiep/images/1366617912_save_accept.png"/><span>Lưu lại</span></button>
 		</div>
 	<div id="danhsachfileDinhKem">
 		<table class="ui-widget ui-widget-content">
