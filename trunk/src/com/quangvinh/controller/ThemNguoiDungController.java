@@ -31,7 +31,8 @@ public class ThemNguoiDungController {
 	@RequestMapping("/themNguoiDung")
 	public String loadPageThemNguoiDung(Map<String, Object> map){
 		
-		map.put("donviList", donviService.getDonVi());
+		map.put("donviList", donviService.getDonViDocLap(2));
+		map.put("donviLis2", donviService.getDonViDocLap(3));
 		map.put("nguoidungList", nguoidungService.getNguoiDung());
 		return "themnguoidung";
 	}	

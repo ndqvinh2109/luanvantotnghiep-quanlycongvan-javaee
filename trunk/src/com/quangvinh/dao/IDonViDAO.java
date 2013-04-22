@@ -13,7 +13,7 @@ public interface IDonViDAO {
 	List<DonVi> getDonVi();
 	DonVi findDonViID(int id);
 	List<DonVi> getDonViDocLap(int val);
-	int insertDonViVanBan(int mavanban,int madonvi);
+
 	List<DonVi> getDonViTheoMaDonViPhuThuoc(int madonvi);
 	
 }

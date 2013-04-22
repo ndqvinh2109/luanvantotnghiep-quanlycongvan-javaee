@@ -63,7 +63,7 @@ public class VanBanDiController {
 	@RequestMapping("/nhapvanbandi")
 	public String pageNhapVanBanDi(Map<String,Object> map){
 		try{
-			map.put("donViList",donviService.getDonVi());
+			map.put("donViList",donviService.getDonViDocLap(1));
 			map.put("loaiVanBanList", loaivanbanService.getLoaiVanBan());
 			map.put("viTriLuuTruList", vitriluutruService.getViTriLuuTru());
 			map.put("linhVucList",linhvucService.getLinhVuc());
