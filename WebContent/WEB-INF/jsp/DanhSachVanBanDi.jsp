@@ -11,13 +11,7 @@
 <link rel="stylesheet" type="text/css" href="/LuanVanTotNghiep/css/jquery-ui.css">
 <script src="/LuanVanTotNghiep/js/jquery-1.9.0.js"></script>
 <script src="/LuanVanTotNghiep/js/jquery-ui.js"></script>
-<script src="/LuanVanTotNghiep/js/jqwidgets/jqxbuttons.js"></script>
-<script src="/LuanVanTotNghiep/js/jqwidgets/jqxcore.js"></script>
-<script src="/LuanVanTotNghiep/js/jqwidgets/jqxexpander.js"></script>
-<script src="/LuanVanTotNghiep/js/jqwidgets/jqxpanel.js"></script>
-<script src="/LuanVanTotNghiep/js/jqwidgets/jqxscrollbar.js"></script>
-<script src="/LuanVanTotNghiep/js/jqwidgets/jqxtree.js"></script>
-<script src="/LuanVanTotNghiep/js/jqwidgets/gettheme.js"></script>
+
 <style type="text/css">
 #accordion{
 	background-color: #f7f7f7;

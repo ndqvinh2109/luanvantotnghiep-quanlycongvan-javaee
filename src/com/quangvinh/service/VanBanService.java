@@ -91,6 +91,12 @@ public class VanBanService implements IVanBanService{
 		
 		return vanbanDao.capNhatBooleanBanHanh(var, mavanban);
 	}
+	@Override
+	@Transactional
+	public boolean checkExistKyHieuVanBan(String kyhieuvanban) {
+		
+		return vanbanDao.checkExistKyHieuVanBan(kyhieuvanban);
+	}
 	
 	
 }

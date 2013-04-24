@@ -6,6 +6,7 @@ import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -127,6 +128,19 @@ public class VanBanDAO implements IVanBanDAO{
 		int result = query.executeUpdate();
 		
 		return result;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean checkExistKyHieuVanBan(String kyhieuvanban) {
+		Session session = sessionFactory.getCurrentSession();
+		List<VanBan> list = session.createCriteria(VanBan.class,"vanban")
+				.add(Restrictions.like("vanban.soKyHieuVanBan", kyhieuvanban)).list();
+		if(list.size() == 0)
+		{
+			return true;
+		}
+		return false;
 	}
 		
 	

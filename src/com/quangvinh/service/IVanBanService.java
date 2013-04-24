@@ -14,5 +14,5 @@ public interface IVanBanService {
 	int getMaVanBanTheoSoKyHieu(String sovakyhieu);
 	int capNhatBooleanTiepNhan(boolean var,int mavanban);
 	int capNhatBooleanBanHanh(boolean var,int mavanban);
-	
+	boolean checkExistKyHieuVanBan(String kyhieuvanban);
 }

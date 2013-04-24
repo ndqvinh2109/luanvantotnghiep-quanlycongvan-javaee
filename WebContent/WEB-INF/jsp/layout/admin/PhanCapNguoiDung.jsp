@@ -77,38 +77,94 @@ div#tablephancapnguoidug table tr.hilightclick{
 	background-color: #fdf7d9 !important;
 	
 }
+#toolbar{
+padding:5px 5px 5px 5px;
+}
+
+
+#toolbar img {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 2px;
+  top: 50%;
+  margin-top: -8px;
+  
+  	
+}
+
+#toolbar span{
+  height: 20px;
+  line-height: 20px;
+  float: left;
+  padding-left: 11px;
+}
+.cpan{
+color: white;
+background-color: #3d85fe;
+border: 1px solid #4376c9;
+font-weight: bold;
+
+}
+
+#dialogthemnguoidung{
+margin: 0px 0 10px 0;
+}
+.ui-dialog-titlebar {
+	background: url(/LuanVanTotNghiep/images/dialog.png) center left repeat-x;
+	color: #ffffff;
+	font-family: Arial,Verdana,Sans-serif;
+	border: 1px solid #ffb053;
+}
+
+div#dialogthemnguoidung table{
+ margin: 0; border-collapse: collapse; width: 90%; 
+}
+
+div#dialogthemnguoidung table td{
+ border: 1px solid #eee;
+ padding: .6em 10px;
+ text-align: left;
+ }
+ 
+ div#dialogthemnguoidung table{
+ margin: 0; border-collapse: collapse; width: 100%; 
+ }
 </style>
 
 <script type="text/javascript">
 $(document).ready(function(){
-	
+	var nguoidungList = function(){		
+		$.ajax({
+		url: '/LuanVanTotNghiep/service/getNguoiDungListTheoDonVi/' + madonvi,
+		type: 'GET',
+		dataType: "json",
+		contentType: "application/json",
+		success: function(data){
+			
+			console.log(data);
+			var htmlPrepare = '<table class="ui-widget ui-widget-content"><tr class="ui-widget-header"><td>Họ và tên</td><td>Địa chỉ</td><td>Email</td><td>Số điện thoại</td><td>Giới tính</td><td>Tên đăng nhập</td></tr>';
+			for(var i = 0; i < data.length; i++){
+				htmlPrepare += '<tr><td>';
+				htmlPrepare += data[i].tenNguoiDung + '</td><td>';
+				htmlPrepare += data[i].diaChi + '</td><td>';
+				htmlPrepare += data[i].email + '</td><td>';
+				htmlPrepare += data[i].soDienThoai + '</td><td>';
+				htmlPrepare += data[i].gioiTinh + '</td><td>';
+				htmlPrepare += data[i].userName + '</td></tr>';
+			}
+			htmlPrepare += '</table>';
+			$('#tablephancapnguoidug').html(htmlPrepare);
+		}
+		
+	});
+	};
+	var madonvi = null;
 	$('#phancapnguoidung a').click(function(evt){
 		evt.preventDefault();
-		var madonvi = $(this).attr("id");
+		madonvi = $(this).attr("id");
+		nguoidungList();
 			
-		$.ajax({
-			url: '/LuanVanTotNghiep/service/getNguoiDungListTheoDonVi/' + madonvi,
-			type: 'GET',
-			dataType: "json",
-    		contentType: "application/json",
-    		success: function(data){
-    			
-    			console.log(data);
-    			var htmlPrepare = '<table class="ui-widget ui-widget-content"><tr class="ui-widget-header"><td>Họ và tên</td><td>Địa chỉ</td><td>Email</td><td>Số điện thoại</td><td>Giới tính</td><td>Tên đăng nhập</td></tr>';
-    			for(var i = 0; i < data.length; i++){
-    				htmlPrepare += '<tr><td>';
-    				htmlPrepare += data[i].tenNguoiDung + '</td><td>';
-    				htmlPrepare += data[i].diaChi + '</td><td>';
-    				htmlPrepare += data[i].email + '</td><td>';
-    				htmlPrepare += data[i].soDienThoai + '</td><td>';
-    				htmlPrepare += data[i].gioiTinh + '</td><td>';
-    				htmlPrepare += data[i].userName + '</td></tr>';
-    			}
-    			htmlPrepare += '</table>';
-    			$('#tablephancapnguoidug').html(htmlPrepare);
-    		}
-			
-		});
 			
 	});
 	
@@ -120,6 +176,83 @@ $(document).ready(function(){
 		persist: "location"
 	});
 	
+	$('#themnguoisudung').button().click(function(){
+		$( "#dialogthemnguoidung").dialog('open');
+		return false;
+	});
+	
+	
+	
+	$( "#dialogthemnguoidung").dialog({
+		  autoOpen: false,
+	      resizable: true,
+	      height:'auto',
+	      width:'auto',
+	      modal: true,
+	      buttons: {
+	       	'Lưu' : function(){
+	       		var tennguoidung = $('#tennguoidung').val();
+				var diachi = $('#diachi').val();
+				var email = $('#email').val();
+				var sodienthoai = $('#sodienthoai').val();
+				var gioitinh = $('#gioitinh').val();
+				var tendangnhap = $('#username').val();
+				var password2 = $('#password2').val();
+				if(tennguoidung.length==0){
+					alert("Xin nhập trường Tên người dùng");
+					$('#tennguoidung').focus();
+					
+				}
+				else if(diachi.length==0){
+					alert("Xin nhập trường Địa chỉ");
+					$('#diachi').focus();
+					
+				}
+				else if(email.length==0){
+					alert("Xin nhập trường Email");
+					$('#email').focus();
+				}
+				else if(sodienthoai.length==0){
+					alert("Xin nhập trường Số điện thoại");
+					$('#sodienthoai').focus();
+				}
+				else if(tendangnhap.length==0){
+					alert("Xin nhập trường Tên đăng nhập");
+					$('#username').focus();
+					
+				}
+				else if(password2.length==0){
+					alert("Xin nhập trường Mật khẩu");
+					$('#password2').focus();
+					
+				}
+				else{
+				$.ajax({
+					url : '/LuanVanTotNghiep/service/themNguoiDungdv/' + tennguoidung + '/' +
+					diachi + '/' + email + '/' + sodienthoai + '/' + gioitinh + '/' + madonvi + '/' +
+					tendangnhap + '/' + password2,
+					type: 'POST',
+					contentType: 'text/html; charset=UTF-8',
+					data: null,
+					success: function(result){
+						if(result){
+							nguoidungList();
+							 $( this ).dialog( "close" );
+						}
+						
+					}
+					
+				});
+				}
+		       		
+		       		
+		   	},
+	        Cancel: function() {
+	          $( this ).dialog( "close" );
+	        }
+	      }
+	      
+	    });
 	
 	
 	});
@@ -128,9 +261,15 @@ $(document).ready(function(){
 <body>
 	<div id="phancapnguoidung">
 		<h3>Quản lý phân cấp quyền người dùng</h3>
+		<div id="toolbar" class="ui-widget-header ui-corner-all">
+			<button id="themnguoisudung"><img src="/LuanVanTotNghiep/images/add1.png"/><span>Thêm người sử dụng</span></button>
+		
+			
+		</div>
 		<div id="treephancapnguoidung">
+		
 			<div class="treeheader">&nbsp;</div>
-			<div id="sidetreecontrol"> <a href="?#">Collapse All</a> | <a href="?#">Expand All</a> </div>
+			
 					<ul class="treeview" id="tree">
 							<li class="expandable"><div class="hitarea expandable-hitarea"></div><img src="/LuanVanTotNghiep/css/images/1366575805_224320-folder-image-people.png" /> <a href="#" class="tendonvi" id="${donvi.maDonVi}">${donvi.tenDonVi}</a>
 									<ul> <!-- style="display: none;" -->
@@ -152,6 +291,53 @@ $(document).ready(function(){
 		</div>
 		<div id="tablephancapnguoidug">
 			
+		</div>
+		<div id="dialogthemnguoidung" title="Thêm tài khoản sử dụng">
+			<input type="hidden" id="madonvithemnd" value=""/>
+			<form action="" method="post">
+				<table>
+					<tr>
+						<td class="cpan" colspan="2">Thông tin người dùng</td>
+						
+					</tr>
+					<tr>
+						<td>Tên người dùng</td>
+						<td><input type="text" id="tennguoidung" /></td>
+					</tr>
+					<tr>
+						<td>Địa chỉ</td>
+						<td><input type="text" id="diachi" /></td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td><input type="text" id="email" /></td>
+					</tr>
+					<tr>
+						<td>Số điện thoại</td>
+						<td><input type="text" id="sodienthoai" /></td>
+					</tr>
+					<tr>
+						<td>Giới tính</td>
+						<td>
+							<select id="gioitinh">
+								<option value="0">Nam</option>
+								<option value="1">Nữ</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="cpan">Thông tin đăng nhập</td>
+					</tr>
+					<tr>
+						<td>Tên đăng nhập</td>
+						<td><input type="text" id="username" /></td>
+					</tr>
+					<tr>
+						<td>Mật khẩu</td>
+						<td><input type="password" id="password2" /></td>
+					</tr>
+				</table>
+			</form>
 		</div>
 	</div>
 	

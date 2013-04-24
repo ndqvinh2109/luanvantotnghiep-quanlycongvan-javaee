@@ -326,6 +326,9 @@ div#table_inner table tr.hilightclick{
 	    						<c:forEach var="donvi" items="${donviList}">
 	    							<option value='<c:out value="${donvi.getMaDonVi()}"/>'><c:out value="${donvi.getTenDonVi()}"/></option>
 	    						</c:forEach>
+	    						<c:forEach var="donvi" items="${donviList2}">
+	    							<option value='<c:out value="${donvi.getMaDonVi()}"/>'><c:out value="${donvi.getTenDonVi()}"/></option>
+	    						</c:forEach>
 	    					</select>
 						</td>
 					</tr>
