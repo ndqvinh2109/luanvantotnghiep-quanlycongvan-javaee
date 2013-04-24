@@ -32,7 +32,7 @@ public class ThemNguoiDungController {
 	public String loadPageThemNguoiDung(Map<String, Object> map){
 		
 		map.put("donviList", donviService.getDonViDocLap(2));
-		map.put("donviLis2", donviService.getDonViDocLap(3));
+		map.put("donviList2", donviService.getDonViDocLap(3));
 		map.put("nguoidungList", nguoidungService.getNguoiDung());
 		return "themnguoidung";
 	}	
@@ -67,7 +67,35 @@ public class ThemNguoiDungController {
 		nguoidungService.saveNguoiDung(nguoidung);
 		return (oldSize < nguoidungService.getNguoiDung().size());
 	}
-	
+	@RequestMapping(value="/themNguoiDungdv/{tennguoidung}/{diachi}/{email}/{sodienthoai}/{gioitinh}/{donvi}/{tendangnhap}/{password}",method=RequestMethod.POST)
+	public @ResponseBody boolean themNguoiDungdv(
+			@PathVariable("tennguoidung") String tennguoidung,
+			@PathVariable("diachi") String diachi,
+			@PathVariable("email") String email,
+			@PathVariable("sodienthoai") String sodienthoai,
+			@PathVariable("gioitinh") int gioitinh,
+			@PathVariable("donvi") int madonvi,
+			@PathVariable("tendangnhap") String tendangnhap,
+			@PathVariable("password") String password
+			){
+		int oldSize = nguoidungService.getNguoiDung().size();
+		String encodedPassword = passwordEncoder.encodePassword(password,null);
+		NguoiDung nguoidung = new NguoiDung();
+		DonVi donvi = donviService.findDonViID(madonvi);
+		
+		nguoidung.setTenNguoiDung(tennguoidung);
+		nguoidung.setDiaChi(diachi);
+		nguoidung.setEmail(email);
+		nguoidung.setSoDienThoai(sodienthoai);
+		nguoidung.setGioiTinh(gioitinh);
+		nguoidung.setDonvi(donvi);
+		nguoidung.setUserName(tendangnhap);
+		nguoidung.setPassWord(encodedPassword);
+		nguoidung.setMacDinh(true);
+		
+		nguoidungService.saveNguoiDung(nguoidung);
+		return (oldSize < nguoidungService.getNguoiDung().size());
+	}
 	@RequestMapping(value="/suaNguoiDung1/{manguoidung}/{tennguoidung}/{diachi}/{email}/{sodienthoai}/{gioitinh}/{donvi}/{tendangnhap}",method=RequestMethod.POST)
 	public @ResponseBody boolean suaNguoiDung1(
 			@PathVariable("manguoidung") int manguoidung,

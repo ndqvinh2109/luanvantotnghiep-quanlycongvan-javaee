@@ -43,6 +43,7 @@
 		  });
 </script>
 
+
 </head>
 <body>
 <div id="left">
@@ -50,11 +51,11 @@
 		<h3>Thanh nhắc việc</h3>
 			
 				<ul class="menu" id="thanhnhacviecnavbar">
-					<li><a href="${pageContext.request.contextPath}/service/loadXuLyPheDuyetVanBan">Đang chờ xử lý<span id="countdangchoxuly"></span></a></li>
-					<li><a href="${pageContext.request.contextPath}/service/tiepNhanVanBanDen">Văn bản đến qua mạng<span id="countvanbanchuatiepnhan"></span></a>
-					<li><a href="${pageContext.request.contextPath}/service/DanhSachVanBanTheoTTXL/1">Chưa xử lý<span id="countvanbanchuaxuly"></span></a></li>
-					<li><a href="${pageContext.request.contextPath}/service/DanhSachVanBanTheoTTXL/2">Đang xử lý<span id="countvanbandangxuly"></span></a></li>
-					<li><a href="${pageContext.request.contextPath}/service/DanhSachVanBanTheoTTXL/3">Đã hoàn tất<span id="countvanbanhoanthanh"></span></a></li>
+					<li><a href="${pageContext.request.contextPath}/service/loadXuLyPheDuyetVanBan">Đang chờ xử lý<span id="countdangchoxuly" style="color:red"></span></a></li>
+					<li><a href="${pageContext.request.contextPath}/service/tiepNhanVanBanDen">Văn bản đến qua mạng<span id="countvanbanchuatiepnhan" style="color:red"></span></a>
+					<li><a href="${pageContext.request.contextPath}/service/DanhSachVanBanTheoTTXL/1">Chưa xử lý<span id="countvanbanchuaxuly" style="color:red"></span></a></li>
+					<li><a href="${pageContext.request.contextPath}/service/DanhSachVanBanTheoTTXL/2">Đang xử lý<span id="countvanbandangxuly" style="color:red"></span></a></li>
+					<li><a href="${pageContext.request.contextPath}/service/DanhSachVanBanTheoTTXL/3">Đã hoàn tất<span id="countvanbanhoanthanh" style="color:red"></span></a></li>
 					
 				</ul>
 				

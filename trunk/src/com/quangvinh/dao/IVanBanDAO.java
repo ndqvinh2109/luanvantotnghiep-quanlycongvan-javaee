@@ -15,4 +15,5 @@ public interface IVanBanDAO {
 	int getMaVanBanTheoSoKyHieu(String sovakyhieu);
 	int capNhatBooleanTiepNhan(boolean var,int mavanban);
 	int capNhatBooleanBanHanh(boolean var,int mavanban);
+	boolean checkExistKyHieuVanBan(String kyhieuvanban);
 }

@@ -365,20 +365,37 @@ margin: 5px 0 0 50px;
 					$('#sotrang').focus();
 				}
 				else{
-					 $.ajax({
-							url: '/LuanVanTotNghiep/service/saveVanBanDi/' + coquanbanhanh + '/' + sovakyhieu + '/' + ngaybanhanh + '/' + ngayhieuluc + '/' +
-							ngayketthuc + '/' + ngaynhapmay + '/' + loaivanban + '/' + vitriluutru + '/' + linhvuc + '/' + capdokhan +
-							'/' + capdobaomat + '/' + sohoso + '/' + trangthaixuly + '/' + trichyeu + '/' +
-							tukhoa + '/' + nguoiky + '/' + sotrang,
-							type: "POST",
-							contentType: 'text/html; charset=UTF-8',
-							data: null,
-							success: function(result){
-								if(result){
-									location.reload(true);
-								}
+					$.ajax({
+						url: '/LuanVanTotNghiep/service/checkExistKyHieuVanBan/' + sovakyhieu,
+						type: "GET",
+						contentType: 'text/html; charset=UTF-8',
+						data: null,
+						success: function(result){
+							if(result === false){
+								alert("Số ký hiệu văn bản không được trùng");
+								$('#sovakyhieu').focus();
 							}
-						});
+							else
+							{
+								$.ajax({
+									url: '/LuanVanTotNghiep/service/saveVanBanDi/' + coquanbanhanh + '/' + sovakyhieu + '/' + ngaybanhanh + '/' + ngayhieuluc + '/' +
+									ngayketthuc + '/' + ngaynhapmay + '/' + loaivanban + '/' + vitriluutru + '/' + linhvuc + '/' + capdokhan +
+									'/' + capdobaomat + '/' + sohoso + '/' + trangthaixuly + '/' + trichyeu + '/' +
+									tukhoa + '/' + nguoiky + '/' + sotrang,
+									type: "POST",
+									contentType: 'text/html; charset=UTF-8',
+									data: null,
+									success: function(result){
+										if(result){
+											location.reload(true);
+										}
+									}
+								});
+								
+							}
+						}
+					});
+					 
 				}
 				return false;
 			});
