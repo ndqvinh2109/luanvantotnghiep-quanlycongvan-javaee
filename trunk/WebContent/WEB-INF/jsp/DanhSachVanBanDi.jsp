@@ -418,7 +418,11 @@ $(document).ready(function(){
 		      dateFormat: 'yy-mm-dd'
 		}); 
 		
-		
+		$('#sodi').click(function(){
+			var t = '${maxSoDi + 1}';
+			$('#sodi').val(t);
+			
+		});
 		
 		$( "#dialog-update" ).dialog({
 			  autoOpen: false,
@@ -474,6 +478,7 @@ $(document).ready(function(){
 		      }
 		    });
 			$('#update').button().click(function(){
+				
 				if(mavanban == null){
 					$("#dialog_error").dialog("open");
 				}
@@ -650,7 +655,7 @@ $("#chitietvanbandi").button().click(function(){
 
 
 /*-----------------------------Ban hành văn bản------------------------*/
-  /* $( "#dialog_capnhatnoinhan" ).dialog({
+  $( "#dialog_capnhatnoinhan" ).dialog({
 	 	  autoOpen: false,
 	      resizable: true,
 	      height:600,
@@ -715,12 +720,14 @@ $("#chitietvanbandi").button().click(function(){
 		
  $(function() {
 	    $( "#dialog_capnhatnoinhan" ).tabs();
-	  });  */
+	  });
 	  
  
  /*-------------------------End Ban hành văn bản------------------------------*/
 $('#banhanhvanban').button().click(function(){
-	window.location = '${pageContext.request.contextPath}/service/banHanhVanBan';
+	 
+	 $( "#dialog_capnhatnoinhan" ).dialog('open');
+	
 	return false;
 });
  
@@ -743,11 +750,7 @@ $('#banhanhvanban').button().click(function(){
 	<button id="banhanhvanban"><img src="/LuanVanTotNghiep/images/process.png"/><span>Ban hành</span></button>
  </div>
  
-<ul class="pageNav">
- <c:forEach var="i" begin="1" end="${pages}">
-   <li><a href="${pageContext.request.contextPath}/service/showvanbandi/${i}"><c:out value="${i}"/></a></li> 
-</c:forEach>
-</ul>
+
 
 <table class="ui-widget ui-widget-content">
 	<tr class="ui-widget-header">
@@ -759,16 +762,30 @@ $('#banhanhvanban').button().click(function(){
   	</tr>
 	<c:forEach items="${vanbandiList}" var="vanbandi">
 	    <tr id = "${vanbandi.maVanBan}">
-	    	<td>${vanbandi.getNgayDi()}</td>
-	    	<td>${vanbandi.getSoDi()}</td>
-	    	<td>${vanbandi.soKyHieuVanBan}</td>
+	    	<c:if test="${vanbandi.getNgayDi() == null}">
+	    		<td><img alt="ngaydi" src="/LuanVanTotNghiep/images/1367162922_New.png"/></td>
+	   		</c:if>
+	   		<c:if test="${vanbandi.getNgayDi() != null}">
+	    		<td>${vanbandi.getNgayDi()}</td>
+	   		</c:if>
+	   		<c:if test="${vanbandi.getSoDi() == 0}">
+	    		<td><img alt="sodi" src="/LuanVanTotNghiep/images/1367162922_New.png"/></td>
+	   		</c:if>
+	   		<c:if test="${vanbandi.getSoDi() != 0}">
+	    		<td>${vanbandi.getSoDi()}</td>
+	   		</c:if>
+	   		<td>${vanbandi.soKyHieuVanBan}</td>
 	        <td>${vanbandi.ngayBanHanh}</td>
 	      	<td>${vanbandi.trichYeu}</td>
 	   </tr>
 	   
 	</c:forEach>
 </table>
-
+<ul class="pageNav">
+ <c:forEach var="i" begin="1" end="${pages}">
+   <li><a href="${pageContext.request.contextPath}/service/showvanbandi/${i}"><c:out value="${i}"/></a></li> 
+</c:forEach>
+</ul>
 </div>
 
 <div id="dialog-confirm" title="Bạn có muốn xóa công văn đi này không?">
@@ -1099,31 +1116,16 @@ $('#banhanhvanban').button().click(function(){
 		
 		</div>
 </div>
-<!-- <div id="dialog_capnhatnoinhan" title="Cập nhật nơi nhận"> -->
+<div id="dialog_capnhatnoinhan" title="Cập nhật nơi nhận">
 
-	<%-- <ul>
-	    <li><a href="#tabs-1">Phòng Ban Trực Thuộc</a></li>
-	    <li><a href="#tabs-2">Đơn Vị Độc Lập</a></li>
+	<ul>
+	    
+	    <li><a href="#tabs-1">Đơn Vị Độc Lập</a></li>
 	</ul>
 	
-	<div id="tabs-1">
-	<!-- <input type="hidden" class="sokyhieuvanban" value=""/> -->
-		<table>
-			<tr>
-				<th>Chọn</th>
-				<th>Phòng ban trực thuộc</th>
-			</tr>
-			
-			<c:forEach var="donviphuthuoc" items="${donviphuthuocList}">
-				<tr>
-					<td><input type="checkbox" value="${donviphuthuoc.maDonVi}" /></td>
-					<td>${donviphuthuoc.tenDonVi}</td>
-				</tr>
-			</c:forEach>
-		</table>
-	</div>
 	
-	<div id="tabs-2">
+	
+	<div id="tabs-1">
 	<input type="hidden" class="sokyhieuvanban" value=""/>
 		<form action="" method="post">
 			
@@ -1141,10 +1143,10 @@ $('#banhanhvanban').button().click(function(){
 				</c:forEach>
 			</table>
 		</form>
-	</div> --%>
+	</div>
 	
 	
-<!-- </div> -->
+</div>
 	
 
 

@@ -102,6 +102,7 @@ public class DanhSachVanBanDiController {
 		map.put("filedinhkem",new FileDinhKem());
 		map.put("donvidoclapList", donviService.getDonViDocLap(2));
 		map.put("donviphuthuocList", donviService.getDonViDocLap(3));
+		map.put("maxSoDi",vanbandiService.getMaxSoDi());
 		map.put("pages", pages);
 		return "danhsachvanbandi";
 	}
