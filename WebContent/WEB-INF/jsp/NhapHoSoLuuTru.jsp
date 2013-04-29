@@ -433,9 +433,9 @@ $(document).ready(function(){
 			
 		</div>
 		<div id="toolbar" class="ui-widget-header ui-corner-all">
-			<button id="themhoso"><img src="/LuanVanTotNghiep/images/edit_add.png"/><span>Thêm</span></button>
-			<button id="xoahoso"><img src="/LuanVanTotNghiep/images/edit_remove.png"/><span>Xóa</span></button>
-			<button id="suahoso"><img src="/LuanVanTotNghiep/images/pencil.png"/><span>Sửa</span></button>
+			<button id="themhoso"><img src="/LuanVanTotNghiep/images/add1.png"/><span>Thêm</span></button>
+			<button id="xoahoso"><img src="/LuanVanTotNghiep/images/button_cancel.png"/><span>Xóa</span></button>
+			<button id="suahoso"><img src="/LuanVanTotNghiep/images/form_edit.png"/><span>Sửa</span></button>
 			<button id="themvanban"><img src="/LuanVanTotNghiep/images/pencil.png"/><span>Thêm văn bản vào hồ sơ</span></button>
 		</div>
 		<div id="table_nhapHoSo">

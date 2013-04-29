@@ -15,6 +15,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name="VANBANDI")
@@ -23,6 +25,7 @@ public class VanBanDi extends VanBan{
 	/*******************************************/
 	@JsonIgnore
 	@OneToMany(mappedBy="vanbandi",fetch=FetchType.LAZY)
+	@Cascade(CascadeType.ALL)
 	private List<VanBanDi_DonVi> vanbandi_donvi = new ArrayList<VanBanDi_DonVi>(0);
 		
 	public List<VanBanDi_DonVi> getVanbandi_donvi() {

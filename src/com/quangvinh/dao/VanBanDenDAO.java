@@ -93,7 +93,7 @@ public class VanBanDenDAO implements IVanBanDenDAO {
 	@Override
 	public int findQuyTrinh(int mavanban) {
 		Session session = sessionFactory.getCurrentSession();
-		String hql="select l.maLoaiVanBan from " +
+		String hql="select q.maQuyTrinh from " +
 				"VanBanDen v inner join v.loaivanban l " +
 				"inner join l.quytrinh q " +
 				"where v.maVanBan = :mavanban";
@@ -246,17 +246,15 @@ public class VanBanDenDAO implements IVanBanDenDAO {
 		int per_page = 9;
 		int start = (page-1)*per_page;
 		Session session = sessionFactory.getCurrentSession();
-		String hql = "from VanBanDen";
-		Query query = session.createQuery(hql);
-		/*String hql = "from VanBanDen a where a.enabled = true";
+		/*String hql = "from VanBanDen";
 		Query query = session.createQuery(hql);*/
+		String hql = "from VanBanDen a where a.enabled = true";
+		Query query = session.createQuery(hql);
 		
 		query.setFirstResult(start);
 		query.setMaxResults(per_page);
 		
-		/*String hql = "from VanBanDen a where a.enabled = true";
-		Query query = session.createQuery(hql);
-		*/
+		
 		List<VanBanDen> list = query.list();
 		return list;
 		

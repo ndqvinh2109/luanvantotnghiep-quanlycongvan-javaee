@@ -329,9 +329,6 @@ margin: 5px 0 0 50px;
 			<input type="submit" id="themcongvan" value="Ghi nhận" title="Bấm nút [Ghi nhận] để thực hiện ghi thông tin vào cơ sở dữ liệu."/>
 			<input type="reset" id="huynhap" value="Xóa trắng"  />
 			</div>
-			
-			
-			
 	</form>
 	</div>
 </div>		

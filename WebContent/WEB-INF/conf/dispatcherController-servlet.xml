@@ -47,8 +47,7 @@
 			<!-- one of the properties available; the maximum file size in bytes -->
        		 <property name="maxUploadSize" value="10000000" />
 		</bean>
-		
-		
+				
 		<!-- If no extension matched, use JSP view -->
 		<!-- <bean id="viewResolverInternal" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 			<property name="order" value="3" />
@@ -69,8 +68,7 @@
 			</property>
 			<property name="order" value="0"/>
 		</bean>
-		
-		
+				
 		<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 			<property name="definitions">
 				<list>
@@ -85,9 +83,7 @@
     		<property name="username" value="postgres"/>
     		<property name="password" value="postgres"/>
  		 </bean>
- 		 
- 		  
- 		 
+ 		  		 
  		 <bean id="mySessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
  		 <property name="dataSource" ref="myDataSource"/>
  		<property name="packagesToScan" value="com.quangvinh.model" />
@@ -108,8 +104,4 @@
  		 <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
  		 	<property name="sessionFactory" ref="mySessionFactory"/>
  		 </bean>
- 		
- 		
- 		
- 		
 </beans>

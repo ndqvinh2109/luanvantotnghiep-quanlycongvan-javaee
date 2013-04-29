@@ -764,15 +764,11 @@ $('#themgopy').button().click(function(){
 	<button id="themgopy"><img src="/LuanVanTotNghiep/images/friend_finder.png"/><span>Góp ý</span></button>
  </div>
  
- <ul class="pageNav">
- <c:forEach var="i" begin="1" end="${pages}">
-   <li><a href="${pageContext.request.contextPath}/service/showvanbanden/${i}"><c:out value="${i}"/></a></li> 
-</c:forEach>
-</ul>
+ 
 <table class="ui-widget ui-widget-content">
 	<tr class="ui-widget-header">
-		<th></th>
-		<th></th>
+		<th>Độ khẩn</th>
+		<th>Đính kèm</th>
 		<th>Số Đến</th>
 	    <th>Ngày Đến</th>
 	    <th>Số Hiệu Văn Bản</th>
@@ -823,7 +819,11 @@ $('#themgopy').button().click(function(){
 	</c:forEach>
 	
 </table>
-
+<ul class="pageNav">
+ <c:forEach var="i" begin="1" end="${pages}">
+   <li><a href="${pageContext.request.contextPath}/service/showvanbanden/${i}"><c:out value="${i}"/></a></li> 
+</c:forEach>
+</ul>
 
 
 <div id="dialog-confirm" title="Bạn có muốn xóa công văn đến này không?">

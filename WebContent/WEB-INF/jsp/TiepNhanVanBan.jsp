@@ -248,8 +248,8 @@ width: 200px;
 					$('#capdobaomat1').val(data.capdobaomat);
 					$('#sohoso1').val(data.sohoso);
 					 $("#ngayden").datepicker('setDate', new Date());
-					 var maxdoden = "${maxsoden}";
-					 $('#soden').val(maxdoden + 1);
+					 var maxdoden = "${maxsoden + 1}";
+					 $('#soden').val(maxdoden);
 					
 					
 					var ttxl = data.trangthaixuly;

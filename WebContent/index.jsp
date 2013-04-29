@@ -17,7 +17,7 @@
 
 <style>
 	body {
-		background: #e1c192 url('/LuanVanTotNghiep/images/wood_pattern.jpg');
+		background: #1B75BB url('/LuanVanTotNghiep/images/wallpaper.png') no-repeat fixed center top ;
 	}
 	#remember{
 		float:left;
