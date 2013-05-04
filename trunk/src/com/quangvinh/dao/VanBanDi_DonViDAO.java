@@ -2,9 +2,11 @@ package com.quangvinh.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -47,5 +49,15 @@ public class VanBanDi_DonViDAO implements IVanBanDi_DonViDAO{
 		
 		return false;
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<VanBanDi_DonVi> getListVBDVDaBH(int mavanban) {
+		Session sesson = sessionFactory.getCurrentSession();
+		List<VanBanDi_DonVi> list = sesson.createCriteria(VanBanDi_DonVi.class,"a")
+				.add(Restrictions.eq("a.vanbandi.maVanBan", mavanban)).list();
+		return list;
+	}
+	
 
 }

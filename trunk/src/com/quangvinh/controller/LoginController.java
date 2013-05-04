@@ -109,6 +109,9 @@ public class LoginController {
 		return "showpiechart";
 	}
 	
+	
+		
+	
 	@RequestMapping(value="/thongKeTinhHinhXuLy/{nguoidung}/{tungay}/{denngay}")
 	public @ResponseBody List<BuocXuLyPheDuyetVanBan> thongKeTinhHinhXuLy(ModelMap model,@PathVariable("nguoidung") int nguoidung,
 			@PathVariable("tungay") String tungay,

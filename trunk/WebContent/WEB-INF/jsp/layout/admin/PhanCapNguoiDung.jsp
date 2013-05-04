@@ -237,7 +237,7 @@ $(document).ready(function(){
 					success: function(result){
 						if(result){
 							nguoidungList();
-							 $( this ).dialog( "close" );
+							$( this ).dialog( "close" );
 						}
 						
 					}

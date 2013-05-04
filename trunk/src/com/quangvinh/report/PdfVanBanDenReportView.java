@@ -95,6 +95,7 @@ public class PdfVanBanDenReportView extends AbstractPdfView{
 			    PdfPCell cell = new PdfPCell(new Paragraph("Số Đến",f1));
 			    
 			    cell.setGrayFill(0.75f);
+			    cell.setBackgroundColor(new Color(11, 122, 244));
 			    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 			    cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 			    cell.setPadding(8);
@@ -102,6 +103,7 @@ public class PdfVanBanDenReportView extends AbstractPdfView{
 			    
 			    cell = new PdfPCell(new Paragraph("Ngày Đến",f1));
 			    cell.setGrayFill(0.75f);
+			    cell.setBackgroundColor(new Color(11, 122, 244));
 			    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 			    cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 			    cell.setPadding(8);
@@ -111,6 +113,7 @@ public class PdfVanBanDenReportView extends AbstractPdfView{
 			    cell = new PdfPCell(new Paragraph("Số Hiệu Văn Bản",f1));
 			    
 			    cell.setGrayFill(0.75f);
+			    cell.setBackgroundColor(new Color(11, 122, 244));
 			    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 			    cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 			    cell.setPadding(8);
@@ -119,6 +122,7 @@ public class PdfVanBanDenReportView extends AbstractPdfView{
 			    cell = new PdfPCell(new Paragraph("Ngày Ban Hành",f1));
 			   
 			    cell.setGrayFill(0.75f);
+			    cell.setBackgroundColor(new Color(11, 122, 244));
 			    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 			    cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 			    cell.setPadding(8);
@@ -127,6 +131,7 @@ public class PdfVanBanDenReportView extends AbstractPdfView{
 			    cell = new PdfPCell(new Paragraph("Trích Yếu Nội Dung",f1));
 			    
 			    cell.setGrayFill(0.75f);
+			    cell.setBackgroundColor(new Color(11, 122, 244));
 			    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
 			    cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
 			    cell.setPadding(8);

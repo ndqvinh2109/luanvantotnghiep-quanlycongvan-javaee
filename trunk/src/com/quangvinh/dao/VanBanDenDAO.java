@@ -197,13 +197,8 @@ public class VanBanDenDAO implements IVanBanDenDAO {
 			.add(Restrictions.eq("linhvucAlias.maLinhVuc", linhvuc))
 			.add(Restrictions.eq("hosoluutruAlias.soHoSo", sohoso))
 			.list();
-		
-		
+			
 		return list;
-		
-		
-		
-		
 	}
 
 	@SuppressWarnings("unchecked")

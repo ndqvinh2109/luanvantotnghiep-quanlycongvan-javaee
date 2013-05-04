@@ -20,4 +20,5 @@ public interface IBuocXuLyService {
 	boolean checkExistVanBanTrongBuocXuLy(int mavanban);
 	long countBuocXuLyTheoMaNguoiDung(int manguoidung,boolean valuechuyen, boolean valuexuly);
 	List<BuocXuLyPheDuyetVanBan> thongKeTinhHinhXuLy(int manguoidung,Date tungay, Date denngay);
+	List<BuocXuLyPheDuyetVanBan> getListBXLDaXuLy(boolean valuechuyen, boolean valuexuly, int mavanban);
 }

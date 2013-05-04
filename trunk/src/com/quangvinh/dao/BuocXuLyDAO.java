@@ -213,4 +213,16 @@ public class BuocXuLyDAO implements IBuocXuLyDAO{
 		return list;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<BuocXuLyPheDuyetVanBan> getListBXLDaXuLy(boolean valuechuyen,
+			boolean valuexuly, int mavanban) {
+		Session session = sessionFactory.getCurrentSession();
+		List<BuocXuLyPheDuyetVanBan> list = session.createCriteria(BuocXuLyPheDuyetVanBan.class,"buocxulyAlias")
+				.add(Restrictions.eq("buocxulyAlias.valueChuyen", true))
+				.add(Restrictions.eq("buocxulyAlias.valueXuLy", true))
+				.add(Restrictions.eq("buocxulyAlias.vanban.maVanBan", mavanban)).list();
+		return list;
+	}
+
 }

@@ -114,4 +114,12 @@ public class BuocXuLyService implements IBuocXuLyService{
 		return buocxulyDao.thongKeTinhHinhXuLy(manguoidung, tungay, denngay);
 	}
 
+	@Override
+	@Transactional
+	public List<BuocXuLyPheDuyetVanBan> getListBXLDaXuLy(boolean valuechuyen,
+			boolean valuexuly, int mavanban) {
+		
+		return buocxulyDao.getListBXLDaXuLy(valuechuyen, valuexuly, mavanban);
+	}
+
 }

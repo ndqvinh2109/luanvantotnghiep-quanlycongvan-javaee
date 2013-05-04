@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="/LuanVanTotNghiep/css/jquery-ui.css">
 <script src="/LuanVanTotNghiep/js/jquery-1.9.0.js"></script>
 <script src="/LuanVanTotNghiep/js/jquery-ui.js"></script>
+
 <title>Insert title here</title>
 <style type="text/css">
 #baocaovanbanden{
@@ -177,6 +178,8 @@ padding:5px 5px 5px 5px;
 
 	
 	});
+	
+	
 </script>
 </head>
 <body>
@@ -216,6 +219,7 @@ padding:5px 5px 5px 5px;
 			
 		
 		</div>
+		
 	</div>
 </body>
 </html>
