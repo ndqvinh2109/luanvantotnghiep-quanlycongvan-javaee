@@ -3,6 +3,7 @@ package com.quangvinh.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.quangvinh.model.BuocXuLyPheDuyetVanBan;
 import com.quangvinh.model.CapDoBaoMat;
 import com.quangvinh.model.CapDoKhan;
 import com.quangvinh.model.Comment;
@@ -157,7 +160,23 @@ public class DanhSachVanBanDenController {
 		map.put("fileDinhKemList", filedinhkemService.getFileDinhKemVanBan(maVanBan));
 		return map;
 	}
-	
+	@RequestMapping(value="/getNguoiDungXuLy/{mavanban}",method=RequestMethod.GET)
+	public @ResponseBody Map<String, Object> getNguoiDungXuLy(@PathVariable("mavanban") int maVanBan){
+		Map<String,Object> map = new HashMap<String,Object>();
+		List<BuocXuLyPheDuyetVanBan> listbxl = buocxulyService.getListBXLDaXuLy(true, true, maVanBan);
+		List<Object> str = new ArrayList<Object>(0);
+		List<Object> str1 = new ArrayList<Object>(0);
+		List<Object> str2 = new ArrayList<Object>(0);
+		for(BuocXuLyPheDuyetVanBan strnd : listbxl){
+			str.add(strnd.getNguoidung().getTenNguoiDung());
+			str1.add(strnd.getNoiDungXLPD());
+			str2.add(strnd.getThoiGianXuLy());
+		}
+		map.put("ListBXLDaXuLy", str);
+		map.put("ListBXLDaXuLy1", str1);
+		map.put("ListBXLDaXuLy2", str2);
+		return map;
+	}
 	
 	
 	@RequestMapping(value="/deletevanbanden/{mavanban}",method=RequestMethod.GET)

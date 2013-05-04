@@ -1,5 +1,7 @@
 package com.quangvinh.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +27,13 @@ public class VanBanDi_DonViService implements IVanBanDi_DonViService{
 	public boolean checkBanHanhYet(int mavanban) {
 		
 		return vanbandi_donviDao.checkBanHanhYet(mavanban);
+	}
+
+	@Override
+	@Transactional
+	public List<VanBanDi_DonVi> getListVBDVDaBH(int mavanban) {
+	
+		return vanbandi_donviDao.getListVBDVDaBH(mavanban);
 	}
 
 }

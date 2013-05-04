@@ -12,10 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 @Table(name="LINHVUC")
 public class LinhVuc {
 	/**************************************/
+	@JsonIgnore
 	@OneToMany(mappedBy="linhvuc",fetch=FetchType.LAZY)
 	private List<VanBan> vanban = new ArrayList<VanBan>(0);
 	

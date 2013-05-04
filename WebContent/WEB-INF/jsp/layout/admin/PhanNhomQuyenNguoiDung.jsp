@@ -125,7 +125,8 @@ width:100px;
 				
 			});
 			
-			
+			alert("Cập nhật quyền thành công");
+			location.reload(true);
 			return false;
 			
 		});

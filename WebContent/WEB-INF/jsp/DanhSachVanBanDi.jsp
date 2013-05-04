@@ -535,7 +535,7 @@ $(document).ready(function(){
 
 /*-----------------------------------File Dinh Kem----------------------------------------*/
  
-    $( "#dialog-dinhkem" ).dialog({
+    /* $( "#dialog-dinhkem" ).dialog({
 		  autoOpen: false,
 	      resizable: true,
 	      height:'auto',
@@ -558,8 +558,18 @@ $('#filedinhkem').button().click(function(){
 				$('#mavanbandinhkem').val(mavanban);
 				$("#dialog-dinhkem").dialog("open");
 			}
+}); */
+$('#filedinhkem').button().click(function(){
+	if(mavanban == null){
+		$("#dialog_error").dialog("open");
+	}
+	else{
+		/* $('#mavanbandinhkem').val(mavanban);
+		$("#dialog-dinhkem").dialog("open"); */
+		window.location = '${pageContext.request.contextPath}/service/showFileDinhKem/' + mavanban + ".action";
+		
+	}
 });
- 
  
 /*------------------------------------End File Dinh Kem-----------------------------------*/
 		
@@ -592,6 +602,26 @@ $("#chitietvanbandi").button().click(function(){
 		$("#dialog_error").dialog("open");
 	}
 	else{
+		$.ajax({
+			url: '/LuanVanTotNghiep/service/getDonViXuLy/' + mavanban,
+			type: 'GET',
+			dataType: "json",
+			contentType: "application/json",
+			success: function(data){
+				console.log(data);
+				console.log(data.ListBXLDaXuLy.length);
+				var htmlPrepare = '';
+				for(var i = 0; i< data.ListBXLDaXuLy.length;i++){
+					htmlPrepare += '<li style = "color:#e11f80;padding: 5px 0px">' + data.ListBXLDaXuLy[i] + '</li>';
+				}
+				
+				$('#guichondxuly').html(htmlPrepare);
+							
+			}
+			
+		});
+		
+		
 	$.ajax({
 		url: '/LuanVanTotNghiep/service/getmavanbandi/' + mavanban,
 		type: 'GET',
@@ -600,8 +630,8 @@ $("#chitietvanbandi").button().click(function(){
 		success: function(data){
 			$('#sodi1').val(data.vanbandiupdate.soDi);
 			$('#ngaydi1').val(data.vanbandiupdate.ngayDi);
-			$('#sovakyhieu1').val(data.vanbandiupdate.soKyHieuVanBan);
-			$('#ngaybanhanh1').val(data.vanbandiupdate.ngayBanHanh);
+			$('#sovakyhieu1').text(data.vanbandiupdate.soKyHieuVanBan);
+			$('#ngaybanhanh1').text(data.vanbandiupdate.ngayBanHanh);
 			$('#ngayhieuluc1').val(data.vanbandiupdate.ngayHieuLuc);
 			$('#ngayketthuc1').val(data.vanbandiupdate.ngayHetHieuLuc);
 			$('#ngaynhapmay1').val(data.vanbandiupdate.ngayNhapMay);
@@ -628,11 +658,11 @@ $("#chitietvanbandi").button().click(function(){
 				$('#radio31').attr('checked', true);
 			}
 			
-			var htmlPrepare = '<table class="data"><tr><th>Tên tập tin</th><th>Mô tả tập tin</th><th>Tải về máy</th><th>Xem</th></tr>';
+			var htmlPrepare = '<table class="data"><tr><th>File đính kèm</th><th>Tải về máy</th><th>Xem</th></tr>';
 			for(var i = 0 ; i < data.fileDinhKemList.length;i++){
+				var j = i + 1;
 				htmlPrepare += '<tr><td>';
-				htmlPrepare += data.fileDinhKemList[i].tenFile + '</td><td>';
-				htmlPrepare += data.fileDinhKemList[i].moTa + '</td><td>';
+				htmlPrepare += 'File đính kèm '+ j + '</td><td>';
 				htmlPrepare += '<a href="${pageContext.request.contextPath}/service/downloadvbd/' + data.fileDinhKemList[i].maFile + '">Download</a>' + '</td><td>';
 				htmlPrepare += '<a href="${pageContext.request.contextPath}/service/xemtructuyenvbd/' + data.fileDinhKemList[i].maFile + '">Xem</a>' + '</td></tr>';
 			}
@@ -935,8 +965,8 @@ $('#banhanhvanban').button().click(function(){
 	</form>
 </div>
 
-<div id="dialog-dinhkem" title="Đính kèm tập tin" >
-	<form:form method="post" action="savevanbandi.html" commandName="filedinhkem" enctype="multipart/form-data">
+<%-- <div id="dialog-dinhkem" title="Đính kèm tập tin" >
+	<form:form method="post" action="${pageContext.request.contextPath}/service/savevanbandi.html" commandName="filedinhkem" enctype="multipart/form-data">
     
     <input type="hidden" name="mavanban" id="mavanbandinhkem" readonly/>
     <table>
@@ -965,7 +995,7 @@ $('#banhanhvanban').button().click(function(){
 	</table>  
 </form:form>
 
-</div>
+</div> --%>
 
 <div id="dialog_error" title="Bạn chưa chọn văn bản cần xử lý">
 <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Bạn chưa chọn công văn đi cần xử lý. Để chọn công văn,
@@ -973,7 +1003,7 @@ $('#banhanhvanban').button().click(function(){
 </div>
 
 <div id="dialog_chitietvanban" title="Chi tiết văn bản">
-	<input type="hidden" id="mavanban1" value = "" readonly/>
+	<%-- <input type="hidden" id="mavanban1" value = "" readonly/>
 	<table>
 			
 			<!-- <tr>
@@ -1111,7 +1141,64 @@ $('#banhanhvanban').button().click(function(){
 				   	</table>
 				</td>
 			</tr>
+		</table> --%>
+		<h3 style="padding: 10px 0px;color: #0163c8">Thông tin chung:</h3>
+		<table>
+		<tr>
+			<td>Số văn bản</td>
+			<td><span id="sovakyhieu1" style="color:#6fabe9"></span></td>
+		</tr>
+		<tr>
+			<td>Ngày ban hành</td>
+			<td><span id="ngaybanhanh1" style="color:#9ab937"></span></td>
+		</tr>
+		<tr>
+			<td>Loại văn bản</td>
+			<td>
+				<select id="loaivanban1">
+		    			<c:forEach var="loaivanban" items="${loaiVanBanList}">
+		    					<option value='<c:out value="${loaivanban.getMaLoaiVanBan()}"/>'><c:out value="${loaivanban.getTenLoaiVanBan()}"/></option>
+		    			</c:forEach>
+		    	</select>
+	    	</td>
+		</tr>
+		<tr>
+			<td>Cơ quan ban hành</td>
+			<td>
+				<select id="coquanbanhanh1">
+	    			<c:forEach var="donvi" items="${donViList}">
+	    				<option value='<c:out value="${donvi.getMaDonVi()}"/>'><c:out value="${donvi.getTenDonVi()}"/></option>
+	    			</c:forEach>
+	    		 </select>
+			</td>
+		</tr>
+		<tr>
+			<td>Lĩnh vực, chủ đề</td>
+			<td>
+				<select id="linhvuc1">
+	    			<c:forEach var="linhvuc" items="${linhVucList}">
+	    					<option value='<c:out value="${linhvuc.getMaLinhVuc()}"/>'><c:out value="${linhvuc.getTenLinhVuc()}"/></option>
+	    			</c:forEach>
+	    		 </select>
+			</td>
+		</tr>
+		<tr>
+			<td>Độ khẩn</td>
+			<td>
+				<select id="capdokhan1">
+	    			<c:forEach var="capdokhan" items="${capDoKhanList}">
+	    					<option value='<c:out value="${capdokhan.getMaDoKhan()}"/>'><c:out value="${capdokhan.getTenDoKhan()}"/></option>
+	    			</c:forEach>
+	    		 </select>
+			</td>
+		</tr>
 		</table>
+		<h3 style="padding: 10px 0px;color: #0163c8">Các đơn vị đã chuyển tiếp văn bản:</h3>
+		
+		<ul id="guichondxuly">
+		
+		</ul>
+		
 		<div id="show_filedinhkemList">
 		
 		</div>

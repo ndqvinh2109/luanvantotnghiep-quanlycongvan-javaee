@@ -3,6 +3,7 @@ package com.quangvinh.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -105,6 +106,18 @@ public class DanhSachVanBanDiController {
 		map.put("maxSoDi",vanbandiService.getMaxSoDi());
 		map.put("pages", pages);
 		return "danhsachvanbandi";
+	}
+	@RequestMapping(value="/getDonViXuLy/{mavanban}",method=RequestMethod.GET)
+	public @ResponseBody Map<String, Object> getDonViXuLy(@PathVariable("mavanban") int maVanBan){
+		Map<String,Object> map = new HashMap<String,Object>();
+		List<VanBanDi_DonVi> listbxl = vanbandi_donviService.getListVBDVDaBH(maVanBan);
+		List<Object> str = new ArrayList<Object>(0);
+		for(VanBanDi_DonVi strnd : listbxl){
+			str.add(strnd.getDonvi().getTenDonVi());
+		}
+		map.put("ListBXLDaXuLy", str);
+		
+		return map;
 	}
 	
 	@RequestMapping("/downloadvbd/{fileDinhKemId}")
