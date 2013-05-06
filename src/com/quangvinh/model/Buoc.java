@@ -62,6 +62,7 @@ public class Buoc {
 	public void setQuytrinh(QuyTrinh quytrinh) {
 		this.quytrinh = quytrinh;
 	}
+	
 	@OneToMany(mappedBy="buoc",fetch=FetchType.LAZY)
 	private List<BuocXuLyPheDuyetVanBan> buocXuLy = new ArrayList<BuocXuLyPheDuyetVanBan>(0);
 	
@@ -72,7 +73,16 @@ public class Buoc {
 	public void setBuocXuLy(List<BuocXuLyPheDuyetVanBan> buocXuLy) {
 		this.buocXuLy = buocXuLy;
 	}
-	@ManyToOne
+	/*@OneToMany(mappedBy="buoc",fetch=FetchType.LAZY)
+	private List<Buoc_NguoiDung> buocNguoiDung = new ArrayList<Buoc_NguoiDung>(0);
+	public List<Buoc_NguoiDung> getBuocNguoiDung() {
+		return buocNguoiDung;
+	}
+
+	public void setBuocNguoiDung(List<Buoc_NguoiDung> buocNguoiDung) {
+		this.buocNguoiDung = buocNguoiDung;
+	}*/
+	/*@ManyToOne
 	@JoinColumn(name="MA_NGUOI_DUNG")
 	private NguoiDung nguoidung;
 	
@@ -82,7 +92,9 @@ public class Buoc {
 
 	public void setNguoidung(NguoiDung nguoidung) {
 		this.nguoidung = nguoidung;
-	}
+	}*/
+	
+	
 	
 	@ManyToOne
 	@JoinColumn(name="MA_CONG_VIEC")
@@ -105,16 +117,7 @@ public class Buoc {
 	
 
 	
-	public Buoc(Pk_QuyTrinh pkQuyTrinh, QuyTrinh quytrinh,
-			List<BuocXuLyPheDuyetVanBan> buocXuLy, NguoiDung nguoidung,
-			int soNgay) {
-		super();
-		this.pkQuyTrinh = pkQuyTrinh;
-		this.quytrinh = quytrinh;
-		this.buocXuLy = buocXuLy;
-		this.nguoidung = nguoidung;
-		this.soNgay = soNgay;
-	}
+	
 
 	public int getSoNgay() {
 		return soNgay;

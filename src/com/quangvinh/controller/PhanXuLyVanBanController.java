@@ -19,6 +19,7 @@ import com.quangvinh.model.VanBan;
 import com.quangvinh.model.BuocXuLyPheDuyetVanBan.Pk_BuocXuLyVanBan;
 import com.quangvinh.service.IBuocService;
 import com.quangvinh.service.IBuocXuLyService;
+import com.quangvinh.service.IBuoc_NguoiDungService;
 import com.quangvinh.service.INguoiDungService;
 import com.quangvinh.service.IVanBanDenService;
 import com.quangvinh.service.IVanBanService;
@@ -36,7 +37,8 @@ public class PhanXuLyVanBanController {
 	private IBuocService buocService;
 	@Autowired
 	private IVanBanService vanbanService;
-	
+	@Autowired
+	private IBuoc_NguoiDungService buocnguoidungService;
 	
 	@RequestMapping("/phanxuly/{mavanban}.action")
 	public String pagePhanXuLy(Map<String,Object> map,@PathVariable("mavanban") int mavanban){
@@ -44,6 +46,8 @@ public class PhanXuLyVanBanController {
 		int maquytrinh = vanbandenService.findQuyTrinh(mavanban);
 		map.put("buocList",buocxulyService.getBuocXuLyPheDuyetTrongQuyTrinh(maquytrinh));
 		map.put("nguoidungList", nguoidungService.getNguoiDung());
+		map.put("buocnguoidungList", buocnguoidungService.getBuocndQuyTrinh(maquytrinh));
+		
 		map.put("maquytrinh", maquytrinh);
 		map.put("mavanban", mavanban);
 		map.put("checkExist", buocxulyService.checkExistVanBanTrongBuocXuLy(mavanban));
