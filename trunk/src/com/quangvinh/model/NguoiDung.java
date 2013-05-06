@@ -44,17 +44,18 @@ public class NguoiDung {
 	public void setBuocXuLy(List<BuocXuLyPheDuyetVanBan> buocXuLy) {
 		this.buocXuLy = buocXuLy;
 	}
-	@JsonIgnore
-	@OneToMany(mappedBy="nguoidung",fetch=FetchType.LAZY)
-	private List<Buoc> buoc = new ArrayList<Buoc>(0);
 	
-	public List<Buoc> getBuoc() {
-		return buoc;
+		
+	@OneToMany(mappedBy="nguoidung",fetch=FetchType.LAZY)
+	private List<Buoc_NguoiDung> buocNguoiDung = new ArrayList<Buoc_NguoiDung>(0);
+	public List<Buoc_NguoiDung> getBuocNguoiDung() {
+		return buocNguoiDung;
 	}
 
-	public void setBuoc(List<Buoc> buoc) {
-		this.buoc = buoc;
+	public void setBuocNguoiDung(List<Buoc_NguoiDung> buocNguoiDung) {
+		this.buocNguoiDung = buocNguoiDung;
 	}
+	
 	@JsonIgnore
 	@OneToMany(mappedBy="nguoidung",fetch=FetchType.LAZY)
 	private List<Message> message = new ArrayList<Message>(0);

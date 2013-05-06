@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.quangvinh.model.Buoc;
+import com.quangvinh.model.Buoc_NguoiDung;
 import com.quangvinh.model.CongViec;
 import com.quangvinh.model.NguoiDung;
 import com.quangvinh.model.QuyTrinh;
 import com.quangvinh.model.Buoc.Pk_QuyTrinh;
 import com.quangvinh.service.IBuocService;
+import com.quangvinh.service.IBuoc_NguoiDungService;
 import com.quangvinh.service.ICongViecService;
+import com.quangvinh.service.IDonViService;
 import com.quangvinh.service.INguoiDungService;
 import com.quangvinh.service.IQuyTrinhService;
 
@@ -32,6 +35,10 @@ public class ThemBuocThuocQuyTrinhController {
 	private IBuocService buocService;
 	@Autowired
 	private ICongViecService congviecService;
+	@Autowired
+	private IDonViService donviService;
+	@Autowired
+	private IBuoc_NguoiDungService buocndService;
 	
 	@RequestMapping(value="/getmaxbuoc/{maquytrinh}",method=RequestMethod.GET)
 	public @ResponseBody int getMaxBuoc(@PathVariable("maquytrinh") int maquytrinh){
@@ -43,6 +50,7 @@ public class ThemBuocThuocQuyTrinhController {
 	public String pageTaoBuocQuyTrinh(Map<String,Object> map){
 		
 		map.put("quytrinhList",quytrinhService.getQuyTrinh());
+		map.put("donviList", donviService.getDonVi());
 		map.put("nguoidungList", nguoidungService.getNguoiDung());
 		map.put("congviecList", congviecService.getCongViec());
 		return "thembuocthuocquytrinh";
@@ -72,31 +80,42 @@ public class ThemBuocThuocQuyTrinhController {
 			@PathVariable("manguoidung") int manguoidung,
 			@PathVariable("macongviec") int macongviec
 			){
-		int oldSize = buocService.getBuoc().size();
-		QuyTrinh quytrinh = quytrinhService.findQuyTrinhID(maquytrinh);
-		
-		
-		Pk_QuyTrinh pkquytrinh = new Pk_QuyTrinh();
-		pkquytrinh.setMaQuyTrinh(maquytrinh);
-		pkquytrinh.setSoThuTu(sothutu);
-		
-		NguoiDung nguoidung = new NguoiDung();
-		nguoidung = nguoidungService.findNguoiDungID(manguoidung);
-		
-		CongViec congviec = new CongViec();
-		
-		congviec = congviecService.findCongViecID(macongviec);
-		
-		Buoc buoc = new Buoc();
-		buoc.setQuytrinh(quytrinh);
-		buoc.setSoNgay(songay);
-		buoc.setPkQuyTrinh(pkquytrinh);
-		buoc.setCongviec(congviec);
-		buoc.setNguoidung(nguoidung);
-		
-		
-		buocService.saveBuoc(buoc);
-		
-		return (oldSize < buocService.getBuoc().size());
+				
+			QuyTrinh quytrinh = quytrinhService.findQuyTrinhID(maquytrinh);
+			NguoiDung nguoidung = new NguoiDung();
+			nguoidung = nguoidungService.findNguoiDungID(manguoidung);
+			Buoc_NguoiDung buocnd = new Buoc_NguoiDung();
+			buocnd.setNguoidung(nguoidung);
+			buocnd.setQuytrinh(quytrinh);
+			buocnd.setSothutu(sothutu);
+			buocndService.saveBuocNguoiDung(buocnd);
+	
+				
+		return true;
 	}
+	@RequestMapping(value="/addBuoc/{maquytrinh}/{sothutu}/{songay}/{macongviec}",method=RequestMethod.POST)
+	public @ResponseBody boolean addBuoc(@PathVariable("maquytrinh") int maquytrinh,
+			@PathVariable("sothutu") int sothutu,
+			@PathVariable("songay") int songay,
+			@PathVariable("macongviec") int macongviec
+			){
+			QuyTrinh quytrinh = quytrinhService.findQuyTrinhID(maquytrinh);
+			Pk_QuyTrinh pkquytrinh = new Pk_QuyTrinh();
+			pkquytrinh.setMaQuyTrinh(maquytrinh);
+			pkquytrinh.setSoThuTu(sothutu);
+			
+			CongViec congviec = new CongViec();
+			congviec = congviecService.findCongViecID(macongviec);
+			Buoc buoc = new Buoc();
+			buoc.setQuytrinh(quytrinh);
+			buoc.setSoNgay(songay);
+			buoc.setPkQuyTrinh(pkquytrinh);
+			buoc.setCongviec(congviec);
+			buocService.saveBuoc(buoc);
+			
+		return true;
+	}
+	
+	
+	
 }

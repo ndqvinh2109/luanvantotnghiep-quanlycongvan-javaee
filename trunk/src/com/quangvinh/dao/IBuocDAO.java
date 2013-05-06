@@ -11,4 +11,5 @@ public interface IBuocDAO {
 	List<Buoc> getBuoc();
 	Buoc findBuocID(int maquytrinh,int sothutu);
 	int getMaxId(int maquytrinh);
+	
 }

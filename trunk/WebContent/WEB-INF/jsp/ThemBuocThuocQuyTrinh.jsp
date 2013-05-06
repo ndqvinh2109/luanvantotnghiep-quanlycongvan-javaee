@@ -12,6 +12,13 @@
 <script src="/LuanVanTotNghiep/js/jquery-1.9.0.js"></script>
 <script src="/LuanVanTotNghiep/js/jquery-ui.js"></script>
 <style type="text/css">
+.cpan{
+color: white;
+background-color: #3d85fe;
+border: 1px solid #4376c9;
+font-weight: bold;
+
+}
 #thembuocthuocquytrinh{
 	background-color: #f7f7f7;
 	overflow: hidden;
@@ -270,31 +277,56 @@ padding:0
 			$( "#dialog_thembuocthuocquytrinh").dialog({
 				  autoOpen: false,
 			      resizable: true,
-			      height:'auto',
+			      height:600,
 			      width:'auto',
 			      modal: true,
 			      buttons: {
 			    	  "Thêm bước xử lý": function() {
 			    		var sothutu = $('#sothutu').val();
 			  			var maquytrinh = $('#maquytrinhbuoc').val();
-			  			var manguoidung = $('#manguoidungbuoc').val();
 			  			var macongviec = $('#macongviec').val();
 			  			var songay = $('#songay').val();
+			  			
 			  			$.ajax({
-			  				url: '/LuanVanTotNghiep/service/addBuocQuyTrinh/' + maquytrinh + '/' + sothutu + '/' + songay + '/' + manguoidung + '/' + macongviec,
+			  				url: '/LuanVanTotNghiep/service/addBuoc/' + maquytrinh + '/' + sothutu + '/' + songay + '/' + macongviec,
 			  				type: 'POST',
 			  				data: null,
 			  				contentType: 'text/html; charset=UTF-8',
 			  				success: function(result){
 			  					if(result)
-			  						location.reload(true);
+			  						alert("Thành công");
 			  				}
 			  			});
-			  			$( this ).dialog( "close" );
+			  			//////////////////////////////////////////////////////////////
+			  			$('.buocnguoidungrow').each(function(index,element){
+								if($(element).find('.buocnguoidung').is(':checked')){
+								var sothutu = $('#sothutu').val();
+					  			var maquytrinh = $('#maquytrinhbuoc').val();
+					  			var manguoidung = $(element).find('.buocnguoidung').val();
+					  			var macongviec = $('#macongviec').val();
+					  			var songay = $('#songay').val();
+					  			$.ajax({
+					  				url: '/LuanVanTotNghiep/service/addBuocQuyTrinh/' + maquytrinh + '/' + sothutu + '/' + songay + '/' + manguoidung + '/' + macongviec,
+					  				type: 'POST',
+					  				data: null,
+					  				contentType: 'text/html; charset=UTF-8',
+					  				success: function(result){
+					  					if(result)
+					  						alert("Thành công");
+					  				}
+					  			});
+								
+								}
+    	 	  			});
+			  			
+			  			///////////////////////////////////////////////////////////////////////////
+			  			/* $( this ).dialog( "close" ); */
 				        },
+				       
 			        Cancel: function() {
 			          $( this ).dialog( "close" );
 			        }
+			       
 			      }
 			    });
 			
@@ -380,16 +412,7 @@ padding:0
 					</select>
 				</td>
 			</tr>
-			<tr>
-				<td>Mã người dùng</td>
-				<td>
-					<select id="manguoidungbuoc">
-  						<c:forEach var="nguoidung" items="${nguoidungList}">
-	    						<option value='<c:out value="${nguoidung.getMaNguoiDung()}"/>'><c:out value="${nguoidung.getTenNguoiDung()}"/></option>
-	    				</c:forEach>
-					</select>
-				</td>
-			</tr>
+			
 			<tr>
 				<td>Nội dung công việc</td>
 				<td  id="capnhatmacongviec">
@@ -407,6 +430,37 @@ padding:0
 				<td>Số ngày xử lý</td>
 				<td><input type="text" id="songay"/></td>
 			</tr>
+			<%-- <tr>
+				<td>Mã người dùng</td>
+				<td>
+					<select id="manguoidungbuoc">
+  						<c:forEach var="nguoidung" items="${nguoidungList}">
+	    						<option value='<c:out value="${nguoidung.getMaNguoiDung()}"/>'><c:out value="${nguoidung.getTenNguoiDung()}"/></option>
+	    				</c:forEach>
+					</select>
+					
+				</td>
+				
+			</tr> --%>
+		</table>
+		<h3 style="color:red">Chọn người dùng cần giao việc xử lý:</h3>
+		<table>
+			<c:forEach var="donvi" items="${donviList}">
+				<c:if test="${donvi.getKieuDonVi() == 2 || donvi.getKieuDonVi() == 3}">
+				<tr class="cpan">
+					<td colspan="2">${donvi.getTenDonVi()}</td>
+				</tr>
+				<c:forEach var="nguoidung" items="${nguoidungList}">
+					<c:if test="${nguoidung.donvi.getMaDonVi() == donvi.getMaDonVi()}">
+						<tr class="buocnguoidungrow">
+							<td>${nguoidung.getTenNguoiDung()}</td>
+							<td><input type="checkbox" value="${nguoidung.getMaNguoiDung()}" class="buocnguoidung"/></td>
+						</tr>
+					</c:if>
+				</c:forEach>
+				</c:if>
+			</c:forEach>
+			
 			
 		</table>
 	</form>

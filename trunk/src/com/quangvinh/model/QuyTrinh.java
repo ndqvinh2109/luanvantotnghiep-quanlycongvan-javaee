@@ -35,8 +35,17 @@ public class QuyTrinh {
 		this.loaivanban = loaivanban;
 	}
 	
+	@OneToMany(mappedBy="quytrinh",fetch=FetchType.LAZY)
+	private List<Buoc_NguoiDung> buocnguoidung = new ArrayList<Buoc_NguoiDung>(0);
+	public List<Buoc_NguoiDung> getBuocnguoidung() {
+		return buocnguoidung;
+	}
+	public void setBuocnguoidung(List<Buoc_NguoiDung> buocnguoidung) {
+		this.buocnguoidung = buocnguoidung;
+	}
 	
 	/*-------------------------------*/
+	
 	
 	
 	@Id

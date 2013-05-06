@@ -199,8 +199,14 @@ div#showchitietbuocxuly table{
 			   				<td>Người xử lý:</td>
 			   				<td>
 			   					<select class="nguoidung">
-			    					<option value='<c:out value="${buoc.nguoidung.maNguoiDung}"/>'><c:out value="${buoc.nguoidung.tenNguoiDung}"/></option>
-			    				</select>	
+			   						
+				   						<c:forEach var="buocnguoidung" items="${buocnguoidungList}">
+			    								<c:if test="${buoc.pkQuyTrinh.soThuTu == buocnguoidung.getSothutu()}">
+			   										<option value='<c:out value="${buocnguoidung.nguoidung.getMaNguoiDung()}"/>'><c:out value="${buocnguoidung.nguoidung.getTenNguoiDung()}"/></option>
+			   									</c:if>
+			    								
+			    						</c:forEach>
+			   					</select>	
 			    				
 			   				</td>
 			   				</tr>
@@ -208,9 +214,6 @@ div#showchitietbuocxuly table{
 			   				<td>Nội dung công việc:</td>
 			   				<td><textarea  class="noidungcongviecphanxuly" rows="5" cols="40" readonly>${buoc.congviec.noiDungCongViec}</textarea></td>
 			   				</tr>
-			   				
-			   				
-			   				
 			   				<tr>
 			   				<td>Số ngày xử lý:</td>
 			   				<td><input type="text" value="${buoc.soNgay}" class="songayxuly" readonly/></td>
