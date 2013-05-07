@@ -207,6 +207,11 @@ div#danhsachfileDinhKem table tr.hilightclick{
 			location.reload(true);
 			return false;
 		});
+		
+		$('#trolai').button().click(function(){
+			window.location = "${pageContext.request.contextPath}/service/showvanbanden/1";
+			
+		});
 		});
 </script>
 </head>
@@ -244,6 +249,7 @@ div#danhsachfileDinhKem table tr.hilightclick{
 			<button id="Xoatt"><img src="/LuanVanTotNghiep/images/button_cancel.png"/><span>Xóa</span></button>
 			<button id="Downloadtt"><img src="/LuanVanTotNghiep/images/1366355835_Download.png"/><span>Tải về</span></button>
 			<button id="luulai"><img src="/LuanVanTotNghiep/images/1366617912_save_accept.png"/><span>Lưu lại</span></button>
+			<button id="trolai"><img src="/LuanVanTotNghiep/images/process.png"/><span>Trở lại</span></button>
 		</div>
 	<div id="danhsachfileDinhKem">
 		<table class="ui-widget ui-widget-content">

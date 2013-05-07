@@ -372,7 +372,7 @@ $(document).ready(function(){
 						data: null,
 						success:function(result){
 							if(result){
-								alert("Thành công");
+								
 							}
 							
 						}
@@ -380,7 +380,8 @@ $(document).ready(function(){
 					
 				}
     	 	  });
-	       		
+	       		alert("Thành công");
+	       		location.reload(true);
 	       		
 	       	},      
 	        Cancel: function() {

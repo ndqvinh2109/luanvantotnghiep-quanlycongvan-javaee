@@ -286,6 +286,11 @@ padding:0
 			  			var maquytrinh = $('#maquytrinhbuoc').val();
 			  			var macongviec = $('#macongviec').val();
 			  			var songay = $('#songay').val();
+			  			if(songay == ''){
+			  				alert("Bạn phải nhập số ngày");
+			  				
+			  			}
+			  			else{
 			  			
 			  			$.ajax({
 			  				url: '/LuanVanTotNghiep/service/addBuoc/' + maquytrinh + '/' + sothutu + '/' + songay + '/' + macongviec,
@@ -311,14 +316,17 @@ padding:0
 					  				data: null,
 					  				contentType: 'text/html; charset=UTF-8',
 					  				success: function(result){
-					  					if(result)
-					  						alert("Thành công");
-					  				}
+					  					if(result){
+					  						
+					  					}
+					  					
+					  				    }
 					  			});
 								
 								}
     	 	  			});
-			  			
+			  			location.reload(true);
+			    	  }
 			  			///////////////////////////////////////////////////////////////////////////
 			  			/* $( this ).dialog( "close" ); */
 				        },

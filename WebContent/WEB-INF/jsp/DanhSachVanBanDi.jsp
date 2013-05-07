@@ -793,13 +793,13 @@ $('#banhanhvanban').button().click(function(){
 	<c:forEach items="${vanbandiList}" var="vanbandi">
 	    <tr id = "${vanbandi.maVanBan}">
 	    	<c:if test="${vanbandi.getNgayDi() == null}">
-	    		<td><img alt="ngaydi" src="/LuanVanTotNghiep/images/1367162922_New.png"/></td>
+	    		<td><img alt="ngaydi" src="/LuanVanTotNghiep/images/1367915958_document-new.png"/></td>
 	   		</c:if>
 	   		<c:if test="${vanbandi.getNgayDi() != null}">
 	    		<td>${vanbandi.getNgayDi()}</td>
 	   		</c:if>
 	   		<c:if test="${vanbandi.getSoDi() == 0}">
-	    		<td><img alt="sodi" src="/LuanVanTotNghiep/images/1367162922_New.png"/></td>
+	    		<td><img alt="sodi" src="/LuanVanTotNghiep/images/1367915958_document-new.png"/></td>
 	   		</c:if>
 	   		<c:if test="${vanbandi.getSoDi() != 0}">
 	    		<td>${vanbandi.getSoDi()}</td>
