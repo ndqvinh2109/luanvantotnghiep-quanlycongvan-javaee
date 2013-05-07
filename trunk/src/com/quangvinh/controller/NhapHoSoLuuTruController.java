@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.quangvinh.model.HoSoLuuTru;
 import com.quangvinh.model.VanBan;
 import com.quangvinh.service.IHoSoLuuTruService;
+import com.quangvinh.service.IVanBanDenService;
 import com.quangvinh.service.IVanBanService;
 
 @Controller
@@ -24,11 +25,13 @@ public class NhapHoSoLuuTruController {
 	private IHoSoLuuTruService hosoluutruService;
 	@Autowired
 	private IVanBanService vanbanService;
+	@Autowired
+	private IVanBanDenService vanbandenService;
 	
 	@RequestMapping("/nhapHoSoLuuTru")
 	public String loadPageNhapHoSoLuuTru(Map<String, Object> map){
 		map.put("hosoluutruList", hosoluutruService.getHoSoLuuTru());
-		map.put("vanbanList", vanbanService.getVanBan());
+		map.put("vanbanList", vanbandenService.getVanBanDen());
 		return "nhaphosoluutru";
 	}
 	
@@ -121,6 +124,7 @@ public class NhapHoSoLuuTruController {
 				vanban.getSoKyHieuVanBan(), vanban.getNgayBanHanh(), vanban.getNgayHieuLuc(), 
 				vanban.getNgayHetHieuLuc(), vanban.getTrichYeu(), vanban.getNguoiKy(), vanban.getSoTrang(),
 				vanban.getTuKhoa(), vanban.getNgayNhapMay(), vanban.getTrangThaiXuLy());
+		vanbanupdate.setEnabled(vanban.isEnabled());
 		vanbanService.updateVanBan(vanbanupdate);
 		return true;
 	}
