@@ -156,8 +156,8 @@ outline: 0 none;
 		$( "#nav_dialog_message_leftbar").dialog({
 			  autoOpen: false,
 		      resizable: true,
-		      height:'auto',
-		      width:'auto',
+		      height:500,
+		      width:500,
 		      modal: false,
 		      show: {
 		          effect: "slide",
@@ -204,8 +204,9 @@ outline: 0 none;
 		<table>
 			<c:forEach items="${MessageListReadYet}" var="message">
 	    <tr id="${message.getTacGia()}" >
-	    	<td style="color:red"><b>${message.getTenTacGia()}</b></td>
-	    	<td>${message.getNoiDung()}</td>
+	    	<td style="color:#00aaff;"><b>${message.getTenTacGia()}</b></td>
+	    	<td>${message.getNoiDung()}<br><br><span style="color: #888888;">Lúc: ${message.getThoiDiemGui()}</span></td>
+	    	
 	    </tr>
 	   
 	</c:forEach>

@@ -9,13 +9,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 @Table(name="BUOC_NGUOIDUNG")
 public class Buoc_NguoiDung {
 	/**
 	 * Object Relational Mapping
 	 */
-
+	@JsonIgnore
+	
 	@ManyToOne
 	@JoinColumn(name="MA_NGUOI_DUNG")
 	private NguoiDung nguoidung;

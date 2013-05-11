@@ -45,7 +45,7 @@ public class NguoiDung {
 		this.buocXuLy = buocXuLy;
 	}
 	
-		
+	@JsonIgnore	
 	@OneToMany(mappedBy="nguoidung",fetch=FetchType.LAZY)
 	private List<Buoc_NguoiDung> buocNguoiDung = new ArrayList<Buoc_NguoiDung>(0);
 	public List<Buoc_NguoiDung> getBuocNguoiDung() {

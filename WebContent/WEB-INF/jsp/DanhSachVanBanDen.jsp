@@ -1161,15 +1161,15 @@ $('#themgopy').button().click(function(){
 		<h3 style="padding: 10px 0px;color: #0163c8">Thông tin chung:</h3>
 		<table>
 		<tr>
-			<td>Số văn bản</td>
+			<td style="background-color: #e8edff">Số văn bản</td>
 			<td><span id="sovakyhieu1" style="color:#6fabe9"></span></td>
 		</tr>
 		<tr>
-			<td>Ngày ban hành</td>
+			<td style="background-color: #e8edff">Ngày ban hành</td>
 			<td><span id="ngaybanhanh1" style="color:#9ab937"></span></td>
 		</tr>
 		<tr>
-			<td>Loại văn bản</td>
+			<td style="background-color: #e8edff">Loại văn bản</td>
 			<td>
 				<select id="loaivanban1">
 		    			<c:forEach var="loaivanban" items="${loaiVanBanList}">
@@ -1179,7 +1179,7 @@ $('#themgopy').button().click(function(){
 	    	</td>
 		</tr>
 		<tr>
-			<td>Cơ quan ban hành</td>
+			<td style="background-color: #e8edff">Cơ quan ban hành</td>
 			<td>
 				<select id="coquanbanhanh1">
 	    			<c:forEach var="donvi" items="${donViList}">
@@ -1189,7 +1189,7 @@ $('#themgopy').button().click(function(){
 			</td>
 		</tr>
 		<tr>
-			<td>Lĩnh vực, chủ đề</td>
+			<td style="background-color: #e8edff">Lĩnh vực, chủ đề</td>
 			<td>
 				<select id="linhvuc1">
 	    			<c:forEach var="linhvuc" items="${linhVucList}">
@@ -1199,7 +1199,7 @@ $('#themgopy').button().click(function(){
 			</td>
 		</tr>
 		<tr>
-			<td>Độ khẩn</td>
+			<td style="background-color: #e8edff; ">Độ khẩn</td>
 			<td>
 				<select id="capdokhan1">
 	    			<c:forEach var="capdokhan" items="${capDoKhanList}">
