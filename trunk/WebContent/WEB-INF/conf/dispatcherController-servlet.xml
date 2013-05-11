@@ -94,7 +94,7 @@
  		 		<prop key="hibernate.show_sql">true</prop>
  		 		<prop key="hibernate.connection.SetBigStringTryClob">true</prop>
                 <prop key="hibernate.jdbc.batch_size">0</prop>
- 		 		<!-- <prop key="hibernate.hbm2ddl.auto">update</prop>  -->
+ 		 		<!-- <prop key="hibernate.hbm2ddl.auto">create</prop>  -->
  		 		<prop key="hibernate.enable_lazy_load_no_trans">true</prop>
  		 	</props>
  		 </property>

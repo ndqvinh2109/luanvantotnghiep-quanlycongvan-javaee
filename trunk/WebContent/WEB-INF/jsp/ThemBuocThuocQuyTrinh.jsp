@@ -252,6 +252,7 @@ padding:0
 												
 											}
 											htmlPrepare += "</select>";
+											htmlPrepare += '<img src="/LuanVanTotNghiep/images/table_row_insert.png" id="dialog-themcongviec"/>';
 											$('#capnhatmacongviec').html(htmlPrepare);
 										}
 									

@@ -107,7 +107,7 @@ border-style: solid;
 border-width: 1px;
 border-color: #dedede;
 padding:5px 5px;
-width: 100%;
+width: 90%;
 height:100px;
 color: #777;
 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
@@ -159,8 +159,8 @@ width: 200px;
 		$( "#dialog_capnhatsodenngayden").dialog({
 			  autoOpen: false,
 		      resizable: true,
-		      height:'auto',
-		      width:'auto',
+		      height:500,
+		      width:600,
 		      modal: true,
 		      buttons: {
 		        "Lưu": function(){
@@ -314,52 +314,52 @@ width: 200px;
 					<td><input type="text" id="mavanban" value="" readonly/></td>
 				</tr> -->
 				<tr>
-					<td>Số Đến</td>
+					<td style="background-color: #6fabe9;color: white" >Số Đến</td>
 					<td><input type="text" id="soden" value="" readonly/></td>
 				</tr>
 				<tr>
-					<td>Ngày Đến</td>
+					<td style="background-color: #6fabe9;color: white">Ngày Đến</td>
 					<td><input type="text" id="ngayden" value="" readonly/></td>
 				</tr>
 				<tr>
-					<td>Số Và Ký Hiệu</td>
+					<td style="background-color: #6fabe9;color: white">Số Và Ký Hiệu</td>
 					<td><input type="text" id="kyhieuvanban" value="" readonly/></td>
 				</tr>
 				
 			<tr>
-				<td>Ngày ban hành</td>
+				<td style="background-color: #6fabe9;color: white">Ngày ban hành</td>
 				<td><input type="text" id="ngaybanhanh1" value = "" readonly/></td>
 			</tr>
 			<tr>
-				<td>Ngày hiệu lực</td>
+				<td style="background-color: #6fabe9;color: white">Ngày hiệu lực</td>
 				<td><input type="text" id="ngayhieuluc1" value = "" readonly/></td>
 			</tr>
 			<tr>
-				<td>Ngày kết thúc</td>
+				<td style="background-color: #6fabe9;color: white">Ngày kết thúc</td>
 				<td><input type="text" id="ngayketthuc1" value = "" readonly/></td>
 			</tr>
 			<tr>
-				<td>Ngày nhập máy</td>
+				<td style="background-color: #6fabe9;color: white">Ngày nhập máy</td>
 				<td><input type="text" id="ngaynhapmay1" value = "" readonly/></td>
 			</tr>
 			<tr>
-				<td>Trích yếu</td>
+				<td style="background-color: #6fabe9;color: white">Trích yếu</td>
 				<td><textarea rows="5" cols="40" id="trichyeu1" readonly></textarea></td>
 			</tr>
 			<tr>
-				<td>Từ khóa</td>
+				<td style="background-color: #6fabe9;color: white">Từ khóa</td>
 				<td><textarea rows="5" cols="40" id="tukhoa1" readonly></textarea></td>
 			</tr>
 			<tr>
-				<td>Người ký</td>
+				<td style="background-color: #6fabe9;color: white">Người ký</td>
 				<td><input type="text" id="nguoiky1" value = "" readonly/></td>
 			</tr>
 			<tr>
-				<td>Số trang</td>
+				<td style="background-color: #6fabe9;color: white">Số trang</td>
 				<td><input type="text" id="sotrang1" value = "" readonly/></td>
 			</tr>
 			<tr>
-				<td>Cơ quan ban hành</td>
+				<td style="background-color: #6fabe9;color: white">Cơ quan ban hành</td>
 				<td>
 					<select id="coquanbanhanh1">
 	    			<c:forEach var="donvi" items="${donViList}">
@@ -369,7 +369,7 @@ width: 200px;
 				</td>
 			</tr>
 			<tr>
-				<td>Loại văn bản</td>
+				<td style="background-color: #6fabe9;color: white">Loại văn bản</td>
 				<td>
 					<select id="loaivanban1">
 		    			<c:forEach var="loaivanban" items="${loaiVanBanList}">
@@ -379,7 +379,7 @@ width: 200px;
 				</td>
 			</tr>
 			<tr>
-				<td>Vị trí lưu trữ</td>
+				<td style="background-color: #6fabe9;color: white">Vị trí lưu trữ</td>
 				<td>
 					<select id="vitriluutru1">
 	    			<c:forEach var="vitriluutru" items="${viTriLuuTruList}">
@@ -389,7 +389,7 @@ width: 200px;
 				</td>
 			</tr>
 			<tr>
-				<td>Lĩnh vực</td>
+				<td style="background-color: #6fabe9;color: white">Lĩnh vực</td>
 				<td>
 					<select id="linhvuc1">
 	    			<c:forEach var="linhvuc" items="${linhVucList}">
@@ -399,7 +399,7 @@ width: 200px;
 				</td>
 			</tr>
 			<tr>
-				<td>Cấp độ khẩn</td>
+				<td style="background-color: #6fabe9;color: white">Cấp độ khẩn</td>
 				<td>
 					<select id="capdokhan1">
 	    			<c:forEach var="capdokhan" items="${capDoKhanList}">
@@ -409,7 +409,7 @@ width: 200px;
 				</td>
 			</tr>
 			<tr>
-				<td>Cấp độ bảo mật</td>
+				<td style="background-color: #6fabe9;color: white">Cấp độ bảo mật</td>
 				<td>
 					<select id="capdobaomat1">
 	    			<c:forEach var="capdobaomat" items="${capDoBaoMatList}">
@@ -419,7 +419,7 @@ width: 200px;
 				</td>
 			</tr>
 			<tr>
-				<td>Số hồ sơ</td>
+				<td style="background-color: #6fabe9;color: white">Số hồ sơ</td>
 				<td>
 					<select id="sohoso1">
 	    			<c:forEach var="sohoso" items="${hoSoLuuTruList}">
@@ -429,7 +429,7 @@ width: 200px;
 				</td>
 			</tr>
 			<tr>
-				<td>Trạng thái xử lý</td>
+				<td style="background-color: #6fabe9;color: white">Trạng thái xử lý</td>
 				<td>
 					
 				   	<table>
