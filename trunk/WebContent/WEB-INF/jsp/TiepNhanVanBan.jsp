@@ -40,7 +40,23 @@ div#tiepnhanvanban table tr.hilightclick{
 }
 
 #toolbar{
-padding:5px 5px 5px 5px;
+padding: 5px 5px 5px 5px;
+}
+#toolbar img {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 2px;
+  top: 50%;
+  margin-top: -8px;
+  
+  	
+}
+#toolbar span{
+  height: 20px;
+  line-height: 20px;
+  float: left;
+  padding-left: 11px;
 }
 
 div#tiepnhanvanban h3{
@@ -72,6 +88,15 @@ div#dialog_capnhatsodenngayden table{
  text-align: left;
  }
  
+
+ div#dialog_chitiethoso table{
+ margin: 1em 0; border-collapse: collapse; width: 100%; 
+ }
+ div#dialog_chitiethoso table td{
+ border: 1px solid #eee;
+ padding: .6em 10px;
+ text-align: left;
+ }
  
  #dialog_capnhatsodenngayden table tr td input{
 display: block;
@@ -151,7 +176,7 @@ width: 200px;
 		$('#tiepnhanvanban tr').bind('click',function(){
 			kyhieuvanban = $(this).find("td").eq(2).html(); 
 			mavanban = $(this).attr('id');
-			/* alert(kyhieuvanban); */
+			
 			$(this).addClass("hilightclick").siblings().removeClass("hilightclick"); 
 		});
 		
@@ -270,6 +295,54 @@ width: 200px;
 			return false;
 			
 		});
+		$('#filedinhkem').button().click(function(){
+			window.location = '${pageContext.request.contextPath}/service/showFileDinhKem/' + mavanban + ".action";
+		});
+		$( "#dialog_chitiethoso").dialog({
+			  autoOpen: false,
+		      resizable: true,
+		      height:'auto',
+		      width:'auto',
+		      modal: true,
+		      buttons: {
+		        Cancel: function() {
+		          $( this ).dialog( "close" );
+		        }
+		      }
+		    });
+		$('#chitiethoso').button().click(function(){
+			$.ajax({
+				url: '/LuanVanTotNghiep/service/chiTietHoSoLuuTru/' + mavanban,
+				type: 'GET',
+				dataType: "json",
+				contentType: "application/json",
+				success: function(data){
+					
+					console.log(data);
+					htmlPrepared = '<table>';
+					htmlPrepared += '<tr><td style="background-color: #6fabe9;color: white">';
+					htmlPrepared += 'Mã Hồ Sơ</td><td>';
+					htmlPrepared += data.maHoSo + '</td></tr>';	
+					htmlPrepared += '<tr><td style="background-color: #6fabe9;color: white">';
+					htmlPrepared += 'Tiêu Đề Hồ Sơ</td><td>';
+					htmlPrepared += data.tieuDeHoSo + '</td></tr>';	
+					htmlPrepared += '<tr><td style="background-color: #6fabe9;color: white">';
+					htmlPrepared += 'Thời Gian Bắt Đầu</td><td>';
+					htmlPrepared += data.thoiGianBatDau + '</td></tr>';	
+					htmlPrepared += '<tr><td style="background-color: #6fabe9;color: white">';
+					htmlPrepared += 'Thời Gian Kết Thúc</td><td>';
+					htmlPrepared += data.thoiGianKetThuc + '</td></tr>';	
+					htmlPrepared += '</table>';
+					
+					$('#dialog_chitiethoso').html(htmlPrepared);
+					
+				}
+			});
+			
+			$( "#dialog_chitiethoso").dialog('open');
+			return false;
+		});
+		
 	});
 
 </script>
@@ -277,8 +350,10 @@ width: 200px;
 <body>
 	<div id="tiepnhanvanban">
 		<h3>Danh sách văn bản chờ tiếp nhận</h3>
-		 <div id = "toolbar" class="ui-widget-header ui-corner-all">
-			<button id="tiepnhan">Tiếp nhận</button>
+		 <div id ="toolbar" class="ui-widget-header ui-corner-all">
+			<button id="tiepnhan"><img src="/LuanVanTotNghiep/images/process.png"/><span>Tiếp nhận</span></button>
+			<button id="filedinhkem"><img src="/LuanVanTotNghiep/images/attachment (2).png"/><span>Đính kèm tập tin</span></button>
+			<button id="chitiethoso"><img src="/LuanVanTotNghiep/images/view_detail.png"/><span>Chi tiết hồ sơ</span></button>
 		</div>
  
 		<table class="ui-widget ui-widget-content">
@@ -419,7 +494,7 @@ width: 200px;
 				</td>
 			</tr>
 			<tr>
-				<td style="background-color: #6fabe9;color: white">Số hồ sơ</td>
+				<td style="background-color: #6fabe9;color: white">Hồ sơ</td>
 				<td>
 					<select id="sohoso1">
 	    			<c:forEach var="sohoso" items="${hoSoLuuTruList}">
@@ -448,6 +523,9 @@ width: 200px;
 			</table>	
 		</form>
 		
+		
+	</div>
+	<div id="dialog_chitiethoso" title="Chi tiết hồ sơ">
 		
 	</div>
 

@@ -12,6 +12,14 @@
 <script src="/LuanVanTotNghiep/js/jquery-1.9.0.js"></script>
 <script src="/LuanVanTotNghiep/js/jquery-ui.js"></script>
 <style type="text/css">
+#dialog_chitietvanban table{
+border-collapse: collapse;
+ }
+#dialog_chitietvanban table td{
+ border: 1px solid #eee;
+ padding: .6em 10px;
+ text-align: left;
+ }
 .ui-dialog-titlebar {
 	background: url(/LuanVanTotNghiep/images/dialog.png) center left repeat-x;
 	color: #ffffff;
@@ -116,6 +124,45 @@ div#dialog_timkiemcoban table{
  padding: .6em 10px;
  text-align: left;
  }
+ #show_filedinhkemList{
+padding: 20px 0;
+}
+
+#show_filedinhkemList a{
+text-decoration:none;
+color:blue;
+}
+
+#show_filedinhkemList a:hover{
+color: red;
+}
+#show_filedinhkemList table{
+border-collapse: collapse;
+}
+#show_filedinhkemList table td,#show_filedinhkemList table th{
+ border: 1px solid #eee;
+ padding: .6em 10px;
+ text-align: left;
+}
+#toolbar{
+padding:5px 5px 5px 5px;
+}
+#toolbar img {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 2px;
+  top: 50%;
+  margin-top: -8px;
+  
+  	
+}
+#toolbar span{
+  height: 20px;
+  line-height: 20px;
+  float: left;
+  padding-left: 11px;
+}
 </style>
 
 <script>
@@ -129,6 +176,10 @@ div#dialog_timkiemcoban table{
 			 showAnim: 'drop',
 		     dateFormat: 'yy-mm-dd'
 		});
+		
+		
+			
+		
 		$( "#dialog_timkiemnangcao").dialog({
 			  autoOpen: false,
 		      resizable: true,
@@ -211,7 +262,7 @@ div#dialog_timkiemcoban table{
         			htmlPrepare += 'Trích Yếu Nội Dung</th></tr>';
         			
         			for(var i = 0 ; i< data.vanbandenListCoBan.length;i++){
-        				htmlPrepare += '<tr><td>';
+        				htmlPrepare += '<tr id="' + data.vanbandenListCoBan[i].maVanBan + '"><td>';
         				htmlPrepare += data.vanbandenListCoBan[i].ngayDen + '</td><td>';
         				htmlPrepare += data.vanbandenListCoBan[i].soDen + '</td><td>';
         				htmlPrepare += data.vanbandenListCoBan[i].soKyHieuVanBan + '</td><td>';
@@ -226,6 +277,18 @@ div#dialog_timkiemcoban table{
         		
         	});
 			}
+		});
+		
+		/* var mavanban = null;
+		$(document).on("click", "tr", function(){
+			 mavanban = $(this).attr('id');
+			 alert(mavanban);
+		}); */
+		var mavanban = null;
+		$("body").delegate("tr", "click", function(){
+			mavanban = $(this).attr('id');
+			
+		 	/* alert(mavanban); */
 		});
 		
 		$( "#dialog_timkiemcoban").dialog({
@@ -258,6 +321,109 @@ div#dialog_timkiemcoban table{
 			return false;
 		});
 		
+		$( "#dialog_chitietvanban" ).dialog({
+			  autoOpen: false,
+		      resizable: true,
+		      height:'auto',
+		      width:'auto',
+		      modal: true,
+		      buttons: {
+		        Cancel: function() {
+		          $( this ).dialog( "close" );
+		        }
+		      }
+		    });
+		$("#chitietvanbanden").button().click(function(){
+			$('#coquanbanhanh1').attr("disabled", "disabled");
+			$('#loaivanban1').attr("disabled", "disabled");
+			$('#vitriluutru1').attr("disabled", "disabled");
+			$('#linhvuc1').attr("disabled", "disabled");
+			$('#capdokhan1').attr("disabled", "disabled");
+			$('#capdobaomat1').attr("disabled", "disabled");
+			$('#sohoso1').attr("disabled", "disabled");
+			if(mavanban == null){
+				$("#dialog_error").dialog("open");
+			}
+			else{
+				$.ajax({
+					url: '/LuanVanTotNghiep/service/getNguoiDungXuLy/' + mavanban,
+					type: 'GET',
+					dataType: "json",
+					contentType: "application/json",
+					success: function(data){
+						console.log(data);
+						console.log(data.ListBXLDaXuLy.length);
+						var htmlPrepare = '';
+						for(var i = 0; i< data.ListBXLDaXuLy.length;i++){
+							htmlPrepare += '<li style = "color:#2bcc3e;padding: 5px 0">' +data.ListBXLDaXuLy2[i]+ '<b>' + data.ListBXLDaXuLy[i] + '</b></li>';
+							htmlPrepare += '<span style="color:red"> - ' + data.ListBXLDaXuLy1[i] + '</span>';
+							
+						}
+						
+						$('#guichondxuly').html(htmlPrepare);
+									
+					}
+					
+				});
+				$.ajax({
+					url: '/LuanVanTotNghiep/service/getmavanban/' + mavanban,
+					type: 'GET',
+					dataType: "json",
+					/* contentType: 'text/html; charset=UTF-8', */
+					contentType: "application/json",
+					success: function(data){
+						$('#soden1').val(data.vanbandenupdate.soDen);
+						$('#ngayden1').val(data.vanbandenupdate.ngayDen);
+						$('#sovakyhieu1').text(data.vanbandenupdate.soKyHieuVanBan);
+						$('#ngaybanhanh1').text(data.vanbandenupdate.ngayBanHanh);
+						$('#ngayhieuluc1').val(data.vanbandenupdate.ngayHieuLuc);
+						$('#ngayketthuc1').val(data.vanbandenupdate.ngayHetHieuLuc);
+						$('#ngaynhapmay1').val(data.vanbandenupdate.ngayNhapMay);
+						$('#trichyeu1').val(data.vanbandenupdate.trichYeu);
+						$('#tukhoa1').val(data.vanbandenupdate.tuKhoa);
+						$('#nguoiky1').val(data.vanbandenupdate.nguoiKy);
+						$('#sotrang1').val(data.vanbandenupdate.soTrang);
+						$('#mavanban1').val(data.vanbandenupdate.maVanBan);
+						$('#coquanbanhanh1').val(data.coquanbanhanh);
+						$('#loaivanban1').val(data.loaivanban);
+						$('#vitriluutru1').val(data.vitriluutru);
+						$('#linhvuc1').val(data.linhvuc);
+						$('#capdokhan1').val(data.capdokhan);
+						$('#capdobaomat1').val(data.capdobaomat);
+						$('#sohoso1').val(data.sohoso);
+						var ttxl = data.trangthaixuly;
+						if(ttxl == 1){
+							$('#radio11').attr('checked', true);
+						}
+						else if(ttxl == 2){
+							$('#radio21').attr('checked', true);
+						}
+						else{
+							$('#radio31').attr('checked', true);
+						}
+						
+						var htmlPrepare = '<table class="data"><tr><th>File đính kèm</th><th>Tải về máy</th><th>Xem</th></tr>';
+						for(var i = 0 ; i < data.fileDinhKemList.length;i++){
+							var j = i + 1;
+							htmlPrepare += '<tr><td style="color: #e29126">';
+							htmlPrepare += 'File đính kèm' +j+ '</td><td>';
+							htmlPrepare += '<a href="${pageContext.request.contextPath}/service/download/' + data.fileDinhKemList[i].maFile + '">Download</a>' + '</td><td>';
+							htmlPrepare += '<a href="${pageContext.request.contextPath}/service/xemtructuyen/' + data.fileDinhKemList[i].maFile + '">Xem</a>' + '</td></tr>';
+						}
+					
+							htmlPrepare += '</table>';
+							$('#show_filedinhkemList').html(htmlPrepare);
+							
+						console.log(data);
+					}
+				});
+				
+			}
+			$( "#dialog_chitietvanban" ).dialog('open');
+			return false;
+		});
+		
+		
 	});
 </script>
 </head>
@@ -267,6 +433,7 @@ div#dialog_timkiemcoban table{
 		 <div id = "toolbar" class="ui-widget-header ui-corner-all">
 			<button id="timkiemcoban">Tìm kiếm cơ bản</button>
 			<button id="timkiemnangcao">Tìm kiếm nâng cao</button>
+			<button id="chitietvanbanden"><img src="/LuanVanTotNghiep/images/view_detail.png"/><span>Xem chi tiết</span></button>
 		</div>
 		
 		<div id="showketqua">
@@ -343,5 +510,67 @@ div#dialog_timkiemcoban table{
 			</tr>
 		</table>
 	</div>
+	<div id="dialog_chitietvanban" title="Chi tiết văn bản">
+		<h3 style="padding: 10px 0px;color: #0163c8">Thông tin chung:</h3>
+		<table>
+		<tr>
+			<td style="background-color: #e8edff">Số văn bản</td>
+			<td><span id="sovakyhieu1" style="color:#6fabe9"></span></td>
+		</tr>
+		<tr>
+			<td style="background-color: #e8edff">Ngày ban hành</td>
+			<td><span id="ngaybanhanh1" style="color:#9ab937"></span></td>
+		</tr>
+		<tr>
+			<td style="background-color: #e8edff">Loại văn bản</td>
+			<td>
+				<select id="loaivanban1">
+		    			<c:forEach var="loaivanban" items="${loaiVanBanList}">
+		    					<option value='<c:out value="${loaivanban.getMaLoaiVanBan()}"/>'><c:out value="${loaivanban.getTenLoaiVanBan()}"/></option>
+		    			</c:forEach>
+		    	</select>
+	    	</td>
+		</tr>
+		<tr>
+			<td style="background-color: #e8edff">Cơ quan ban hành</td>
+			<td>
+				<select id="coquanbanhanh1">
+	    			<c:forEach var="donvi" items="${donViList}">
+	    				<option value='<c:out value="${donvi.getMaDonVi()}"/>'><c:out value="${donvi.getTenDonVi()}"/></option>
+	    			</c:forEach>
+	    		 </select>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color: #e8edff">Lĩnh vực, chủ đề</td>
+			<td>
+				<select id="linhvuc1">
+	    			<c:forEach var="linhvuc" items="${linhVucList}">
+	    					<option value='<c:out value="${linhvuc.getMaLinhVuc()}"/>'><c:out value="${linhvuc.getTenLinhVuc()}"/></option>
+	    			</c:forEach>
+	    		 </select>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color: #e8edff; ">Độ khẩn</td>
+			<td>
+				<select id="capdokhan1">
+	    			<c:forEach var="capdokhan" items="${capDoKhanList}">
+	    					<option value='<c:out value="${capdokhan.getMaDoKhan()}"/>'><c:out value="${capdokhan.getTenDoKhan()}"/></option>
+	    			</c:forEach>
+	    		 </select>
+			</td>
+		</tr>
+		</table>
+		<h3 style="padding: 10px 0px;color: #0163c8">Các người dùng đã phê duyệt/xử lý văn bản:</h3>
+		
+		<ul id="guichondxuly">
+		
+		</ul>
+		<h3 style="padding: 15px 0px 0px 0px;color: #0163c8">Các file đính kèm:</h3>
+		<div id="show_filedinhkemList">
+		
+		</div>
+</div>
 </body>
 </html>

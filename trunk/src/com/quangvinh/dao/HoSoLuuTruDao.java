@@ -3,6 +3,7 @@ package com.quangvinh.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,6 +75,27 @@ public class HoSoLuuTruDao implements IHoSoLuuTruDAO{
 	public HoSoLuuTru findHoSoLuuTruID(int id) {
 		HoSoLuuTru hosoluutru = (HoSoLuuTru) sessionFactory.getCurrentSession().load(HoSoLuuTru.class, id);
 		return hosoluutru;
+	}
+
+	@Override
+	public HoSoLuuTru getChiTietHoSoLuuTru(int mavanban) {
+		/*Session session = sessionFactory.getCurrentSession();
+		String hql="select q.maQuyTrinh from " +
+				"VanBanDen v inner join v.loaivanban l " +
+				"inner join l.quytrinh q " +
+				"where v.maVanBan = :mavanban";
+		Query query = session.createQuery(hql);
+		query.setInteger("mavanban",mavanban);
+		int ret = (int) query.uniqueResult();
+		return ret;*/
+		
+		Session session = sessionFactory.getCurrentSession();
+		String hql = "select a.hosoluutru from VanBanDen a where a.maVanBan = :mavanban";
+		Query query = session.createQuery(hql);
+		query.setInteger("mavanban",mavanban);
+		HoSoLuuTru hosoluutru = (HoSoLuuTru) query.uniqueResult();
+		return hosoluutru;
+		
 	}
 
 }

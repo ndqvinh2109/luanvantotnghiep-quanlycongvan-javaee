@@ -24,7 +24,7 @@ public class DanhSachVanBanTheoTTXLController {
 			map.put("vanbandenttxlList", vanbandenService.getVanBanDenTheoTrangThai(2));
 		}
 		else{
-			map.put("vanbandenttxlList", vanbandenService.getVanBanDenTheoTrangThai(2));
+			map.put("vanbandenttxlList", vanbandenService.getVanBanDenTheoTrangThai(3));
 		}
 		
 		return "DanhSachVanBanTheoTTXL";

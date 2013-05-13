@@ -84,7 +84,7 @@ public class DanhSachVanBanDenController {
 	@RequestMapping("/showvanbanden/{page}")
 	public String showVanBanDen(Map<String,Object> map,@PathVariable("page") int page){
 		List<VanBanDen> vanbandens = vanbandenService.getVanBanDen();
-		int per_page = 20;
+		int per_page = 10;
 		int count = vanbandens.size();
 		int pages = Math.round(count/per_page);
 		if((count%per_page)!= 0){

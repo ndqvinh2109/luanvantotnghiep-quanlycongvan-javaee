@@ -80,7 +80,7 @@ public class VanBanDiDAO implements IVanBanDiDAO{
 	@Override
 	public List<VanBanDi> getVanBanDiPaging(int page) {
 		
-		int per_page = 3;
+		int per_page = 10;
 		int start = (page-1)*per_page;
 		Session session = sessionFactory.getCurrentSession();
 		String hql = "from VanBanDi";

@@ -10,4 +10,5 @@ public interface IHoSoLuuTruDAO {
 	void deleteHoSoLuuTru(int id);
 	List<HoSoLuuTru> getHoSoLuuTru();
 	HoSoLuuTru findHoSoLuuTruID(int id);
+	HoSoLuuTru getChiTietHoSoLuuTru(int mavanban);
 }
