@@ -16,10 +16,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 @Table(name="HOSOLUUTRU")
 public class HoSoLuuTru {
 	/*****************************************/
+	@JsonIgnore
 	@OneToMany(mappedBy="hosoluutru",fetch=FetchType.LAZY)
 	private List<VanBan> vanban = new ArrayList<VanBan>(0);
 	
@@ -37,7 +40,6 @@ public class HoSoLuuTru {
 	
 	@Column(name="MA_HO_SO")
 	private String maHoSo;
-	
 	@Column(name="TIEU_DE_HO_SO")
 	private String tieuDeHoSo;
 	@Temporal(TemporalType.DATE)

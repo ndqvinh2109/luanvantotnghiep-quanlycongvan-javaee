@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.quangvinh.model.VanBanDen;
+import com.quangvinh.service.ICapDoKhanService;
 import com.quangvinh.service.IDonViService;
 import com.quangvinh.service.IHoSoLuuTruService;
 import com.quangvinh.service.ILinhVucService;
@@ -34,6 +35,8 @@ public class TimKiemVanBanDenController {
 	private ILoaiVanBanService loaivanbanService;
 	@Autowired
 	private ILinhVucService linhvucService;
+	@Autowired
+	private ICapDoKhanService capdokhanService;
 	
 	@RequestMapping("/timKiemVanBanDen")
 	public String loadPageTimKiemVanBanDen(Map<String,Object> map){
@@ -42,7 +45,7 @@ public class TimKiemVanBanDenController {
 		map.put("loaiVanBanList", loaivanbanService.getLoaiVanBan());
 		map.put("linhVucList",linhvucService.getLinhVuc());
 		map.put("hoSoLuuTruList", hosoluutruService.getHoSoLuuTru());
-		
+		map.put("capDoKhanList", capdokhanService.getCapDoKhan());
 		return "timkiemvanbanden";
 	}
 	

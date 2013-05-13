@@ -70,7 +70,7 @@ border-style: solid;
 border-width: 1px;
 border-color: #dedede;
 padding:5px 5px;
-width: 100%;
+width: 90%;
 height:100px;
 color: #777;
 box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
@@ -131,6 +131,7 @@ padding: 5px 5px 5px 5px;
 
 div#dialog-update table{
 border-collapse: collapse;
+width:100%;
  }
  div#dialog-update table td{
  border: 1px solid #eee;
@@ -403,7 +404,7 @@ $(document).ready(function(){
 			  autoOpen: false,
 		      resizable: true,
 		      height:600,
-		      width:500,
+		      width:600,
 		      modal: true,
 		      buttons: {
 		        "Lưu": function() {
@@ -725,6 +726,9 @@ $( "#dialog_gopy").dialog({
 		 alert( 'Successs!' );
 	}); */
 	
+	
+	
+	
 	 var commentList = function(){
 		  
 		  $.ajax({
@@ -871,51 +875,51 @@ $('#themgopy').button().click(function(){
 				<td><input type="text" id="mavanban" value = "" readonly/></td>
 			</tr> -->
 			<tr>
-				<td>Số đến</td>
+				<td style="background-color: #6fabe9;color: white">Số đến</td>
 				<td><input type="text" id="soden" value = "" readonly/></td>
 			</tr>
 			<tr>
-				<td>Ngày đến</td>
+				<td style="background-color: #6fabe9;color: white">Ngày đến</td>
 				<td><input type="text" id="ngayden" value = ""/></td>
 			</tr>
 			<tr>
-				<td>Số và ký hiệu</td>
+				<td style="background-color: #6fabe9;color: white">Số và ký hiệu</td>
 				<td><input type="text" id="sovakyhieu" value = ""/></td>
 			</tr>
 			<tr>
-				<td>Ngày ban hành</td>
+				<td style="background-color: #6fabe9;color: white">Ngày ban hành</td>
 				<td><input type="text" id="ngaybanhanh" value = ""/></td>
 			</tr>
 			<tr>
-				<td>Ngày hiệu lực</td>
+				<td style="background-color: #6fabe9;color: white">Ngày hiệu lực</td>
 				<td><input type="text" id="ngayhieuluc" value = ""/></td>
 			</tr>
 			<tr>
-				<td>Ngày kết thúc</td>
+				<td style="background-color: #6fabe9;color: white">Ngày kết thúc</td>
 				<td><input type="text" id="ngayketthuc" value = ""/></td>
 			</tr>
 			<tr>
-				<td>Ngày nhập máy</td>
+				<td style="background-color: #6fabe9;color: white">Ngày nhập máy</td>
 				<td><input type="text" id="ngaynhapmay" value = ""/></td>
 			</tr>
 			<tr>
-				<td>Trích yếu</td>
+				<td style="background-color: #6fabe9;color: white">Trích yếu</td>
 				<td><textarea rows="5" cols="40" id="trichyeu"></textarea></td>
 			</tr>
 			<tr>
-				<td>Từ khóa</td>
+				<td style="background-color: #6fabe9;color: white">Từ khóa</td>
 				<td><textarea rows="5" cols="40" id="tukhoa"></textarea></td>
 			</tr>
 			<tr>
-				<td>Người ký</td>
+				<td style="background-color: #6fabe9;color: white">Người ký</td>
 				<td><input type="text" id="nguoiky" value = ""/></td>
 			</tr>
 			<tr>
-				<td>Số trang</td>
+				<td style="background-color: #6fabe9;color: white">Số trang</td>
 				<td><input type="text" id="sotrang" value = ""/></td>
 			</tr>
 			<tr>
-				<td>Cơ quan ban hành</td>
+				<td style="background-color: #6fabe9;color: white">Cơ quan ban hành</td>
 				<td>
 					<select id="coquanbanhanh">
 	    			<c:forEach var="donvi" items="${donViList}">
@@ -925,7 +929,7 @@ $('#themgopy').button().click(function(){
 				</td>
 			</tr>
 			<tr>
-				<td>Loại văn bản</td>
+				<td style="background-color: #6fabe9;color: white">Loại văn bản</td>
 				<td>
 					<select id="loaivanban">
 	    			<c:forEach var="loaivanban" items="${loaiVanBanList}">
@@ -935,7 +939,7 @@ $('#themgopy').button().click(function(){
 				</td>
 			</tr>
 			<tr>
-				<td>Vị trí lưu trữ</td>
+				<td style="background-color: #6fabe9;color: white">Vị trí lưu trữ</td>
 				<td>
 					<select id="vitriluutru">
 	    			<c:forEach var="vitriluutru" items="${viTriLuuTruList}">
@@ -945,7 +949,7 @@ $('#themgopy').button().click(function(){
 				</td>
 			</tr>
 			<tr>
-				<td>Lĩnh vực</td>
+				<td style="background-color: #6fabe9;color: white">Lĩnh vực</td>
 				<td>
 					<select id="linhvuc">
 	    			<c:forEach var="linhvuc" items="${linhVucList}">
@@ -955,7 +959,7 @@ $('#themgopy').button().click(function(){
 				</td>
 			</tr>
 			<tr>
-				<td>Cấp độ khẩn</td>
+				<td style="background-color: #6fabe9;color: white">Cấp độ khẩn</td>
 				<td>
 					<select id="capdokhan">
 	    			<c:forEach var="capdokhan" items="${capDoKhanList}">
@@ -965,7 +969,7 @@ $('#themgopy').button().click(function(){
 				</td>
 			</tr>
 			<tr>
-				<td>Cấp độ bảo mật</td>
+				<td style="background-color: #6fabe9;color: white">Cấp độ bảo mật</td>
 				<td>
 					<select id="capdobaomat">
 	    			<c:forEach var="capdobaomat" items="${capDoBaoMatList}">
@@ -975,7 +979,7 @@ $('#themgopy').button().click(function(){
 				</td>
 			</tr>
 			<tr>
-				<td>Số hồ sơ</td>
+				<td style="background-color: #6fabe9;color: white">Số hồ sơ</td>
 				<td>
 					<select id="sohoso">
 	    			<c:forEach var="sohoso" items="${hoSoLuuTruList}">
@@ -985,7 +989,7 @@ $('#themgopy').button().click(function(){
 				</td>
 			</tr>
 			<tr>
-				<td>Trạng thái xử lý</td>
+				<td style="background-color: #6fabe9;color: white">Trạng thái xử lý</td>
 				<td>
 					
 				   	<table>

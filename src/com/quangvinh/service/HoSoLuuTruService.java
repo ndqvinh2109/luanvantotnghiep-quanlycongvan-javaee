@@ -47,4 +47,11 @@ public class HoSoLuuTruService implements IHoSoLuuTruService{
 		return hosoluutruDao.findHoSoLuuTruID(id);
 	}
 
+	@Override
+	@Transactional
+	public HoSoLuuTru getChiTietHoSoLuuTru(int mavanban) {
+		
+		return hosoluutruDao.getChiTietHoSoLuuTru(mavanban);
+	}
+
 }
