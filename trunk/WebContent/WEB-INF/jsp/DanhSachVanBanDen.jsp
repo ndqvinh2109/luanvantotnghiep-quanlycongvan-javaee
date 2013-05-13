@@ -743,6 +743,7 @@ $( "#dialog_gopy").dialog({
 					var htmlPrepare = '<input type="hidden" id="mavanbancomment" value="" /><textarea id="input_message" placeholder="Nhập nội dung cần góp ý"></textarea>';
 					htmlPrepare += '<table id="content_message">';	
 					htmlPrepare += '<tr><td colspan = "2" style="text-align: center;background-color: #f7f7f7"><b>Ý kiến chỉ đạo</b></td></tr>';
+										
 					for(var i = 0 ; i < data.commentList.length;i++){
 							if(data.commentList[i].userName == 'pnquyen'){
 							var parseDate = new Date(data.commentList[i].ngayGui);

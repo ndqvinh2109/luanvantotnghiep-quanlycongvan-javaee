@@ -84,7 +84,7 @@ public class DanhSachVanBanDenController {
 	@RequestMapping("/showvanbanden/{page}")
 	public String showVanBanDen(Map<String,Object> map,@PathVariable("page") int page){
 		List<VanBanDen> vanbandens = vanbandenService.getVanBanDen();
-		int per_page = 10;
+		int per_page = 9;
 		int count = vanbandens.size();
 		int pages = Math.round(count/per_page);
 		if((count%per_page)!= 0){
@@ -309,8 +309,9 @@ public class DanhSachVanBanDenController {
 	
 	@RequestMapping(value= "/showAllComment/{mavanban}",method=RequestMethod.GET)
 	public @ResponseBody Map<String,Object> getAllComment(@PathVariable("mavanban") int mavanban){
+		List<Comment> comments = commentService.getListCommentTheoMaVanBan(mavanban);
 		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("commentList", commentService.getListCommentTheoMaVanBan(mavanban));
+		map.put("commentList", comments);
 		return map;
 		
 		

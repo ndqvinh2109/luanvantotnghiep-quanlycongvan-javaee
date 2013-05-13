@@ -156,19 +156,19 @@ public class VanBanDenDAO implements IVanBanDenDAO {
 	public List<VanBanDen> timKiemNangCaoVanBanDen(String trichyeu,
 			Date ngayden, int soden, String sokyhieu, int coquanbanhanh,
 			int loaivanban, int linhvuc, int sohoso) {
-		/*Session session = sessionFactory.getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		String hql = "select a " +
 				"from VanBanDen a inner join a.linhvuc b " +
 				"inner join a.loaivanban c " +
 				"inner join a.hosoluutru e " +
 				"inner join a.donvi f " +
-				"where a.trichYeu like :trichyeu and " +
-				"a.NgayDen = :ngayden and " +
-				"a.SoDen = :soden and  " +
-				"a.soKyHieuVanBan like :sokyhieu and " +
-				"f.maDonVi = :coquanbanhanh and " +
-				"c.maLoaiVanBan = :loaivanban and " +
-				"b.maLinhVuc = :linhvuc and " +
+				"where a.trichYeu like :trichyeu or " +
+				"a.NgayDen = :ngayden or " +
+				"a.SoDen = :soden or  " +
+				"a.soKyHieuVanBan like :sokyhieu or " +
+				"f.maDonVi = :coquanbanhanh or " +
+				"c.maLoaiVanBan = :loaivanban or " +
+				"b.maLinhVuc = :linhvuc or " +
 				"e.soHoSo = :sohoso";
 		Query query = session.createQuery(hql);
 		query.setString("trichyeu", "%" +trichyeu+ "%");
@@ -180,9 +180,9 @@ public class VanBanDenDAO implements IVanBanDenDAO {
 		query.setInteger("linhvuc", linhvuc);
 		query.setInteger("sohoso", sohoso);
 		List<VanBanDen> list = query.list();
-		return list;*/
+		return list;
 		
-		Session session = sessionFactory.getCurrentSession();
+		/*Session session = sessionFactory.getCurrentSession();
 		Criteria cr = session.createCriteria(VanBanDen.class,"vanbandenAlias");
 		List<VanBanDen> list = cr.createAlias("vanbandenAlias.linhvuc", "linhvucAlias")
 			.createAlias("vanbandenAlias.loaivanban", "loaivanbanAlias")
@@ -197,8 +197,8 @@ public class VanBanDenDAO implements IVanBanDenDAO {
 			.add(Restrictions.eq("linhvucAlias.maLinhVuc", linhvuc))
 			.add(Restrictions.eq("hosoluutruAlias.soHoSo", sohoso))
 			.list();
-			
-		return list;
+		
+		return list;*/
 	}
 
 	@SuppressWarnings("unchecked")
@@ -238,7 +238,7 @@ public class VanBanDenDAO implements IVanBanDenDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<VanBanDen> getVanBanDenPaging(int page) {
-		int per_page = 10;
+		int per_page = 9;
 		int start = (page-1)*per_page;
 		System.out.println("start: " + start);
 		Session session = sessionFactory.getCurrentSession();
