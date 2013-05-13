@@ -99,8 +99,8 @@ public class LoginController {
 		int t1 = (int)(perdunghan*100);
 		int t2 = (int)(perquahan*100);
 		System.out.println(t1 + "ddf" + t2 + "ffd");
-		Slice s1 = Slice.newSlice(t1, Color.newColor("ABDF0E"),(Math.round(perdunghan*100.0)/100.0)*100  + "%","Đúng hạn (" + dunghan +")");
-		Slice s2 = Slice.newSlice(t2, Color.newColor("85AEEE"),(Math.round(perquahan*100.0)/100.0)*100 + "%","Quá hạn (" + quahan + ")");
+		Slice s1 = Slice.newSlice(t1, Color.newColor("ABDF0E"),Math.round((Math.round(perdunghan*100.0)/100.0)*100)  + "%","Đúng hạn (" + dunghan +")");
+		Slice s2 = Slice.newSlice(t2, Color.newColor("f70b0b"),Math.round((Math.round(perquahan*100.0)/100.0)*100) + "%","Quá hạn (" + quahan + ")");
 		PieChart piechart = GCharts.newPieChart(s1,s2);
 		piechart.setSize(720,360);
 		piechart.setThreeD(true);

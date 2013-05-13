@@ -20,6 +20,7 @@
 	#showPieChart img{
 	margin: 0 0  40px 40px;
 	
+	
 	}
 	div#showPieChart h3{
 	background: url(/LuanVanTotNghiep/images/titlebg.jpg) center left repeat-x;

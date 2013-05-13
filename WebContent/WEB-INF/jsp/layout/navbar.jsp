@@ -83,7 +83,6 @@
 					<li><a href="">Tra cứu văn bản nội bộ</a></li>
 				</ul>
 		<h3>Hồ sơ lưu trữ</h3>
-			
 				<ul class="menu" id="hosoluutrunavbar">
 					<li><a href="${pageContext.request.contextPath}/service/nhapHoSoLuuTru">Nhập hồ sơ lưu trữ</a></li>
 					<li><a href="">Xem hồ sơ lưu trữ</a></li>
