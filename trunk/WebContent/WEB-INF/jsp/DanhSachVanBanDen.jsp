@@ -587,7 +587,7 @@ $("#chitietvanbanden").button().click(function(){
 				console.log(data.ListBXLDaXuLy.length);
 				var htmlPrepare = '';
 				for(var i = 0; i< data.ListBXLDaXuLy.length;i++){
-					htmlPrepare += '<li style = "color:#2bcc3e;padding: 5px 0">' +data.ListBXLDaXuLy2[i]+ '<b>' + data.ListBXLDaXuLy[i] + '</b></li>';
+					htmlPrepare += '<li style = "color:#2bcc3e;padding: 5px 0">' +data.ListBXLDaXuLy2[i]+ '<b> ' + data.ListBXLDaXuLy[i] + '</b></li>';
 					htmlPrepare += '<span style="color:red"> - ' + data.ListBXLDaXuLy1[i] + '</span>';
 					
 				}

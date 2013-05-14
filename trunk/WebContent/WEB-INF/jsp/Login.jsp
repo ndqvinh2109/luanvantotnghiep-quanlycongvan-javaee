@@ -313,6 +313,7 @@ div#content_thongke	 table tr:hover{
 			    					<option value='<c:out value="${nguoidung.getMaNguoiDung()}"/>'><c:out value="${nguoidung.getTenNguoiDung()}"/></option>
 			    			</c:forEach>
 	    				 </select>
+	    				
 					</td>
 				</tr>		
 				
