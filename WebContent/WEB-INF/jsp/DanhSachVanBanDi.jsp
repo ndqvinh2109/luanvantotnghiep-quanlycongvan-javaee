@@ -319,11 +319,22 @@ padding:5px 5px 5px 5px;
   float: left;
   padding-left: 11px;
 }
+#selectChb{
+cursor:pointer;
+}
+#unselectChb{
+cursor:pointer;
+}
  </style>
 
 <script type="text/javascript">
 $(document).ready(function(){
-	
+	$('#selectChb').click(function(){ 
+	     $(':checkbox').prop("checked", true);
+	});
+	$('#unselectChb').click(function(){ 
+	     $(':checkbox').prop("checked", false);
+	});
 	$( "#navbar" ).accordion({
 	      collapsible: true,
 	      heightStyle: "content",
@@ -1219,7 +1230,7 @@ $('#banhanhvanban').button().click(function(){
 			
 			<table>
 				<tr>
-					<th>Chọn</th>
+					<th><span style="color:black; "id="selectChb">Chọn/</span><span style="color:black; "id="unselectChb">Bỏ chọn</span></th>
 					<th>Đơn vị độc lập</th>
 				</tr>
 				

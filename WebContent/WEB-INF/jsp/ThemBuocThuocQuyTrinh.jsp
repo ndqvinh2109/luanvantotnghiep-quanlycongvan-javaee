@@ -12,6 +12,12 @@
 <script src="/LuanVanTotNghiep/js/jquery-1.9.0.js"></script>
 <script src="/LuanVanTotNghiep/js/jquery-ui.js"></script>
 <style type="text/css">
+#selectChb{
+cursor:pointer;
+}
+#unselectChb{
+cursor:pointer;
+}
 .cpan{
 color: white;
 background-color: #3d85fe;
@@ -183,6 +189,12 @@ padding:0
 </style>
 <script>
 	$(document).ready(function(){
+		$('#selectChb').click(function(){ 
+		     $(':checkbox').prop("checked", true);
+		});
+		$('#unselectChb').click(function(){ 
+		     $(':checkbox').prop("checked", false);
+		});
 		$( "#navbar" ).accordion({
 		      collapsible: true,
 		      heightStyle: "content",
@@ -279,7 +291,7 @@ padding:0
 				  autoOpen: false,
 			      resizable: true,
 			      height:600,
-			      width:'auto',
+			      width:550,
 			      modal: true,
 			      buttons: {
 			    	  "Thêm bước xử lý": function() {
@@ -362,6 +374,7 @@ padding:0
 					 return false;
 			});
 			
+					
 	});
 	
 </script>
@@ -452,12 +465,17 @@ padding:0
 				
 			</tr> --%>
 		</table>
-		<h3 style="color:red">Chọn người dùng cần giao việc xử lý:</h3>
+		
 		<table>
+			<tr>
+				<td><h3 style="color:red">Chọn người dùng cần giao việc xử lý:</h3></td>
+				<td><b><span id="selectChb">Chọn/</span><span id="unselectChb">Bỏ chọn</span></b></td>
+			</tr>
 			<c:forEach var="donvi" items="${donviList}">
 				<c:if test="${donvi.getKieuDonVi() == 2 || donvi.getKieuDonVi() == 3}">
 				<tr class="cpan">
 					<td colspan="2">${donvi.getTenDonVi()}</td>
+					
 				</tr>
 				<c:forEach var="nguoidung" items="${nguoidungList}">
 					<c:if test="${nguoidung.donvi.getMaDonVi() == donvi.getMaDonVi()}">
