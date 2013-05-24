@@ -16,6 +16,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.quangvinh.model.BuocXuLyPheDuyetVanBan;
 import com.quangvinh.service.IBuocXuLyService;
+import com.quangvinh.service.ICapDoKhanService;
+import com.quangvinh.service.IDonViService;
+import com.quangvinh.service.IHoSoLuuTruService;
+import com.quangvinh.service.ILinhVucService;
+import com.quangvinh.service.ILoaiVanBanService;
 import com.quangvinh.service.INguoiDungService;
 import com.quangvinh.service.IQuyTrinhService;
 import com.quangvinh.service.IVanBanDenService;
@@ -35,6 +40,16 @@ public class XuLyPheDuyetVanBanController {
 	private IQuyTrinhService quytrinhService;
 	@Autowired
 	private IVanBanDenService vanbandenService;
+	@Autowired
+	private IHoSoLuuTruService hosoluutruService;
+	@Autowired
+	private IDonViService donviService;
+	@Autowired
+	private ILoaiVanBanService loaivanbanService;
+	@Autowired
+	private ILinhVucService linhvucService;
+	@Autowired
+	private ICapDoKhanService capdokhanService;
 	
 	@RequestMapping("/loadXuLyPheDuyetVanBan")
 	public String pageXuLyPheDuyetVanBan(Map<String,Object> map){
@@ -48,6 +63,11 @@ public class XuLyPheDuyetVanBanController {
 		/*map.put("countbuocxulyList", buocxulyService.getBuocXuLyTheoMaNguoiDung(manguoidung).size());*/
 		map.put("vanbanListAll", vanbanService.getVanBan());
 		map.put("quytrinhListAll",quytrinhService.getQuyTrinh());
+		map.put("donViList",donviService.getDonVi());
+		map.put("loaiVanBanList", loaivanbanService.getLoaiVanBan());
+		map.put("linhVucList",linhvucService.getLinhVuc());
+		map.put("hoSoLuuTruList", hosoluutruService.getHoSoLuuTru());
+		map.put("capDoKhanList", capdokhanService.getCapDoKhan());
 		return "xulypheduyetvanban";
 		
 	}

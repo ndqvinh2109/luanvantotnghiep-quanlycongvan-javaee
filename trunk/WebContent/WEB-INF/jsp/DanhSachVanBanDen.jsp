@@ -797,7 +797,7 @@ $('#themgopy').button().click(function(){
 	<button id="update"><img src="/LuanVanTotNghiep/images/form_edit.png"/><span>Sửa</span></button>
 	<button id="filedinhkem"><img src="/LuanVanTotNghiep/images/attachment (2).png"/><span>Đính kèm tập tin</span></button>
 	<button id="chitietvanbanden"><img src="/LuanVanTotNghiep/images/view_detail.png"/><span>Xem chi tiết</span></button>
-	<button id="phanxuly"><img src="/LuanVanTotNghiep/images/process.png"/><span>Phân xử lý</span></button>
+	<button id="phanxuly"><img src="/LuanVanTotNghiep/images/process.png"/><span>Chuyển tiếp văn bản</span></button>
 	<button id="themgopy"><img src="/LuanVanTotNghiep/images/friend_finder.png"/><span>Góp ý</span></button>
  </div>
  
