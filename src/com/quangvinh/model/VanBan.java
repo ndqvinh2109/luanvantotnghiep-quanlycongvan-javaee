@@ -277,6 +277,7 @@ public class VanBan {
 		this.tuKhoa = tuKhoa;
 		this.ngayNhapMay = ngayNhapMay;
 		this.trangThaiXuLy = trangThaiXuLy;
+		
 	}
 	
 	
@@ -306,6 +307,7 @@ public class VanBan {
 		this.tuKhoa = tuKhoa;
 		this.ngayNhapMay = ngayNhapMay;
 		this.trangThaiXuLy = trangThaiXuLy;
+		
 	}
 	public int getMaVanBan() {
 		return maVanBan;

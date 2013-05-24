@@ -300,7 +300,9 @@ public class DanhSachVanBanDenController {
 					ocapdokhan, ovitriluutru, ohosoluutru, mavanban, sovakyhieu, dngaybanhanh,
 					dngayhieuluc, dngayketthuc, trichyeu, nguoiky, sotrang,
 					tukhoa, dngaynhapmay, trangthaixuly, odonvi, soden, dngayden);
+			vanbanden.setEnabled(true);
 			vanbandenService.updateVanBanDen(vanbanden);
+			
 			
 			return true;
 			
