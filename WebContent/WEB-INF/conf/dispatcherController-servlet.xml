@@ -14,7 +14,7 @@
 		<mvc:annotation-driven/>
 		
 		<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-			<property name="order" value="1"/>
+			<property name="order" value="2"/>
 			<property name="contentNegotiationManager">
 				 <bean class="org.springframework.web.accept.ContentNegotiationManager">
 				 	<constructor-arg>
@@ -56,7 +56,7 @@
 		</bean> -->
 		
 		<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-			<property name="order" value="2" />
+			<property name="order" value="3" />
 			<property name="viewClass">
 				<value>org.springframework.web.servlet.view.tiles2.TilesView</value>
 			</property>
@@ -66,7 +66,7 @@
 			<property name="location">
 				<value>/WEB-INF/conf/spring-excel-views.xml</value>
 			</property>
-			<property name="order" value="0"/>
+			<property name="order" value="1"/>
 		</bean>
 				
 		<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
@@ -77,7 +77,7 @@
 			</property>
 		</bean>	
 			
-		 <!-- <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		 <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
    			<property name="driverClassName" value="org.postgresql.Driver"/>
     		<property name="url" value="jdbc:postgresql://localhost:5432/luanvantotnghiep"/>
     		<property name="username" value="postgres"/>
@@ -94,13 +94,13 @@
  		 		<prop key="hibernate.show_sql">true</prop>
  		 		<prop key="hibernate.connection.SetBigStringTryClob">true</prop>
                 <prop key="hibernate.jdbc.batch_size">0</prop>
- 		 		<prop key="hibernate.hbm2ddl.auto">create</prop> 
+ 		 		<!-- <prop key="hibernate.hbm2ddl.auto">update</prop>  -->
  		 		<prop key="hibernate.enable_lazy_load_no_trans">true</prop>
  		 	</props>
  		 </property>
  		 
- 		 </bean> -->
- 		 <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+ 		 </bean>
+ 		<!--  <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
    			<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
     		<property name="url" value="jdbc:mysql://localhost:3306/luanvantotnghiep"/>
     		<property name="username" value="root"/>
@@ -117,12 +117,12 @@
  		 		<prop key="hibernate.show_sql">true</prop>
  		 		<prop key="hibernate.connection.SetBigStringTryClob">true</prop>
                 <prop key="hibernate.jdbc.batch_size">0</prop>
- 		 		<!-- <prop key="hibernate.hbm2ddl.auto">create</prop>  -->
+ 		 		<prop key="hibernate.hbm2ddl.auto">create</prop> 
  		 		<prop key="hibernate.enable_lazy_load_no_trans">true</prop>
  		 	</props>
  		 </property>
  		 
- 		 </bean>
+ 		 </bean> -->
  		 <tx:annotation-driven transaction-manager="transactionManager"/>
  		 <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
  		 	<property name="sessionFactory" ref="mySessionFactory"/>
