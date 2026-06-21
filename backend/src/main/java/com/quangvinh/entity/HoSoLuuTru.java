@@ -12,9 +12,18 @@ public class HoSoLuuTru {
     @Column(name = "so_ho_so")
     private Integer soHoSo;
 
-    @Column(name = "ten_ho_so")
-    private String tenHoSo;
+    @Column(name = "ma_ho_so")
+    private String maHoSo;
 
-    @Column(name = "mo_ta")
-    private String moTa;
+    @Column(name = "tieu_de_ho_so")
+    private String tieuDeHoSo;
+
+    @Column(name = "thoi_gian_bao_quan")
+    private Integer thoiGianBaoQuan;
+
+    @Column(name = "thoi_gian_bd")
+    private java.time.LocalDate thoiGianBd;
+
+    @Column(name = "thoi_gian_ket_thuc")
+    private java.time.LocalDate thoiGianKetThuc;
 }

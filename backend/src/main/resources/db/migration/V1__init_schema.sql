@@ -1,19 +1,30 @@
 -- ============================================================
--- V1: Initial schema migrated from legacy JSP/Hibernate project
--- Preserves all original table/column names for zero-downtime
--- migration compatibility with the old application.
+-- V1: Schema — aligned with legacy data.sql column names
 -- ============================================================
 
 CREATE TABLE IF NOT EXISTS capdobaomat (
-    ma_do_mat    SERIAL PRIMARY KEY,
-    cap_do_mat   VARCHAR(100),
-    ten_do_mat   VARCHAR(100)
+    ma_do_mat   SERIAL PRIMARY KEY,
+    cap_do_mat  VARCHAR(100),
+    ten_do_mat  VARCHAR(100)
 );
 
 CREATE TABLE IF NOT EXISTS capdokhan (
-    ma_do_khan      SERIAL PRIMARY KEY,
-    gia_tri_cap_do  INTEGER,
-    ten_do_khan     VARCHAR(100)
+    ma_do_khan     SERIAL PRIMARY KEY,
+    gia_tri_cap_do INTEGER,
+    ten_do_khan    VARCHAR(100)
+);
+
+CREATE TABLE IF NOT EXISTS congviec (
+    ma_cong_viec       SERIAL PRIMARY KEY,
+    ten_cong_viec      VARCHAR(200),
+    noi_dung_cong_viec TEXT
+);
+
+CREATE TABLE IF NOT EXISTS donvi (
+    ma_don_vi      SERIAL PRIMARY KEY,
+    ten_don_vi     VARCHAR(300) NOT NULL,
+    kieu_don_vi    INTEGER,
+    donvitructhuoc INTEGER REFERENCES donvi(ma_don_vi)
 );
 
 CREATE TABLE IF NOT EXISTS linhvuc (
@@ -22,21 +33,17 @@ CREATE TABLE IF NOT EXISTS linhvuc (
 );
 
 CREATE TABLE IF NOT EXISTS hosoluutru (
-    so_ho_so  INTEGER PRIMARY KEY,
-    ten_ho_so VARCHAR(200),
-    mo_ta     TEXT
+    so_ho_so           INTEGER PRIMARY KEY,
+    ma_ho_so           VARCHAR(50),
+    tieu_de_ho_so      VARCHAR(500),
+    thoi_gian_bao_quan INTEGER,
+    thoi_gian_bd       DATE,
+    thoi_gian_ket_thuc DATE
 );
 
 CREATE TABLE IF NOT EXISTS vitriluutru (
-    stt        SERIAL PRIMARY KEY,
-    ten_vi_tri VARCHAR(200),
-    mo_ta      TEXT
-);
-
-CREATE TABLE IF NOT EXISTS congviec (
-    ma_cong_viec       SERIAL PRIMARY KEY,
-    ten_cong_viec      VARCHAR(200),
-    noi_dung_cong_viec TEXT
+    stt     SERIAL PRIMARY KEY,
+    vi_tri  VARCHAR(200)
 );
 
 CREATE TABLE IF NOT EXISTS quytrinh (
@@ -50,20 +57,14 @@ CREATE TABLE IF NOT EXISTS loaivanban (
     ma_quy_trinh INTEGER REFERENCES quytrinh(ma_quy_trinh)
 );
 
-CREATE TABLE IF NOT EXISTS donvi (
-    ma_don_vi      SERIAL PRIMARY KEY,
-    ten_don_vi     VARCHAR(300) NOT NULL,
-    kieu_don_vi    INTEGER,
-    donvitructhuoc INTEGER REFERENCES donvi(ma_don_vi)
-);
-
 CREATE TABLE IF NOT EXISTS roles (
-    ma_roles  SERIAL PRIMARY KEY,
-    ten_roles VARCHAR(100) NOT NULL UNIQUE
+    ma_roles          SERIAL PRIMARY KEY,
+    ten_roles         VARCHAR(100) NOT NULL UNIQUE,
+    ten_roles_chi_tiet VARCHAR(200)
 );
 
 CREATE TABLE IF NOT EXISTS nguoidung (
-    ma_nguoi_dung SERIAL PRIMARY KEY,
+    ma_nguoi_dung  SERIAL PRIMARY KEY,
     ten_nguoi_dung VARCHAR(200),
     gioi_tinh      INTEGER,
     email          VARCHAR(200),
@@ -75,31 +76,38 @@ CREATE TABLE IF NOT EXISTS nguoidung (
     ma_don_vi      INTEGER REFERENCES donvi(ma_don_vi)
 );
 
+CREATE TABLE IF NOT EXISTS chucvu (
+    ma_chuc_vu    SERIAL PRIMARY KEY,
+    ten_chuc_vu   VARCHAR(200),
+    ma_nguoi_dung INTEGER REFERENCES nguoidung(ma_nguoi_dung)
+);
+
 CREATE TABLE IF NOT EXISTS nguoidung_roles (
+    id            SERIAL,
     ma_nguoi_dung INTEGER NOT NULL REFERENCES nguoidung(ma_nguoi_dung) ON DELETE CASCADE,
     ma_roles      INTEGER NOT NULL REFERENCES roles(ma_roles),
     PRIMARY KEY (ma_nguoi_dung, ma_roles)
 );
 
 CREATE TABLE IF NOT EXISTS vanban (
-    ma_van_ban       SERIAL PRIMARY KEY,
-    ky_hieu          VARCHAR(100),
-    ngay_ban_hanh    DATE,
-    ngay_hieu_luc    DATE,
+    ma_van_ban        SERIAL PRIMARY KEY,
+    ky_hieu           VARCHAR(100),
+    ngay_ban_hanh     DATE,
+    ngay_hieu_luc     DATE,
     ngay_het_hieu_luc DATE,
-    trich_yeu        TEXT,
-    nguoi_ky         VARCHAR(200),
-    so_trang         INTEGER,
-    tu_khoa          VARCHAR(500),
-    ngay_nhap_may    DATE,
-    trang_thai_xu_ly INTEGER DEFAULT 0,
-    enabled          BOOLEAN DEFAULT FALSE,
-    ma_do_mat        INTEGER REFERENCES capdobaomat(ma_do_mat),
-    ma_linh_vuc      INTEGER REFERENCES linhvuc(ma_linh_vuc),
-    ma_loai          INTEGER REFERENCES loaivanban(ma_loai),
-    ma_do_khan       INTEGER REFERENCES capdokhan(ma_do_khan),
-    stt              INTEGER REFERENCES vitriluutru(stt),
-    so_ho_so         INTEGER REFERENCES hosoluutru(so_ho_so)
+    trich_yeu         TEXT,
+    nguoi_ky          VARCHAR(200),
+    so_trang          INTEGER,
+    tu_khoa           VARCHAR(500),
+    ngay_nhap_may     DATE,
+    trang_thai_xu_ly  INTEGER DEFAULT 0,
+    enabled           BOOLEAN DEFAULT FALSE,
+    ma_do_mat         INTEGER REFERENCES capdobaomat(ma_do_mat),
+    ma_linh_vuc       INTEGER REFERENCES linhvuc(ma_linh_vuc),
+    ma_loai           INTEGER REFERENCES loaivanban(ma_loai),
+    ma_do_khan        INTEGER REFERENCES capdokhan(ma_do_khan),
+    stt               INTEGER REFERENCES vitriluutru(stt),
+    so_ho_so          INTEGER REFERENCES hosoluutru(so_ho_so)
 );
 
 CREATE TABLE IF NOT EXISTS vanbanden (
@@ -122,12 +130,13 @@ CREATE TABLE IF NOT EXISTS vanbandi_donvi (
 );
 
 CREATE TABLE IF NOT EXISTS filedinhkem (
-    ma_file    SERIAL PRIMARY KEY,
-    ten_file   VARCHAR(500),
-    duong_dan  VARCHAR(1000),
-    kich_thuoc BIGINT,
-    loai_file  VARCHAR(100),
-    ma_van_ban INTEGER REFERENCES vanban(ma_van_ban) ON DELETE CASCADE
+    ma_file      SERIAL PRIMARY KEY,
+    ten_file     VARCHAR(500),
+    kieu_tap_tin VARCHAR(200),
+    mo_ta        TEXT,
+    duong_dan    VARCHAR(1000),
+    kich_thuoc   BIGINT,
+    ma_van_ban   INTEGER REFERENCES vanban(ma_van_ban) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS comment (
@@ -144,6 +153,14 @@ CREATE TABLE IF NOT EXISTS buoc (
     ma_cong_viec INTEGER REFERENCES congviec(ma_cong_viec),
     so_ngay      INTEGER,
     PRIMARY KEY (so_thu_tu, ma_quy_trinh)
+);
+
+CREATE TABLE IF NOT EXISTS buoc_nguoidung (
+    ma_buoc_nguoi_dung SERIAL PRIMARY KEY,
+    so_thu_tu          INTEGER,
+    ma_nguoi_dung      INTEGER REFERENCES nguoidung(ma_nguoi_dung),
+    ma_quy_trinh       INTEGER,
+    FOREIGN KEY (so_thu_tu, ma_quy_trinh) REFERENCES buoc(so_thu_tu, ma_quy_trinh)
 );
 
 CREATE TABLE IF NOT EXISTS buocxulypheduyetvanban (
@@ -170,9 +187,9 @@ CREATE TABLE IF NOT EXISTS message (
     ma_nguoi_nhan INTEGER REFERENCES nguoidung(ma_nguoi_dung)
 );
 
--- Indexes for common query patterns
-CREATE INDEX IF NOT EXISTS idx_vanbanden_ngay_den     ON vanbanden(ngay_den);
-CREATE INDEX IF NOT EXISTS idx_vanbanden_trang_thai   ON vanban(trang_thai_xu_ly);
-CREATE INDEX IF NOT EXISTS idx_vanbandi_ngay_di       ON vanbandi(ngay_di);
-CREATE INDEX IF NOT EXISTS idx_vanban_loai            ON vanban(ma_loai);
-CREATE INDEX IF NOT EXISTS idx_message_nguoi_nhan     ON message(ma_nguoi_nhan, da_doc);
+-- Indexes
+CREATE INDEX IF NOT EXISTS idx_vanbanden_ngay_den   ON vanbanden(ngay_den);
+CREATE INDEX IF NOT EXISTS idx_vanban_trang_thai    ON vanban(trang_thai_xu_ly);
+CREATE INDEX IF NOT EXISTS idx_vanbandi_ngay_di     ON vanbandi(ngay_di);
+CREATE INDEX IF NOT EXISTS idx_vanban_loai          ON vanban(ma_loai);
+CREATE INDEX IF NOT EXISTS idx_message_nguoi_nhan   ON message(ma_nguoi_nhan, da_doc);

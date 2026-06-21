@@ -13,9 +13,6 @@ public class ViTriLuuTru {
     @Column(name = "stt")
     private Integer stt;
 
-    @Column(name = "ten_vi_tri")
-    private String tenViTri;
-
-    @Column(name = "mo_ta")
-    private String moTa;
+    @Column(name = "vi_tri")
+    private String viTri;
 }

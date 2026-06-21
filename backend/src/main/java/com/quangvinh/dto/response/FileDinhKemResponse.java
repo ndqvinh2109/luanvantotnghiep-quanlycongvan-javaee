@@ -5,5 +5,5 @@ public record FileDinhKemResponse(
         String tenFile,
         String duongDan,
         Long kichThuoc,
-        String loaiFile
+        String kieuTapTin
 ) {}

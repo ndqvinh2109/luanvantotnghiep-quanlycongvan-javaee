@@ -123,7 +123,7 @@ public class VanBanDenService {
                 toRef(v.getLinhVuc()),
                 v.getFileDinhKems().stream().map(f ->
                         new FileDinhKemResponse(f.getMaFile(), f.getTenFile(),
-                                f.getDuongDan(), f.getKichThuoc(), f.getLoaiFile())
+                                f.getDuongDan(), f.getKichThuoc(), f.getKieuTapTin())
                 ).toList()
         );
     }

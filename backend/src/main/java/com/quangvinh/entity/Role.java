@@ -15,4 +15,7 @@ public class Role {
 
     @Column(name = "ten_roles")
     private String tenRoles;
+
+    @Column(name = "ten_roles_chi_tiet")
+    private String tenRolesChiTiet;
 }

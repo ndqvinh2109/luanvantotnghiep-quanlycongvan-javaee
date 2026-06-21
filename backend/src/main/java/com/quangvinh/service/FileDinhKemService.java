@@ -50,7 +50,7 @@ public class FileDinhKemService {
                 .tenFile(originalName)
                 .duongDan(storedName)
                 .kichThuoc(file.getSize())
-                .loaiFile(file.getContentType())
+                .kieuTapTin(file.getContentType())
                 .vanBan(vanBan)
                 .build();
 
@@ -68,6 +68,6 @@ public class FileDinhKemService {
 
     private FileDinhKemResponse toResponse(FileDinhKem f) {
         return new FileDinhKemResponse(f.getMaFile(), f.getTenFile(),
-                f.getDuongDan(), f.getKichThuoc(), f.getLoaiFile());
+                f.getDuongDan(), f.getKichThuoc(), f.getKieuTapTin());
     }
 }

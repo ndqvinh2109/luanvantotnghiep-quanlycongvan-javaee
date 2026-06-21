@@ -16,14 +16,17 @@ public class FileDinhKem {
     @Column(name = "ten_file")
     private String tenFile;
 
+    @Column(name = "kieu_tap_tin")
+    private String kieuTapTin;
+
+    @Column(name = "mo_ta")
+    private String moTa;
+
     @Column(name = "duong_dan")
     private String duongDan;
 
     @Column(name = "kich_thuoc")
     private Long kichThuoc;
-
-    @Column(name = "loai_file")
-    private String loaiFile;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ma_van_ban")

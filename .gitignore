@@ -1,0 +1,49 @@
+# ==================== Backend (Gradle / Spring Boot) ====================
+backend/build/
+backend/.gradle/
+backend/target/
+backend/*.jar
+backend/*.war
+
+# Gradle wrapper cache (keep gradlew scripts, ignore downloaded dists)
+.gradle/
+
+# Spring Boot uploads dir
+backend/uploads/
+
+# IDE – IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# IDE – Eclipse / STS
+.classpath
+.project
+.settings/
+bin/
+
+# IDE – VS Code Java
+.vscode/settings.json
+
+# ==================== Frontend (Node / Vite) ====================
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# dotenv
+.env
+.env.local
+.env.*.local
+
+# ==================== OS ====================
+.DS_Store
+Thumbs.db
+
+# ==================== Docker ====================
+docker-compose.override.yml
+
+# ==================== Logs ====================
+*.log
+logs/
